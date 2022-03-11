@@ -1,5 +1,6 @@
 # Mindustry Java Mod Template
-A Java Mindustry mod template that works on Android and PC. The Kotlin version of this mod can be seen [here](https://github.com/Anuken/MindustryKotlinModTemplate).
+A sequel to [Project Abyss](https://github.com/Anuken/MindustryKotlinModTemplate).
+<br> Will likelly be archived if i lose motivation.
 
 ## Building for Desktop Testing
 
@@ -25,8 +26,9 @@ Building locally takes more time to set up, but shouldn't be a problem if you've
 4. Run `gradlew deploy`. If you did everything correctlly, this will create a jar file in the `build/libs` directory that can be run on both Android and desktop. 
 
 ## Adding Dependencies
+i dont think that you will put oblivion as a dependency anyway but imma put it anyway
 
-Please note that all dependencies on Mindustry, Arc or its submodules **must be declared as compileOnly in Gradle**. Never use `implementation` for core Mindustry or Arc dependencies. 
+<br>Please note that all dependencies on Mindustry, Arc or its submodules **must be declared as compileOnly in Gradle**. Never use `implementation` for core Mindustry or Arc dependencies. 
 
 - `implementation` **places the entire dependency in the jar**, which is, in most mod dependencies, very undesirable. You do not want the entirety of the Mindustry API included with your mod.
 - `compileOnly` means that the dependency is only around at compile time, and not included in the jar.
