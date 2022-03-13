@@ -9,10 +9,10 @@ public class OblivionResources implements ContentList {
 
 	@Override
 	public void load() {
-		mesulfate = new Item("mesulfate", Color.valueOf("E86F6F")) {{cost = 2}};
-		calenmite = new Item("calenmite", Color.valueOf("EBEEF2")) {{cost = 3}};
-		copremite = new Item("copremite", Color.valueOf("31942E")) {{cost = 3}};
-		carmanite = new Item("carmanite", Color.valueOf("515151")) {{cost = 5}};
-		mothalate = new Item("mothalate", Color.valueOf("313B7A")) {{cost = 7}};
+		mesulfate = new Item("mesulfate", Color.valueOf("E86F6F")) {{cost = 2;}};
+		calenmite = new Item("calenmite", Color.valueOf("EBEEF2")) {{cost = 3;}};
+		copremite = new Item("copremite", Color.valueOf("31942E")) {{cost = 3;}};
+		carmanite = new Item("carmanite", Color.valueOf("515151")) {{cost = 5;}};
+		mothalate = new Item("mothalate", Color.valueOf("313B7A")) {{cost = 7;}};
 	}
 }
