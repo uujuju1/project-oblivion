@@ -8,28 +8,18 @@ import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
+import oblivion.content.*;
 
 public class ProjectOblivion extends Mod{
 
 	public ProjectOblivion(){
 		Log.info("Loaded ProjectOblivion constructor.");
-
-		//listen for game load event
-		Events.on(ClientLoadEvent.class, e -> {
-			//show dialog upon startup
-			Time.runTask(10f, () -> {
-				BaseDialog dialog = new BaseDialog("frog");
-				dialog.cont.add("This mod is still WIP. If you found a bug, please file a bug report").row();
-				//mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-				dialog.cont.image(Core.atlas.find("oblivion-icon-game")).pad(20f).row();
-				dialog.cont.button("Ok", dialog::hide).size(100f, 50f);
-				dialog.show();
-			});
-		});
 	}
 
 	@Override
 	public void loadContent(){
 		Log.info("Loading some example content.");
+		new OblivionResources().load();
+		new OblivionBlocks().load();
 	}
 }
