@@ -10,7 +10,7 @@ import mindustry.world.blocks.production.*;
 
 public class OblivionBlocks implements ContentList {
 	public static Block 
-		mesoForge, carbonicInfuser, cloroSynthetizer;
+		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter;
 
 	@Override
 	public void load() {
@@ -55,7 +55,7 @@ public class OblivionBlocks implements ContentList {
 			requirements(Category.crafting, with(
 				Items.thorium, 70,
 				Items.plastianium, 120,
-				Items.silicon, 150,
+				Items.silicon, 150
 			));
 			size = 3;
 			health = 200;
@@ -70,6 +70,42 @@ public class OblivionBlocks implements ContentList {
 			));
 			consumes.power(0.5f);
 			outputItem = new ItemStack(OblivionResources.copremite, 1);
+		}};
+		calonicKiln = new GenericCrafter("calonic-kiln") {{
+			requirements(Category.crafting, with(
+				Items.thorium, 60,
+				Items.metaglass, 150,
+				Items.titanium, 120,
+				Items.graphite, 200
+			));
+			size = 3;
+			health = 200;
+			craftTime = 30f;
+			drawer = new DrawSmelter(Color.valueOf("D1D1D1"));
+			consumes.items(with(
+				OblivionResources.mesulfate, 1,
+				Items.metaglass, 3
+			));
+			consumes.power(0.25f);
+			outputItem = new ItemStack(OblivionResources.calenmite, 1);
+		}};
+		moloniteSmelter = new GenericCrafter("monolite-smelter") {{
+			requirements(Category.crafting, with(
+				OblivionResources.carmanite, 120,
+				OblivionResources.copremite, 180,
+				Items.surgeAlloy, 100,
+				Items.thorium, 130,
+				Items.plastianium, 150
+			));
+			size = 5;
+			health = 300;
+			craftTime = 120f;
+			drawer = new DrawSmelter(Color.valueOf("B5BFFF"));
+			consumes.items(with(
+				OblivionResources.mesulfate, 5,
+				Items.thorium, 4,
+				Items.silicon, 6
+			));
 		}};
 	}
 }
