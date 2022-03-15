@@ -7,6 +7,7 @@ import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.world.draw.*;
 import mindustry.world.blocks.production.*;
+import oblivion.graphics.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -83,6 +84,7 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			health = 200;
 			craftTime = 30f;
+			craftEffect = OblivionFx.calciteSmelt
 			drawer = new DrawSmelter(Color.valueOf("D1D1D1"));
 			consumes.items(with(
 				OblivionResources.mesulfate, 1,
@@ -91,7 +93,7 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(0.25f);
 			outputItem = new ItemStack(OblivionResources.calenmite, 1);
 		}};
-		moloniteSmelter = new GenericCrafter("monolite-smelter") {{
+		moloniteSmelter = new GenericCrafter("molonite-smelter") {{
 			requirements(Category.crafting, with(
 				OblivionResources.carmanite, 120,
 				OblivionResources.copremite, 180,
@@ -108,6 +110,8 @@ public class OblivionBlocks implements ContentList {
 				Items.thorium, 4,
 				Items.silicon, 6
 			));
+			consumes.power(2.5f);
+			outputItem = new ItemStack(OblivionResources.mothalate, 1);
 		}};
 	}
 }
