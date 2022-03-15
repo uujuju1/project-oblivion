@@ -2,11 +2,13 @@ package oblivion.content;
 
 import arc.graphics.*;
 import mindustry.type.*;
+import mindustry.ctype.*;
+import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.world.draw.*;
-import mindustry.type.ItemStack.*;
-import mindustry.ctype.ContentList.*;
 import mindustry.world.blocks.production.*;
+
+import static mindustry.type.ItemStack.*;
 
 public class OblivionBlocks implements ContentList {
 	public static Block 
@@ -36,7 +38,7 @@ public class OblivionBlocks implements ContentList {
 			requirements(Category.crafting, with(
 				OblivionResources.mesulfate, 80,
 				Items.silicon, 120,
-				Items.plastianium, 100,
+				Items.plastanium, 100,
 				Items.graphite, 90,
 				Items.titanium, 110
 			));
@@ -54,7 +56,7 @@ public class OblivionBlocks implements ContentList {
 		cloroSynthetizer = new GenericCrafter("cloro-synthetizer") {{
 			requirements(Category.crafting, with(
 				Items.thorium, 70,
-				Items.plastianium, 120,
+				Items.plastanium, 120,
 				Items.silicon, 150
 			));
 			size = 3;
@@ -95,7 +97,7 @@ public class OblivionBlocks implements ContentList {
 				OblivionResources.copremite, 180,
 				Items.surgeAlloy, 100,
 				Items.thorium, 130,
-				Items.plastianium, 150
+				Items.plastanium, 150
 			));
 			size = 5;
 			health = 300;
