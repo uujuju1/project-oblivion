@@ -84,7 +84,7 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			health = 200;
 			craftTime = 30f;
-			craftEffect = OblivionFx.calciteSmelt
+			craftEffect = OblivionFx.calciteSmelt;
 			drawer = new DrawSmelter(Color.valueOf("D1D1D1"));
 			consumes.items(with(
 				OblivionResources.mesulfate, 1,
