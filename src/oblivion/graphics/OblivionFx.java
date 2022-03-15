@@ -1,11 +1,13 @@
 package oblivion.graphics;
 
+import arc.math.*;
+import arc.graphics.g2d.*;
 import mindustry.entities.*;
 
 public class OblivionFx {
-	public Effect 
+	public static final Effect 
 		calciteSmelt = new Effect(30f, e -> {
-			public float offset = 6;
+			float offset = 6;
 			Lines.stroke(e.fout());
 			Angles.randLenVectors(e.id, 5, 30 * e.finpow(), 0, 10, (x, y) -> {
 			  Fill.circle(e.x + x + offset, e.y + y, 2 * e.fout());
