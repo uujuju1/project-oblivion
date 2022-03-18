@@ -1,8 +1,11 @@
 package oblivion.world.blocks.defense;
 
 import arc.util.*;
+import arc.audio.*;
 import arc.struct.*;
+import arc.graphics.g2d.*;
 import arc.scene.ui.layout.*;
+import mindustry.ui.*;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.content.*;
@@ -54,16 +57,16 @@ public class BulletSpreader extends Block {
 	}
 
 	@Override
-	public void drawPlace() {
-		super.drawPlace();
-		Drawf.dashCircle(x * tilesize + offset, y * tilesize + offset, range, Pal.placing);
+	public void drawPlace(int x, int y, int rotation, boolean valid) {
+		super.drawPlace(x, y, rotation, valid);
+		Drawf.dashCircle(x * 8 + offset, y * 8 + offset, range, Pal.placing);
 	}
 
 	@Override
 	public void setStats() {
 		super.setStats();
 		stats.remove(Stat.itemCapacity);
-		stats.add(Stat.ammo, StatValues.ammo(ObjectMap.of(consumes.get(ConsumeType.item).item, bullet)));
+		stats.add(Stat.ammo, StatValues.ammo(ObjectMap.of(consumes.get(ConsumeType.item), bullet)));
 	}
 
 	public class BulletSpreaderBuild extends Building {
@@ -106,7 +109,7 @@ public class BulletSpreader extends Block {
 
 		@Override
 		public void buildConfiguration(Table table) {
-			table.button(Icon.upload, b -> shoot = !shoot);
+			table.button(Icon.upload, () -> shoot = !shoot);
 		}
 
 		@Override
