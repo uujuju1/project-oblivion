@@ -17,7 +17,6 @@ import mindustry.entities.*;
 import mindustry.world.meta.*;
 import mindustry.world.consumers.*;
 import mindustry.entities.bullet.*;
-import mindustry.annotations.Annotations.*;
 // basically a remake of pa's scatter silo with stuff 
 public class BulletSpreader extends Block {
 	// misc

@@ -15,12 +15,19 @@ import static mindustry.type.ItemStack.*;
 
 public class OblivionBlocks implements ContentList {
 	public static Block 
+		start,
 		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter,
 
 		merci;
 
 	@Override
 	public void load() {
+		start = new Block(){{
+			buildVisibility = BuildVisibility.debugOnly;
+			inEditor = false;
+			alwaysUnlocked = true;
+		}};
+
 		mesoForge = new GenericCrafter("meso-forge") {{
 			requirements(Category.crafting, with(
 				Items.silicon, 40,
