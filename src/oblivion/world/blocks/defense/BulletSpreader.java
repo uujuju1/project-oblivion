@@ -40,6 +40,7 @@ public class BulletSpreader extends Block {
 
 	@Override
 	public void load() {
+		super.load();
 		launcherRegion = Core.atlas.find(name + "-launcher");
 	};
 
