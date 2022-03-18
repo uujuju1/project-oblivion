@@ -8,12 +8,15 @@ import mindustry.content.*;
 import mindustry.world.draw.*;
 import mindustry.world.blocks.production.*;
 import oblivion.graphics.*;
+import oblivion.world.blocks.defense.*;
 
 import static mindustry.type.ItemStack.*;
 
 public class OblivionBlocks implements ContentList {
 	public static Block 
-		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter;
+		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter,
+
+		merci;
 
 	@Override
 	public void load() {
@@ -112,6 +115,27 @@ public class OblivionBlocks implements ContentList {
 			));
 			consumes.power(2.5f);
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
+		}};
+
+		merci = new BulletSpreader("merci") {{
+			requirements(Category.turret, with(
+				Items.mesulfate, 30,
+				Items.silicon, 45
+			));
+			size = 2;
+			health = 320;
+			range = 15f * 8f;
+			reloadTime = 60f;
+			shots = 3;
+			spread = 10f;
+			offset = 4f;
+			bullet = new BasicBulletType(2f, 16) {{
+				lifetime = 60f;
+			}};
+			consumes.items(with(
+				Items.mesulfate, 3
+			));
+			consumes.power(0.2f);
 		}};
 	}
 }
