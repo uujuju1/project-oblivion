@@ -8,7 +8,6 @@ import mindustry.content.*;
 import mindustry.world.draw.*;
 import mindustry.entities.bullet.*;
 import mindustry.world.blocks.production.*;
-import oblivion.content.*;
 import oblivion.graphics.*;
 import oblivion.world.blocks.defense.*;
 
@@ -121,7 +120,7 @@ public class OblivionBlocks implements ContentList {
 
 		merci = new BulletSpreader("merci") {{
 			requirements(Category.turret, with(
-				Items.mesulfate, 30,
+				OblivionResources.mesulfate, 30,
 				Items.silicon, 45
 			));
 			size = 2;
@@ -134,7 +133,7 @@ public class OblivionBlocks implements ContentList {
 				lifetime = 60f;
 			}};
 			consumes.items(with(
-				Items.mesulfate, 3
+				OblivionResources.mesulfate, 3
 			));
 			consumes.power(0.2f);
 		}};
