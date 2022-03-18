@@ -1,8 +1,11 @@
 package oblivion.world.blocks.defense;
 
+import arc.*;
+import arc.math.*;
 import arc.util.*;
 import arc.audio.*;
 import arc.struct.*;
+import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.scene.ui.layout.*;
 import mindustry.ui.*;
@@ -15,10 +18,10 @@ import mindustry.world.meta.*;
 import mindustry.world.consumers.*;
 import mindustry.entities.bullet.*;
 import mindustry.annotations.Annotations.*;
-// basically a remake of pa's scatter silo with 
+// basically a remake of pa's scatter silo with stuff 
 public class BulletSpreader extends Block {
 	// misc
-	public @Load("@-launcher") TextureRegion launcherRegion;
+	public TextureRegion launcherRegion;
 	// visual range for the block(will be set to the bullets'range)
 	public float range;
 	// reload of the block
@@ -35,6 +38,11 @@ public class BulletSpreader extends Block {
 		super(name);
 		rotate = true;
 	}
+
+	@Override
+	public void load() {
+		launcherRegion = Core.atlas.find(name + "-launcher");
+	};
 
 	@Override
 	public void init() {
@@ -123,7 +131,7 @@ public class BulletSpreader extends Block {
 		@Override
 		public void draw() {
 			Draw.rect(region, x, y, 0f);
-			Draw.rect(launcherRegion, x, y, block.rotate ? rotDeg() : 0);
+			Draw.rect(launcherRegion, x, y, block.rotate ? rotdeg() : 0);
 		}
 	}
 }

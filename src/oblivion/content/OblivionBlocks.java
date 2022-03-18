@@ -1,14 +1,14 @@
 package oblivion.content;
 
-import arc.math.*;
 import arc.graphics.*;
-import arc.graphics.g2d.*;
 import mindustry.type.*;
 import mindustry.ctype.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.world.draw.*;
+import mindustry.entities.bullet.*;
 import mindustry.world.blocks.production.*;
+import oblivion.content.*;
 import oblivion.graphics.*;
 import oblivion.world.blocks.defense.*;
 
@@ -126,7 +126,6 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 2;
 			health = 320;
-			range = 15f * 8f;
 			reloadTime = 60f;
 			shots = 3;
 			spread = 10f;
