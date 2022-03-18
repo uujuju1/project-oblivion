@@ -36,6 +36,7 @@ public class BulletSpreader extends Block {
 	public BulletSpreader(String name) {
 		super(name);
 		rotate = true;
+		solid = destructible = true;
 	}
 
 	@Override
