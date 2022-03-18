@@ -8,7 +8,7 @@ import mindustry.ctype.UnlockableContent;
 import mindustry.game.Objectives.*;
 import mindustry.type.ItemStack;
 
-public class AbyssTechTree implements ContentList {
+public class OblivionTechTree implements ContentList {
 	static TechTree.TechNode context = null;
 
 	private static void extendNode (UnlockableContent parent, Runnable children) {

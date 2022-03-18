@@ -5,6 +5,7 @@ import mindustry.type.*;
 import mindustry.ctype.*;
 import mindustry.world.*;
 import mindustry.content.*;
+import mindustry.world.meta.*;
 import mindustry.world.draw.*;
 import mindustry.entities.bullet.*;
 import mindustry.world.blocks.production.*;
@@ -22,7 +23,7 @@ public class OblivionBlocks implements ContentList {
 
 	@Override
 	public void load() {
-		start = new Block(){{
+		start = new Block("start"){{
 			buildVisibility = BuildVisibility.debugOnly;
 			inEditor = false;
 			alwaysUnlocked = true;
