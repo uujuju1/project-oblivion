@@ -9,6 +9,7 @@ import mindustry.world.meta.*;
 import mindustry.world.draw.*;
 import mindustry.entities.bullet.*;
 import mindustry.world.blocks.production.*;
+import mindustry.world.blocks.defense.turret.*;
 import oblivion.graphics.*;
 import oblivion.world.blocks.defense.*;
 
@@ -18,6 +19,8 @@ public class OblivionBlocks implements ContentList {
 	public static Block 
 		start,
 		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter,
+
+		uno, rain, granite,
 
 		merci;
 
@@ -126,6 +129,111 @@ public class OblivionBlocks implements ContentList {
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
 		}};
 
+		uno = new ItemTurret("uno") {{
+			requirements(Category.turret, with(
+				OblivionResources.mesulfate, 10,
+				Items.silicon, 15,
+				Items.graphite, 20
+			));
+			size = 1;
+			health = 160;
+			reloadTime = 60f;
+			range = 120f;
+			rotateSpeed = 10f;
+			ammo(
+				OblivionResources.mesulfate, new BasicBulletType(2f, 15) {{
+					lifetime = 60f;
+					frontColor = Color.valueOf("E86F6F");
+					backColor = Color.valueOf("AD4747");
+				}},
+				Items.graphite, new BasicBulletType(2f, 22) {{
+					lifetime = 60f;
+					frontColor = Color.valueOf("95ABD9");
+					backColor = Color.valueOf("626F9B");
+				}},
+				Items.silicon, new MissileBulletType(2f, 7) {{
+					lifetime = 60f;
+					splashDamage = 10;
+					splashDamageRadius = 16f;
+				}}
+			); 
+		}};
+		rain = new ItemTurret("rain") {{
+			requirements(Category.turret, with(
+				OblivionResources.mesulfate, 75,
+				Items.silicon, 125,
+				Items.titanium, 50,
+				Items.graphite, 100
+			));
+			size = 2;
+			health = 640;
+			reloadTime = 10f;
+			spread = 4f;
+			shots = 2;
+			alternate = true;
+			range = 184f;
+			rotateSpeed = 7.5f;
+			ammo(
+				OblivionResources.mesulfate, new BasicBulletType(2.5f, 20) {{
+					lifetime = 73.6f;
+					frontColor = Color.valueOf("E86F6F");
+					backColor = Color.valueOf("AD4747");
+				}},
+				Items.graphite, new BasicBulletType(2f, 27) {{
+					lifetime = 73.6f;
+					frontColor = Color.valueOf("95ABD9");
+					backColor = Color.valueOf("626F9B");
+				}},
+				Items.silicon, new MissileBulletType(2f, 17) {{
+					lifetime = 73.6f;
+					splashDamage = 10;
+					splashDamageRadius = 16f;
+				}}
+			);
+		}};
+		granite = new ItemTurret("granite") {{
+			requirements(Category.turret, with(
+				OblivionResources.mesulfate, 160,
+				Items.silicon, 120,
+				Items.thorium, 80,
+				Items.titanium, 135,
+				Items.graphite, 140
+			));
+			size = 3;
+			health = 1440;
+			reloadTime = 90f;
+			range = 240f;
+			rotateSpeed = 5f;
+			ammo(
+				OblivionResources.mesulfate, new ArtilleryBulletType(3f, 35) {{
+					lifetime = 80f;
+					width = 10f;
+					height = 10f;
+					splashDamage = 20;
+					splashDamageRadius = 20f;
+					frontColor = Color.valueOf("E86F6F");
+					backColor = Color.valueOf("AD4747");
+				}},
+				Items.graphite, new ArtilleryBulletType(3f, 50) {{
+					lifetime = 80f;
+					width = 10f;
+					height = 10f;
+					splashDamage = 30;
+					splashDamageRadius = 20f;
+					frontColor = Color.valueOf("95ABD9");
+					backColor = Color.valueOf("626F9B");
+				}},
+				Items.silicon, new ArtilleryBulletType(3f, 20) {{
+					lifetime = 80f;
+					width = 10f;
+					height = 10f;
+					splashDamage = 15;
+					splashDamageRadius = 20f;
+					homingPower = 0.08f;
+				}}
+			);
+		}};
+
 		merci = new BulletSpreader("merci") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 30,
@@ -139,6 +247,8 @@ public class OblivionBlocks implements ContentList {
 			offset = 4f;
 			bullet = new BasicBulletType(2f, 16) {{
 				lifetime = 60f;
+				frontColor = Color.valueOf("E86F6F");
+				backColor = Color.valueOf("AD4747");
 			}};
 			consumes.items(with(
 				OblivionResources.mesulfate, 3

@@ -21,5 +21,6 @@ public class ProjectOblivion extends Mod{
 		Log.info("Loading some example content.");
 		new OblivionResources().load();
 		new OblivionBlocks().load();
+		new OblivionTechTree().load();
 	}
 }

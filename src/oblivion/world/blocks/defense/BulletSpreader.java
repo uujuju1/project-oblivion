@@ -21,8 +21,6 @@ import mindustry.entities.bullet.*;
 public class BulletSpreader extends Block {
 	// misc
 	public TextureRegion launcherRegion;
-	// visual range for the block(will be set to the bullets'range)
-	public float range;
 	// reload of the block
 	public float reloadTime;
 	// shots and spacing stuff
@@ -37,6 +35,8 @@ public class BulletSpreader extends Block {
 		super(name);
 		rotate = true;
 		solid = destructible = true;
+		consfigurable = true;
+		sync = true;
 	}
 
 	@Override
@@ -44,11 +44,6 @@ public class BulletSpreader extends Block {
 		super.load();
 		launcherRegion = Core.atlas.find(name + "-launcher");
 	};
-
-	@Override
-	public void init() {
-		range = bullet.lifetime/bullet.speed;
-	}
 
 	@Override
 	public void setBars() {
@@ -68,13 +63,12 @@ public class BulletSpreader extends Block {
 	@Override
 	public void drawPlace(int x, int y, int rotation, boolean valid) {
 		super.drawPlace(x, y, rotation, valid);
-		Drawf.dashCircle(x * 8 + offset, y * 8 + offset, range, Pal.placing);
+		Drawf.dashCircle(x * 8 + offset, y * 8 + offset, bullet.lifetime*bullet.speed, Pal.placing);
 	}
 
 	@Override
 	public void setStats() {
 		super.setStats();
-		stats.remove(Stat.itemCapacity);
 		stats.add(Stat.ammo, StatValues.ammo(ObjectMap.of(consumes.get(ConsumeType.item), bullet)));
 	}
 
@@ -107,7 +101,7 @@ public class BulletSpreader extends Block {
 		@Override
 		public void drawSelect() {
 			super.drawSelect();
-			Drawf.dashCircle(x, y, range, team.color);
+			Drawf.dashCircle(x, y, bullet.lifetime*bullet.speed, team.color);
 			Lines.stroke(3f);
 			for (int i = 0; i < shots; i++) {
 				float dx = x + Angles.trnsx(getAngle(i, shots, spread, 0f), size * 8, 0);
