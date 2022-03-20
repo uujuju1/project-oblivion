@@ -35,7 +35,7 @@ public class BulletSpreader extends Block {
 		super(name);
 		rotate = true;
 		solid = destructible = true;
-		consfigurable = true;
+		configurable = true;
 		sync = true;
 	}
 

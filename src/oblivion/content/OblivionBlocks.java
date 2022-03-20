@@ -9,7 +9,7 @@ import mindustry.world.meta.*;
 import mindustry.world.draw.*;
 import mindustry.entities.bullet.*;
 import mindustry.world.blocks.production.*;
-import mindustry.world.blocks.defense.turret.*;
+import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
 import oblivion.world.blocks.defense.*;
 
@@ -211,6 +211,7 @@ public class OblivionBlocks implements ContentList {
 					height = 10f;
 					splashDamage = 20;
 					splashDamageRadius = 20f;
+					collides = true;
 					frontColor = Color.valueOf("E86F6F");
 					backColor = Color.valueOf("AD4747");
 				}},
@@ -220,6 +221,7 @@ public class OblivionBlocks implements ContentList {
 					height = 10f;
 					splashDamage = 30;
 					splashDamageRadius = 20f;
+					collides = true;
 					frontColor = Color.valueOf("95ABD9");
 					backColor = Color.valueOf("626F9B");
 				}},
@@ -229,6 +231,7 @@ public class OblivionBlocks implements ContentList {
 					height = 10f;
 					splashDamage = 15;
 					splashDamageRadius = 20f;
+					collides = true;
 					homingPower = 0.08f;
 				}}
 			);
