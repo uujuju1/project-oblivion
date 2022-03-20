@@ -176,11 +176,13 @@ public class OblivionBlocks implements ContentList {
 			ammo(
 				OblivionResources.mesulfate, new BasicBulletType(2.5f, 20) {{
 					lifetime = 73.6f;
+					shootSound = Sounds.artilery;
 					frontColor = Color.valueOf("E86F6F");
 					backColor = Color.valueOf("AD4747");
 				}},
 				Items.graphite, new BasicBulletType(2f, 27) {{
 					lifetime = 73.6f;
+					shootSound = Sounds.artilery;
 					frontColor = Color.valueOf("95ABD9");
 					backColor = Color.valueOf("626F9B");
 				}},
@@ -188,6 +190,7 @@ public class OblivionBlocks implements ContentList {
 					lifetime = 73.6f;
 					splashDamage = 10;
 					splashDamageRadius = 16f;
+					shootSound = Sounds.artilery;
 				}}
 			);
 		}};
@@ -212,6 +215,7 @@ public class OblivionBlocks implements ContentList {
 					splashDamage = 20;
 					splashDamageRadius = 20f;
 					collides = true;
+					shootSound = Sounds.shootBig;
 					frontColor = Color.valueOf("E86F6F");
 					backColor = Color.valueOf("AD4747");
 				}},
@@ -222,6 +226,7 @@ public class OblivionBlocks implements ContentList {
 					splashDamage = 30;
 					splashDamageRadius = 20f;
 					collides = true;
+					shootSound = Sounds.shootBig;
 					frontColor = Color.valueOf("95ABD9");
 					backColor = Color.valueOf("626F9B");
 				}},
@@ -232,6 +237,7 @@ public class OblivionBlocks implements ContentList {
 					splashDamage = 15;
 					splashDamageRadius = 20f;
 					collides = true;
+					shootSound = Sounds.shootBig;
 					homingPower = 0.08f;
 				}}
 			);
