@@ -43,4 +43,4 @@ Only use `implementation` if you want to package another Java library *with your
 
 
 ---
-## *Kingfrankbob Was here*
+## *Kingfrankbobn't Was here*
