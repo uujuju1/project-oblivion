@@ -18,8 +18,8 @@ public class ProjectOblivion extends Mod{
 
 	@Override
 	public void loadContent(){
-		Log.info("Loading some example content.");
 		new OblivionResources().load();
+		new OblivionUnits().load();
 		new OblivionBlocks().load();
 		new OblivionTechTree().load();
 	}
