@@ -1,7 +1,9 @@
 package oblivion.content;
 
+import arc.graphics.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+import mindustry.content.*;
 import mindustry.entities.bullet.*;
 import mindustry.ctype.ContentList;
 
@@ -23,7 +25,10 @@ public class OblivionUnits implements ContentList {
 					y = -1.25f;
 					reload = 30f;
 					shootSound = Sounds.missile;
-					bullet = new MissileBulletType(2f, 15) {{lifetime = 52f;}};
+					bullet = new MissileBulletType(2f, 15) {{
+						lifetime = 52f;
+						status = StatusEffects.burning;
+					}};
 				}}
 			);
 		}};
