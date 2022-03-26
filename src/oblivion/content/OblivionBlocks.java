@@ -134,17 +134,21 @@ public class OblivionBlocks implements ContentList {
 		}};
 
 		baletise = new Floor("baletise") {{
-			attributes.add(Attribute.oil, 0f, Attribute.water, 0f);
+			attributes.set(Attribute.oil, -1f);
+			attributes.set(Attribute.water, 0f);
 		}};
 		powderite = new Floor("powderite") {{
-			attributes.add(Attribute.oil, 0f, Attribute.water, 0f);
+			attributes.set(Attribute.oil, -1f);
+			attributes.set(Attribute.water, -1f);
 		}};
 		tobolite = new Floor("tobolite") {{
-			attributes.add(Attribute.oil, 0f, Attribute.water, 0f);
+			attributes.set(Attribute.oil, -1f);
+			attributes.set(Attribute.water, -1f);
 		}};
 		driedpowder = new Floor("driedpowder") {{
 			itemDrop = Items.sand;
-			attributes.add(Attribute.oil, 0f, Attribute.water, 0f);
+			attributes.set(Attribute.oil, -1f);
+			attributes.set(Attribute.water, -1f);
 		}};
 
 		uno = new ItemTurret("uno") {{
