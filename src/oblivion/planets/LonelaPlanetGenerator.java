@@ -14,8 +14,8 @@ import mindustry.content.*;
 import mindustry.maps.planet.*;
 import mindustry.ai.BaseRegistry.*;
 import mindustry.maps.generators.*;
-import mindustry.world.environment.*;
 import mindustry.graphics.g3d.PlanetGrid.*;
+import mindustry.world.blocks.environment.*;
 import oblivion.content.*;
 
 import static mindustry.Vars.*;
@@ -72,8 +72,7 @@ public class LonelaPlanetGenerator extends SerpuloPlanetGenerator {
 		}
 	}
 
-	@Override
-	public Block getBlock(Vec3 position){
+	Block getBlock(Vec3 position){
 		float height = rawHeight(position);
 		Tmp.v31.set(position);
 		position = Tmp.v33.set(position).scl(scl);
@@ -125,12 +124,7 @@ public class LonelaPlanetGenerator extends SerpuloPlanetGenerator {
 				Vec2 midpoint = Tmp.v1.set(to.x, to.y).add(x, y).scl(0.5f);
 				rand.nextFloat();
 
-				if(alt){
-					midpoint.add(Tmp.v2.set(1, 0f).setAngle(Angles.angle(to.x, to.y, x, y) + 90f * (rand.chance(0.5) ? 1f : -1f)).scl(Tmp.v1.dst(x, y) * 2f));
-				}else{
-					//add randomized offset to avoid straight lines
-					midpoint.add(Tmp.v2.setToRandomDirection(rand).scl(Tmp.v1.dst(x, y)));
-				}
+				midpoint.add(Tmp.v2.setToRandomDirection(rand).scl(Tmp.v1.dst(x, y)));
 
 				midpoint.sub(width/2f, height/2f).limit(width / 2f / Mathf.sqrt3).add(width/2f, height/2f);
 
@@ -412,7 +406,7 @@ public class LonelaPlanetGenerator extends SerpuloPlanetGenerator {
 		state.rules.enemyCoreBuildRadius = 600f;
 
 		//spawn air only when spawn is blocked
-		state.rules.spawns = Waves.generate(difficulty, new Rand(sector.id), state.rules.attackMode, state.rules.attackMode && spawner.countGroundSpawns() == 0, naval);
+		state.rules.spawns = Waves.generate(difficulty, new Rand(sector.id), state.rules.attackMode, state.rules.attackMode && spawner.countGroundSpawns() == 0, false);
 	}
 
 	@Override
