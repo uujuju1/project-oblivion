@@ -95,6 +95,60 @@ public class LonelaPlanetGenerator extends SerpuloPlanetGenerator {
 	}
 
 	@Override
+	public void generateSector(Sector sector){sector.generateEnemyBase = false;}
+
+	@Override
+	public float getHeight(Vec3 position){
+		float height = rawHeight(position);
+		return Math.max(height, water);
+	}
+
+	@Override
+	public Color getColor(Vec3 position){
+		Block block = getBlock(position);
+		//replace salt with sand color
+		if(block == Blocks.salt) return Blocks.sand.mapColor;
+		return Tmp.c1.set(block.mapColor).a(1f - block.albedo);
+	}
+
+	@Override
+	public void genTile(Vec3 position, TileGen tile){
+		tile.floor = getBlock(position);
+		tile.block = tile.floor.asFloor().wall;
+
+		if(Ridged.noise3d(1, position.x, position.y, position.z, 2, 22) > 0.31){
+			tile.block = Blocks.air;
+		}
+	}
+
+	Block getBlock(Vec3 position){
+		float height = rawHeight(position);
+		Tmp.v31.set(position);
+		position = Tmp.v33.set(position).scl(scl);
+		float rad = scl;
+		float temp = Mathf.clamp(Math.abs(position.y * 2f) / (rad));
+		float tnoise = Simplex.noise3d(seed, 7, 0.56, 1f/3f, position.x, position.y + 999f, position.z);
+		temp = Mathf.lerp(temp, tnoise, 0.5f);
+		height *= 1.2f;
+		height = Mathf.clamp(height);
+
+		float tar = Simplex.noise3d(seed, 4, 0.55f, 1f/2f, position.x, position.y + 999f, position.z) * 0.3f + Tmp.v31.dst(0, 0, 1f) * 0.2f;
+
+		Block res = arr[Mathf.clamp((int)(temp * arr.length), 0, arr[0].length - 1)][Mathf.clamp((int)(height * arr[0].length), 0, arr[0].length - 1)];
+		if(tar > 0.5f){
+			return tars.get(res, res);
+		}else{
+			return res;
+		}
+	}
+
+	@Override
+	protected float noise(float x, float y, double octaves, double falloff, double scl, double mag){
+		Vec3 v = sector.rect.project(x, y).scl(5f);
+		return Simplex.noise3d(seed, octaves, falloff, 1f / scl, v.x, v.y, v.z) * (float)mag;
+	}
+
+	@Override
 	protected void generate(){
 
 		class Room{
@@ -257,102 +311,8 @@ public class LonelaPlanetGenerator extends SerpuloPlanetGenerator {
 		cells(1);
 
 		int tlen = tiles.width * tiles.height;
-		int total = 0, waters = 0;
-
-		for(int i = 0; i < tlen; i++){
-			Tile tile = tiles.geti(i);
-			if(tile.block() == Blocks.air){
-				total ++;
-				if(tile.floor().liquidDrop == Liquids.water){
-					waters ++;
-				}
-			}
-		}
-
-		boolean naval = (float)waters / total >= 0.19f;
-
-		//create water pathway if the map is flooded
-		if(naval){
-			for(Room room : enemies){
-				room.connectLiquid(spawn);
-			}
-		}
 
 		distort(10f, 6f);
-
-		//rivers
-		pass((x, y) -> {
-			if(block.solid) return;
-
-			Vec3 v = sector.rect.project(x, y);
-
-			float rr = Simplex.noise2d(sector.id, (float)2, 0.6f, 1f / 7f, x, y) * 0.1f;
-			float value = Ridged.noise3d(2, v.x, v.y, v.z, 1, 1f / 55f) + rr - rawHeight(v) * 0f;
-			float rrscl = rr * 44 - 2;
-
-			if(value > 0.17f && !Mathf.within(x, y, fspawn.x, fspawn.y, 12 + rrscl)){
-				boolean deep = value > 0.17f + 0.1f && !Mathf.within(x, y, fspawn.x, fspawn.y, 15 + rrscl);
-				boolean spore = floor != Blocks.sand && floor != Blocks.salt;
-				//do not place rivers on ice, they're frozen
-				//ignore pre-existing liquids
-				if(!(floor == Blocks.ice || floor == Blocks.iceSnow || floor == Blocks.snow || floor.asFloor().isLiquid)){
-					floor = spore ?
-						(deep ? Blocks.taintedWater : Blocks.darksandTaintedWater) :
-						(deep ? Blocks.water :
-							(floor == Blocks.sand || floor == Blocks.salt ? Blocks.sandWater : Blocks.darksandWater));
-				}
-			}
-		});
-
-		//shoreline setup
-		pass((x, y) -> {
-			int deepRadius = 3;
-
-			if(floor.asFloor().isLiquid && floor.asFloor().shallow){
-
-				for(int cx = -deepRadius; cx <= deepRadius; cx++){
-					for(int cy = -deepRadius; cy <= deepRadius; cy++){
-						if((cx) * (cx) + (cy) * (cy) <= deepRadius * deepRadius){
-							int wx = cx + x, wy = cy + y;
-
-							Tile tile = tiles.get(wx, wy);
-							if(tile != null && (!tile.floor().isLiquid || tile.block() != Blocks.air)){
-								//found something solid, skip replacing anything
-								return;
-							}
-						}
-					}
-				}
-
-				floor = floor == Blocks.darksandTaintedWater ? Blocks.taintedWater : Blocks.water;
-			}
-		});
-
-		if(naval){
-			int deepRadius = 2;
-
-			//TODO code is very similar, but annoying to extract into a separate function
-			pass((x, y) -> {
-				if(floor.asFloor().isLiquid && !floor.asFloor().isDeep() && !floor.asFloor().shallow){
-
-					for(int cx = -deepRadius; cx <= deepRadius; cx++){
-						for(int cy = -deepRadius; cy <= deepRadius; cy++){
-							if((cx) * (cx) + (cy) * (cy) <= deepRadius * deepRadius){
-								int wx = cx + x, wy = cy + y;
-
-								Tile tile = tiles.get(wx, wy);
-								if(tile != null && (tile.floor().shallow || !tile.floor().isLiquid)){
-									//found something shallow, skip replacing anything
-									return;
-								}
-							}
-						}
-					}
-
-					floor = floor == Blocks.water ? Blocks.deepwater : Blocks.taintedWater;
-				}
-			});
-		}
 
 		Seq<Block> ores = Seq.with(Blocks.oreCopper, Blocks.oreLead);
 		float poles = Math.abs(sector.tile.v.y);
@@ -372,10 +332,6 @@ public class LonelaPlanetGenerator extends SerpuloPlanetGenerator {
 			ores.add(Blocks.oreThorium);
 		}
 
-		if(rand.chance(0.25)){
-			ores.add(Blocks.oreScrap);
-		}
-
 		FloatSeq frequencies = new FloatSeq();
 		for(int i = 0; i < ores.size; i++){
 			frequencies.add(rand.random(-0.1f, 0.01f) - i * 0.01f + poles * 0.04f);
@@ -386,7 +342,6 @@ public class LonelaPlanetGenerator extends SerpuloPlanetGenerator {
 
 			int offsetX = x - 4, offsetY = y + 23;
 			for(int i = ores.size - 1; i >= 0; i--){
-				Block ore
 				Block entry = ores.get(i);
 				float freq = frequencies.get(i);
 				if(Math.abs(0.5f - noise(offsetX, offsetY + i*999, 2, 0.7, (40 + i * 2))) > 0.22f + i*0.01 &&
@@ -497,13 +452,7 @@ public class LonelaPlanetGenerator extends SerpuloPlanetGenerator {
 			tiles.getn(espawn.x, espawn.y).setOverlay(Blocks.spawn);
 		}
 
-		if(sector.hasEnemyBase()){
-			basegen.generate(tiles, enemies.map(r -> tiles.getn(r.x, r.y)), tiles.get(spawn.x, spawn.y), state.rules.waveTeam, sector, difficulty);
-
-			state.rules.attackMode = sector.info.attack = true;
-		}else{
-			state.rules.winWave = sector.info.winWave = 10 + 5 * (int)Math.max(difficulty * 10, 1);
-		}
+		state.rules.winWave = sector.info.winWave = 10 + 5 * (int)Math.max(difficulty * 10, 1);
 
 		float waveTimeDec = 0.4f;
 
