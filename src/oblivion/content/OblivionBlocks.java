@@ -10,6 +10,7 @@ import mindustry.world.meta.*;
 import mindustry.world.draw.*;
 import mindustry.entities.bullet.*;
 import mindustry.world.blocks.production.*;
+import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
 import oblivion.world.blocks.defense.*;
@@ -22,6 +23,8 @@ public class OblivionBlocks implements ContentList {
 		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter,
 
 		uno, rain, granite,
+
+		baletise, powderite, tobolite, driedpowder,
 
 		merci;
 
@@ -128,6 +131,20 @@ public class OblivionBlocks implements ContentList {
 			));
 			consumes.power(2.5f);
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
+		}};
+
+		baletise = new Floor("baletise") {{
+			attributes.set(Attribute.oil, 0f, Attribute.water, 0f);
+		}};
+		powderite = new Floor("powderite") {{
+			attributes.set(Attribute.oil, 0f, Attribute.water, 0f);
+		}};
+		tobolite = new Floor("tobolite") {{
+			attributes.set(Attribute.oil, 0f, Attribute.water, 0f);
+		}};
+		driedpowder = new Floor("driedpowder") {{
+			itemDrop = Items.sand;
+			attributes.set(Attribute.oil, 0f, Attribute.water, 0f);
 		}};
 
 		uno = new ItemTurret("uno") {{

@@ -77,9 +77,9 @@ public class OblivionUnits implements ContentList {
 					x = 0f;
 					y = 6f;
 					reload = 150f;
-					shots = 5f;
+					shots = 5;
 					shotDelay = 10f;
-					shake = 3f;
+					shake = 3;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(3f, 34) {{
 						width = height = 9f;

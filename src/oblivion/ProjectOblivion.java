@@ -21,6 +21,7 @@ public class ProjectOblivion extends Mod{
 		new OblivionResources().load();
 		new OblivionUnits().load();
 		new OblivionBlocks().load();
+		new OblivionPlanets().load();
 		new OblivionTechTree().load();
 	}
 }
