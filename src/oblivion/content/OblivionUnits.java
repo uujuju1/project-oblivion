@@ -145,28 +145,28 @@ public class OblivionUnits implements ContentList {
 				}}
 			);
 			weapons.add(
-				new Weapon("oblivion-mesulfate-") {{
+				new Weapon("oblivion-mesulfate-big-laser") {{
 					x = 26.5f;
 					y = 25.75f;
 					reload = 60f;
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(100) {{
-						width = 10f;
+						width = 11f;
 						length = maxRange;
 						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
 					}};
 				}},
-				new Weapon("oblivion-mesulfate-") {{
-					x = 0f;
-					y = 0f;
-					reload = 0f;
-					shootSound = Sounds.;
+				new Weapon("oblivion-mesulfate-mine") {{
+					x = 26.25f;
+					y = -12f;
+					reload = 30f;
+					shootSound = Sounds.artillery;
 					bullet = new BasicBulletType(4f, 200) {{
 						drag = 0.04f;
 						width = height = 12f;
 						lifetime = 300f;
 					}};
-				}},
+				}}
 			);
 		}};
 	}

@@ -20,9 +20,10 @@ import static mindustry.type.ItemStack.*;
 public class OblivionBlocks implements ContentList {
 	public static Block 
 		start,
-		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter,
 
+		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter,
 		uno, rain, granite,
+		solfreniteFactory,
 
 		baletise, powderite, tobolite, driedpowder,
 		baletiseWall, powderiteWall, toboliteWall, driedpowderWall,
@@ -133,28 +134,6 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(2.5f);
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
 		}};
-
-		baletise = new Floor("baletise") {{
-			attributes.set(Attribute.oil, -1f);
-			attributes.set(Attribute.water, 0f);
-		}};
-		powderite = new Floor("powderite") {{
-			attributes.set(Attribute.oil, -1f);
-			attributes.set(Attribute.water, -1f);
-		}};
-		tobolite = new Floor("tobolite") {{
-			attributes.set(Attribute.oil, -1f);
-			attributes.set(Attribute.water, -1f);
-		}};
-		driedpowder = new Floor("driedpowder") {{
-			itemDrop = Items.sand;
-			attributes.set(Attribute.oil, -1f);
-			attributes.set(Attribute.water, -1f);
-		}};
-		baletiseWall = new StaticWall("baletise-wall");
-		powderiteWall = new StaticWall("powderite-wall");
-		toboliteWall = new StaticWall("tobolite-wall");
-		driedpowderWall = new StaticWall("driedpowder-wall");
 
 		uno = new ItemTurret("uno") {{
 			requirements(Category.turret, with(
@@ -269,6 +248,41 @@ public class OblivionBlocks implements ContentList {
 				}}
 			);
 		}};
+		solfreniteFactory = new UnitFactory("solfrenite-factory") {{
+			requirements(Category.units, with(
+				Items.silicon, 45,
+				Items.graphite, 60,
+				OblivionResources.mesulfate, 50
+			));
+			size = 3;
+			health = 200;
+			consumes.power(1.5f);
+			plans = Seq.with(
+				new UnitPlan(OblivionUnits.slop, 60f * 25f, with(Items.silicon, 10, OblivionResources.mesulfate, 15))
+			);
+		}};
+
+		baletise = new Floor("baletise") {{
+			attributes.set(Attribute.oil, -1f);
+			attributes.set(Attribute.water, 0f);
+		}};
+		powderite = new Floor("powderite") {{
+			attributes.set(Attribute.oil, -1f);
+			attributes.set(Attribute.water, -1f);
+		}};
+		tobolite = new Floor("tobolite") {{
+			attributes.set(Attribute.oil, -1f);
+			attributes.set(Attribute.water, -1f);
+		}};
+		driedpowder = new Floor("driedpowder") {{
+			itemDrop = Items.sand;
+			attributes.set(Attribute.oil, -1f);
+			attributes.set(Attribute.water, -1f);
+		}};
+		baletiseWall = new StaticWall("baletise-wall");
+		powderiteWall = new StaticWall("powderite-wall");
+		toboliteWall = new StaticWall("tobolite-wall");
+		driedpowderWall = new StaticWall("driedpowder-wall");
 
 		merci = new BulletSpreader("merci") {{
 			requirements(Category.turret, with(
