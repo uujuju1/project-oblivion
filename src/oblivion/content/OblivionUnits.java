@@ -8,7 +8,7 @@ import mindustry.entities.bullet.*;
 import mindustry.ctype.ContentList;
 
 public class OblivionUnits implements ContentList {
-	public static UnitType slop, detra, tedri;
+	public static UnitType slop, detra, tedri, taleni, kolete;
 
 	@Override
 	public void load() {
@@ -86,6 +86,87 @@ public class OblivionUnits implements ContentList {
 						lifetime = 66.6f; //ohno ohfu-
 					}};
 				}}
+			);
+		}};
+		taleni = new UnitType("taleni") {{
+			health = 6000;
+			speed = 1f;
+			flying = true;
+			constructor = UnitEntity::create;
+			hitSize = 30f;
+			range = 256f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-mesulfate-railgun") {{
+					x = y = 0f;
+					reload = 180f;
+					shake = 3f;
+					shootSound = Sounds.plasmadrop;
+					bullet = new LaserBulletType(150) {{
+						width = 10f;
+						length = maxRange;
+						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
+					}};
+				}},
+				new Weapon("oblivion-mesulfate-big-mount") {{
+					x = 15.25f;
+					y = 4f;
+					reload = 60f;
+					shootSound = Sounds.shootBig;
+					bullet = new BasicBulletType(50, 2f) {{
+						width = height = 10f;
+						lifetime = 128f;
+					}};
+				}},
+				new Weapon("oblivion-mesulfate-big-mount") {{
+					x = 15f;
+					y = -14f;
+					reload = 60f;
+					shootSound = Sounds.shootBig;
+					bullet = new BasicBulletType(50, 2f) {{
+						width = height = 10f;
+						lifetime = 128f;
+					}};
+				}}
+			);
+		}};
+		kolete = new UnitType("kolete") {{
+			health = 22000;
+			speed = 0.7f;
+			flying = true;
+			constructor = UnitEntity::create;
+			hitSize = 40f;
+			range = 300f;
+			maxRange = range;
+			abilities.add(
+				new EnergyFieldAbility(40f, 70f, 160f) {{
+					hitBuildings = false;
+					color = Color.valueOf("E86F6F");
+				}}
+			);
+			weapons.add(
+				new Weapon("oblivion-mesulfate-") {{
+					x = 26.5f;
+					y = 25.75f;
+					reload = 60f;
+					shootSound = Sounds.laser;
+					bullet = new LaserBulletType(100) {{
+						width = 10f;
+						length = maxRange;
+						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
+					}};
+				}},
+				new Weapon("oblivion-mesulfate-") {{
+					x = 0f;
+					y = 0f;
+					reload = 0f;
+					shootSound = Sounds.;
+					bullet = new BasicBulletType(4f, 200) {{
+						drag = 0.04f;
+						width = height = 12f;
+						lifetime = 300f;
+					}};
+				}},
 			);
 		}};
 	}

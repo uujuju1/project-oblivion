@@ -25,6 +25,7 @@ public class OblivionBlocks implements ContentList {
 		uno, rain, granite,
 
 		baletise, powderite, tobolite, driedpowder,
+		baletiseWall, powderiteWall, toboliteWall, driedpowderWall,
 
 		merci;
 
@@ -150,6 +151,10 @@ public class OblivionBlocks implements ContentList {
 			attributes.set(Attribute.oil, -1f);
 			attributes.set(Attribute.water, -1f);
 		}};
+		baletiseWall = new StaticWall("baletise-wall");
+		powderiteWall = new StaticWall("powderite-wall");
+		toboliteWall = new StaticWall("tobolite-wall");
+		driedpowderWall = new StaticWall("driedpowder-wall");
 
 		uno = new ItemTurret("uno") {{
 			requirements(Category.turret, with(
