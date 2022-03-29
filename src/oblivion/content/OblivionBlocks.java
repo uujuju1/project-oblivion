@@ -1,5 +1,6 @@
 package oblivion.content;
 
+import arc.struct.*;
 import arc.graphics.*;
 import mindustry.gen.*;
 import mindustry.type.*;
@@ -14,7 +15,6 @@ import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
-import oblivion.world.blocks.defense.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -27,9 +27,7 @@ public class OblivionBlocks implements ContentList {
 		solfreniteFactory,
 
 		baletise, powderite, tobolite, driedpowder,
-		baletiseWall, powderiteWall, toboliteWall, driedpowderWall,
-
-		merci;
+		baletiseWall, powderiteWall, toboliteWall, driedpowderWall;
 
 	@Override
 	public void load() {
@@ -284,27 +282,5 @@ public class OblivionBlocks implements ContentList {
 		powderiteWall = new StaticWall("powderite-wall");
 		toboliteWall = new StaticWall("tobolite-wall");
 		driedpowderWall = new StaticWall("driedpowder-wall");
-
-		merci = new BulletSpreader("merci") {{
-			requirements(Category.turret, with(
-				OblivionResources.mesulfate, 30,
-				Items.silicon, 45
-			));
-			size = 2;
-			health = 320;
-			reloadTime = 60f;
-			shots = 3;
-			spread = 10f;
-			offset = 4f;
-			bullet = new BasicBulletType(2f, 16) {{
-				lifetime = 60f;
-				frontColor = Color.valueOf("E86F6F");
-				backColor = Color.valueOf("AD4747");
-			}};
-			consumes.items(with(
-				OblivionResources.mesulfate, 3
-			));
-			consumes.power(0.2f);
-		}};
 	}
 }
