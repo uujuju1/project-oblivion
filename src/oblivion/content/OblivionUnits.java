@@ -5,6 +5,7 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.abilities.*;
 import mindustry.ctype.ContentList;
 
 public class OblivionUnits implements ContentList {
