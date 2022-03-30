@@ -15,12 +15,12 @@ public class ProjectOblivion extends Mod{
 
 	public ProjectOblivion(){
 		Log.info("Loaded ProjectOblivion constructor.");
-		Events.on(ClientLoadEvent.class, e -> {
-			Blocks.additiveReconstructor.upgrades.addAll(new UnitType[]{OblivionUnits.slop, OblivionUnits.detra});
-			Blocks.multiplicativeReconstructor.upgrades.addAll(new UnitType[]{OblivionUnits.detra, OblivionUnits.tedri});
-			Blocks.exponentialReconstructor.upgrades.addAll(new UnitType[]{OblivionUnits.tedri, OblivionUnits.taleni});
-			Blocks.tetrativeReconstructor.upgrades.addAll(new UnitType[]{OblivionUnits.taleni, OblivionUnits.kolete});
-		});
+		// Events.on(ClientLoadEvent.class, e -> {
+			// Blocks.additiveReconstructor.upgrades.addAll(new UnitType[]{OblivionUnits.slop, OblivionUnits.detra});
+			// Blocks.multiplicativeReconstructor.upgrades.addAll(new UnitType[]{OblivionUnits.detra, OblivionUnits.tedri});
+			// Blocks.exponentialReconstructor.upgrades.addAll(new UnitType[]{OblivionUnits.tedri, OblivionUnits.taleni});
+			// Blocks.tetrativeReconstructor.upgrades.addAll(new UnitType[]{OblivionUnits.taleni, OblivionUnits.kolete});
+		// });
 	}
 
 	@Override

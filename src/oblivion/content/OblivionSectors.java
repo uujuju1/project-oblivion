@@ -1,9 +1,8 @@
-package mindustry.content;
+package oblivion.content;
 
 import mindustry.type.*;
 import mindustry.ctype.*;
-
-import static mindustry.content.Planets.*;
+import oblivion.content.*;
 
 public class OblivionSectors implements ContentList{
 	public static SectorPreset
