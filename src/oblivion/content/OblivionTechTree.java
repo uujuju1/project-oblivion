@@ -113,6 +113,12 @@ public class OblivionTechTree implements ContentList {
 					});
 				});
 			});
+			node(OblivionSectors.newWorld, Seq.with(
+				new SectorComplete(OblivionSectors.newWorld),
+				new Research(OblivionBlocks.mesoForge)
+			), () -> {
+				node(OblivionSectors.oldTown, Seq.with(new SectorComplete(OblivionSectors.oldTown)));
+			});
 		});
 	}
 }

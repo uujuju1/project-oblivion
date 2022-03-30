@@ -2,7 +2,6 @@ package mindustry.content;
 
 import mindustry.type.*;
 import mindustry.ctype.*;
-import mindustry.content
 
 import static mindustry.content.Planets.*;
 
@@ -19,6 +18,10 @@ public class SectorPresets implements ContentList{
 			difficulty = 1;
 			startWaveTimeMultiplier = 3f;
 		}};
-		oldTown = new SectorPreset("oldTown", OblivionPlanets.lonela)
+		oldTown = new SectorPreset("oldTown", OblivionPlanets.lonela, 130) {{
+			captureWave = 20;
+			difficulty = 2;
+			startWaveTimeMultiplier = 2f;
+		}};
 	}
 }
