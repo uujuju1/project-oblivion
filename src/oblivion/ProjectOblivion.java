@@ -7,6 +7,7 @@ import mindustry.content.*;
 import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import mindustry.mod.*;
+import mindustry.type.*;
 import mindustry.ui.dialogs.*;
 import oblivion.content.*;
 

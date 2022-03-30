@@ -5,7 +5,7 @@ import mindustry.ctype.*;
 
 import static mindustry.content.Planets.*;
 
-public class SectorPresets implements ContentList{
+public class OblivionSectors implements ContentList{
 	public static SectorPreset
 		newWorld, oldTown;
 
