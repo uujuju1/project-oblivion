@@ -24,6 +24,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-missile") {{
 					x = 0f;
 					y = -1.25f;
+					mirror = false;
 					reload = 30f;
 					shootSound = Sounds.missile;
 					bullet = new MissileBulletType(2f, 15) {{
@@ -41,6 +42,7 @@ public class OblivionUnits implements ContentList {
 			hitSize = 8f;
 			range = 152f;
 			maxRange = range;
+			engineOffset = 2f;
 			weapons.add(
 				new Weapon("oblivion-mesulfate-artillery") {{
 					x = 4.5f;
@@ -62,6 +64,8 @@ public class OblivionUnits implements ContentList {
 			hitSize = 14f;
 			range = 200f;
 			maxRange = range;
+			engineSize = 5f;
+			engineOffset = 4.5f;
 			weapons.add(
 				new Weapon("oblivion-mesulfate-laser") {{
 					x = 5.75f;
@@ -70,13 +74,14 @@ public class OblivionUnits implements ContentList {
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(50) {{
 						width = 8f;
-						length = range;
+						length = 200;
 						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
 					}};
 				}},
 				new Weapon("oblivion-mesulfate-cannon") {{
 					x = 0f;
 					y = 6f;
+					mirror = false;
 					reload = 150f;
 					shots = 5;
 					shotDelay = 10f;
@@ -96,6 +101,8 @@ public class OblivionUnits implements ContentList {
 			constructor = UnitEntity::create;
 			hitSize = 30f;
 			range = 256f;
+			engineSize = 7f;
+			engineOffset = 20f;
 			maxRange = range;
 			weapons.add(
 				new Weapon("oblivion-mesulfate-railgun") {{
@@ -103,9 +110,10 @@ public class OblivionUnits implements ContentList {
 					reload = 180f;
 					shake = 3f;
 					shootSound = Sounds.plasmadrop;
+					mirror = false;
 					bullet = new LaserBulletType(150) {{
 						width = 10f;
-						length = maxRange;
+						length = 256f;
 						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
 					}};
 				}},
@@ -114,7 +122,7 @@ public class OblivionUnits implements ContentList {
 					y = 4f;
 					reload = 60f;
 					shootSound = Sounds.shootBig;
-					bullet = new BasicBulletType(50, 2f) {{
+					bullet = new BasicBulletType(2f, 50) {{
 						width = height = 10f;
 						lifetime = 128f;
 					}};
@@ -124,7 +132,7 @@ public class OblivionUnits implements ContentList {
 					y = -14f;
 					reload = 60f;
 					shootSound = Sounds.shootBig;
-					bullet = new BasicBulletType(50, 2f) {{
+					bullet = new BasicBulletType(2f, 50) {{
 						width = height = 10f;
 						lifetime = 128f;
 					}};
@@ -139,26 +147,30 @@ public class OblivionUnits implements ContentList {
 			hitSize = 40f;
 			range = 300f;
 			maxRange = range;
+			engineSize = 10f;
+			engineOffset = 27f;
 			abilities.add(
 				new EnergyFieldAbility(40f, 70f, 160f) {{
 					hitBuildings = false;
 					color = Color.valueOf("E86F6F");
+					x = 0f;
+					y = -4f;
 				}}
 			);
 			weapons.add(
 				new Weapon("oblivion-mesulfate-big-laser") {{
 					x = 26.5f;
-					y = 25.75f;
+					y = 16.75f;
 					reload = 60f;
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(100) {{
 						width = 11f;
-						length = maxRange;
+						length = 300f;
 						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
 					}};
 				}},
 				new Weapon("oblivion-mesulfate-mine") {{
-					x = 26.25f;
+					x = 24.25f;
 					y = -12f;
 					reload = 30f;
 					shootSound = Sounds.artillery;

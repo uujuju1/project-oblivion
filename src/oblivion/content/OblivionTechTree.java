@@ -101,6 +101,17 @@ public class OblivionTechTree implements ContentList {
 						node(OblivionBlocks.granite, Seq.with(new SectorComplete(SectorPresets.ruinousShores), new Research(Blocks.ripple)));
 					});
 				});
+				node(OblivionBlocks.solfreniteFactory, Seq.with(new Produce(OblivionResources.mesulfate)), () -> {
+					node(OblivionUnits.slop, () -> {
+						node(OblivionUnits.detra, Seq.with(new Research(Blocks.reconstructor)), () -> {
+							node(OblivionUnits.tedri, Seq.with(new Research(Blocks.reconstructor)), () -> {
+								node(OblivionUnits.taleni, Seq.with(new Research(Blocks.reconstructor)), () -> {
+									node(OblivionUnits.kolete, Seq.with(new Research(Blocks.reconstructor)));
+								});
+							});	
+						});
+					});
+				});
 			});
 		});
 	}
