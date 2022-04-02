@@ -1,6 +1,7 @@
 package oblivion.world.heat;
 
 import arc.util.*;
+import mindustry.gen.*;
 
 public interface HeatComp {
 
