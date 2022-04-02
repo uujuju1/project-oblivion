@@ -266,8 +266,8 @@ public class OblivionBlocks implements ContentList {
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
-					statusEffect = OblivionStatuses.infested;
-					statusEffectDuration = 60f * 4.5f;
+					status = OblivionStatuses.infested;
+					statusDuration = 60f * 4.5f;
 				}}
 			);
 		}};
@@ -289,8 +289,8 @@ public class OblivionBlocks implements ContentList {
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
-					statusEffect = OblivionStatuses.infested;
-					statusEffectDuration = 60f * 6f;
+					status = OblivionStatuses.infested;
+					statusDuration = 60f * 6f;
 				}}
 			);
 		}};
@@ -313,8 +313,8 @@ public class OblivionBlocks implements ContentList {
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
-					statusEffect = OblivionStatuses.infested;
-					statusEffectDuration = 60f * 12f;
+					status = OblivionStatuses.infested;
+					statusDuration = 60f * 12f;
 				}}
 			);
 		}};

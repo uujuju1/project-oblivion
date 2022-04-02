@@ -2,7 +2,7 @@ package oblivion.content;
 
 import mindustry.type.*;
 import mindustry.ctype.*;
-import mindustry.content.StatusEffects.*;
+import mindustry.content.*;
 
 public class OblivionStatuses implements ContentList {
 	public static StatusEffect infested;
@@ -12,7 +12,7 @@ public class OblivionStatuses implements ContentList {
 		infested = new StatusEffect("infested") {{
 			damage = 0.06f;
 			init(() -> {
-				opposite(burning, melting);
+				opposite(StatusEffects.burning, StatusEffects.melting);
 			});
 		}};
 	}
