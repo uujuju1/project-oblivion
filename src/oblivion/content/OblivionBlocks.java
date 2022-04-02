@@ -15,7 +15,7 @@ import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
-import oblivion.blocks.heat.*;
+import oblivion.world.heat.*;
 
 import static mindustry.type.ItemStack.*;
 
