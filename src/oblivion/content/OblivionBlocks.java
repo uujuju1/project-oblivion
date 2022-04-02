@@ -22,9 +22,12 @@ public class OblivionBlocks implements ContentList {
 	public static Block 
 		start,
 
-		mesoForge, carbonicInfuser, cloroSynthetizer, calonicKiln, moloniteSmelter,
+		mesoForge, carbonicInfuser, calonicKiln, moloniteSmelter,
 		uno, rain, granite,
 		solfreniteFactory,
+
+		cloroSynthetizer,
+		toxic, corrosive, acidic,
 
 		baletise, powderite, tobolite, driedpowder,
 		baletiseWall, powderiteWall, toboliteWall, driedpowderWall;
@@ -247,6 +250,72 @@ public class OblivionBlocks implements ContentList {
 				}}
 			);
 		}};
+		toxic = new ItemTurret("toxic") {{
+			requirements(Category.turret, with(
+				Items.graphite, 20,
+				OblivionResources.copremite, 20
+			));
+			size = 1;
+			health = 180;
+			reloadTime = 45f;
+			range = 13f * 8f;
+			rotateSpeed = 7f;
+			ammo(
+				OblivionResources.copremite, new BasicBulletType(1.5f, 8) {{
+					lifetime = range/speed;
+					frontColor = Color.valueOf("74C272");
+					backColor = Color.valueOf("4F824B");
+					statusEffect = OblivionStatuses.infested;
+					statusEffectDuration = 60f * 4.5f;
+				}}
+			);
+		}};
+		corrosive = new ItemTurret("corrosive") {{
+			requirements(Category.turret, with(
+				Items.graphite, 50,
+				Items.titanium, 80,
+				Items.silicon, 60,
+				OblivionResources.copremite, 120
+			));
+			size = 2;
+			health = 180 * 4;
+			reloadTime = 30f;
+			range = 18f * 8f;
+			rotateSpeed = 6f;
+			ammo(
+				OblivionResources.copremite, new BasicBulletType(2f, 13) {{
+					lifetime = range/speed;
+					frontColor = Color.valueOf("74C272");
+					backColor = Color.valueOf("4F824B");
+					statusEffect = OblivionStatuses.infested;
+					statusEffectDuration = 60f * 6f;
+				}}
+			);
+		}};
+		acidic = new ItemTurret("acidic") {{
+			requirements(Category.turret, with(
+				Items.graphite, 120,
+				Items.thorium, 80,
+				Items.silicon, 180,
+				Items.titanium, 160,
+				OblivionResources.copremite, 220
+			));
+			size = 3;
+			health = 180 * 9
+			reloadTime = 30f;
+			range = 27f * 8f;
+			rotateSpeed = 4.5f;
+			ammo(
+				OblivionResources.copremite, new BasicBulletType(2.5f, 13) {{
+					lifetime = range/speed;
+					frontColor = Color.valueOf("74C272");
+					backColor = Color.valueOf("4F824B");
+					statusEffect = OblivionStatuses.infested;
+					statusEffectDuration = 60f * 12f;
+				}}
+			);
+		}};
+
 		solfreniteFactory = new UnitFactory("solfrenite-factory") {{
 			requirements(Category.units, with(
 				Items.silicon, 45,
