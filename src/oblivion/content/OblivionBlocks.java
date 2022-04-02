@@ -15,6 +15,7 @@ import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
+import oblivion.blocks.heat.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -25,6 +26,7 @@ public class OblivionBlocks implements ContentList {
 		mesoForge, carbonicInfuser, calonicKiln, moloniteSmelter,
 		uno, rain, granite,
 		solfreniteFactory,
+		test,
 
 		cloroSynthetizer,
 		toxic, corrosive, acidic,
@@ -258,11 +260,15 @@ public class OblivionBlocks implements ContentList {
 			size = 1;
 			health = 180;
 			reloadTime = 45f;
+			spread = 4f;
+			shots = 2;
+			alternate = true;
 			range = 13f * 8f;
 			rotateSpeed = 7f;
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(1.5f, 8) {{
 					lifetime = range/speed;
+					width = height = 8f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
@@ -286,6 +292,7 @@ public class OblivionBlocks implements ContentList {
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2f, 13) {{
 					lifetime = range/speed;
+					with = height = 10f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
@@ -304,15 +311,17 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 3;
 			health = 180 * 9;
-			reloadTime = 30f;
+			reloadTime = 75f;
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2.5f, 25) {{
 					lifetime = range/speed;
+					width = height = 13f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
+					shootSound = Sounds.artillery;
 					status = OblivionStatuses.infested;
 					statusDuration = 60f * 12f;
 				}}
