@@ -31,11 +31,11 @@ public class OblivionFx {
 			Drawf.tri(e.x, e.y, 6 * e.fout(), 12 * e.foutpow(), 135 + e.rotation);
 			Drawf.tri(e.x, e.y, 6 * e.fout(), 12 * e.foutpow(), -135 + e.rotation);
 			
-			Angles.randLenVectors(e.id, 20, e.finpow() * 80, 0 + e.rotation, 10, (x, y) => {
+			Angles.randLenVectors(e.id, 20, e.finpow() * 80, 0 + e.rotation, 10, (x, y) -> {
 				Fill.circle(e.x + x, e.y + y, e.fout());
 			});
 			Draw.color(Color.valueOf("559453"));
-			Angles.randLenVectors(e.id + 1, 20, e.finpow() * 80, 0 + e.rotation, 10, (x, y) => {
+			Angles.randLenVectors(e.id + 1, 20, e.finpow() * 80, 0 + e.rotation, 10, (x, y) -> {
 				Fill.circle(e.x + x, e.y + y, e.fout());
 			});
 		});

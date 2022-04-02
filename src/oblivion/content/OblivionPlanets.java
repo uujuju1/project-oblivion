@@ -13,7 +13,7 @@ public class OblivionPlanets implements ContentList {
 
 	@Override
 	public void load() {
-		lonela = new Planet("lonela", Planets.sun, 3, 1.5f) {{
+		lonela = new Planet("lonela", Planets.sun, 3, 1f) {{
 			generator = new LonelaPlanetGenerator();
 			meshLoader = () -> new HexMesh(this, 6);
 			cloudMeshLoader = () -> new MultiMesh(

@@ -308,7 +308,7 @@ public class OblivionBlocks implements ContentList {
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
 			ammo(
-				OblivionResources.copremite, new BasicBulletType(2.5f, 13) {{
+				OblivionResources.copremite, new BasicBulletType(2.5f, 25) {{
 					lifetime = range/speed;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
