@@ -364,7 +364,7 @@ public class OblivionBlocks implements ContentList {
 		toboliteWall = new StaticWall("tobolite-wall");
 		driedpowderWall = new StaticWall("driedpowder-wall");
 
-		test = new HeatBlock("test") {{
+		test = new HeatSource("test") {{
 			buildVisibility = BuildVisibility.shown;
 			size = 1;
 			health = 10;

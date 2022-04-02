@@ -1,20 +1,28 @@
 package oblivion.world.heat;
 
 import arc.util.*;
-import arc.math.*;
-import arc.graphics.g2d.*;
+import arc.graphics.*;
+import mindustry.ui.*;
 import mindustry.gen.*;
 import mindustry.world.*;
-import mindustry.content.*;
+import mindustry.graphics.*;
 
 public class HeatBlock extends Block {
-	public boolean acceptHeat = true, outputHeat = true;
+	public boolean acceptHeat = true, outputHeat = true, canExplode = false;
 	public float minHeat = 0f, maxHeat = 200f; 
+
+	public Color heatColor = Pal.turretHeat;
 
 	public HeatBlock(String name) {
 		super(name);
 		solid = destructible = sync = true;
-	} 
+	}
+
+	@Override
+	public void setBars() {
+		super.setBars();
+		bars.add("heat", entity -> new Bar("Heat", heatColor, () -> heat/maxHeat));
+	}
 
 	public class HeatBlockBuild extends Building implements HeatComp {
 		public HeatModule heat;
@@ -26,22 +34,19 @@ public class HeatBlock extends Block {
 
 		@Override
 		public boolean recievesHeat(float heat, @Nullable Building source) {
-			return acceptHeat ? false : source instanceof HeatBlockBuild;
+			return acceptHeat && source instanceof HeatBlockBuild;
 		}
 		@Override
 		public boolean outputsHeat(float heat, @Nullable Building source) {
-			return outputHeat ? false : source instanceof HeatBlockBuild;
+			return outputHeat && source instanceof HeatBlockBuild;
 		}
 
 		@Override
-		public void updateTile() {
-			setHeat(Mathf.sin(Time.time) * maxHeat, null);
+		public void overheat() {
+			if (canExplode && heat.heat > maxHeat) kill();
 		}
 
 		@Override
-		public void draw() {
-			super.draw();
-			Draw.rect(Blocks.router.region, x, y + Mathf.sin(Time.time) * 5, 0f);
-		}
+		public void updateTile() {overheat();}
 	}
 }
