@@ -292,7 +292,7 @@ public class OblivionBlocks implements ContentList {
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2f, 13) {{
 					lifetime = range/speed;
-					with = height = 10f;
+					width = height = 10f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
@@ -363,5 +363,11 @@ public class OblivionBlocks implements ContentList {
 		powderiteWall = new StaticWall("powderite-wall");
 		toboliteWall = new StaticWall("tobolite-wall");
 		driedpowderWall = new StaticWall("driedpowder-wall");
+
+		test = new HeatBlock("test") {{
+			buildVisibility = BuildVisibility.shown;
+			size = 1;
+			health = 10;
+		}};
 	}
 }
