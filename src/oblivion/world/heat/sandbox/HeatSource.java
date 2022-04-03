@@ -18,6 +18,7 @@ public class HeatSource extends HeatBlock {
 
 	@Override
 	public void load() {
+		super.load();
 		top = Core.atlas.find(name + "-top");
 	}
 
