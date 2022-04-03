@@ -2,8 +2,8 @@ package oblivion.world.heat.distribution;
 
 import arc.*;
 import arc.graphics.g2d.*;
-import oblivion.heat.*;
-import oblivion.heat.HeatBlock.*;
+import oblivion.world.heat.*;
+import oblivion.world.heat.HeatBlock.*;
 
 public class HeatConveyor extends HeatBlock {
 	public TextureRegion base, heat, open, closed;
