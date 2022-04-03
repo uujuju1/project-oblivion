@@ -42,19 +42,20 @@ public class HeatConveyor extends HeatBlock {
 
 		@Override
 		public void draw() {
-			Draw.rect(base, x, y, 0f);
+			Draw.rect(baseRegion, x, y, 0f);
 			Draw.color(heatColor);
 			Draw.alpha(0.3f + Mathf.sin(Time.time/20f));
 			Draw.rect(heatRegion, x, y, 0f);
 			super.draw();
 			drawConnections();
+			Draw.rect(topRegion, x, y block.rotate ? rotdeg() : 0f);
 		}
 
 		public void drawConnections() {
-			if (front() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) front()).recievesHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() : 0f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() : 0f);
-			if (right() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) right()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 90 : 90f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 90 : 90f);
-			if (left() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) left()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() - 90 : -90f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() - 90 : -90f);
-			if (back() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) back()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 180 : 180f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 180 : 180f);
+			if (front() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) front()).recievesHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotdeg() : 0f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotdeg() : 0f);
+			if (right() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) right()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotdeg() + 90 : 90f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotdeg() + 90 : 90f);
+			if (left() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) left()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotdeg() - 90 : -90f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotdeg() - 90 : -90f);
+			if (back() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) back()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotdeg() + 180 : 180f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotdeg() + 180 : 180f);
 		}
 	}
 }
