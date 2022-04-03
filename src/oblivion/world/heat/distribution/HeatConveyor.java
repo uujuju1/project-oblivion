@@ -47,13 +47,14 @@ public class HeatConveyor extends HeatBlock {
 			Draw.alpha(0.3f + Mathf.sin(Time.time/20f));
 			Draw.rect(heatRegion, x, y, 0f);
 			super.draw();
+			drawConnections();
 		}
 
 		public void drawConnections() {
-			if (front() instanceof HeatBlockBuild) if (((HeatBlockBuild) front()).recievesHeat(heat.heat * conductivityScl, this)) else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() : 0f);
-			if (right() instanceof HeatBlockBuild) if (((HeatBlockBuild) right()).recievesHeat(heat.heat * conductivityScl, this)) else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 90 : 90f);
-			if (left() instanceof HeatBlockBuild) if (((HeatBlockBuild) left()).recievesHeat(heat.heat * conductivityScl, this)) else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + -90 : -90f);
-			if (back() instanceof HeatBlockBuild) if (((HeatBlockBuild) back()).recievesHeat(heat.heat * conductivityScl, this)) else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 180 : 180f);
+			if (front() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) front()).recievesHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() : 0f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() : 0f);
+			if (right() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) right()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 90 : 90f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 90 : 90f);
+			if (left() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) left()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() - 90 : -90f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() - 90 : -90f);
+			if (back() instanceof HeatBlockBuild) {if (!(((HeatBlockBuild) back()).outputsHeat(heat.heat * conductivityScl, this))) Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 180 : 180f);} else Draw.rect(closedRegion, x, y, block.rotate ? rotDeg() + 180 : 180f);
 		}
 	}
 }
