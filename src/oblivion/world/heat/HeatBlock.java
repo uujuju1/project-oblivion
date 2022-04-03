@@ -21,7 +21,7 @@ public class HeatBlock extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("heat", entity -> new Bar("Heat", heatColor, () -> heat/maxHeat));
+		bars.add("heat", entity -> new Bar("Heat", heatColor, () -> ((HeatBlockBuild) entity).heatModule().heat/maxHeat));
 	}
 
 	public class HeatBlockBuild extends Building implements HeatComp {

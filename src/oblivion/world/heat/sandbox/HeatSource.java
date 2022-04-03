@@ -2,6 +2,7 @@ package oblivion.world.heat.sandbox;
 
 import arc.*;
 import arc.math.*;
+import arc.util.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import oblivion.world.heat.*;
@@ -23,11 +24,11 @@ public class HeatSource extends HeatBlock {
 	public class HeatSourceBuild extends HeatBlock.HeatBlockBuild {
 		@Override
 		public void updateTile() {
-			setHeat(maxheat, null);
+			setHeat(maxHeat, null);
 			for (int i = 0; i < this.proximity.size; i++) {
 				Building next = this.proximity.get(i);
 				if (next instanceof HeatBlockBuild) {
-					if (((HeatBlockBuild) next).acceptHeat()) ((HeatBlockBuild) next).setHeat(((HeatBlockBuild) next).block.maxheat, this);
+					if (((HeatBlockBuild) next).recievesHeat(0f, this)) ((HeatBlockBuild) next).setHeat(((HeatBlockBuild) next).block.maxHeat, this);
 				}
 			}
 		}
