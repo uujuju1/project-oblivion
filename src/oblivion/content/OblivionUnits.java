@@ -361,7 +361,7 @@ public class OblivionUnits implements ContentList {
 				Fill.circle(unit.x + Anges.trnsx(unit.rotation, 16f, -18f), unit.y + Anges.trnsy(unit.rotation, 16f, -18f), 8 + Mathf.absin(Time.time, 2f, 10f / 4f));
 				Drawf.tri(unit.x + Anges.trnsx(unit.rotation, 0f, -35f), unit.y + Anges.trnsy(unit.rotation, 0f, -35f), 20 + Mathf.absin(Time.time, 2f, 13f / 2f), 20 + Mathf.absin(Time.time, 2f, 10f / 2f), -90f);
 				
-				Draw.color()
+				Draw.color();
 				Fill.circle(unit.x + Anges.trnsx(unit.rotation, 0f, -27f), unit.y + Anges.trnsy(unit.rotation, 0f, -27f), (10 + Mathf.absin(Time.time, 2f, 10f / 4f)) / 2f);
 				Fill.circle(unit.x + Anges.trnsx(unit.rotation, -16f, -18f), unit.y + Anges.trnsy(unit.rotation, -16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
 				Fill.circle(unit.x + Anges.trnsx(unit.rotation, 16f, -18f), unit.y + Anges.trnsy(unit.rotation, 16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
