@@ -359,17 +359,17 @@ public class OblivionUnits implements ContentList {
 			constructor = UnitEntity::create;
 			engineDrawer = new EngineDrawer(unit -> {
 				Draw.color(unit.team.color);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation, 0f, -30f), unit.y + Angles.trnsy(unit.rotation, 0f, -30f), 10 + Mathf.absin(Time.time, 2f, 10f / 4f));
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation, -16f, -18f), unit.y + Angles.trnsy(unit.rotation, -16f, -18f), 8 + Mathf.absin(Time.time, 2f, 10f / 4f));
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation, 16f, -18f), unit.y + Angles.trnsy(unit.rotation, 16f, -18f), 8 + Mathf.absin(Time.time, 2f, 10f / 4f));
-				Drawf.tri(unit.x + Angles.trnsx(unit.rotation, 0f, -35f), unit.y + Angles.trnsy(unit.rotation, 0f, -35f), 20 + Mathf.absin(Time.time, 2f, 13f / 2f), 20 + Mathf.absin(Time.time, 2f, 10f / 2f), -90f);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, 0f, -30f), unit.y + Angles.trnsy(unit.rotation - 90f, 0f, -30f), 10 + Mathf.absin(Time.time, 2f, 10f / 4f));
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, -16f, -18f), unit.y + Angles.trnsy(unit.rotation - 90f, -16f, -18f), 8 + Mathf.absin(Time.time, 2f, 10f / 4f));
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, 16f, -18f), unit.y + Angles.trnsy(unit.rotation - 90f, 16f, -18f), 8 + Mathf.absin(Time.time, 2f, 10f / 4f));
+				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90f, 0f, -35f), unit.y + Angles.trnsy(unit.rotation - 90f, 0f, -35f), 20 + Mathf.absin(Time.time, 2f, 13f / 2f), 20 + Mathf.absin(Time.time, 2f, 10f / 2f), unit.rotation - 180f);
 				
 				Draw.color();
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation, 0f, -27f), unit.y + Angles.trnsy(unit.rotation, 0f, -27f), (10 + Mathf.absin(Time.time, 2f, 10f / 4f)) / 2f);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation, -16f, -18f), unit.y + Angles.trnsy(unit.rotation, -16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation, 16f, -18f), unit.y + Angles.trnsy(unit.rotation, 16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
-				Drawf.tri(unit.x + Angles.trnsx(unit.rotation, 0f, -30f), unit.y + Angles.trnsy(unit.rotation, 0f, -30f), (20 + Mathf.absin(Time.time, 2f, 13f / 2f)) / 2f, (20 + Mathf.absin(Time.time, 2f, 10f / 2f)) / 2f, -90f);
-			});
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, 0f, -27f), unit.y + Angles.trnsy(unit.rotation - 90f, 0f, -27f), (10 + Mathf.absin(Time.time, 2f, 10f / 4f)) / 2f);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, -16f, -18f), unit.y + Angles.trnsy(unit.rotation - 90f, -16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, 16f, -18f), unit.y + Angles.trnsy(unit.rotation - 90f, 16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
+				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90f, 0f, -30f), unit.y + Angles.trnsy(unit.rotation - 90f, 0f, -30f), (20 + Mathf.absin(Time.time, 2f, 13f / 2f)) / 2f, (20 + Mathf.absin(Time.time, 2f, 10f / 2f)) / 2f, unit.rotation - 180f);
+			}); - 180f
 			range = 304f;
 			maxRange = range;
 			hitSize = 36f;
