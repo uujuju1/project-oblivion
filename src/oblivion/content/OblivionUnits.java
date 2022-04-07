@@ -281,7 +281,7 @@ public class OblivionUnits implements ContentList {
 			hitSize = 12f;
 			weapons.add(
 				new Weapon("oblivion-copremite-laser") {{
-					x = 8.75f
+					x = 8.75f;
 					y = -2.25f;
 					reload = 60f;
 					shootSound = Sounds.laser;
