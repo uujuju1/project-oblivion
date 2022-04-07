@@ -1,5 +1,6 @@
 package oblivion.content;
 
+import arc.util.*;
 import arc.graphics.*;
 import mindustry.gen.*;
 import mindustry.type.*;
@@ -7,7 +8,9 @@ import mindustry.content.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.abilities.*;
 import mindustry.ctype.ContentList;
+import oblivion.type.*;
 import oblivion.graphics.*;
+import oblivion.type.draw.*;
 
 public class OblivionUnits implements ContentList {
 	public static UnitType 
@@ -237,6 +240,7 @@ public class OblivionUnits implements ContentList {
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
+			engineOffset = 8f;
 			range = 168f;
 			maxRange = range;
 			hitSize = 8f;
@@ -247,8 +251,6 @@ public class OblivionUnits implements ContentList {
 					reload = 30f;
 					shootSound = Sounds.lasershoot;
 					bullet = new LaserBoltBulletType(3f, 20) {{
-						width = 4f;
-						height = 14f;
 						lifetime = 56f;
 						frontColor = OblivionPal.copreLight;
 						backColor = OblivionPal.copreMedium;
@@ -260,7 +262,7 @@ public class OblivionUnits implements ContentList {
 					reload = 60f;
 					shootSound = Sounds.plasmadrop;
 					bullet = new ArtilleryBulletType(3f, 20) {{
-						width = 4f;
+						width = 14f;
 						height = 14f;
 						lifetime = 56f;
 						weaveMag = 5f;
@@ -277,6 +279,8 @@ public class OblivionUnits implements ContentList {
 			speed = 1.7f;
 			flying = true;
 			constructor = UnitEntity::create;
+			engineOffset = 14f;
+			engineSize = 4f;
 			range = 176f;
 			maxRange = range;
 			hitSize = 12f;
@@ -299,6 +303,8 @@ public class OblivionUnits implements ContentList {
 			speed = 1.2f;
 			flying = true;
 			constructor = UnitEntity::create;
+			engineOffset = 27f;
+			engineSize = 6f;
 			range = 224f;
 			maxRange = range;
 			hitSize = 30f;
@@ -343,11 +349,24 @@ public class OblivionUnits implements ContentList {
 				}}
 			);
 		}};
-		niboletra = new UnitType("niboletra") {{
+		niboletra = new OblivionUnitType("niboletra") {{
 			health = 20000;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
+			engineDrawer = new EngineDrawer(unit -> {
+				Draw.color(unit.team.color);
+				Fill.circle(unit.x + Anges.trnsx(unit.rotation, 0f, -30f), unit.y + Anges.trnsy(unit.rotation, 0f, -30f), 10 + Mathf.absin(Time.time, 2f, 10f / 4f));
+				Fill.circle(unit.x + Anges.trnsx(unit.rotation, -16f, -18f), unit.y + Anges.trnsy(unit.rotation, -16f, -18f), 8 + Mathf.absin(Time.time, 2f, 10f / 4f));
+				Fill.circle(unit.x + Anges.trnsx(unit.rotation, 16f, -18f), unit.y + Anges.trnsy(unit.rotation, 16f, -18f), 8 + Mathf.absin(Time.time, 2f, 10f / 4f));
+				Drawf.tri(unit.x + Anges.trnsx(unit.rotation, 0f, -35f), unit.y + Anges.trnsy(unit.rotation, 0f, -35f), 20 + Mathf.absin(Time.time, 2f, 13f / 2f), 20 + Mathf.absin(Time.time, 2f, 10f / 2f), -90f);
+				
+				Draw.color()
+				Fill.circle(unit.x + Anges.trnsx(unit.rotation, 0f, -27f), unit.y + Anges.trnsy(unit.rotation, 0f, -27f), (10 + Mathf.absin(Time.time, 2f, 10f / 4f)) / 2f);
+				Fill.circle(unit.x + Anges.trnsx(unit.rotation, -16f, -18f), unit.y + Anges.trnsy(unit.rotation, -16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
+				Fill.circle(unit.x + Anges.trnsx(unit.rotation, 16f, -18f), unit.y + Anges.trnsy(unit.rotation, 16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
+				Drawf.tri(unit.x + Anges.trnsx(unit.rotation, 0f, -30f), unit.y + Anges.trnsy(unit.rotation, 0f, -30f), (20 + Mathf.absin(Time.time, 2f, 13f / 2f)) / 2f, (20 + Mathf.absin(Time.time, 2f, 10f / 2f)) / 2f, -90f);
+			});
 			range = 304f;
 			maxRange = range;
 			hitSize = 36f;
