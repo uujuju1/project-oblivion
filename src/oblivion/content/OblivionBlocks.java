@@ -16,6 +16,7 @@ import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
 import oblivion.world.heat.sandbox.*;
+import oblivion.world.heat.distribution.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -26,7 +27,7 @@ public class OblivionBlocks implements ContentList {
 		mesoForge, carbonicInfuser, calonicKiln, moloniteSmelter,
 		uno, rain, granite,
 		solfreniteFactory,
-		test,
+		test, test2,
 
 		cloroSynthetizer,
 		toxic, corrosive, acidic,
@@ -365,6 +366,11 @@ public class OblivionBlocks implements ContentList {
 		driedpowderWall = new StaticWall("driedpowder-wall");
 
 		test = new HeatSource("test") {{
+			buildVisibility = BuildVisibility.shown;
+			size = 1;
+			health = 10;
+		}};
+		test2 = new HeatConveyor("heat-conveyor") {{
 			buildVisibility = BuildVisibility.shown;
 			size = 1;
 			health = 10;

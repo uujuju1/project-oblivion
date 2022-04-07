@@ -48,7 +48,7 @@ public class HeatConveyor extends HeatBlock {
 			Draw.rect(heatRegion, x, y, 0f);
 			super.draw();
 			drawConnections();
-			Draw.rect(topRegion, x, y block.rotate ? rotdeg() : 0f);
+			Draw.rect(topRegion, x, y, block.rotate ? rotdeg() : 0f);
 		}
 
 		public void drawConnections() {

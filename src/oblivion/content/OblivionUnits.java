@@ -9,7 +9,9 @@ import mindustry.entities.abilities.*;
 import mindustry.ctype.ContentList;
 
 public class OblivionUnits implements ContentList {
-	public static UnitType slop, detra, tedri, taleni, kolete;
+	public static UnitType 
+	slop, detra, tedri, taleni, kolete,
+	pioli, taneki, notremite, dopretile, niboletra;
 
 	@Override
 	public void load() {
@@ -30,6 +32,9 @@ public class OblivionUnits implements ContentList {
 					bullet = new MissileBulletType(2f, 15) {{
 						lifetime = 52f;
 						status = StatusEffects.burning;
+						frontColor = OblivionPal.mesoMedium;
+						backColor = OblivionPal.mesoDark;
+						trailColor = OblivionPal.mesoLight;
 					}};
 				}}
 			);
@@ -52,6 +57,8 @@ public class OblivionUnits implements ContentList {
 					bullet = new ArtilleryBulletType(1.5f, 30) {{
 						lifetime = 101f;
 						collides = true;
+						frontColor = OblivionPal.mesoMedium;
+						backColor = OblivionPal.mesoDark;
 					}};
 				}}
 			);
@@ -75,7 +82,7 @@ public class OblivionUnits implements ContentList {
 					bullet = new LaserBulletType(50) {{
 						width = 8f;
 						length = 200;
-						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
+						colors = new Color[]{OblivionPal.mesoDark, OblivionPal.mesoMedium, OblivionPal.mesoLight};
 					}};
 				}},
 				new Weapon("oblivion-mesulfate-cannon") {{
@@ -90,6 +97,8 @@ public class OblivionUnits implements ContentList {
 					bullet = new BasicBulletType(3f, 34) {{
 						width = height = 9f;
 						lifetime = 66.6f; //ohno ohfu-
+						frontColor = OblivionPal.mesoMedium;
+						backColor = OblivionPal.mesoDark;
 					}};
 				}}
 			);
@@ -114,7 +123,7 @@ public class OblivionUnits implements ContentList {
 					bullet = new LaserBulletType(150) {{
 						width = 10f;
 						length = 256f;
-						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
+						colors = new Color[]{OblivionPal.mesoDark, OblivionPal.mesoMedium, OblivionPal.mesoLight};
 					}};
 				}},
 				new Weapon("oblivion-mesulfate-big-mount") {{
@@ -125,6 +134,8 @@ public class OblivionUnits implements ContentList {
 					bullet = new BasicBulletType(2f, 50) {{
 						width = height = 10f;
 						lifetime = 128f;
+						frontColor = OblivionPal.mesoMedium;
+						backColor = OblivionPal.mesoDark;
 					}};
 				}},
 				new Weapon("oblivion-mesulfate-big-mount") {{
@@ -135,6 +146,8 @@ public class OblivionUnits implements ContentList {
 					bullet = new BasicBulletType(2f, 50) {{
 						width = height = 10f;
 						lifetime = 128f;
+						frontColor = OblivionPal.mesoMedium;
+						backColor = OblivionPal.mesoDark;
 					}};
 				}}
 			);
@@ -166,7 +179,7 @@ public class OblivionUnits implements ContentList {
 					bullet = new LaserBulletType(100) {{
 						width = 11f;
 						length = 300f;
-						colors = new Color[]{Color.valueOf("AD4747"), Color.valueOf("E86F6F"), Color.valueOf("F79797")};
+						colors = new Color[]{OblivionPal.mesoDark, OblivionPal.mesoMedium, OblivionPal.mesoLight};
 					}};
 				}},
 				new Weapon("oblivion-mesulfate-mine") {{
@@ -178,6 +191,183 @@ public class OblivionUnits implements ContentList {
 						drag = 0.04f;
 						width = height = 12f;
 						lifetime = 300f;
+						frontColor = OblivionPal.mesoMedium;
+						backColor = OblivionPal.mesoDark;
+					}};
+				}}
+			);
+		}};
+
+		pioli = new UnitType("pioli") {{
+			health = 200;
+			speed = 2.5f;
+			flying = true;
+			constructor = UnitEntity::create;
+			range = 128f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-copremite-mount") {{
+					x = 2f;
+					y = 2.5f;
+					reload = 30f;
+					shootSound = Sounds.lasershoot;
+					bullet = new LaserBoltBulletType(4f, 16) {{
+						lifetime = 32f;
+						frontColor = OblivionPal.copreLight;
+						backColor = OblivionPal.copreMedium;
+					}};
+				}},
+				new Weapon("oblivion-copremite-mount") {{
+					x = -2.75f;
+					y = -3.5f;
+					reload = 30f;
+					shootSound = Sounds.lasershoot;
+					flipSprite = true;
+					bullet = new LaserBoltBulletType(4f, 16) {{
+						lifetime = 32f;
+						frontColor = OblivionPal.copreLight;
+						backColor = OblivionPal.copreMedium;
+					}};
+				}}
+			);
+		}};
+		taneki = new UnitType("taneki") {{
+			health = 530;
+			speed = 2f;
+			flying = true;
+			constructor = UnitEntity::create;
+			range = 168f;
+			maxRange = range;
+			hitSize = 8f;
+			weapons.add(
+				new Weapon("oblivion-copremite-mount") {{
+					x = 4.75f;
+					y = 0.5f;
+					reload = 30f;
+					shootSound = Sounds.lasershoot;
+					bullet = new LaserBoltBulletType(3f, 20) {{
+						width = 4f;
+						height = 14f;
+						lifetime = 56f;
+						frontColor = OblivionPal.copreLight;
+						backColor = OblivionPal.copreMedium;
+					}};
+				}},
+				new Weapon("oblivion-copremite-artillery") {{
+					x = 3.5f;
+					y = -4f;
+					reload = 60f;
+					shootSound = Sounds.plasmadrop;
+					bullet = new ArtilleryBulletType(3f, 20) {{
+						width = 4f;
+						height = 14f;
+						lifetime = 56f;
+						weaveMag = 5f;
+						weaveScale = 4f;
+						homingPower = 0.05f;
+						frontColor = OblivionPal.copreLight;
+						backColor = OblivionPal.copreMedium;
+					}};
+				}}
+			);
+		}};
+		notremite = new UnitType("notremite") {{
+			health = 920;
+			speed = 1.7f;
+			flying = true;
+			constructor = UnitEntity::create;
+			range = 176f;
+			maxRange = range;
+			hitSize = 12f;
+			weapons.add(
+				new Weapon("oblivion-copremite-laser") {{
+					x = 8.75f
+					y = -2.25f;
+					reload = 60f;
+					shootSound = Sounds.laser;
+					bullet = new LaserBulletType(50) {{
+						width = 7f;
+						height = 176f;
+						colors = new Color[]{OblivionPal.copreDark, OblivionPal.copreMedium, OblivionPal.copreLight};
+					}};
+				}}
+			);
+		}};
+		dopretile = new UnitType("dopretile") {{
+			health = 12000;
+			speed = 1.2f;
+			flying = true;
+			constructor = UnitEntity::create;
+			range = 224f;
+			maxRange = range;
+			hitSize = 30f;
+			weapons.add(
+				new Weapon("oblivion-copremite-big-laser") {{
+					x = 0f;
+					y = -4f;
+					reload = 30f;
+					shootSound = Sounds.plasmadrop;
+					mirror = false;
+					bullet = new LaserBulletType(150) {{
+						width = 9f;
+						length = 224f;
+						colors = new Color[]{OblivionPal.copreDark, OblivionPal.copreMedium, OblivionPal.copreLight};
+					}};
+				}},
+				new Weapon("oblivion-copremite-laser") {{
+					x = 6.25f;
+					y = 12.75f;
+					reload = 15f;
+					shootSound = Sounds.artillery;
+					bullet = new BasicBulletType(2.5f, 65) {{
+						width = 9f;
+						height = 12f;
+						lifetime = 89.6f;
+						frontColor = OblivionPal.copreLight;
+						backColor = OblivionPal.copreMedium;
+					}};
+				}},
+				new Weapon("oblivion-copremite-laser") {{
+					x = 12.25f;
+					y = -8.25f;
+					reload = 15f;
+					shootSound = Sounds.artillery;
+					bullet = new BasicBulletType(2.5f, 65) {{
+						width = 9f;
+						height = 12f;
+						lifetime = 89.6f;
+						frontColor = OblivionPal.copreLight;
+						backColor = OblivionPal.copreMedium;
+					}};
+				}}
+			);
+		}};
+		niboletra = new UnitType("niboletra") {{
+			health = 20000;
+			speed = 2.5;
+			flying = true;
+			constructor = UnitEntity::create;
+			range = 304f;
+			maxRange = range;
+			hitSize = 36f;
+			weapons.add(
+				new Weapon("oblivion-copremite-plasma-cannon") {{
+					x = 0f;
+					y = 0.5f;
+					reload = 300f;
+					shootSound = Sounds.laserbig;
+					mirror = false;
+					continuous = true;
+					bullet = new ContinuousLaserBulletType() {{
+						damage = 24f;
+						length = 304;
+						drawSize = 200f;
+						lifetime = 60f;
+						shake = 1f;
+						width = 6f;
+						largeHit = true;
+						incendChance = 0f;
+						colors = new Color[]{OblivionPal.copreDark, OblivionPal.copreMedium, OblivionPal.copreLight};
 					}};
 				}}
 			);
