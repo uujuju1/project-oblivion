@@ -29,7 +29,7 @@ public class HeatSource extends HeatBlock {
 			for (int i = 0; i < this.proximity.size; i++) {
 				Building next = this.proximity.get(i);
 				if (next instanceof HeatBlockBuild) {
-					if (((HeatBlockBuild) next).recievesHeat(0f, this)) ((HeatBlockBuild) next).setHeat(((HeatBlockBuild) next).block.maxHeat, this);
+					if (((HeatBlockBuild) next).recievesHeat(0f, this)) ((HeatBlockBuild) next).setHeat(((HeatBlock) ((HeatBlockBuild) next).block).maxHeat, this);
 				}
 			}
 		}

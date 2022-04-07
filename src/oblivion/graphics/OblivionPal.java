@@ -2,7 +2,7 @@ package oblivion.graphics;
 
 import arc.graphics.*;
 
-public class OblvionPal {
+public class OblivionPal {
 	public static Color 
 	mesoLight = Color.valueOf("F79797"),
 	mesoMedium = Color.valueOf("E86F6F"),

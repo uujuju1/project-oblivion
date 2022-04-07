@@ -7,6 +7,7 @@ import mindustry.content.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.abilities.*;
 import mindustry.ctype.ContentList;
+import oblivion.graphics.*;
 
 public class OblivionUnits implements ContentList {
 	public static UnitType 
@@ -287,7 +288,7 @@ public class OblivionUnits implements ContentList {
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(50) {{
 						width = 7f;
-						height = 176f;
+						length = 176f;
 						colors = new Color[]{OblivionPal.copreDark, OblivionPal.copreMedium, OblivionPal.copreLight};
 					}};
 				}}
@@ -344,7 +345,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		niboletra = new UnitType("niboletra") {{
 			health = 20000;
-			speed = 2.5;
+			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
 			range = 304f;
