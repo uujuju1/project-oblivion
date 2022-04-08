@@ -32,6 +32,9 @@ public class OblivionBlocks implements ContentList {
 		cloroSynthetizer,
 		toxic, corrosive, acidic,
 
+
+		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
+
 		baletise, powderite, tobolite, driedpowder,
 		baletiseWall, powderiteWall, toboliteWall, driedpowderWall;
 
@@ -364,6 +367,70 @@ public class OblivionBlocks implements ContentList {
 		powderiteWall = new StaticWall("powderite-wall");
 		toboliteWall = new StaticWall("tobolite-wall");
 		driedpowderWall = new StaticWall("driedpowder-wall");
+
+		alphaReconstructor = new Reconstructor("alpha-reconstructor"){{
+			requirements(Category.units, with(Items.copper, 200, Items.lead, 120, Items.silicon, 90));
+
+			size = 3;
+			consumes.power(3f);
+			consumes.items(with(Items.silicon, 40, Items.graphite, 40));
+
+			constructTime = 60f * 10f;
+
+			upgrades.addAll(
+				new UnitType[]{OblivionUnits.slop, OblivionUnits.detra},
+				new UnitType[]{OblivionUnits.pioli, OblivionUnits.taneki},
+			);
+		}};
+
+		betaReconstructor = new Reconstructor("beta-reconstructor"){{
+			requirements(Category.units, with(Items.lead, 650, Items.silicon, 450, Items.titanium, 350, Items.thorium, 650));
+
+			size = 5;
+			consumes.power(6f);
+			consumes.items(with(Items.silicon, 130, Items.titanium, 80, Items.metaglass, 40));
+
+			constructTime = 60f * 30f;
+
+			upgrades.addAll(
+				new UnitType[]{OblivionUnits.detra, OblivionUnits.tedri},
+				new UnitType[]{OblivionUnits.taneki, OblivionUnits.notremite},
+			);
+		}};
+
+		gammaReconstructor = new Reconstructor("gamma-reconstructor"){{
+			requirements(Category.units, with(Items.lead, 2000, Items.silicon, 1000, Items.titanium, 2000, Items.thorium, 750, Items.plastanium, 450, Items.phaseFabric, 600));
+
+			size = 7;
+			consumes.power(13f);
+			consumes.items(with(Items.silicon, 850, Items.titanium, 750, Items.plastanium, 650));
+			consumes.liquid(Liquids.cryofluid, 1f);
+
+			constructTime = 60f * 60f * 1.5f;
+			liquidCapacity = 60f;
+
+			upgrades.addAll(
+				new UnitType[]{OblivionUnits.tedri, OblivionUnitse.taleni},
+				new UnitType[]{OblivionUnits.notremite, OblivionUnits.dopretile},
+			);
+		}};
+
+		omegaReconstructor = new Reconstructor("omega-reconstructor"){{
+			requirements(Category.units, with(Items.lead, 4000, Items.silicon, 3000, Items.thorium, 1000, Items.plastanium, 600, Items.phaseFabric, 600, Items.surgeAlloy, 800));
+
+			size = 9;
+			consumes.power(25f);
+			consumes.items(with(Items.silicon, 1000, Items.plastanium, 600, Items.surgeAlloy, 500, Items.phaseFabric, 350));
+			consumes.liquid(Liquids.cryofluid, 3f);
+
+			constructTime = 60f * 60f * 4;
+			liquidCapacity = 180f;
+
+			upgrades.addAll(
+				new UnitType[]{OblivionUnits.taleni, OblivionUnits.kotele},
+				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra},
+			);
+		}};
 
 		test = new HeatSource("test") {{
 			buildVisibility = BuildVisibility.shown;
