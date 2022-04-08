@@ -410,7 +410,7 @@ public class OblivionBlocks implements ContentList {
 			liquidCapacity = 60f;
 
 			upgrades.addAll(
-				new UnitType[]{OblivionUnits.tedri, OblivionUnitse.taleni},
+				new UnitType[]{OblivionUnits.tedri, OblivionUnits.taleni},
 				new UnitType[]{OblivionUnits.notremite, OblivionUnits.dopretile}
 			);
 		}};
@@ -427,7 +427,7 @@ public class OblivionBlocks implements ContentList {
 			liquidCapacity = 180f;
 
 			upgrades.addAll(
-				new UnitType[]{OblivionUnits.taleni, OblivionUnits.kotele},
+				new UnitType[]{OblivionUnits.taleni, OblivionUnits.kolete},
 				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra}
 			);
 		}};
