@@ -379,7 +379,7 @@ public class OblivionBlocks implements ContentList {
 
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.slop, OblivionUnits.detra},
-				new UnitType[]{OblivionUnits.pioli, OblivionUnits.taneki},
+				new UnitType[]{OblivionUnits.pioli, OblivionUnits.taneki}
 			);
 		}};
 
@@ -394,7 +394,7 @@ public class OblivionBlocks implements ContentList {
 
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.detra, OblivionUnits.tedri},
-				new UnitType[]{OblivionUnits.taneki, OblivionUnits.notremite},
+				new UnitType[]{OblivionUnits.taneki, OblivionUnits.notremite}
 			);
 		}};
 
@@ -411,7 +411,7 @@ public class OblivionBlocks implements ContentList {
 
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.tedri, OblivionUnitse.taleni},
-				new UnitType[]{OblivionUnits.notremite, OblivionUnits.dopretile},
+				new UnitType[]{OblivionUnits.notremite, OblivionUnits.dopretile}
 			);
 		}};
 
@@ -428,7 +428,7 @@ public class OblivionBlocks implements ContentList {
 
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.taleni, OblivionUnits.kotele},
-				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra},
+				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra}
 			);
 		}};
 
