@@ -353,7 +353,7 @@ public class OblivionBlocks implements ContentList {
 			health = 200;
 			consumes.power(2f);
 			plans = Seq.with(
-				new UnitPlan(OblivionUnits.pioli, 60f * 30f, with(Items.silicon, 6, OblivionResources,copremite, 20))
+				new UnitPlan(OblivionUnits.pioli, 60f * 30f, with(Items.silicon, 6, OblivionResources.copremite, 20))
 			);
 		}};
 
