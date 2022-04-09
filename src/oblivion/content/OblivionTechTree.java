@@ -103,12 +103,30 @@ public class OblivionTechTree implements ContentList {
 				});
 				node(OblivionBlocks.solfreniteFactory, Seq.with(new Produce(OblivionResources.mesulfate)), () -> {
 					node(OblivionUnits.slop, () -> {
-						node(OblivionUnits.detra, Seq.with(new Research(Blocks.additiveReconstructor)), () -> {
-							node(OblivionUnits.tedri, Seq.with(new Research(Blocks.multiplicativeReconstructor)), () -> {
-								node(OblivionUnits.taleni, Seq.with(new Research(Blocks.exponentialReconstructor)), () -> {
-									node(OblivionUnits.kolete, Seq.with(new Research(Blocks.tetrativeReconstructor)));
+						node(OblivionUnits.detra, Seq.with(new Research(OblivionBlocks.alphaReconstructor)), () -> {
+							node(OblivionUnits.tedri, Seq.with(new Research(OblivionBlocks.betaReconstructor)), () -> {
+								node(OblivionUnits.taleni, Seq.with(new Research(OblivionBlocks.gammaReconstructor)), () -> {
+									node(OblivionUnits.kolete, Seq.with(new Research(OblivionBlocks.omegaReconstructor)));
 								});
 							});	
+						});
+					});
+					node(OblivionBlocks.infestromeniFactory, Seq.with(new Produce(OblivionResources.copremite)), () -> {
+						node(OblivionUnits.pioli, () -> {
+							node(OblivionUnits.taneki, Seq.with(new Research(OblivionBlocks.alphaReconstructor)), () -> {
+								node(OblivionUnits.notremite, Seq.with(new Research(OblivionBlocks.betaReconstructor)), () -> {
+									node(OblivionUnits.dopretile, Seq.with(new Research(OblivionBlocks.gammaReconstructor)), () -> {
+										node(OblivionUnits.niboletra, Seq.with(new Research(OblivionBlocks.omegaReconstructor)));
+									});
+								});	
+							});
+						});
+					});
+				});
+				node(OblivionBlocks.alphaReconstructor, ItemStack.with(), Seq.with(new Research(Blocks.additiveReconstructor)), () -> {
+					node(OblivionBlocks.betaReconstructor, ItemStack.with(), Seq.with(new Research(Blocks.multiplicativeReconstructor)), () -> {
+						node(OblivionBlocks.gammaReconstructor, ItemStack.with(), Seq.with(new Research(Blocks.exponentialReconstructor)), () -> {
+							node(OblivionBlocks.omegaReconstructor, ItemStack.with(), Seq.with(new Research(Blocks.tetrativeReconstructor)));
 						});
 					});
 				});

@@ -15,8 +15,6 @@ import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
-import oblivion.world.heat.sandbox.*;
-import oblivion.world.heat.distribution.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -27,10 +25,10 @@ public class OblivionBlocks implements ContentList {
 		mesoForge, carbonicInfuser, calonicKiln, moloniteSmelter,
 		uno, rain, granite,
 		solfreniteFactory,
-		test, test2,
 
 		cloroSynthetizer,
 		toxic, corrosive, acidic,
+		infestromeniFactory,
 
 
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
@@ -345,6 +343,19 @@ public class OblivionBlocks implements ContentList {
 				new UnitPlan(OblivionUnits.slop, 60f * 25f, with(Items.silicon, 10, OblivionResources.mesulfate, 15))
 			);
 		}};
+		infestromeniFactory = new UnitFactory("infestromeni-factory") {{
+			requirements(Category.units, with(
+				Items.silicon, 60,
+				Items.plastanium, 50,
+				OblivionResources.copremite, 60
+			));
+			size = 3;
+			health = 200;
+			consumes.power(2f);
+			plans = Seq.with(
+				new UnitPlan(OblivionUnits.pioli, 60f * 30f, with(Items.silicon, 6, OblivionResources,copremite, 20))
+			);
+		}};
 
 		baletise = new Floor("baletise") {{
 			attributes.set(Attribute.oil, -1f);
@@ -430,17 +441,6 @@ public class OblivionBlocks implements ContentList {
 				new UnitType[]{OblivionUnits.taleni, OblivionUnits.kolete},
 				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra}
 			);
-		}};
-
-		test = new HeatSource("test") {{
-			buildVisibility = BuildVisibility.shown;
-			size = 1;
-			health = 10;
-		}};
-		test2 = new HeatConveyor("heat-conveyor") {{
-			buildVisibility = BuildVisibility.shown;
-			size = 1;
-			health = 10;
 		}};
 	}
 }

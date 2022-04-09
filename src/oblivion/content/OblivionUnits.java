@@ -220,6 +220,7 @@ public class OblivionUnits implements ContentList {
 					shootSound = Sounds.lasershoot;
 					bullet = new LaserBoltBulletType(4f, 16) {{
 						lifetime = 32f;
+						status = OblivionStatuses.infested;
 						frontColor = OblivionPal.copreLight;
 						backColor = OblivionPal.copreMedium;
 					}};
@@ -232,6 +233,7 @@ public class OblivionUnits implements ContentList {
 					flipSprite = true;
 					bullet = new LaserBoltBulletType(4f, 16) {{
 						lifetime = 32f;
+						status = OblivionStatuses.infested;
 						frontColor = OblivionPal.copreLight;
 						backColor = OblivionPal.copreMedium;
 					}};
@@ -268,6 +270,7 @@ public class OblivionUnits implements ContentList {
 						width = 14f;
 						height = 14f;
 						lifetime = 56f;
+						status = OblivionStatuses.infested;
 						weaveMag = 5f;
 						weaveScale = 4f;
 						homingPower = 0.05f;
@@ -296,6 +299,7 @@ public class OblivionUnits implements ContentList {
 					bullet = new LaserBulletType(50) {{
 						width = 7f;
 						length = 176f;
+						status = OblivionStatuses.infested;
 						colors = new Color[]{OblivionPal.copreDark, OblivionPal.copreMedium, OblivionPal.copreLight};
 					}};
 				}}
@@ -333,6 +337,7 @@ public class OblivionUnits implements ContentList {
 						width = 9f;
 						height = 12f;
 						lifetime = 89.6f;
+						status = OblivionStatuses.infested;
 						frontColor = OblivionPal.copreLight;
 						backColor = OblivionPal.copreMedium;
 					}};
@@ -346,6 +351,7 @@ public class OblivionUnits implements ContentList {
 						width = 9f;
 						height = 12f;
 						lifetime = 89.6f;
+						status = OblivionStatuses.infested;
 						frontColor = OblivionPal.copreLight;
 						backColor = OblivionPal.copreMedium;
 					}};
@@ -386,6 +392,7 @@ public class OblivionUnits implements ContentList {
 						length = 304;
 						drawSize = 200f;
 						lifetime = 60f;
+						status = OblivionStatuses.infested;
 						shake = 1f;
 						width = 6f;
 						largeHit = true;
