@@ -306,7 +306,7 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 		dopretile = new UnitType("dopretile") {{
-			health = 12000;
+			health = 13000;
 			speed = 1.2f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -319,7 +319,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-copremite-big-laser") {{
 					x = 0f;
 					y = -4f;
-					reload = 30f;
+					reload = 60f;
 					shootSound = Sounds.plasmadrop;
 					mirror = false;
 					bullet = new LaserBulletType(150) {{
@@ -388,7 +388,7 @@ public class OblivionUnits implements ContentList {
 					mirror = false;
 					continuous = true;
 					bullet = new ContinuousLaserBulletType() {{
-						damage = 24f;
+						damage = 125f;
 						length = 304;
 						drawSize = 200f;
 						lifetime = 60f;
