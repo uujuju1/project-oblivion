@@ -40,5 +40,23 @@ public class OblivionFx {
 			Angles.randLenVectors(e.id + 1, 20, e.finpow() * 80, 0 + e.rotation, 10, (x, y) -> {
 				Fill.circle(e.x + x, e.y + y, e.fout());
 			});
+		}),
+		bigFlameShoot = new Effect(45f, e -> {
+			Draw.color(Pal.accent);
+			Drawf.tri(e.x, e.y, 8 * e.fout(), 12 * e.foutpow(), 0 + e.rotation);
+			Drawf.tri(e.x, e.y, 6 * e.fout(), 12 * e.foutpow(), 135 + e.rotation);
+			Drawf.tri(e.x, e.y, 6 * e.fout(), 12 * e.foutpow(), -135 + e.rotation);
+			
+			Angles.randLenVectors(e.id, 20, e.finpow() * 150, 0 + e.rotation, 10, (x, y) -> {
+				Fill.circle(e.x + x, e.y + y, e.fout() * 3);
+			});
+			Draw.color(Pal.turretHeat);
+			Angles.randLenVectors(e.id + 1, 20, e.finpow() * 150, 0 + e.rotation, 10, (x, y) -> {
+				Fill.circle(e.x + x, e.y + y, e.fout() * 3);
+			});
+			Draw.color(Color.white);
+			Angles.randLenVectors(e.id + 2, 20, e.finpow() * 150, 0 + e.rotation, 10, (x, y) -> {
+				Fill.circle(e.x + x, e.y + y, e.fout() * 3);
+			});
 		});
 }

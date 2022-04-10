@@ -3,6 +3,6 @@ name: "oblivion"
 author: "Uujuju"
 main: "oblivion.ProjectOblivion"
 description: "The technology of the oblivion awaits you..."
-version: 1.0
+version: 0.5
 minGameVersion: 135
 java: true

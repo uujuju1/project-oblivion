@@ -18,7 +18,9 @@ import oblivion.type.draw.*;
 public class OblivionUnits implements ContentList {
 	public static UnitType 
 	slop, detra, tedri, taleni, kolete,
-	pioli, taneki, notremite, dopretile, niboletra;
+	pioli, taneki, notremite, dopretile, niboletra,
+
+	republic;
 
 	@Override
 	public void load() {
@@ -391,7 +393,7 @@ public class OblivionUnits implements ContentList {
 						damage = 125f;
 						length = 304;
 						drawSize = 200f;
-						lifetime = 60f;
+						lifetime = 80f;
 						status = OblivionStatuses.infested;
 						shake = 1f;
 						width = 6f;
@@ -399,6 +401,39 @@ public class OblivionUnits implements ContentList {
 						incendChance = 0f;
 						colors = new Color[]{OblivionPal.copreDark, OblivionPal.copreMedium, OblivionPal.copreLight};
 					}};
+				}}
+			);
+		}};
+
+
+		republic = new UnitType("republic") {{
+			health = 67700;
+			speed = 0.3f;
+			rotateSpeed = 1.65f;
+			armor = 20f;
+			mechStepParticles = true;
+			mechStepShake = 0.75f;
+			drownTimeMultiplier = 6f;
+			mechFrontSway = 1.9f;
+			mechSideSway = 0.6f;
+			ammoType = new ItemAmmoType(Items.thorium);
+			range = 400f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-republic-weapon"){{
+					x = 26f;
+					y = 0f;
+					reload = 60f;
+					shootSound = Sounds.shootBig;
+					shots = 3;
+					shotDelay = 5f;
+					shake = 3f;
+					top = false;
+					bullet = new BasicBulletType(4f, 150) {{
+						lifetime = 100f;
+						width = height = 10f;
+						shootEffect = OblvionFx.bigFlameShoot;
+					}}
 				}}
 			);
 		}};
