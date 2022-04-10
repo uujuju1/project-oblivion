@@ -409,6 +409,7 @@ public class OblivionUnits implements ContentList {
 		republic = new UnitType("republic") {{
 			health = 67700;
 			speed = 0.3f;
+			constructor = MechUnit::create;
 			rotateSpeed = 1.65f;
 			armor = 20f;
 			mechStepParticles = true;
