@@ -1,5 +1,5 @@
-# Mindustry Java Mod Template
-A sequel to [Project Abyss](https://github.com/Anuken/MindustryKotlinModTemplate).
+# Project Oblivion
+A sequel to [Project Abyss](https://github.com/uujuju1/project-abyss).
 <br> Will likelly be archived if i lose motivation.
 
 ## Building for Desktop Testing
@@ -44,3 +44,4 @@ Only use `implementation` if you want to package another Java library *with your
 
 ---
 ## *Kingfrankbobn't Was here*
+## *1237 was here*
