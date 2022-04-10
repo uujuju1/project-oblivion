@@ -24,7 +24,7 @@ public class OblivionUnits implements ContentList {
 	public void load() {
 		slop = new UnitType("slop") {{
 			health = 240;
-			armor = 3f
+			armor = 3f;
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -212,7 +212,7 @@ public class OblivionUnits implements ContentList {
 
 		pioli = new UnitType("pioli") {{
 			health = 200;
-			armor = 1f
+			armor = 1f;
 			speed = 2.5f;
 			flying = true;
 			constructor = UnitEntity::create;
