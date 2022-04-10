@@ -486,7 +486,7 @@ public class OblivionUnits implements ContentList {
 						homingPower = 0.08f;
 						lifetime = 45f;
 						width = height = 16f;
-					}}
+					}};
 				}}
 			);
 		}};
