@@ -416,34 +416,77 @@ public class OblivionUnits implements ContentList {
 		}};
 
 
-		republic = new UnitType("republic") {{
+		republic = new OblivionUnitType("republic") {{
 			health = 67700;
-			speed = 0.3f;
+			speed = 0.2f;
 			constructor = MechUnit::create;
-			rotateSpeed = 1.65f;
+			engineDrawer = new EngineDrawer(unit -> {
+				Draw.color(Color.valueOf("E7885C"));
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 0, -21), unit.y + Angles.trnsy(unit.rotation - 90, 0, -21) * unit.elevation, 6 + Mathf.absin(Time.time, 2, 10 / 4));
+				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90, 0, -24), unit.y + Angles.trnsy(unit.rotation - 90, 0, -24), 13 + Mathf.absin(Time.time, 2, 13 / 2) * unit.elevation, 15 + Mathf.absin(Time.time, 2, 10 / 2) * unit.elevation, unit.rotation - 180);
+				Draw.color(Color.white);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 0, -20), unit.y + Angles.trnsy(unit.rotation - 90, 0, -20), (6 + Mathf.absin(Time.time, 2, 10 / 4)) / 2 * unit.elevation);
+				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90, 0, -20 - unit.elevation), unit.y + Angles.trnsy(unit.rotation - 90, 0, -20 - unit.elevation), (14 + Mathf.absin(Time.time, 2, 13 / 2)) / 2 * unit.elevation, (15 + Mathf.absin(Time.time, 2, 10 / 2)) / 2 * unit.elevation, unit.rotation - 180);
+			});
+			rotateSpeed = 0.7f;
 			armor = 20f;
 			mechStepParticles = true;
 			mechStepShake = 0.75f;
+			canBoost = true;
 			drownTimeMultiplier = 10f;
-			mechFrontSway = 1.9f;
-			mechSideSway = 0.6f;
+			mechFrontSway = 0.2f;
+			mechSideSway = 0.7f;
 			range = 400f;
 			maxRange = range;
+			hitSize = 58f;
 			weapons.add(
 				new Weapon("oblivion-republic-weapon"){{
-					x = 26f;
+					x = 30f;
 					y = 0f;
 					reload = 60f;
+					recoil = 10f;
+					shootY = 12f;
 					shootSound = Sounds.shootBig;
 					shots = 3;
 					shotDelay = 5f;
-					shake = 3f;
+					shake = 5f;
 					top = false;
 					bullet = new BasicBulletType(4f, 150) {{
 						lifetime = 100f;
 						width = height = 10f;
 						shootEffect = OblivionFx.bigFlameShoot;
 					}};
+				}},
+				new Weapon("oblivion-republic-laser") {{
+					x = 0f;
+					y = -7f;
+					reload = 30f;
+					recoil = 3f;
+					shootY = 5f;
+					shootSound = Sounds.laser;
+					shake = 1f;
+					mirror = false;
+					bullet = new LaserBulletType(50) {{
+						width = 10f;
+						length = 200f;
+						colors = new Color[]{Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
+					}};
+				}},
+				new Weapon("oblivion-republic-laser") {{
+					x = 13.25f;
+					y = 5f;
+					reload = 90f;
+					recoil = 3f;
+					shootY = 5f;
+					shootSound = Sounds.artillery;
+					shake = 3f;
+					rotate = alternate = true;
+					bullet = new ArtilleryBulletType(6f, 80) {{
+						collides = true;
+						homingPower = 0.08f;
+						lifetime = 45f;
+						width = height = 16f;
+					}}
 				}}
 			);
 		}};
