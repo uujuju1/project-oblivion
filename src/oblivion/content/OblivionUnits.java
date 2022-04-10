@@ -431,7 +431,7 @@ public class OblivionUnits implements ContentList {
 					bullet = new BasicBulletType(4f, 150) {{
 						lifetime = 100f;
 						width = height = 10f;
-						shootEffect = OblvionFx.bigFlameShoot;
+						shootEffect = OblivionFx.bigFlameShoot;
 					}};
 				}}
 			);
