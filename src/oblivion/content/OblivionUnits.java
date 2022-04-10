@@ -433,7 +433,7 @@ public class OblivionUnits implements ContentList {
 						lifetime = 100f;
 						width = height = 10f;
 						shootEffect = OblvionFx.bigFlameShoot;
-					}}
+					}};
 				}}
 			);
 		}};

@@ -49,7 +49,7 @@ public class LineTurret extends Block {
 		float reload = 0f;
 		
 		public void shoot() {
-			if (!shoots) = return;
+			if (!shoots) return;
 			if (reload <= 0) {
 				bullet.create(this, x, y, block.rotate ? rotdeg() : 0f);
 				reload = reloadTime;
@@ -59,12 +59,13 @@ public class LineTurret extends Block {
 		@Override
 		public void buildConfiguration(Table table) {
 			table.button(Icon.refresh, () -> shoots = !shoots);
-			table.image(Core.atlas.find("oblivion-omnipage"))
+			table.image(Core.atlas.find("oblivion-omnipage"));
 		}
 
 		@Override
 		public void updateTile() {
 			reload -= Time.delta;
+			if (reload <= 0f) reload = 0f;
 			shoot();
 		}
 	}
