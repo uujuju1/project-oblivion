@@ -3,7 +3,8 @@ package oblivion.world.blocks.defence;
 import arc.*;
 import arc.util.*;
 import arc.struct.*;
-import arc.graphics.*;
+import arc.scene.ui.layout.*;
+import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.*;
@@ -34,14 +35,6 @@ public class LineTurret extends Block {
 	public void load() {
 		super.load();
 		baseRegion = Core.atlas.find(name + "-base");
-	}
-
-	@Override
-	public void setStats() {
-		super.setStats();
-
-		stats.add(Stat.reload, 60f / reloadTime, StatUnit.seconds);
-		stats.add(Stat.ammo, StatValues.ammo(ammoTypes));
 	}
 
 	public class LineTurretBuild extends Building {

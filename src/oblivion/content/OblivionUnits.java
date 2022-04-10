@@ -413,10 +413,9 @@ public class OblivionUnits implements ContentList {
 			armor = 20f;
 			mechStepParticles = true;
 			mechStepShake = 0.75f;
-			drownTimeMultiplier = 6f;
+			drownTimeMultiplier = 10f;
 			mechFrontSway = 1.9f;
 			mechSideSway = 0.6f;
-			ammoType = new ItemAmmoType(Items.thorium);
 			range = 400f;
 			maxRange = range;
 			weapons.add(
