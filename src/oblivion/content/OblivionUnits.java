@@ -24,6 +24,7 @@ public class OblivionUnits implements ContentList {
 	public void load() {
 		slop = new UnitType("slop") {{
 			health = 240;
+			armor = 3f
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -48,6 +49,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		detra = new UnitType("detra") {{
 			health = 450;
+			armor = 4f;
 			speed = 1.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -71,7 +73,8 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 		tedri = new UnitType("tedri") {{
-			health = 860;
+			health = 740;
+			armor = 6f;
 			speed = 1.5f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -112,6 +115,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		taleni = new UnitType("taleni") {{
 			health = 6000;
+			armor = 10f;
 			speed = 1f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -161,6 +165,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		kolete = new UnitType("kolete") {{
 			health = 22000;
+			armor = 15f;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -207,6 +212,7 @@ public class OblivionUnits implements ContentList {
 
 		pioli = new UnitType("pioli") {{
 			health = 200;
+			armor = 1f
 			speed = 2.5f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -242,6 +248,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		taneki = new UnitType("taneki") {{
 			health = 530;
+			armor = 3f;
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -282,6 +289,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		notremite = new UnitType("notremite") {{
 			health = 920;
+			armor = 6f;
 			speed = 1.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -308,6 +316,7 @@ public class OblivionUnits implements ContentList {
 		dopretile = new UnitType("dopretile") {{
 			health = 13000;
 			speed = 1.2f;
+			armor = 8f;
 			flying = true;
 			constructor = UnitEntity::create;
 			engineOffset = 27f;
@@ -360,6 +369,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		niboletra = new OblivionUnitType("niboletra") {{
 			health = 20000;
+			armor = 12f;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
