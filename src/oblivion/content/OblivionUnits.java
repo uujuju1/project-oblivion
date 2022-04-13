@@ -501,8 +501,8 @@ public class OblivionUnits implements ContentList {
 			commandLimit = 8;
 			constructor = LegsUnit::create;
 			legCount = 6;
-			legLength = 14f;
-			legBaseOffset = 11f;
+			legLength = 30f;
+			legBaseOffset = 15f;
 			legMoveSpace = 1.5f;
 			legTrns = 0.58f;
 			hovering = true;
