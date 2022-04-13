@@ -457,12 +457,12 @@ public class OblivionBlocks implements ContentList {
 		mandlebrotReconstructor = new Reconstructor("mandlebrot-reconstructor") {{
 			requirements(Category.units, with(
 				Items.lead, 8000, Items.silicon, 7000, Items.thorium, 3000,
-				Items.surgeAlloy, 1200, Items.phaseFabric 1000, OblivionResources.mothalate, 1000
+				Items.surgeAlloy, 1200, Items.phaseFabric, 1000, OblivionResources.mothalate, 1000
 			));
 
 			size = 12;
 			consumes.power(30f);
-			consumes.items(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450))
+			consumes.items(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450));
 			consumes.liquid(Liquids.cryofluid, 9f);
 
 			constructTime = 60f * 60f * 10;
