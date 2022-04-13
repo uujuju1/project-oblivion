@@ -550,7 +550,7 @@ public class OblivionUnits implements ContentList {
 					continuous = true;
 					bullet = new ContinuousLaserBulletType(210) {{
 						lifetime = 60f;
-						incendAmount = incendSpread = incendChance = 0;
+						incendAmount = incendSpread = incendChance = 0f;
 						colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
 					}};
 				}}
