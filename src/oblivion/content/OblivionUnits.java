@@ -20,7 +20,7 @@ public class OblivionUnits implements ContentList {
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
 
-	republic;
+	republic, giga;
 
 	@Override
 	public void load() {
@@ -422,8 +422,8 @@ public class OblivionUnits implements ContentList {
 			constructor = MechUnit::create;
 			engineDrawer = new EngineDrawer(unit -> {
 				Draw.color(Color.valueOf("E7885C"));
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 0, -21), unit.y + Angles.trnsy(unit.rotation - 90, 0, -21) * unit.elevation, 6 + Mathf.absin(Time.time, 2, 10 / 4));
-				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90, 0, -24), unit.y + Angles.trnsy(unit.rotation - 90, 0, -24), 13 + Mathf.absin(Time.time, 2, 13 / 2) * unit.elevation, 15 + Mathf.absin(Time.time, 2, 10 / 2) * unit.elevation, unit.rotation - 180);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 0, -21) * unit.elevation, unit.y + Angles.trnsy(unit.rotation - 90, 0, -21) * unit.elevation, (6 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
+				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90, 0, -24) * unit.elevation, unit.y + Angles.trnsy(unit.rotation - 90, 0, -24) * unit.elevation, (13 + Mathf.absin(Time.time, 2, 13 / 2)) * unit.elevation, (15 + Mathf.absin(Time.time, 2, 10 / 2)) * unit.elevation, unit.rotation - 180);
 				Draw.color(Color.white);
 				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 0, -20), unit.y + Angles.trnsy(unit.rotation - 90, 0, -20), (6 + Mathf.absin(Time.time, 2, 10 / 4)) / 2 * unit.elevation);
 				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90, 0, -20 - unit.elevation), unit.y + Angles.trnsy(unit.rotation - 90, 0, -20 - unit.elevation), (14 + Mathf.absin(Time.time, 2, 13 / 2)) / 2 * unit.elevation, (15 + Mathf.absin(Time.time, 2, 10 / 2)) / 2 * unit.elevation, unit.rotation - 180);
@@ -467,7 +467,7 @@ public class OblivionUnits implements ContentList {
 					shake = 1f;
 					mirror = false;
 					bullet = new LaserBulletType(50) {{
-						width = 10f;
+						width = 20f;
 						length = 200f;
 						colors = new Color[]{Color.valueOf("ec7458aa"), Color.valueOf("ff9c5a"), Color.white};
 					}};
@@ -486,6 +486,72 @@ public class OblivionUnits implements ContentList {
 						homingPower = 0.08f;
 						lifetime = 45f;
 						width = height = 16f;
+					}};
+				}}
+			);
+		}};
+		giga = new UnitType("giga") {{
+			health = 45000f;
+			speed = 0.3f;
+			hitSize = 29f;
+			armor = 9f;
+			landShake = 1.5f;
+			rotateSpeed = 1.5f;
+			drownTimeMultiplier = 6f;
+			commandLimit = 8;
+			constructor = LegsUnit::create;
+			legCount = 6;
+			legLength = 14f;
+			legBaseOffset = 11f;
+			legMoveSpace = 1.5f;
+			legTrns = 0.58f;
+			hovering = true;
+			visualElevation = 0.2f;
+			groundLayer = Layer.legUnit;
+			range = 400f;
+			weapons.add(
+				new Weapon("oblivion-giga-laser") {{
+					x = 7.75f;
+					y = -8.25f;
+					reload = 60f;
+					recoil = 3f;
+					shootY = 6f;
+					shootSound = Sounds.laser;
+					bullet = new LaserBulletType(80) {{
+						width = 50f;
+						length = 400f;
+						colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
+					}};
+				}},
+				new Weapon("oblivion-giga-missile") {{
+					x = 25.25f;
+					y = -3f;
+					reload = 30f;
+					recoil = 3f;
+					shootY = 2f;
+					shootSound = Sounds.missile;
+					alternate = false;
+					bullet = new MissileBulletType(4f, 75) {{
+						width = height = 15f;
+						lifetime = 100f;
+					}};
+				}},
+				new Weapon() {{
+					x = 0f;
+					y = 6.5f;
+					reload = 350f;
+					recoil = 0f;
+					shake = 20f;
+					shootSound = Sounds.laserblast;
+					chargeSound = Sounds.lasercharge;
+					firstShotDelay = Fx.greenLaserCharge.lifetime;
+					top = false;
+					mirror = false;
+					continuous = true;
+					bullet = new ContinuousLaserBulletType(210) {{
+						lifetime = 60f;
+						incendAmount = incendSpread = incendChance = 0;
+						colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
 					}};
 				}}
 			);
