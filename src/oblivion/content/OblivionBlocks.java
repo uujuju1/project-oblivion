@@ -30,7 +30,7 @@ public class OblivionBlocks implements ContentList {
 		toxic, corrosive, acidic,
 		infestromeniFactory,
 
-
+		mandlebrotReconstructor,
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
 
 		baletise, powderite, tobolite, driedpowder,
@@ -380,7 +380,9 @@ public class OblivionBlocks implements ContentList {
 		driedpowderWall = new StaticWall("driedpowder-wall");
 
 		alphaReconstructor = new Reconstructor("alpha-reconstructor"){{
-			requirements(Category.units, with(Items.copper, 200, Items.lead, 120, Items.silicon, 90));
+			requirements(Category.units, with(
+				Items.copper, 200, Items.lead, 120, Items.silicon, 90
+			));
 
 			size = 3;
 			consumes.power(3f);
@@ -395,7 +397,10 @@ public class OblivionBlocks implements ContentList {
 		}};
 
 		betaReconstructor = new Reconstructor("beta-reconstructor"){{
-			requirements(Category.units, with(Items.lead, 650, Items.silicon, 450, Items.titanium, 350, Items.thorium, 650));
+			requirements(Category.units, with(
+				Items.lead, 650, Items.silicon, 450,
+				Items.titanium, 350, Items.thorium, 650
+			));
 
 			size = 5;
 			consumes.power(6f);
@@ -410,7 +415,10 @@ public class OblivionBlocks implements ContentList {
 		}};
 
 		gammaReconstructor = new Reconstructor("gamma-reconstructor"){{
-			requirements(Category.units, with(Items.lead, 2000, Items.silicon, 1000, Items.titanium, 2000, Items.thorium, 750, Items.plastanium, 450, Items.phaseFabric, 600));
+			requirements(Category.units, with(
+				Items.lead, 2000, Items.silicon, 1000, Items.titanium, 2000,
+				Items.thorium, 750, Items.plastanium, 450, Items.phaseFabric, 600
+			));
 
 			size = 7;
 			consumes.power(13f);
@@ -427,7 +435,10 @@ public class OblivionBlocks implements ContentList {
 		}};
 
 		omegaReconstructor = new Reconstructor("omega-reconstructor"){{
-			requirements(Category.units, with(Items.lead, 4000, Items.silicon, 3000, Items.thorium, 1000, Items.plastanium, 600, Items.phaseFabric, 600, Items.surgeAlloy, 800));
+			requirements(Category.units, with(
+				Items.lead, 4000, Items.silicon, 3000, Items.thorium, 1000,
+				Items.plastanium, 600, Items.phaseFabric, 600, Items.surgeAlloy, 800
+			));
 
 			size = 9;
 			consumes.power(25f);
@@ -440,6 +451,25 @@ public class OblivionBlocks implements ContentList {
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.taleni, OblivionUnits.kolete},
 				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra}
+			);
+		}};
+
+		mandlebrotReconstructor = new Reconstructor("mandlebrot-reconstructor") {{
+			requirements(Category.units, with(
+				Items.lead, 8000, Items.silicon, 7000, Items.thorium, 3000,
+				Items.surgeAlloy, 1200, Items.phaseFabric 1000, OblivionResources.mothalate, 1000
+			));
+
+			size = 12;
+			consumes.power(30f);
+			consumes.items(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450))
+			consumes.liquid(Liquids.cryofluid, 9f);
+
+			constructTime = 60f * 60f * 10;
+			liquidCapacity = 360f;
+			upgrades.addAll(
+				new UnitType[]{UnitTypes.reign, OblivionResources.republic},
+				new UnitType[]{UnitTypes.corvus, OblivionResources.giga}
 			);
 		}};
 	}

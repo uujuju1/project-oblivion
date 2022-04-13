@@ -493,8 +493,7 @@ public class OblivionUnits implements ContentList {
 		giga = new UnitType("giga") {{
 			health = 45000f;
 			speed = 0.3f;
-			hitSize = 29f;
-			armor = 9f;
+			hitSize = 32f;
 			landShake = 1.5f;
 			rotateSpeed = 1.5f;
 			drownTimeMultiplier = 6f;
