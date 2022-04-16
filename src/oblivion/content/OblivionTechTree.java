@@ -142,15 +142,15 @@ public class OblivionTechTree implements ContentList {
 			});
 		});
 		extendNode(Blocks.tetrativeReconstructor, () -> {
-			node(OblivionBlocks.mandlebrotReconstructor, Seq.with(new Produce(OblivionResources.mothalate), new Research(Units.reign)));
+			node(OblivionBlocks.mandlebrotReconstructor, Seq.with(new Produce(OblivionResources.mothalate), new Research(UnitTypes.reign)));
 		}); 
-		extendNode(Units.reign, () -> {
+		extendNode(UnitTypes.reign, () -> {
 			node(OblivionUnits.republic, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
 		});
-		extendNode(Units.corvus, () -> {
+		extendNode(UnitTypes.corvus, () -> {
 			node(OblivionUnits.giga, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
 		});
-		extendNode(Units.toxopid, () -> {
+		extendNode(UnitTypes.toxopid, () -> {
 			node(OblivionUnits.archaranid, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
 		});
 	}
