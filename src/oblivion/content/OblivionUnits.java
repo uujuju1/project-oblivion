@@ -20,7 +20,7 @@ public class OblivionUnits implements ContentList {
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
 
-	republic, giga;
+	republic, giga, archaranid;
 
 	@Override
 	public void load() {
@@ -553,6 +553,77 @@ public class OblivionUnits implements ContentList {
 						incendSpread = 0;
 						incendChance = 0f;
 						colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
+					}};
+				}}
+			);
+		}};
+		archaranid = new UnitType("archaranid") {{
+			health = 60000;
+			speed = 0.3f;
+			legCount = 8;
+			legMoveSpace = 0.8f;
+			legPairOffset = 3;
+			legLength = 75f;
+			legExtension = -20;
+			legBaseOffset = 8f;
+			landShake = 1f;
+			legLengthScl = 0.93f;
+			legSpeed = 0.19f;
+			legSplashDamage = 80;
+			legSplashRange = 60;
+			hitSize = 32f;
+			hovering = true;
+			visualElevation = 0.95f;
+			groundLayer = Layer.legUnit;
+			constructor = LegsUnit::create;
+			range = 45f * 8f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-archanid-cannon") {{
+					x = 0f;
+					y = -15.25f;
+					reload = 120f;
+					recoil = 5f;
+					mirror = false;
+					rotate = true;
+					rotateSpeed = 1f;
+					shake = 10f;
+					bullet = new ArtilleryBulletType(2f, 120) {{
+						width = height = 35f;
+						collides = collidesTiles = true;
+						lifetime = 180f;
+						frontColor = Pal.sapBullet;
+						backColor = Pal.sapBulletBack;
+						hitShake = 10f;
+						lightRadius = 40f;
+						lightColor = Pal.sap;
+						lightOpacity = 0.6f;
+						status = StatusEffects.sapped;
+						statusDuration = 60f * 20;
+						fragBullets = 5;
+						fragBullet = new LaserBulletType(25) {{
+							width = 10f;
+							length = 80f;
+							colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
+						}};
+					}};
+				}},
+				new Weapon("oblivion-archanid-point") {{
+					x = 19f;
+					y = -5.5f;
+					reload = 30f;
+					recoil = 2f;
+					shootSound = Sounds.railgun;
+					bullet = new PointBulletType() {{
+						shootEffect = OblivionFx.instSapShoot;
+						hitEffect = OblivionFx.instSapHit;
+						smokeEffect = Fx.smokeCloud;
+						trailEffect = OblivionFx.instSapTrail;
+						despawnEffect = OblivionFx.instSapHit;
+						damage = 70f;
+						trailSpacing = 10f;
+						length = 180f;
+						speed = 45f * 8f;
 					}};
 				}}
 			);

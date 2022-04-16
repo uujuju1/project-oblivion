@@ -58,5 +58,36 @@ public class OblivionFx {
 			Angles.randLenVectors(e.id + 2, 20, e.finpow() * 150, 0 + e.rotation, 10, (x, y) -> {
 				Fill.circle(e.x + x, e.y + y, e.fout() * 3);
 			});
+		}),
+		instSapShoot = new Effect(30f, e -> {
+			Draw.color(Pal.sap.cpy().mul(1.5f))
+			Drawf.tri(e.x, e.y, 10f * e.fout(), 50f * e.fout(), e.rotation + 90f);
+			Drawf.tri(e.x, e.y, 10f * e.fout(), 50f * e.fout(), e.rotation + 45f);
+			Drawf.tri(e.x, e.y, 10f * e.fout(), 50f * e.fout(), e.rotation - 45f);
+			Drawf.tri(e.x, e.y, 10f * e.fout(), 50f * e.fout(), e.rotation - 90f);
+			Drawf.light(e.x, e.y, 180f, Pal.sapBulletBack, 0.9f * e.fout());
+		}),
+		instSapTrail = new Effect(30f, e -> {
+			Draw.color(Pal.sap.cpy().mul(1.5f))
+			Drawf.tri(e.x, e.y, 10f * e.fout(), 20f * e.fout(), e.rotation + 0f);
+			Drawf.tri(e.x, e.y, 5f * e.fout(), 10f * e.fout(), e.rotation + 90f);
+			Drawf.tri(e.x, e.y, 5f * e.fout(), 10f * e.fout(), e.rotation - 90f);
+			Drawf.tri(e.x, e.y, 10f * e.fout(), 20f * e.fout(), e.rotation + 180f);
+			Drawf.light(e.x, e.y, 60f, Pal.sapBullet, 0.6f * e.fout());
+		}),
+		instSapHit = new Effect(30f, e -> {
+			e.scaled(10f, b -> {
+				Draw.color(Color.white, Pal.sap, b.fin());
+				Lines.stroke(b.fout() * 3f + 0.2f);
+				Lines.circle(b.x, b.y, b.fin() * 50f);
+			});
+			
+			Draw.color(Pal.sapBulletBack);
+			
+			for (let i = 0; i < 5; i++) {
+				Drawf.tri(e.x, e.y, 6f * e.fout(), 50f, e.rotation + 90f * i);
+				Drawf.tri(e.x, e.y, 6f * e.fout(), 25f, e.rotation + 45f + 90f * i);
+			}
+			Drawf.light(e.x, e.y, 180f, Pal.sapBulletBack, 0.9f * e.fout())		
 		});
 }

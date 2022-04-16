@@ -468,8 +468,8 @@ public class OblivionBlocks implements ContentList {
 			constructTime = 60f * 60f * 10;
 			liquidCapacity = 360f;
 			upgrades.addAll(
-				new UnitType[]{UnitTypes.reign, OblivionResources.republic},
-				new UnitType[]{UnitTypes.corvus, OblivionResources.giga}
+				new UnitType[]{UnitTypes.reign, OblivionUnits.republic},
+				new UnitType[]{UnitTypes.corvus, OblivionUnits.giga}
 			);
 		}};
 	}
