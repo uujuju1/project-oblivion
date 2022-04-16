@@ -60,7 +60,7 @@ public class OblivionFx {
 			});
 		}),
 		instSapShoot = new Effect(30f, e -> {
-			Draw.color(Pal.sap.cpy().mul(1.5f))
+			Draw.color(Pal.sap.cpy().mul(1.5f));
 			Drawf.tri(e.x, e.y, 10f * e.fout(), 50f * e.fout(), e.rotation + 90f);
 			Drawf.tri(e.x, e.y, 10f * e.fout(), 50f * e.fout(), e.rotation + 45f);
 			Drawf.tri(e.x, e.y, 10f * e.fout(), 50f * e.fout(), e.rotation - 45f);
@@ -68,7 +68,7 @@ public class OblivionFx {
 			Drawf.light(e.x, e.y, 180f, Pal.sapBulletBack, 0.9f * e.fout());
 		}),
 		instSapTrail = new Effect(30f, e -> {
-			Draw.color(Pal.sap.cpy().mul(1.5f))
+			Draw.color(Pal.sap.cpy().mul(1.5f));
 			Drawf.tri(e.x, e.y, 10f * e.fout(), 20f * e.fout(), e.rotation + 0f);
 			Drawf.tri(e.x, e.y, 5f * e.fout(), 10f * e.fout(), e.rotation + 90f);
 			Drawf.tri(e.x, e.y, 5f * e.fout(), 10f * e.fout(), e.rotation - 90f);
@@ -88,6 +88,6 @@ public class OblivionFx {
 				Drawf.tri(e.x, e.y, 6f * e.fout(), 50f, e.rotation + 90f * i);
 				Drawf.tri(e.x, e.y, 6f * e.fout(), 25f, e.rotation + 45f + 90f * i);
 			}
-			Drawf.light(e.x, e.y, 180f, Pal.sapBulletBack, 0.9f * e.fout())		
+			Drawf.light(e.x, e.y, 180f, Pal.sapBulletBack, 0.9f * e.fout());		
 		});
 }
