@@ -84,7 +84,7 @@ public class OblivionFx {
 			
 			Draw.color(Pal.sapBulletBack);
 			
-			for (let i = 0; i < 5; i++) {
+			for (int i = 0; i < 5; i++) {
 				Drawf.tri(e.x, e.y, 6f * e.fout(), 50f, e.rotation + 90f * i);
 				Drawf.tri(e.x, e.y, 6f * e.fout(), 25f, e.rotation + 45f + 90f * i);
 			}

@@ -622,7 +622,6 @@ public class OblivionUnits implements ContentList {
 						despawnEffect = OblivionFx.instSapHit;
 						damage = 70f;
 						trailSpacing = 10f;
-						length = 180f;
 						speed = 45f * 8f;
 					}};
 				}}
