@@ -589,6 +589,7 @@ public class OblivionUnits implements ContentList {
 					rotateSpeed = 1f;
 					shootY = 28f;
 					shake = 10f;
+					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(2f, 180) {{
 						width = height = 35f;
 						collides = collidesTiles = true;
@@ -625,7 +626,7 @@ public class OblivionUnits implements ContentList {
 						despawnEffect = OblivionFx.instSapHit;
 						damage = 150f;
 						trailSpacing = 10f;
-						speed = 45f * 8f;
+						range = speed = 45f * 8f;
 					}};
 				}}
 			);
