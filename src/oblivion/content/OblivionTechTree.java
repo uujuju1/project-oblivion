@@ -10,7 +10,7 @@ import mindustry.type.ItemStack;
 
 public class OblivionTechTree implements ContentList {
 	static TechTree.TechNode context = null;
-
+ 
 	private static void extendNode (UnlockableContent parent, Runnable children) {
 		context = TechTree.all.find(t -> t.content == parent);
 		children.run();
@@ -140,6 +140,18 @@ public class OblivionTechTree implements ContentList {
 					new Research(OblivionBlocks.solfreniteFactory)
 				));
 			});
+		});
+		extendNode(Blocks.tetrativeReconstructor, () -> {
+			node(OblivionBlocks.mandlebrotReconstructor, Seq.with(new Produce(OblivionResources.mothalate), new Research(Units.reign)));
+		}); 
+		extendNode(Units.reign, () -> {
+			node(OblivionUnits.republic, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
+		});
+		extendNode(Units.corvus, () -> {
+			node(OblivionUnits.giga, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
+		});
+		extendNode(Units.toxopid, () -> {
+			node(OblivionUnits.archaranid, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
 		});
 	}
 }

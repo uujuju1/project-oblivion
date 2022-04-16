@@ -561,11 +561,11 @@ public class OblivionUnits implements ContentList {
 			health = 60000;
 			speed = 0.3f;
 			legCount = 8;
-			legMoveSpace = 0.8f;
+			legMoveSpace = 1.2f;
 			legPairOffset = 3;
-			legLength = 75f;
+			legLength = 100f;
 			legExtension = -20;
-			legBaseOffset = 8f;
+			legBaseOffset = 10f;
 			landShake = 1f;
 			legLengthScl = 0.93f;
 			legSpeed = 0.19f;
@@ -587,8 +587,9 @@ public class OblivionUnits implements ContentList {
 					mirror = false;
 					rotate = true;
 					rotateSpeed = 1f;
+					shootY = 28f;
 					shake = 10f;
-					bullet = new ArtilleryBulletType(2f, 120) {{
+					bullet = new ArtilleryBulletType(2f, 180) {{
 						width = height = 35f;
 						collides = collidesTiles = true;
 						lifetime = 180f;
@@ -600,8 +601,10 @@ public class OblivionUnits implements ContentList {
 						lightOpacity = 0.6f;
 						status = StatusEffects.sapped;
 						statusDuration = 60f * 20;
+						splashDamage = 200;
+						splashDamageRadius = 16f;
 						fragBullets = 5;
-						fragBullet = new LaserBulletType(25) {{
+						fragBullet = new LaserBulletType(80) {{
 							width = 10f;
 							length = 80f;
 							colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
@@ -620,7 +623,7 @@ public class OblivionUnits implements ContentList {
 						smokeEffect = Fx.smokeCloud;
 						trailEffect = OblivionFx.instSapTrail;
 						despawnEffect = OblivionFx.instSapHit;
-						damage = 70f;
+						damage = 150f;
 						trailSpacing = 10f;
 						speed = 45f * 8f;
 					}};
