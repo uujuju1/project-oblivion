@@ -337,7 +337,7 @@ public class OblivionBlocks implements ContentList {
 			requirements(Category.distribution, with(OblivionResources.carmanite, 1, Items.silicon, 1));
 			health = 180;
 			speed = 0.1f;
-			displaySpeed = 14f;
+			displayedSpeed = 14f;
 		}};
 		alomeriTube = new Duct("alomeri-tube") {{
 			requirements(Category.distribution, with(OblivionResources.carmanite, 10, Items.silicon, 12, Items.titanium, 6));
