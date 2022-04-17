@@ -13,6 +13,7 @@ import mindustry.entities.bullet.*;
 import mindustry.world.blocks.units.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.environment.*;
+import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
 
@@ -29,6 +30,8 @@ public class OblivionBlocks implements ContentList {
 		cloroSynthetizer,
 		toxic, corrosive, acidic,
 		infestromeniFactory,
+
+		alomeriTube, alomeriConveyor,
 
 		mandlebrotReconstructor,
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
@@ -328,6 +331,18 @@ public class OblivionBlocks implements ContentList {
 					statusDuration = 60f * 12f;
 				}}
 			);
+		}};
+
+		alomeriConveyor = new Conveyor("alomeri-conveyor") {{
+			requirements(Category.distribution, with(OblivionResources.carmanite, 1, Items.silicon, 1));
+			health = 180;
+			speed = 0.1f;
+			displaySpeed = 14f;
+		}};
+		alomeriTube = new Duct("alomeri-tube") {{
+			requirements(Category.distribution, with(OblivionResources.carmanite, 10, Items.silicon, 12, Items.titanium, 6));
+			health = 120;
+			speed = 4.5f;
 		}};
 
 		solfreniteFactory = new UnitFactory("solfrenite-factory") {{
