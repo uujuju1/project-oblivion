@@ -23,7 +23,7 @@ public class OblivionBlocks implements ContentList {
 	public static Block 
 		start,
 
-		mesoForge, carbonicInfuser, calonicKiln, moloniteSmelter,
+		mesoForge, calonicKiln, moloniteSmelter,
 		uno, rain, granite,
 		solfreniteFactory,
 
@@ -31,6 +31,8 @@ public class OblivionBlocks implements ContentList {
 		toxic, corrosive, acidic,
 		infestromeniFactory,
 
+		carbonicInfuser,
+		inductionDrill,
 		alomeriTube, alomeriConveyor,
 
 		mandlebrotReconstructor,
@@ -331,6 +333,19 @@ public class OblivionBlocks implements ContentList {
 					statusDuration = 60f * 12f;
 				}}
 			);
+		}};
+
+		inductionDrill = new Drill("induction-drill") {{
+			requirements(Category.production, with(
+				Items.silicon
+			));
+			size = 3;
+			health = 200;
+			tier = 3;
+			drillTime = 280f;
+			hasPower = true;
+			consumes.power(1f);
+			consumes.liquid(Liquids.water, 0.08f).boost();
 		}};
 
 		alomeriConveyor = new Conveyor("alomeri-conveyor") {{
