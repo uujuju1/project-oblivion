@@ -20,8 +20,8 @@ public class ProjectOblivion extends Mod{
 		Events.on(ClientLoadEvent.class, e -> {
 			try{
 				Reflect.set(MenuFragment.class, Vars.ui.menufrag, "renderer", new OblivionMenuRenderer());
-			}catch(Exception e){
-				Log.err("Failed to replace renderer", e);
+			}catch(Exception exep){
+				Log.err("Failed to replace renderer", exep);
 			}
 		});
 	}
