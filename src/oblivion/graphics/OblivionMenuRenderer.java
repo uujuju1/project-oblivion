@@ -13,6 +13,7 @@ public class OblivionMenuRenderer extends MenuRenderer{
 	// draw a simple image in the bg
 	@Override
 	public void render(){
-		Draw.rect(Core.atlas.find("oblivion-bg"), Core.graphics.getWidth(), Core.graphics.getHeight());
+		camera.position.set(0f, 0f,);
+		Draw.rect(Core.atlas.find("oblivion-bg"), 0f, 0f);
 	}
 }
