@@ -377,7 +377,7 @@ public class OblivionUnits implements ContentList {
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
-			engineDrawer = new EngineDrawer(unit -> {
+			engineDrawer = unit -> {
 				Draw.color(unit.team.color);
 				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, 0f, -30f), unit.y + Angles.trnsy(unit.rotation - 90f, 0f, -30f), 10 + Mathf.absin(Time.time, 2f, 10f / 4f));
 				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, -16f, -18f), unit.y + Angles.trnsy(unit.rotation - 90f, -16f, -18f), 8 + Mathf.absin(Time.time, 2f, 10f / 4f));
@@ -389,7 +389,7 @@ public class OblivionUnits implements ContentList {
 				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, -16f, -18f), unit.y + Angles.trnsy(unit.rotation - 90f, -16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
 				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90f, 16f, -18f), unit.y + Angles.trnsy(unit.rotation - 90f, 16f, -18f), (8 + Mathf.absin(Time.time, 2f, 10f / 4f))/ 2f);
 				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90f, 0f, -30f), unit.y + Angles.trnsy(unit.rotation - 90f, 0f, -30f), (20 + Mathf.absin(Time.time, 2f, 13f / 2f)) / 2f, (20 + Mathf.absin(Time.time, 2f, 10f / 2f)) / 2f, unit.rotation - 180f);
-			});
+			};
 			range = 304f;
 			maxRange = range;
 			hitSize = 36f;
@@ -422,14 +422,14 @@ public class OblivionUnits implements ContentList {
 			health = 67700;
 			speed = 0.2f;
 			constructor = MechUnit::create;
-			engineDrawer = new EngineDrawer(unit -> {
+			engineDrawer = unit -> {
 				Draw.color(Color.valueOf("E7885C"));
 				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 0, -21) * unit.elevation, unit.y + Angles.trnsy(unit.rotation - 90, 0, -21) * unit.elevation, (6 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
 				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90, 0, -24) * unit.elevation, unit.y + Angles.trnsy(unit.rotation - 90, 0, -24) * unit.elevation, (13 + Mathf.absin(Time.time, 2, 13 / 2)) * unit.elevation, (15 + Mathf.absin(Time.time, 2, 10 / 2)) * unit.elevation, unit.rotation - 180);
 				Draw.color(Color.white);
 				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 0, -20), unit.y + Angles.trnsy(unit.rotation - 90, 0, -20), (6 + Mathf.absin(Time.time, 2, 10 / 4)) / 2 * unit.elevation);
 				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90, 0, -20 - unit.elevation), unit.y + Angles.trnsy(unit.rotation - 90, 0, -20 - unit.elevation), (14 + Mathf.absin(Time.time, 2, 13 / 2)) / 2 * unit.elevation, (15 + Mathf.absin(Time.time, 2, 10 / 2)) / 2 * unit.elevation, unit.rotation - 180);
-			});
+			};
 			rotateSpeed = 0.7f;
 			armor = 20f;
 			mechStepParticles = true;
