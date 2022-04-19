@@ -337,7 +337,9 @@ public class OblivionBlocks implements ContentList {
 
 		inductionDrill = new Drill("induction-drill") {{
 			requirements(Category.production, with(
-				Items.silicon
+				Items.silicon, 25,
+				Items.graphite, 25,
+				OblivionResources.carmanite, 30
 			));
 			size = 3;
 			health = 200;
@@ -345,7 +347,7 @@ public class OblivionBlocks implements ContentList {
 			drillTime = 280f;
 			hasPower = true;
 			consumes.power(1f);
-			consumes.liquid(Liquids.water, 0.08f).boost();
+			consumes.liquid(Liquids.water, 0.06f).boost();
 		}};
 
 		alomeriConveyor = new Conveyor("alomeri-conveyor") {{
