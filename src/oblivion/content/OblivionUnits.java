@@ -661,7 +661,7 @@ public class OblivionUnits implements ContentList {
 					bullet = new BasicBulletType(2f, 20) {{
 						lifetime = 18 * 4f;
 					}};
-				}},
+				}}
 			);
 		}};
 	}
