@@ -19,6 +19,7 @@ public class OblivionUnits implements ContentList {
 	public static UnitType 
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
+	assaultDrone,
 
 	republic, giga, archaranid;
 
@@ -629,6 +630,38 @@ public class OblivionUnits implements ContentList {
 						range = speed = 45f * 8f;
 					}};
 				}}
+			);
+		}};
+
+		assaultDrone = new OblivionUnits("assault-drone") {{
+			health = 600;
+			speed = 2.5f;
+			flying = true;
+			constructor = UnitEntity::create;
+			hitSize = 8f;
+			range = 18f * 8f;
+			topDrawer = unit -> {
+				Draw.rect(Core.atlas.find(unit.name + "-rotor"), unit.x, unit.y, unit.rotation + (Time.time * 15f));
+				Draw.rect(Core.atlas.find(unit.name + "-rotor-joint"), unit.x, unit.y, unit.rotation);
+			};
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-assault-mount") {{
+					x = 4f;
+					y = -8f;
+					reload = 30f;
+					bullet = new BasicBulletType(2f, 20) {{
+						lifetime = 18 * 4f;
+					}};
+				}},
+				new Weapon("oblivion-assault-mount") {{
+					x = 2f;
+					y = -3f;
+					reload = 30f;
+					bullet = new BasicBulletType(2f, 20) {{
+						lifetime = 18 * 4f;
+					}};
+				}},
 			);
 		}};
 	}
