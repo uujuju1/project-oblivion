@@ -639,25 +639,28 @@ public class OblivionUnits implements ContentList {
 			speed = 2.5f;
 			flying = true;
 			constructor = UnitEntity::create;
+			outlineColor = Color.valueOf("2E2B2A");
 			hitSize = 8f;
 			topDrawer = unit -> {
-				Draw.rect(Core.atlas.find(name + "-rotor"), unit.x, unit.y, unit.rotation + (Time.time * 15f));
-				Draw.rect(Core.atlas.find(name + "-rotor-joint"), unit.x, unit.y, unit.rotation);
+			  for(int i = 0; i < 4; i ++) {
+			    Draw.rect(Core.atlas.find(name + "-rotor"), unit.x, unit.y, unit.rotation * i + (Time.time * 15));
+			  }
+			  Draw.rect(Core.atlas.find(name + "-rotor-joint"), unit.x, unit.y, unit.rotation - 90);
 			};
 			range = 18f * 8f;
 			maxRange = range;
 			weapons.add(
 				new Weapon("oblivion-assault-mount") {{
-					x = 4f;
-					y = -8f;
+					x = 2.25f;
+					y = -3f;
 					reload = 30f;
 					bullet = new BasicBulletType(2f, 20) {{
 						lifetime = 18 * 4f;
 					}};
 				}},
 				new Weapon("oblivion-assault-mount") {{
-					x = 2f;
-					y = -3f;
+					x = 1.75f;
+					y = 3.75f;
 					reload = 30f;
 					bullet = new BasicBulletType(2f, 20) {{
 						lifetime = 18 * 4f;
