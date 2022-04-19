@@ -1,5 +1,6 @@
 package oblivion.content;
 
+import arc.*;
 import arc.util.*;
 import arc.math.*;
 import arc.graphics.*;
@@ -633,17 +634,17 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 
-		assaultDrone = new OblivionUnits("assault-drone") {{
+		assaultDrone = new OblivionUnitType("assault-drone") {{
 			health = 600;
 			speed = 2.5f;
 			flying = true;
 			constructor = UnitEntity::create;
 			hitSize = 8f;
-			range = 18f * 8f;
 			topDrawer = unit -> {
 				Draw.rect(Core.atlas.find(unit.name + "-rotor"), unit.x, unit.y, unit.rotation + (Time.time * 15f));
 				Draw.rect(Core.atlas.find(unit.name + "-rotor-joint"), unit.x, unit.y, unit.rotation);
 			};
+			range = 18f * 8f;
 			maxRange = range;
 			weapons.add(
 				new Weapon("oblivion-assault-mount") {{
