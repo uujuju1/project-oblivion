@@ -641,8 +641,8 @@ public class OblivionUnits implements ContentList {
 			constructor = UnitEntity::create;
 			hitSize = 8f;
 			topDrawer = unit -> {
-				Draw.rect(Core.atlas.find(unit.name + "-rotor"), unit.x, unit.y, unit.rotation + (Time.time * 15f));
-				Draw.rect(Core.atlas.find(unit.name + "-rotor-joint"), unit.x, unit.y, unit.rotation);
+				Draw.rect(Core.atlas.find(name + "-rotor"), unit.x, unit.y, unit.rotation + (Time.time * 15f));
+				Draw.rect(Core.atlas.find(name + "-rotor-joint"), unit.x, unit.y, unit.rotation);
 			};
 			range = 18f * 8f;
 			maxRange = range;
