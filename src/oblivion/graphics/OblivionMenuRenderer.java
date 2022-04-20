@@ -12,6 +12,6 @@ import static mindustry.Vars.*;
 public class OblivionMenuRenderer extends MenuRenderer{
 	@Override
 	public void render(){
-		Draw.rect(Core.atlas.find("oblivion-bg"), Core.graphics.getWidth()/2f, Core.graphics.getHeight()/2f, 2f, 2f);
+		Draw.rect(Core.atlas.find("oblivion-bg"), Core.graphics.getWidth()/2f, Core.graphics.getHeight()/2f);
 	}
 }
