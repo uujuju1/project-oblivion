@@ -650,7 +650,7 @@ public class OblivionUnits implements ContentList {
 					mirror = false;
 					bullet = new ArtilleryBulletType(1.25f, 250) {{
 						lifetime = 320f;
-						collides = collidesTiles = collidesAir = collidesGrount = true;
+						collides = collidesTiles = collidesAir = collidesGround = true;
 						hitSound = despawnSound = Sounds.plasmaboom;
 						hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
 						fragBullets = 3;
@@ -660,7 +660,7 @@ public class OblivionUnits implements ContentList {
 							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
 							trailChance = 5f;
 							trailWidth = 1.8f;
-							trailLength = 8f;
+							trailLength = 8;
 						}};
 					}};
 				}}
