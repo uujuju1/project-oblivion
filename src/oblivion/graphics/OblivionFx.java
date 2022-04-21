@@ -89,5 +89,16 @@ public class OblivionFx {
 				Drawf.tri(e.x, e.y, 6f * e.fout(), 25f, e.rotation + 45f + 90f * i);
 			}
 			Drawf.light(e.x, e.y, 180f, Pal.sapBulletBack, 0.9f * e.fout());		
+		}),
+		bloodmoonHit = new Effect(120f, e -> {
+			float mfin = 180f * Interp.fastSlow.apply(e.finpow());
+			Lines.stroke(1f * e.foutpow());
+			Draw.color(Pal.accent);
+			
+			for (int i = 0; i < 4; i++) {
+			  Drawf.tri(e.x, e.y, 8f , 40f * Interp.slowFast.apply(e.foutpow()), (i * 90f) + mfin);
+			  Drawf.tri(e.x, e.y, 8f , 20f * Interp.slowFast.apply(e.foutpow()), (i * 90f) + (mfin * 2f) + 45f);
+			}
+			Lines.circle(e.x, e.y, 20f * Interp.slowFast.apply(e.foutpow()));
 		});
 }

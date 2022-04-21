@@ -22,7 +22,7 @@ public class OblivionUnits implements ContentList {
 	pioli, taneki, notremite, dopretile, niboletra,
 	assaultDrone,
 
-	republic, giga, archaranid;
+	republic, giga, archaranid, bloodmoon;
 
 	@Override
 	public void load() {
@@ -629,6 +629,39 @@ public class OblivionUnits implements ContentList {
 						damage = 150f;
 						trailSpacing = 10f;
 						range = speed = 45f * 8f;
+					}};
+				}}
+			);
+		}};
+		bloodmoon = new OblivionUnitType("bloodmoon") {{
+			health = 65000;
+			speed = 0.2f;
+			flying = true;
+			constructor = UnitEntity::create;
+			hitSize = 56f;
+			range = 50f * 8f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-bloodmoon-cannon") {{
+					x = y = 0f;
+					reload = 60f;
+					recoil = 5f;
+					shootSound = Sounds.artillery;
+					mirror = false;
+					bullet = new ArtilleryBulletType(1.25f, 250) {{
+						lifetime = 320f;
+						collides = collidesTiles = collidesAir = collidesGrount = true;
+						hitSound = despawnSound = Sounds.plasmaboom;
+						hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
+						fragBullets = 3;
+						fragBullet = new BasicBulletType(1f, 60) {{
+							lifetime = 300f;
+							hitSound = despawnSound = Sounds.plasmaboom;
+							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
+							trailChance = 5f;
+							trailWidth = 1.8f;
+							trailLength = 8f;
+						}};
 					}};
 				}}
 			);
