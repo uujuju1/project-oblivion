@@ -455,7 +455,7 @@ public class OblivionUnits implements ContentList {
 					top = false;
 					bullet = new BasicBulletType(4f, 150) {{
 						lifetime = 100f;
-						width = height = 10f;
+						width = height = 15f;
 						shootEffect = OblivionFx.bigFlameShoot;
 					}};
 				}},
@@ -487,6 +487,8 @@ public class OblivionUnits implements ContentList {
 						collides = true;
 						homingPower = 0.08f;
 						lifetime = 45f;
+						splashDamage = 40f;
+						splashDamageRadius = 30f;
 						width = height = 16f;
 					}};
 				}}
@@ -494,6 +496,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		giga = new UnitType("giga") {{
 			health = 45000f;
+			armor = 13f;
 			speed = 0.3f;
 			hitSize = 32f;
 			landShake = 1.5f;
@@ -561,6 +564,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		archaranid = new UnitType("archaranid") {{
 			health = 60000;
+			armor = 17f;
 			speed = 0.3f;
 			legCount = 8;
 			legMoveSpace = 1.2f;
@@ -635,6 +639,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		bloodmoon = new OblivionUnitType("bloodmoon") {{
 			health = 65000;
+			armor = 18f;
 			speed = 0.2f;
 			flying = true;
 			constructor = UnitEntity::create;
