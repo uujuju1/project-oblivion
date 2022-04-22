@@ -445,7 +445,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-republic-weapon"){{
 					x = 30f;
 					y = 0f;
-					reload = 60f;
+					reload = 40f;
 					recoil = 10f;
 					shootY = 12f;
 					shootSound = Sounds.shootBig;
@@ -477,7 +477,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-republic-laser") {{
 					x = 13.25f;
 					y = 5f;
-					reload = 90f;
+					reload = 60f;
 					recoil = 3f;
 					shootY = 5f;
 					shootSound = Sounds.artillery;
