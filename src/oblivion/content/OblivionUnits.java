@@ -14,7 +14,6 @@ import mindustry.entities.abilities.*;
 import mindustry.ctype.ContentList;
 import oblivion.type.*;
 import oblivion.graphics.*;
-import oblivion.type.draw.*;
 
 public class OblivionUnits implements ContentList {
 	public static UnitType 
@@ -614,6 +613,8 @@ public class OblivionUnits implements ContentList {
 						fragBullet = new LaserBulletType(120) {{
 							width = 10f;
 							length = 80f;
+							shootEffect = OblivionFx.instSapShoot;
+							hitEffect = OblivionFx.instSapHit;
 							colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
 						}};
 					}};
@@ -624,15 +625,12 @@ public class OblivionUnits implements ContentList {
 					reload = 30f;
 					recoil = 2f;
 					shootSound = Sounds.railgun;
-					bullet = new PointBulletType() {{
+					bullet = new LaserBulletType(150) {{
+						length = 180f;
+						width = 12f;
 						shootEffect = OblivionFx.instSapShoot;
 						hitEffect = OblivionFx.instSapHit;
-						smokeEffect = Fx.smokeCloud;
-						trailEffect = OblivionFx.instSapTrail;
-						despawnEffect = OblivionFx.instSapHit;
-						damage = 150f;
-						trailSpacing = 10f;
-						range = speed = 45f * 8f;
+						colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
 					}};
 				}}
 			);
@@ -641,25 +639,42 @@ public class OblivionUnits implements ContentList {
 			health = 65000;
 			armor = 18f;
 			speed = 0.2f;
-			flying = true;
+			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
 			hitSize = 56f;
 			range = 50f * 8f;
+			engineDrawer = unit -> {
+				Draw.color(unit.team.color);;
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, -15, -35), unit.y + Angles.trnsy(unit.rotation - 90, -15, -35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 15, -35), unit.y + Angles.trnsy(unit.rotation - 90, 15, -35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, -20, 35), unit.y + Angles.trnsy(unit.rotation - 90, -20, 35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 20, 35), unit.y + Angles.trnsy(unit.rotation - 90, 20, 35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
+				
+				Draw.color();
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, -20, -30), unit.y + Angles.trnsy(unit.rotation - 90, -20, -30), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation / 2);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 20, -30), unit.y + Angles.trnsy(unit.rotation - 90, 20, -30), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation / 2);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, -25, 35), unit.y + Angles.trnsy(unit.rotation - 90, -25, 35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation / 2);
+				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 25, 35), unit.y + Angles.trnsy(unit.rotation - 90, 25, 35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation / 2);
+			};
 			maxRange = range;
 			weapons.add(
 				new Weapon("oblivion-bloodmoon-cannon") {{
 					x = y = 0f;
 					reload = 60f;
 					recoil = 5f;
+					shootY = 25f;
 					shootSound = Sounds.artillery;
 					mirror = false;
 					bullet = new ArtilleryBulletType(1.25f, 250) {{
+						width = height = 20;
 						lifetime = 320f;
 						collides = collidesTiles = collidesAir = collidesGround = true;
 						hitSound = despawnSound = Sounds.plasmaboom;
 						hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
 						fragBullets = 3;
-						fragBullet = new BasicBulletType(1f, 60) {{
+						fragBullet = new BasicBulletType(3f, 60) {{
+							homingPower = 0.03f;
+							homingRange = 400f;
 							lifetime = 300f;
 							hitSound = despawnSound = Sounds.plasmaboom;
 							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;

@@ -11,11 +11,13 @@ import mindustry.world.meta.*;
 import mindustry.world.draw.*;
 import mindustry.entities.bullet.*;
 import mindustry.world.blocks.units.*;
+import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
+import oblivion.world.blocks.payloads.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -37,6 +39,10 @@ public class OblivionBlocks implements ContentList {
 
 		mandlebrotReconstructor,
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
+
+		carmaniteBuilder,
+
+		carmaniteWallLarge,
 
 		baletise, powderite, tobolite, driedpowder,
 		baletiseWall, powderiteWall, toboliteWall, driedpowderWall;
@@ -144,6 +150,26 @@ public class OblivionBlocks implements ContentList {
 			));
 			consumes.power(2.5f);
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
+		}};
+
+		carmaniteBuilder = new BlockCrafter("carmanite-builder") {{
+			requirements(Category.crafting, with(
+				OblivionResources.carmanite, 24,
+				OblivionResources.calenmite, 20,
+				OblivionResources.mesulfate, 31,
+				Items.silicon, 40,
+				Items.plastanium, 20
+			));
+			size = 3;
+			health = 220;
+			craftTime = 300f;
+			itemCapacity = 50;
+			consumes.items(with(
+				OblivionResources.calenmite, 30,
+				Items.silicon, 20
+			));
+			consumes.power(1f);
+			outputBlock = carmaniteWallLarge;
 		}};
 
 		uno = new ItemTurret("uno") {{
@@ -410,6 +436,12 @@ public class OblivionBlocks implements ContentList {
 		powderiteWall = new StaticWall("powderite-wall");
 		toboliteWall = new StaticWall("tobolite-wall");
 		driedpowderWall = new StaticWall("driedpowder-wall");
+
+		carmaniteWallLarge = new Wall("carmanite-wall") {{
+			requirements(Category.defense, with(OblivionResources.carmanite, 28));
+			size = 3;
+			health = 500;
+		}};
 
 		alphaReconstructor = new Reconstructor("alpha-reconstructor"){{
 			requirements(Category.units, with(
