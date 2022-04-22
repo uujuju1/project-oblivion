@@ -609,7 +609,7 @@ public class OblivionUnits implements ContentList {
 						splashDamage = 200;
 						splashDamageRadius = 16f;
 						fragBullets = 5;
-						fragBullet = new LaserBulletType(80) {{
+						fragBullet = new LaserBulletType(120) {{
 							width = 10f;
 							length = 80f;
 							colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
