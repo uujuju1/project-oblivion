@@ -445,7 +445,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-republic-weapon"){{
 					x = 30f;
 					y = 0f;
-					reload = 40f;
+					reload = 50f;
 					recoil = 10f;
 					shootY = 12f;
 					shootSound = Sounds.shootBig;
@@ -453,7 +453,7 @@ public class OblivionUnits implements ContentList {
 					shotDelay = 5f;
 					shake = 5f;
 					top = false;
-					bullet = new BasicBulletType(4f, 150) {{
+					bullet = new BasicBulletType(13f, 150) {{
 						lifetime = 100f;
 						width = height = 15f;
 						shootEffect = OblivionFx.bigFlameShoot;
@@ -483,7 +483,7 @@ public class OblivionUnits implements ContentList {
 					shootSound = Sounds.artillery;
 					shake = 3f;
 					rotate = alternate = true;
-					bullet = new ArtilleryBulletType(6f, 80) {{
+					bullet = new ArtilleryBulletType(6f, 20) {{
 						collides = true;
 						homingPower = 0.08f;
 						lifetime = 45f;
