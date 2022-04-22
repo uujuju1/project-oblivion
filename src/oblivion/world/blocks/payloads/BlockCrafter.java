@@ -37,7 +37,7 @@ public class BlockCrafter extends PayloadBlock {
 		public void updateTile() {
 			if (cons.valid()) {
 				reload += Time.delta;
-				if (reload => craftTime) {
+				if (reload >= craftTime) {
 					consume();
 					payload = new BuildPayload(outputBlock, team);
 					craftEffect.at(x, y);
@@ -50,8 +50,8 @@ public class BlockCrafter extends PayloadBlock {
 		public void draw() {
 			Draw.rect(region, x, y, 0f);
 			Draw.rect(outRegion, x, y, block.rotate ? rotdeg() : 0f);
-			lowAltitude ? drawer.get(this); : Draw.rect(topRegion, x, y, 0);
-			!lowAltitude ? drawer.get(this); : Draw.rect(topRegion, x, y, 0);
+			lowAltitude ? drawer.get(this) : Draw.rect(topRegion, x, y, 0);
+			!lowAltitude ? drawer.get(this) : Draw.rect(topRegion, x, y, 0);
 		}
 
 		@Override
