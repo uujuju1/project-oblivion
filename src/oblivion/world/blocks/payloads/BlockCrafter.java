@@ -1,15 +1,16 @@
-package oblivion.world.payloads;
+package oblivion.world.blocks.payloads;
 
 import arc.util.*;
+import arc.func.*;
 import arc.struct.*;
 import arc.util.io.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.world.*;
 import mindustry.content.*;
-import mindustry.world.payloads.*;
-import mindustry.entities.effect.*;
+import mindustry.entities.*;
 import mindustry.world.consumers.*;
+import mindustry.world.blocks.payloads.*;
 
 // crafter that makes blocks(probably there is an already working one in mindustry but idk how that one would work)
 public class BlockCrafter extends PayloadBlock {

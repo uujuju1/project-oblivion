@@ -14,7 +14,6 @@ import mindustry.entities.abilities.*;
 import mindustry.ctype.ContentList;
 import oblivion.type.*;
 import oblivion.graphics.*;
-import oblivion.type.draw.*;
 
 public class OblivionUnits implements ContentList {
 	public static UnitType 

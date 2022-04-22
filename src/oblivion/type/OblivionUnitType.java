@@ -3,7 +3,6 @@ package oblivion.type;
 import arc.func.*;
 import mindustry.gen.*;
 import mindustry.type.*;
-import oblivion.type.draw.*;
 
 // engineSize and engineOffset is now useless {:
 public class OblivionUnitType extends UnitType {
