@@ -453,10 +453,10 @@ public class OblivionUnits implements ContentList {
 					shotDelay = 5f;
 					shake = 5f;
 					top = false;
-					bullet = new BasicBulletType(13f, 150) {{
+					bullet = new BasicBulletType(8f, 150) {{
 						 pierce = true;
 						 pierceCap = 7;
-						lifetime = 25f;
+						lifetime = 50f;
 						width = height = 15f;
 						shootEffect = OblivionFx.bigFlameShoot;
 					}};
