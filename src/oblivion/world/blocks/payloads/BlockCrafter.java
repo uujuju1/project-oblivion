@@ -40,7 +40,7 @@ public class BlockCrafter extends PayloadBlock {
 				reload += Time.delta;
 				if (reload >= craftTime) {
 					consume();
-					payload = new BuildPayload(outputBlock, team);
+					if (block != null) payload = new BuildPayload(outputBlock, team);
 					craftEffect.at(x, y);
 				}
 			}

@@ -609,6 +609,8 @@ public class OblivionUnits implements ContentList {
 						fragBullet = new LaserBulletType(80) {{
 							width = 10f;
 							length = 80f;
+							shootEffect = OblivionFx.instSapShoot;
+							hitEffect = OblivionFx.instSapHit;
 							colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
 						}};
 					}};
@@ -619,15 +621,12 @@ public class OblivionUnits implements ContentList {
 					reload = 30f;
 					recoil = 2f;
 					shootSound = Sounds.railgun;
-					bullet = new PointBulletType() {{
+					bullet = new LaserBulletType(150) {{
+						length = 180f;
+						width = 12f;
 						shootEffect = OblivionFx.instSapShoot;
 						hitEffect = OblivionFx.instSapHit;
-						smokeEffect = Fx.smokeCloud;
-						trailEffect = OblivionFx.instSapTrail;
-						despawnEffect = OblivionFx.instSapHit;
-						damage = 150f;
-						trailSpacing = 10f;
-						range = speed = 45f * 8f;
+						colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
 					}};
 				}}
 			);
@@ -670,7 +669,7 @@ public class OblivionUnits implements ContentList {
 						fragBullets = 3;
 						fragBullet = new BasicBulletType(3f, 60) {{
 							homingPower = 0.03f;
-							homingRange = 400f;s
+							homingRange = 400f;
 							lifetime = 300f;
 							hitSound = despawnSound = Sounds.plasmaboom;
 							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
