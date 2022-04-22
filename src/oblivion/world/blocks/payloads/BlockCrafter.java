@@ -18,7 +18,7 @@ public class BlockCrafter extends PayloadBlock {
 	// draw cons over or under top region
 	public boolean lowAltitude = false;
 	public Cons<Building> drawer = build -> {};
-	public @Nullable Block outputBlock = null;
+	public Block outputBlock = Blocks.copperWall;
 	public float craftTime = 60f;
 
 	public BlockCrafter(String name) {
@@ -39,8 +39,7 @@ public class BlockCrafter extends PayloadBlock {
 			if (cons.valid()) {
 				reload += Time.delta;
 				if (reload >= craftTime) {
-					consume();
-					if (block != null) payload = new BuildPayload(outputBlock, team);
+					payload = new BuildPayload(outputBlock, team);
 					craftEffect.at(x, y);
 				}
 			}

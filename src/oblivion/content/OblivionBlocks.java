@@ -152,10 +152,18 @@ public class OblivionBlocks implements ContentList {
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
 		}};
 
-		carmaniteBuilder = new BlockCrafter("carmaniteBuilder") {{
+		carmaniteBuilder = new BlockCrafter("carmanite-builder") {{
+			requirements(Category.crafting, with(
+				OblivionResources.carmanite, 24,
+				OblivionResources.calenmite, 20,
+				OblivionResources.mesulfate, 31,
+				Items.silicon, 40,
+				Items.plastanium, 20
+			));
 			size = 3;
 			health = 220;
 			craftTime = 300f;
+			itemCapacity = 50;
 			consumes.items(with(
 				OblivionResources.calenmite, 30,
 				Items.silicon, 20
