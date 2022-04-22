@@ -50,8 +50,8 @@ public class BlockCrafter extends PayloadBlock {
 		public void draw() {
 			Draw.rect(region, x, y, 0f);
 			Draw.rect(outRegion, x, y, block.rotate ? rotdeg() : 0f);
-			lowAltitude ? drawer.get(this) : Draw.rect(topRegion, x, y, 0);
-			!lowAltitude ? drawer.get(this) : Draw.rect(topRegion, x, y, 0);
+			if(lowAltitude){drawer.get(this);} else {Draw.rect(topRegion, x, y, 0);}
+			if(!lowAltitude){drawer.get(this);} else {Draw.rect(topRegion, x, y, 0);}
 		}
 
 		@Override

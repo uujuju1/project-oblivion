@@ -670,8 +670,8 @@ public class OblivionUnits implements ContentList {
 						hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
 						fragBullets = 3;
 						fragBullet = new BasicBulletType(3f, 60) {{
-							homingPower = 0.03
-							homingRange = 400
+							homingPower = 0.03f;
+							homingRange = 400f;s
 							lifetime = 300f;
 							hitSound = despawnSound = Sounds.plasmaboom;
 							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
