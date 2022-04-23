@@ -444,7 +444,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-republic-weapon"){{
 					x = 30f;
 					y = 0f;
-					reload = 60f;
+					reload = 45f;
 					recoil = 10f;
 					shootY = 12f;
 					shootSound = Sounds.shootBig;
@@ -452,9 +452,14 @@ public class OblivionUnits implements ContentList {
 					shotDelay = 5f;
 					shake = 5f;
 					top = false;
-					bullet = new BasicBulletType(4f, 150) {{
-						lifetime = 100f;
-						width = height = 10f;
+					bullet = new BasicBulletType(8f, 150) {{
+						 pierce = true;
+						 pierceCap = 7;
+						lifetime = 40f;
+						width = height = 15f;
+		                                hitEffect = Fx.flakExplosion;
+                                                splashDamage = 20f;
+                                                splashDamageRadius = 10f;
 						shootEffect = OblivionFx.bigFlameShoot;
 					}};
 				}},
@@ -476,7 +481,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-republic-laser") {{
 					x = 13.25f;
 					y = 5f;
-					reload = 90f;
+					reload = 60f;
 					recoil = 3f;
 					shootY = 5f;
 					shootSound = Sounds.artillery;
@@ -486,6 +491,8 @@ public class OblivionUnits implements ContentList {
 						collides = true;
 						homingPower = 0.08f;
 						lifetime = 45f;
+						splashDamageRadius = 40f;
+						splashDamage = 20f;
 						width = height = 16f;
 					}};
 				}}
@@ -493,6 +500,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		giga = new UnitType("giga") {{
 			health = 45000f;
+			armor = 13f;
 			speed = 0.3f;
 			hitSize = 32f;
 			landShake = 1.5f;
@@ -560,6 +568,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		archaranid = new UnitType("archaranid") {{
 			health = 60000;
+			armor = 17f;
 			speed = 0.3f;
 			legCount = 8;
 			legMoveSpace = 1.2f;
@@ -606,7 +615,7 @@ public class OblivionUnits implements ContentList {
 						splashDamage = 200;
 						splashDamageRadius = 16f;
 						fragBullets = 5;
-						fragBullet = new LaserBulletType(80) {{
+						fragBullet = new LaserBulletType(120) {{
 							width = 10f;
 							length = 80f;
 							shootEffect = OblivionFx.instSapShoot;
@@ -633,6 +642,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		bloodmoon = new OblivionUnitType("bloodmoon") {{
 			health = 65000;
+			armor = 18f;
 			speed = 0.2f;
 			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
