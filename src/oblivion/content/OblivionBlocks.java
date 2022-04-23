@@ -17,7 +17,7 @@ import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
-import oblivion.world.blocks.payloads.*;
+import oblivion.blocks.production.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -40,10 +40,6 @@ public class OblivionBlocks implements ContentList {
 		mandlebrotReconstructor,
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
 
-		carmaniteBuilder,
-
-		carmaniteWallLarge,
-
 		baletise, powderite, tobolite, driedpowder,
 		baletiseWall, powderiteWall, toboliteWall, driedpowderWall;
 
@@ -55,7 +51,7 @@ public class OblivionBlocks implements ContentList {
 			alwaysUnlocked = true;
 		}};
 
-		mesoForge = new GenericCrafter("meso-forge") {{
+		mesoForge = new DrawableCrafter("meso-forge") {{
 			requirements(Category.crafting, with(
 				Items.silicon, 40,
 				Items.graphite, 60,
@@ -65,7 +61,6 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			health = 200;
 			craftTime = 30f;
-			drawer = new DrawSmelter(Color.valueOf("FFC2CA"));
 			consumes.items(with(
 				Items.copper, 2,
 				Items.lead, 2
@@ -150,26 +145,6 @@ public class OblivionBlocks implements ContentList {
 			));
 			consumes.power(2.5f);
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
-		}};
-
-		carmaniteBuilder = new BlockCrafter("carmanite-builder") {{
-			requirements(Category.crafting, with(
-				OblivionResources.carmanite, 24,
-				OblivionResources.calenmite, 20,
-				OblivionResources.mesulfate, 31,
-				Items.silicon, 40,
-				Items.plastanium, 20
-			));
-			size = 3;
-			health = 220;
-			craftTime = 300f;
-			itemCapacity = 50;
-			consumes.items(with(
-				OblivionResources.calenmite, 30,
-				Items.silicon, 20
-			));
-			consumes.power(1f);
-			outputBlock = carmaniteWallLarge;
 		}};
 
 		uno = new ItemTurret("uno") {{
@@ -437,12 +412,6 @@ public class OblivionBlocks implements ContentList {
 		toboliteWall = new StaticWall("tobolite-wall");
 		driedpowderWall = new StaticWall("driedpowder-wall");
 
-		carmaniteWallLarge = new Wall("carmanite-wall") {{
-			requirements(Category.defense, with(OblivionResources.carmanite, 28));
-			size = 3;
-			health = 500;
-		}};
-
 		alphaReconstructor = new Reconstructor("alpha-reconstructor"){{
 			requirements(Category.units, with(
 				Items.copper, 200, Items.lead, 120, Items.silicon, 90
@@ -533,7 +502,9 @@ public class OblivionBlocks implements ContentList {
 			liquidCapacity = 360f;
 			upgrades.addAll(
 				new UnitType[]{UnitTypes.reign, OblivionUnits.republic},
-				new UnitType[]{UnitTypes.corvus, OblivionUnits.giga}
+				new UnitType[]{UnitTypes.corvus, OblivionUnits.giga},
+				new UnitType[]{UnitTypes.toxopid, OblivionUnits.archaranid},
+				new UnitType[]{UnitTypes.eclipse, OblivionUnits.bloodmoon}
 			);
 		}};
 	}

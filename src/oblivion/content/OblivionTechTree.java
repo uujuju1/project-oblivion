@@ -153,5 +153,8 @@ public class OblivionTechTree implements ContentList {
 		extendNode(UnitTypes.toxopid, () -> {
 			node(OblivionUnits.archaranid, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
 		});
+		extendNode(UnitTypes.eclipse, () -> {
+			node(OblivionUnits.bloodmoon, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
+		});
 	}
 }
