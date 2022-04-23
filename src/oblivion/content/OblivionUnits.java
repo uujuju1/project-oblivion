@@ -455,7 +455,7 @@ public class OblivionUnits implements ContentList {
 					bullet = new BasicBulletType(8f, 150) {{
 						 pierce = true;
 						 pierceCap = 7;
-						lifetime = 50f;
+						lifetime = 40f;
 						width = height = 15f;
 						shootEffect = OblivionFx.bigFlameShoot;
 					}};
