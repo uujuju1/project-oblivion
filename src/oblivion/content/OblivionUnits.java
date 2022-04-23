@@ -452,7 +452,7 @@ public class OblivionUnits implements ContentList {
 					shotDelay = 5f;
 					shake = 5f;
 					top = false;
-					bullet = new BasicBulletType(8f, 130) {{
+					bullet = new BasicBulletType(8f, 150) {{
 						 pierce = true;
 						 pierceCap = 7;
 						lifetime = 40f;
@@ -487,11 +487,11 @@ public class OblivionUnits implements ContentList {
 					shootSound = Sounds.artillery;
 					shake = 3f;
 					rotate = alternate = true;
-					bullet = new ArtilleryBulletType(6f, 60) {{
+					bullet = new ArtilleryBulletType(6f, 80) {{
 						collides = true;
 						homingPower = 0.08f;
 						lifetime = 45f;
-						splashDamageRadius = 25f;
+						splashDamageRadius = 40f;
 						splashDamage = 20f;
 						width = height = 16f;
 					}};
