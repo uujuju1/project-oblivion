@@ -61,6 +61,33 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			health = 200;
 			craftTime = 30f;
+			draw = bu -> {
+				Draw.rect(Core.atlas.find("oblivion-meso-forge"), bu.x, bu.y, 0f);
+				Draw.alpha(bu.warmup);
+				Draw.rect(Core.atlas.find("oblivion-meso-forge-top"), bu.x, bu.y, 0f);
+				Draw.alpha(1f);
+				
+				Draw.color(OblivionPal.mesoDark, OblivionPal.mesoLight, bu.warmup);
+				for (var i = 0; i < 4; i++) {
+					float x = bu.x + Angles.trnsx((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
+					float y = bu.y + Angles.trnsy((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
+					Lines.lineAngle(x, y, Angles.angle(bu.x, bu.y, x, y), Mathf.absin(10f, 5f));
+				}
+				for (var i = 0; i < 4; i++) {
+					float x = bu.x + Angles.trnsx((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
+					float y = bu.y + Angles.trnsy((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
+					Lines.lineAngle(x, y, Angles.angle(bu.x, bu.y, x, y) + 90, Mathf.absin(10f, 5f));
+				}
+				for (var i = 0; i < 4; i++) {
+					float x = bu.x + Angles.trnsx((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
+					float y = bu.y + Angles.trnsy((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
+					Lines.lineAngle(x, y, Angles.angle(bu.x, bu.y, x, y) - 90, Mathf.absin(10f, 5f));
+				}
+				
+				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) * bu.warmup);
+				Draw.reset();
+				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
+			};
 			consumes.items(with(
 				Items.copper, 2,
 				Items.lead, 2
@@ -68,7 +95,7 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(1f);
 			outputItem = new ItemStack(OblivionResources.mesulfate, 1);
 		}};
-		carbonicInfuser = new GenericCrafter("carbonic-infuser") {{
+		carbonicInfuser = new DrawableCrafter("carbonic-infuser") {{
 			requirements(Category.crafting, with(
 				OblivionResources.mesulfate, 80,
 				Items.silicon, 120,
@@ -79,7 +106,6 @@ public class OblivionBlocks implements ContentList {
 			size = 4;
 			health = 220;
 			craftTime = 60f;
-			drawer = new DrawSmelter(Color.valueOf("DEDEDE"));
 			consumes.items(with(
 				OblivionResources.calenmite, 3,
 				Items.silicon, 2
@@ -87,7 +113,7 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(1.5f);
 			outputItem = new ItemStack(OblivionResources.carmanite, 2);
 		}};
-		cloroSynthetizer = new GenericCrafter("cloro-synthetizer") {{
+		cloroSynthetizer = new DrawableCrafter("cloro-synthetizer") {{
 			requirements(Category.crafting, with(
 				Items.thorium, 70,
 				Items.plastanium, 120,
@@ -96,10 +122,6 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			health = 200;
 			craftTime = 90f;
-			drawer = new DrawCultivator() {{
-				plantColor = Color.valueOf("86F284");
-				plantColorLight = Color.valueOf("6EC76C");
-			}};
 			consumes.items(with(
 				OblivionResources.mesulfate, 1,
 				Items.sporePod, 1
@@ -107,7 +129,7 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(0.5f);
 			outputItem = new ItemStack(OblivionResources.copremite, 1);
 		}};
-		calonicKiln = new GenericCrafter("calonic-kiln") {{
+		calonicKiln = new DrawableCrafter("calonic-kiln") {{
 			requirements(Category.crafting, with(
 				Items.thorium, 60,
 				Items.metaglass, 150,
@@ -118,7 +140,6 @@ public class OblivionBlocks implements ContentList {
 			health = 200;
 			craftTime = 30f;
 			craftEffect = OblivionFx.calciteSmelt;
-			drawer = new DrawSmelter(Color.valueOf("D1D1D1"));
 			consumes.items(with(
 				OblivionResources.mesulfate, 1,
 				Items.metaglass, 3
@@ -126,7 +147,7 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(0.25f);
 			outputItem = new ItemStack(OblivionResources.calenmite, 1);
 		}};
-		moloniteSmelter = new GenericCrafter("molonite-smelter") {{
+		moloniteSmelter = new DrawableCrafter("molonite-smelter") {{
 			requirements(Category.crafting, with(
 				OblivionResources.carmanite, 120,
 				OblivionResources.copremite, 180,
