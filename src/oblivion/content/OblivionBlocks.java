@@ -1,5 +1,6 @@
 package oblivion.content;
 
+import arc.*;
 import arc.math.*;
 import arc.struct.*;
 import arc.graphics.*;

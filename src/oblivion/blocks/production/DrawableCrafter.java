@@ -6,7 +6,7 @@ import mindustry.gen.*;
 import mindustry.world.blocks.production.*;
 // a crafter that inutilizes drawers
 public class DrawableCrafter extends GenericCrafter {
-	public Cons<Building> draw;
+	public Cons<DrawableCrafterBuild> draw;
 
 	public DrawableCrafter(String name, Cons<Building> draw) {
 		super(name);
