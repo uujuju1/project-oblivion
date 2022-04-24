@@ -8,7 +8,7 @@ import mindustry.world.blocks.production.*;
 public class DrawableCrafter extends GenericCrafter {
 	public Cons<DrawableCrafterBuild> draw;
 
-	public DrawableCrafter(String name, Cons<Building> draw) {
+	public DrawableCrafter(String name, Cons<DrawableCrafterBuild> draw) {
 		super(name);
 		this.draw = draw;
 	}
