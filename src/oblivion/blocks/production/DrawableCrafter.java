@@ -19,7 +19,7 @@ public class DrawableCrafter extends GenericCrafter {
 
 	@Override
 	public TextureRegion[] icons() {
-		return new TextureRegion[]{Core.atlas.find(name + "-full")};
+		return new TextureRegion[]{Core.atlas.find(name + "-full", name)};
 	}
 
 	public class DrawableCrafterBuild extends GenericCrafterBuild {

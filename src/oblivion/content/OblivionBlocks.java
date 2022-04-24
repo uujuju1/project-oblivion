@@ -127,7 +127,6 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			health = 200;
 			craftTime = 90f;
-			icon = new TextureRegion[]{region, Core.atlas.find(name + "-top")};
 			consumes.items(with(
 				OblivionResources.mesulfate, 1,
 				Items.sporePod, 1
