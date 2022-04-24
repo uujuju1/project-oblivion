@@ -72,17 +72,17 @@ public class OblivionBlocks implements ContentList {
 				Draw.alpha(1f);
 				
 				Draw.color(OblivionPal.mesoDark, OblivionPal.mesoLight, bu.warmup);
-				for (var i = 0; i < 4; i++) {
+				for (int i = 0; i < 4; i++) {
 					float x = bu.x + Angles.trnsx((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
 					float y = bu.y + Angles.trnsy((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
 					Lines.lineAngle(x, y, Angles.angle(bu.x, bu.y, x, y), Mathf.absin(10f, 5f));
 				}
-				for (var i = 0; i < 4; i++) {
+				for (int i = 0; i < 4; i++) {
 					float x = bu.x + Angles.trnsx((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
 					float y = bu.y + Angles.trnsy((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
 					Lines.lineAngle(x, y, Angles.angle(bu.x, bu.y, x, y) + 90, Mathf.absin(10f, 5f));
 				}
-				for (var i = 0; i < 4; i++) {
+				for (int i = 0; i < 4; i++) {
 					float x = bu.x + Angles.trnsx((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
 					float y = bu.y + Angles.trnsy((Time.time * 5f) + (i * 90f), -10f + Mathf.absin(10f, 5f), 0f);
 					Lines.lineAngle(x, y, Angles.angle(bu.x, bu.y, x, y) - 90, Mathf.absin(10f, 5f));
@@ -109,7 +109,7 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 4;
 			health = 220;
-			craftTime = 60f;
+			craftTime = 60f;	
 			consumes.items(with(
 				OblivionResources.calenmite, 3,
 				Items.silicon, 2
@@ -126,6 +126,7 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			health = 200;
 			craftTime = 90f;
+			icon = new TextureRegion[]{region, Core.atlas.find(name + "-top")};
 			consumes.items(with(
 				OblivionResources.mesulfate, 1,
 				Items.sporePod, 1
@@ -144,6 +145,31 @@ public class OblivionBlocks implements ContentList {
 			health = 200;
 			craftTime = 30f;
 			craftEffect = OblivionFx.calciteSmelt;
+			draw = bu -> {
+				Draw.rect(Core.atlas.find("oblivion-calonic-kiln"), bu.x, bu.y, 0f);
+				Draw.alpha(bu.warmup);
+				Draw.rect(Core.atlas.find("oblivion-calonic-kiln-top"), bu.x, bu.y, 0f);
+				Draw.alpha(1f);
+				
+				Draw.color(Color.valueOf("949494"), Color.valueOf("E3E3E3"), bu.warmup);
+				for (int i = 0; i < 4; i++) {
+					float x = bu.x + Angles.trnsx((i * 90f) + 45f, -6f, 0f);
+					float y = bu.y + Angles.trnsy((i * 90f) + 45f, -6f, 0f);
+					Drawf.tri(x, y, (10f + Mathf.absin(5f, 1f)), (8f + Mathf.absin(5f, 1f)) * bu.warmup, (i * 90f) + 225f)
+				}
+				
+				Draw.reset();
+				for (int i = 0; i < 4; i++) {
+					float x = bu.x + Angles.trnsx((i * 90f) + 45f, -6f, 0f);
+					float y = bu.y + Angles.trnsy((i * 90f) + 45f, -6f, 0f);
+					Drawf.tri(x, y, (10f + Mathf.absin(5f, 1f)) / 2f, (8f + Mathf.absin(5f, 1f)) / 2f * bu.warmup, (i * 90f) + 225f)
+				}
+				
+				Draw.color(Color.valueOf("AD4747"), Color.valueOf("F79797"), bu.warmup)
+				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) * bu.warmup);
+				Draw.reset()
+				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
+			};
 			consumes.items(with(
 				OblivionResources.mesulfate, 1,
 				Items.metaglass, 3
