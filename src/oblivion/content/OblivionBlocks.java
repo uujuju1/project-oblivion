@@ -155,19 +155,19 @@ public class OblivionBlocks implements ContentList {
 				for (int i = 0; i < 4; i++) {
 					float x = bu.x + Angles.trnsx((i * 90f) + 45f, -6f, 0f);
 					float y = bu.y + Angles.trnsy((i * 90f) + 45f, -6f, 0f);
-					Drawf.tri(x, y, (10f + Mathf.absin(5f, 1f)), (8f + Mathf.absin(5f, 1f)) * bu.warmup, (i * 90f) + 225f)
+					Drawf.tri(x, y, (10f + Mathf.absin(5f, 1f)), (8f + Mathf.absin(5f, 1f)) * bu.warmup, (i * 90f) + 225f);
 				}
 				
 				Draw.reset();
 				for (int i = 0; i < 4; i++) {
 					float x = bu.x + Angles.trnsx((i * 90f) + 45f, -6f, 0f);
 					float y = bu.y + Angles.trnsy((i * 90f) + 45f, -6f, 0f);
-					Drawf.tri(x, y, (10f + Mathf.absin(5f, 1f)) / 2f, (8f + Mathf.absin(5f, 1f)) / 2f * bu.warmup, (i * 90f) + 225f)
+					Drawf.tri(x, y, (10f + Mathf.absin(5f, 1f)) / 2f, (8f + Mathf.absin(5f, 1f)) / 2f * bu.warmup, (i * 90f) + 225f);
 				}
 				
-				Draw.color(Color.valueOf("AD4747"), Color.valueOf("F79797"), bu.warmup)
+				Draw.color(Color.valueOf("AD4747"), Color.valueOf("F79797"), bu.warmup);
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) * bu.warmup);
-				Draw.reset()
+				Draw.reset();
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
 			};
 			consumes.items(with(
