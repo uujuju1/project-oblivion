@@ -110,7 +110,28 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 4;
 			health = 220;
-			craftTime = 60f;	
+			craftTime = 60f;
+			draw = bu -> {
+				Draw.rect(Core.atlas.find("oblivion-carbonic-infuser"), bu.x, bu.y, 0);
+				Draw.alpha(bu.warmup);
+				Draw.rect(Core.atlas.find("oblivion-carbonic-infuser-top"), bu.x, bu.y, 0);
+				Draw.reset();
+				Draw.color(Color.black, Color.valueOf("ababab"), bu.warmup)
+				Fill.circle(bu.x, bu.y, (5 + Mathf.absin(5, 1)) * bu.warmup);
+				for (var i = 0; i < 4; i++) {
+				  let x = bu.x + Angles.trnsx((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup, 0);
+				  let y = bu.y + Angles.trnsy((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup, 0);
+				  Drawf.tri(x, y, 8 * bu.warmup, 8 * bu.warmup, (i * 90) + 45 + Time.time)
+				}
+				
+				Draw.color(Color.black, Color.white, bu.warmup);
+				Fill.circle(bu.x, bu.y, (5 + Mathf.absin(5, 1)) * bu.warmup / 2);
+				for (var i = 0; i < 4; i++) {
+				  let x = bu.x + Angles.trnsx((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup / 2, 0);
+				  let y = bu.y + Angles.trnsy((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup / 2, 0);
+				  Drawf.tri(x, y, 4 * bu.warmup, 4 * bu.warmup, (i * 90) + 45 + Time.time)
+				}
+			};
 			consumes.items(with(
 				OblivionResources.calenmite, 3,
 				Items.silicon, 2
@@ -127,6 +148,20 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			health = 200;
 			craftTime = 90f;
+			draw = bu -> {
+				Draw.rect(Core.atlas.find("oblivion-cloro-synthetizer"), bu.x, bu.y, 0f);
+				Draw.alpha(bu.warmup);
+				Draw.rect(Core.atlas.find("oblivion-cloro-synthetizer-middle"), bu.x, bu.y, 0f);
+				Draw.color(Color.valueOf("4A4B53"), Color.valueOf("989AA4"), bu.warmup);
+				for (int i = 0; i < 4; i++) {
+					float x = bu.x + Angles.trnsx((i * 90f), -6f, 0f);
+					float y = bu.y + Angles.trnsy((i * 90f), -6f, 0f);
+					Lines.lineAngle(x, y, (i * 90f) + 90f + Time.time * 2f, 2f * bu.warmup);
+					Lines.lineAngle(x, y, (i * 90f) - 90f + Time.time * 2f, 2f * bu.warmup);
+				}
+				Draw.reset();
+				Draw.rect(Core.atlas.find("oblivion-cloro-synthetizer-top"), bu.x, bu.y, 0f);
+			};
 			consumes.items(with(
 				OblivionResources.mesulfate, 1,
 				Items.sporePod, 1
