@@ -275,6 +275,9 @@ public class OblivionBlocks implements ContentList {
 			health = 1440;
 			reloadTime = 90f;
 			range = 240f;
+			shots = 4f;
+			burstSpacing = 3f;
+			innacuracy = 8f;
 			rotateSpeed = 5f;
 			ammo(
 				OblivionResources.mesulfate, new ArtilleryBulletType(3f, 35) {{
