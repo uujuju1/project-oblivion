@@ -116,20 +116,20 @@ public class OblivionBlocks implements ContentList {
 				Draw.alpha(bu.warmup);
 				Draw.rect(Core.atlas.find("oblivion-carbonic-infuser-top"), bu.x, bu.y, 0);
 				Draw.reset();
-				Draw.color(Color.black, Color.valueOf("ababab"), bu.warmup)
+				Draw.color(Color.black, Color.valueOf("ababab"), bu.warmup);
 				Fill.circle(bu.x, bu.y, (5 + Mathf.absin(5, 1)) * bu.warmup);
-				for (var i = 0; i < 4; i++) {
-				  let x = bu.x + Angles.trnsx((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup, 0);
-				  let y = bu.y + Angles.trnsy((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup, 0);
-				  Drawf.tri(x, y, 8 * bu.warmup, 8 * bu.warmup, (i * 90) + 45 + Time.time)
+				for (int i = 0; i < 4; i++) {
+				  float x = bu.x + Angles.trnsx((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup, 0);
+				  float y = bu.y + Angles.trnsy((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup, 0);
+				  Drawf.tri(x, y, 8 * bu.warmup, 8 * bu.warmup, (i * 90) + 45 + Time.time);
 				}
 				
 				Draw.color(Color.black, Color.white, bu.warmup);
 				Fill.circle(bu.x, bu.y, (5 + Mathf.absin(5, 1)) * bu.warmup / 2);
-				for (var i = 0; i < 4; i++) {
-				  let x = bu.x + Angles.trnsx((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup / 2, 0);
-				  let y = bu.y + Angles.trnsy((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup / 2, 0);
-				  Drawf.tri(x, y, 4 * bu.warmup, 4 * bu.warmup, (i * 90) + 45 + Time.time)
+				for (int i = 0; i < 4; i++) {
+				  float x = bu.x + Angles.trnsx((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup / 2, 0);
+				  float y = bu.y + Angles.trnsy((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup / 2, 0);
+				  Drawf.tri(x, y, 4 * bu.warmup, 4 * bu.warmup, (i * 90) + 45 + Time.time);
 				}
 			};
 			consumes.items(with(
