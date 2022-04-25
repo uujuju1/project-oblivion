@@ -224,11 +224,11 @@ public class OblivionBlocks implements ContentList {
 			health = 300;
 			craftTime = 120f;
 			draw = bu -> {
-				Draw.rect(Core.atlas.find("oblivion-molonite-smelter"), bux, buy, 0);
-				Draw.alpha(bua);
-				Draw.rect(Core.atlas.find("oblivion-molonite-smelter-top"), bux, buy, 0);
+				Draw.rect(Core.atlas.find("oblivion-molonite-smelter"), bu.x, bu.y, 0);
+				Draw.alpha(bu.warmup);
+				Draw.rect(Core.atlas.find("oblivion-molonite-smelter-top"), bu.x, bu.y, 0);
 				Draw.reset();
-				Draw.color(Color.black, Color.valueOf("ababab"), bu.warmup);
+				Draw.color(Color.valueOf("1F254D"), Color.valueOf("424FA3"), bu.warmup);
 				Fill.circle(bu.x, bu.y, (5 + Mathf.absin(5, 1)) * bu.warmup);
 				for (int i = 0; i < 4; i++) {
 				  float x = bu.x + Angles.trnsx((i * 90) + 45 + Time.time, (2 + Mathf.absin(5, 1)) * bu.warmup, 0);
