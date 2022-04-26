@@ -437,10 +437,8 @@ public class OblivionBlocks implements ContentList {
 					width = height = 13f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
-					hitColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
 					shootSound = Sounds.artillery;
-				        hitEffect = HitFx.coloredHitSmall;
 					status = OblivionStatuses.infested;
 					statusDuration = 60f * 12f;
 				}}
