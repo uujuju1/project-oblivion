@@ -61,14 +61,41 @@ public class OblivionUnitType extends UnitType {
 		Draw.z(z);
 
 		if(drawBody) drawOutline(unit);
-		weapons.each(w -> if(w instanceof OblivionWeapon) {if(w.above) {drawWeaponOutlines(unit);}} else {drawWeaponOutlines(unit);});
+		weapons.each(w -> {
+			if(w instanceof OblivionWeapon) {
+				if(((OblivionWeapon) w).above) {
+					drawWeaponOutlines(unit);
+				}
+			} else {
+				drawWeaponOutlines(unit);
+			}
+		});
 		if(engineSize > 0) drawEngine(unit);
 		if(drawBody) drawBody(unit);
 		if(drawCell) drawCell(unit);
-		weapons.each(w -> if(w instanceof OblivionWeapon) {if(w.above) {drawWeapons(unit);}} else {drawWeapons(unit);});
-		if(drawItems) drawItems(unit);
-		weapons.each(w -> if(w instanceof OblivionWeapon) {if(!w.above) {drawWeaponOutlines(unit);}});
-		weapons.each(w -> if(w instanceof OblivionWeapon) {if(!w.above) {drawWeapons(unit);}});
+		weapons.each(w -> {
+			if(w instanceof OblivionWeapon) {
+				if(((OblivionWeapon) w).above) {
+					drawWeapons(unit);
+				}
+			} else {
+				drawWeapons(unit);
+			}
+		});		if(drawItems) drawItems(unit);
+		weapons.each(w -> {
+			if(w instanceof OblivionWeapon) {
+				if(!((OblivionWeapon) w).above) {
+					drawWeaponOutlines(unit);
+				}
+			}
+		});
+		weapons.each(w -> {
+			if(w instanceof OblivionWeapon) {
+				if(!((OblivionWeapon) w).above) {
+					drawWeapons(unit);
+				}
+			}
+		});
 		drawLight(unit);
 
 		if(unit.shieldAlpha > 0 && drawShields){
