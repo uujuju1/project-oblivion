@@ -431,16 +431,6 @@ public class OblivionBlocks implements ContentList {
 			reloadTime = 75f;
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
-			fragBullets = 5;
-                        fragLifeMin = 1.0f;
-                        fragLifeMax = 1.2f;
-                        fragBullet = new ShrapnelBulletType(){{
-                        damage = 10f;
-                        length = 10f;
-                        width = 8f;
-		        toColor = Color.valueOf("74C272");
-                        hitColor = Color.valueOf("4F824B");
-		        hitEffect = HitFx.coloredHitSmall;
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2.5f, 25) {{
 					lifetime = range/speed;
