@@ -431,24 +431,26 @@ public class OblivionBlocks implements ContentList {
 			reloadTime = 75f;
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
+			fragBullets = 5;
+                        fragLifeMin = 1.0f;
+                        fragLifeMax = 1.2f;
+                        fragBullet = new ShrapnelBulletType(){{
+                        damage = 10f;
+                        length = 10f;
+                        width = 8f;
+		        toColor = Color.valueOf("74C272");
+                        hitColor = Color.valueOf("4F824B");
+		        hitEffect = HitFx.coloredHitSmall;
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2.5f, 25) {{
 					lifetime = range/speed;
 					width = height = 13f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
+					hitColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
 					shootSound = Sounds.artillery;
-					fragBullets = 5;
-                                        fragLifeMin = 0.9f;
-                                        fragLifeMax = 1.1f;
-                                        fragBullet = new ShrapnelBulletType(){{
-                                        damage = 10f;
-                                        length = 10f;
-                                        width = 8f;
-			                toColor = Color.valueOf("74C272");
-                                        hitColor = Color.valueOf("4F824B");
-				        hitEffect = HitFx.coloredHitSmall;
+				        hitEffect = HitFx.hitExplosionLarge;
 					status = OblivionStatuses.infested;
 					statusDuration = 60f * 12f;
 				}}
