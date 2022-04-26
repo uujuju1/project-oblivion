@@ -4,6 +4,7 @@ import arc.func.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+import mindustry.graphics.*;
 
 // engineSize and engineOffset is now useless {:
 public class OblivionUnitType extends UnitType {
