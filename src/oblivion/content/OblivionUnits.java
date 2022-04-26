@@ -21,7 +21,7 @@ public class OblivionUnits implements ContentList {
 	pioli, taneki, notremite, dopretile, niboletra,
 	assaultDrone,
 
-	republic, giga, archaranid, bloodmoon;
+	republic, giga, archaranid, bloodmoon, yetinus;
 
 	@Override
 	public void load() {
@@ -687,6 +687,43 @@ public class OblivionUnits implements ContentList {
 							trailWidth = 1.8f;
 							trailLength = 8;
 						}};
+					}};
+				}}
+			);
+		}};
+
+		yetinus = new OblivionUnitType("yetinus") {{
+			health = 65000;
+			speed = 0.3f;
+			drag = 0.18f;
+			hitSize = 58f;
+			armor = 16f;
+			accel = 0.19f;
+			rotateSpeed = 0.9f;
+			rotateShooting = false;
+			trailLength = 70;
+			trailX = 23f;
+			trailY = -32f;
+			trailScl = 3.5f;
+			weapons.add(
+				new OblivionWeapon("oblivion-yetinus-railgun") {{
+					x = y = 0f;
+					reload = 180f;
+					mirror = false;
+					recoil = 5f;
+					shootY = 17f;
+					shake = 8f;
+					shootSound = Sounds.railgun;
+					bullet = new RailBulletType() {{
+						shootEffect = Fx.railShoot;
+						length = 500;
+						updateEffectSeg = 60f;
+						pierceEffect = Fx.railHit;
+						updateEffect = Fx.railTrail;
+						hitEffect = Fx.massiveExplosion;
+						smokeEffect = Fx.shootBig2;
+						damage = 1800;
+						pierceDamageFactor = 0.5f;
 					}};
 				}}
 			);
