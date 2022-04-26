@@ -451,7 +451,7 @@ public class OblivionBlocks implements ContentList {
 			                 toColor = Color.valueOf("74C272");;
                                          hitColor = Color.valueOf("4F824B");;
 				         hitEffect = HitFx.coloredHitSmall;
-				}};
+				}}
 			);
 		}}
 
@@ -627,4 +627,4 @@ public class OblivionBlocks implements ContentList {
 			);
 		}};
 	}
-
+}
