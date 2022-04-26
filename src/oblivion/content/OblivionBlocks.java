@@ -331,7 +331,7 @@ public class OblivionBlocks implements ContentList {
 			reloadTime = 90f;
 			range = 240f;
 			shots = 4;
-			burstSpacing = 3f;
+			burstSpacing = 9f;
 			inaccuracy = 8f;
 			rotateSpeed = 5f;
 			ammo(
@@ -441,6 +441,16 @@ public class OblivionBlocks implements ContentList {
 					shootSound = Sounds.artillery;
 					status = OblivionStatuses.infested;
 					statusDuration = 60f * 12f;
+					 fragBullets = 5;
+                                         fragLifeMin = 0.9f;
+                                         fragLifeMax = 1.1f;
+                                         fragBullet = new ShrapnelBulletType(){{
+                                         damage = 10f;
+                                         length = 10f;
+                                         width = 8f;
+			                 toColor = Color.valueOf("74C272");;
+                                         hitColor = Color.valueOf("4F824B");;
+				         hitEffect = HitFx.coloredHitSmall;
 				}}
 			);
 		}};
