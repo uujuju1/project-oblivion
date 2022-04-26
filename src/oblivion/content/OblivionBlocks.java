@@ -439,8 +439,6 @@ public class OblivionBlocks implements ContentList {
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
 					shootSound = Sounds.artillery;
-					status = OblivionStatuses.infested;
-					statusDuration = 60f * 12f;
 					fragBullets = 5;
                                         fragLifeMin = 0.9f;
                                         fragLifeMax = 1.1f;
@@ -451,9 +449,11 @@ public class OblivionBlocks implements ContentList {
 			                toColor = Color.valueOf("74C272");
                                         hitColor = Color.valueOf("4F824B");
 				        hitEffect = HitFx.coloredHitSmall;
+					status = OblivionStatuses.infested;
+					statusDuration = 60f * 12f;
 				}}
 			);
-		}}
+		}};
 
 		inductionDrill = new Drill("induction-drill") {{
 			requirements(Category.production, with(
