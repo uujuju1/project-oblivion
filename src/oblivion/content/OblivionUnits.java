@@ -709,8 +709,9 @@ public class OblivionUnits implements ContentList {
 			range = 600f;
 			maxRange = range;
 			weapons.add(
-				new OblivionWeapon("oblivion-yetinus-railgun") {{
-					x = y = 0f;
+				new Weapon("oblivion-yetinus-railgun") {{
+					x = 0f;
+					y = 41.25f;
 					reload = 180f;
 					mirror = false;
 					recoil = 5f;
