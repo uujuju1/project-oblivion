@@ -700,7 +700,7 @@ public class OblivionUnits implements ContentList {
 			armor = 16f;
 			accel = 0.19f;
 			rotateSpeed = 0.9f;
-			rotateShooting = false;
+			rotateShooting = true;
 			constructor = UnitWaterMove::create;
 			trailLength = 70;
 			trailX = 23f;
@@ -712,22 +712,20 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-yetinus-railgun") {{
 					x = 0f;
 					y = 41.25f;
-					reload = 180f;
+					reload = 90f;
 					mirror = false;
 					recoil = 5f;
-					shootY = 17f;
+					shootY = 12f;
 					shake = 8f;
 					shootSound = Sounds.railgun;
-					bullet = new RailBulletType() {{
+					bullet = new BasicBulletType(6f, 620) {{
 						shootEffect = Fx.railShoot;
-						length = 500;
-						updateEffectSeg = 60f;
-						pierceEffect = Fx.railHit;
-						updateEffect = Fx.railTrail;
+						lifetime = 100;
+						width = height = 40;
+						homingRange = 600f;
+						homingPower = 0.1f;
 						hitEffect = Fx.massiveExplosion;
 						smokeEffect = Fx.shootBig2;
-						damage = 1800;
-						pierceDamageFactor = 0.5f;
 					}};
 				}}
 			);
