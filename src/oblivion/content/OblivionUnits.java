@@ -701,10 +701,13 @@ public class OblivionUnits implements ContentList {
 			accel = 0.19f;
 			rotateSpeed = 0.9f;
 			rotateShooting = false;
+			constructor = UnitWaterMove::create;
 			trailLength = 70;
 			trailX = 23f;
 			trailY = -32f;
 			trailScl = 3.5f;
+			range = 600f;
+			maxRange = range;
 			weapons.add(
 				new OblivionWeapon("oblivion-yetinus-railgun") {{
 					x = y = 0f;
