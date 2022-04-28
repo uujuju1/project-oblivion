@@ -697,9 +697,9 @@ public class OblivionUnits implements ContentList {
 			speed = 0.3f;
 			drag = 0.18f;
 			hitSize = 58f;
-			armor = 16f;
+			armor = 25f;
 			accel = 0.19f;
-			rotateSpeed = 0.9f;
+			rotateSpeed = 0.3f;
 			rotateShooting = true;
 			constructor = UnitWaterMove::create;
 			trailLength = 70;
@@ -717,6 +717,7 @@ public class OblivionUnits implements ContentList {
 					recoil = 5f;
 					shootY = 12f;
 					shake = 8f;
+					shootCone = 45f;
 					shootSound = Sounds.railgun;
 					bullet = new BasicBulletType(6f, 620) {{
 						shootEffect = Fx.railShoot;
@@ -726,6 +727,19 @@ public class OblivionUnits implements ContentList {
 						homingPower = 0.1f;
 						hitEffect = Fx.massiveExplosion;
 						smokeEffect = Fx.shootBig2;
+					}};
+				}},
+				new Weapon("oblivion-yetinus-laser") {{
+					x = 0f;
+					y = 0f;
+					reload = 30f;
+					mirror = false;
+					recoil = 2f;
+					shootY = 4f;
+					shootSound = Sounds.laser;
+					bullet = new LaserBulletType(150) {{
+						width = 12f;
+						length = 300f;
 					}};
 				}}
 			);
