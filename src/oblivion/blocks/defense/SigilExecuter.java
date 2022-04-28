@@ -9,6 +9,7 @@ import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.entities.*;
+import mindustry.world.meta.*;
 import oblivion.blocks.meta.*;
 // aka status field block
 public class SigilExecuter extends Block {
