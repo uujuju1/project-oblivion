@@ -35,7 +35,7 @@ public class SigilExecuter extends Block {
 		super.setStats();
 		stats.add(Stat.range, range/8, StatUnit.blocks);
 		stats.add(Stat.launchTime, chargeTime/60, StatUnit.seconds);
-		stats.add(Stat.shots, OblivionStatValues.sigilCharge(status, statusDuration));
+		stats.add(Stat.abilities, OblivionStatValues.sigilStatus(status, statusDuration));
 	}
 
 	public class SigilExecuterBuild extends Building {
