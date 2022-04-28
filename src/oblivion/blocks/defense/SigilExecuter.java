@@ -9,6 +9,7 @@ import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.entities.*;
+import oblivion.blocks.meta.*;
 // aka status field block
 public class SigilExecuter extends Block {
 	public StatusEffect status;
@@ -27,6 +28,14 @@ public class SigilExecuter extends Block {
 	public void load() {
 		super.load();
 		icon = Core.atlas.find(name + "-icon");
+	}
+
+	@Override
+	public void setStats() {
+		super.setStats();
+		stats.add(Stat.range, range/8, StatUnit.blocks);
+		stats.add(Stat.launchTime, chargeTime/60, StatUnit.seconds);
+		stats.add(Stat.shots, OblivionStatValues.sigilCharge(status, statusDuration));
 	}
 
 	public class SigilExecuterBuild extends Building {
