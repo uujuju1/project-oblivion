@@ -627,7 +627,7 @@ public class OblivionBlocks implements ContentList {
 				Items.graphite, 800
 			));
 			health = 350;
-			size = 5f;
+			size = 5;
 			chargeTime = 900f;
 			preChargeEffect = Fx.instShoot;
 			posChargeEffect = Fx.instTrail;

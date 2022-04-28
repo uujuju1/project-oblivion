@@ -12,7 +12,7 @@ import mindustry.entities.*;
 // aka status field block
 public class SigilExecuter extends Block {
 	public StatusEffect status;
-	public Effect preChargeEffect = Fx.none, postChargeEffect = Fx.none;
+	public Effect preChargeEffect = Fx.none, posChargeEffect = Fx.none;
 	public TextureRegion icon;
 	public float range = 80f, chargeTime = 60f, statusDuration = 60f;
 
@@ -48,7 +48,7 @@ public class SigilExecuter extends Block {
 			if (shoots) {
 				reload += Time.delta;
 				if (reload >= chargeTime) {
-					postChargeEffect.at(x, y);
+					posChargeEffect.at(x, y);
 					reload = 0f;
 					shoots = false;
 					Damage.status(team, x, y, range, status, statusDuration, true, true);
