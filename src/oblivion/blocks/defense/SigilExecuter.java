@@ -14,7 +14,7 @@ public class SigilExecuter extends Block {
 	public StatusEffect status;
 	public Effect preChargeEffect = Fx.none, postChargeEffect = Fx.none;
 	public TextureRegion icon;
-	public float range = 80f, chargeTime = 60f statusDuration = 60f;
+	public float range = 80f, chargeTime = 60f, statusDuration = 60f;
 
 	public SigilExecuter(String name) {
 		super(name);
