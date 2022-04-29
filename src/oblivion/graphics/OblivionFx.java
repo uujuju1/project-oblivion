@@ -102,7 +102,7 @@ public class OblivionFx {
 			}
 			Lines.circle(e.x, e.y, 20f * Interp.slowFast.apply(e.foutpow()));
 		}),
-		calamityCraft = = new Effect(900f, e -> {
+		calamityCraft = new Effect(900f, e -> {
 			Draw.color(Color.valueOf("FF9191"));
 			Lines.stroke(3f * e.fout());
 			Lines.circle(e.x, e.y, e.fin() * 80f);
@@ -174,7 +174,7 @@ public class OblivionFx {
 			Lines.stroke(3f * e.fout());
 			Lines.circle(e.x, e.y, 80f * e.fin());
 			
-			Angles.randLenVectors(e.id, 4, 80f * e.finpow(), (x, y) => {
+			Angles.randLenVectors(e.id, 4, 80f * e.finpow(), (x, y) -> {
 				for (var i = 0; i < 4; i++) {
 					Drawf.tri(e.x + x, e.y + y, 10f * e.foutpow(), 10f * e.finpow(), i * 90f + e.finpow());
 				}
