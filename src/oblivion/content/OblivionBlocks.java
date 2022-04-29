@@ -658,7 +658,7 @@ public class OblivionBlocks implements ContentList {
 			itemCapacity = 100;
 			bombCapacity = 15;
 			consumes.items(with(
-				OblivionResources.mothalate, 50,
+				OblivionResources.mothalate, 50
 			));
 			consumes.power(3f);
 		}};
