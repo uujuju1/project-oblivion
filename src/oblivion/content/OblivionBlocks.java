@@ -302,8 +302,8 @@ public class OblivionBlocks implements ContentList {
 			range = 184f;
 			rotateSpeed = 7.5f;
 			ammo(
-				OblivionResources.mesulfate, new BasicBulletType(2.5f, 20) {{
-					lifetime = 73.6f;
+				OblivionResources.mesulfate, new BasicBulletType(5f, 20) {{
+					lifetime = 36.8f;
 					shootSound = Sounds.artillery;
 					frontColor = Color.valueOf("E86F6F");
 					backColor = Color.valueOf("AD4747");
