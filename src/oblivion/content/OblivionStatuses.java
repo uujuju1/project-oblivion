@@ -25,7 +25,7 @@ public class OblivionStatuses implements ContentList {
 			damageMultiplier = 0.5f;
 		}};
 		abyss = new StatusEffect("abyss") {{
-			disarmed = true;
+			disarm = true;
 			speedMultiplier = 0f;
 			dragMultiplier = 69420f;
 		}};

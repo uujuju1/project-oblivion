@@ -647,7 +647,7 @@ public class OblivionBlocks implements ContentList {
 				OblivionResources.mothalate, 120,
 				OblivionResources.carmanite, 300,
 				Items.silicon, 550,
-				Items.graphics, 620,
+				Items.graphite, 620,
 				Items.plastanium, 430
 			));
 			size = 5;
