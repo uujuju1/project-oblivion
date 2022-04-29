@@ -111,23 +111,23 @@ public class OblivionFx {
 			for (int i = 0; i < 4; i++) {
 				float x = e.x + Angles.trnsx(Time.time * 2f + (90f * i), e.fin() * 80f, 0f);
 				float y = e.y + Angles.trnsy(Time.time * 2f + (90f * i), e.fin() * 80f, 0f);
-				Drawf.tri(x, y, e.fout() * 18ff, e.fin() * 60f, 90f * i + Time.time * 2f);
+				Drawf.tri(x, y, e.fout() * 18f, e.fin() * 60f, 90f * i + Time.time * 2f);
 			}
 			for (int i = 0; i < 4; i++) {
 				float x = e.x + Angles.trnsx(Time.time + (90f * i), e.fin() * 80f, 0f);
 				float y = e.y + Angles.trnsy(Time.time + (90f * i), e.fin() * 80f, 0f);
-				Drawf.tri(x, y, e.fout() * 18ff, e.fin() * 60f, 90f * i + Time.time + 180f);
+				Drawf.tri(x, y, e.fout() * 18f, e.fin() * 60f, 90f * i + Time.time + 180f);
 			}
 			Draw.color();
 			for (int i = 0; i < 4; i++) {
 				float x = e.x + Angles.trnsx(Time.time * 2f + (90f * i), e.fin() * 80f, 0f);
 				float y = e.y + Angles.trnsy(Time.time * 2f + (90f * i), e.fin() * 80f, 0f);
-				Drawf.tri(x, y, e.fout() * 12ff, e.fin() * 40f, 90f * i + Time.time * 2f);
+				Drawf.tri(x, y, e.fout() * 12f, e.fin() * 40f, 90f * i + Time.time * 2f);
 			}
 			for (int i = 0; i < 4; i++) {
 				float x = e.x + Angles.trnsx(Time.time + (90f * i), e.fin() * 80f, 0f);
 				float y = e.y + Angles.trnsy(Time.time + (90f * i), e.fin() * 80f, 0f);
-				Drawf.tri(x, y, e.fout() * 12ff, e.fin() * 40f, 90f * i + Time.time + 180f);
+				Drawf.tri(x, y, e.fout() * 12f, e.fin() * 40f, 90f * i + Time.time + 180f);
 			}
 		}),
 		calamityShoot = new Effect(600f, e -> {

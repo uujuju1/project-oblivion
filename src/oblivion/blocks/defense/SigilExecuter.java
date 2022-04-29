@@ -49,7 +49,7 @@ public class SigilExecuter extends Block {
 	public class SigilExecuterBuild extends Building {
 		public boolean shoots = false;
 		public float reload = 0f;
-
+		
 		@Override
 		public void buildConfiguration(Table table) {
 			table.button(Icon.upload, () -> {
