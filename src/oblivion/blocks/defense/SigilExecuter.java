@@ -4,6 +4,7 @@ import arc.*;
 import arc.util.*;
 import arc.graphics.g2d.*;
 import arc.scene.ui.layout.*;
+import mindustry.ui.*;
 import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.*;
@@ -29,7 +30,7 @@ public class SigilExecuter extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("charge", entity -> new Bar(Core.bundle.get("bar.charge"), Pal.accent, () -> entity.reload/chargeTime));
+		bars.add("charge", entity -> new Bar(Core.bundle.get("bar.charge"), Pal.accent, () -> ((SigilExecuterBuild) entity).reload/chargeTime));
 	}
 
 	@Override
