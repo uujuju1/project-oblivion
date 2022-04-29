@@ -137,10 +137,10 @@ public class OblivionFx {
 			Draw.alpha(0.7f * e.fout());
 			Fill.circle(e.x, e.y, e.fin() * 120f);
 			Draw.alpha(1f);
-			Angles.randLenVectors(e.id, 20f, e.fin() * 120f, (x, y) => {
+			Angles.randLenVectors(e.id, 20f, e.fin() * 120f, (x, y) -> {
 				Fill.circle(e.x + x, e.y + y, 3f * e.fout());
 			});
-			Angles.randLenVectors(e.id + 1f, 20f, e.fin() * 120f, (x, y) => {
+			Angles.randLenVectors(e.id + 1f, 20f, e.fin() * 120f, (x, y) -> {
 				Fill.square(e.x + x, e.y + y, 2f * e.fout(), 45f);
 			});
 		});
