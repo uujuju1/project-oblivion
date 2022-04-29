@@ -44,7 +44,7 @@ public class OblivionBlocks implements ContentList {
 		alomeriTube, alomeriConveyor,
 
 		moloniteSmelter,
-		test, 
+		calamitySigil, fearSigil, abyssSigil,
 
 		mandlebrotReconstructor,
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
@@ -618,12 +618,13 @@ public class OblivionBlocks implements ContentList {
 			);
 		}};
 
-		test = new SigilExecuter("calamity-sigil") {{
+		calamitySigil = new StatusBomb("calamity-sigil") {{
 			requirements(Category.units, with(
 				OblivionResources.mothalate, 250,
+				OblivionResources.carmanite, 450,
 				Items.silicon, 600,
 				Items.surgeAlloy, 300,
-				OblivionResources.carmanite, 450,
+				Items.thorium, 350,
 				Items.graphite, 800
 			));
 			health = 350;
@@ -632,8 +633,56 @@ public class OblivionBlocks implements ContentList {
 			cooldownTime = 900f;
 			craftEffect = OblivionFx.calamityCharge;
 			shootEffect = OblivionFx.calamityShoot;
-			status = StatusEffects.unmoving;
+			status = OblivionStatuses.calamity;
 			statusDuration = 600f;
+			itemCapacity = 150;
+			consumes.items(with(
+				OblivionResources.mesulfate, 100,
+				OblivionResources.mothalate, 5
+			));
+			consumes.power(5f);
+		}};
+		fearSigil = new StatusBomb("fear-sigil") {{
+			requirements(Category.units, with(
+				OblivionResources.mothalate, 120,
+				OblivionResources.carmanite, 300,
+				Items.silicon, 550,
+				Items.graphics, 620,
+				Items.plastanium, 430
+			));
+			size = 5;
+			craftTime = 420f;
+			cooldownTime = 600f;
+			status = OblivionStatuses.fear;
+			statusDuration = 300f;
+			itemCapacity = 100;
+			bombCapacity = 15;
+			consumes.items(with(
+				OblivionResources.mothalate, 50,
+			));
+			consumes.power(3f);
+		}};
+		abyssSigil = new StatusBomb("abyss-sigil") {{
+			requirements(Category.units, with(
+				OblivionResources.mothalate, 150,
+				OblivionResources.carmanite, 350,
+				Items.silicon, 600,
+				Items.graphite, 680,
+				Items.plastanium, 350,
+				Items.thorium, 230
+			));
+			size = 5;
+			craftTime = 1200f;
+			cooldownTime = 900f;
+			status = OblivionStatuses.abyss;
+			statusDuration = 150f;
+			itemCapacity = 160;
+			bombCapacity = 35;
+			consumes.items(with(
+				OblivionResources.mothalate, 10,
+				OblivionResources.carmanite, 80
+			));
+			consumes.power(7f);
 		}};
 	}
 }

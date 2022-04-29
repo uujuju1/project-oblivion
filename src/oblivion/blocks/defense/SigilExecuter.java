@@ -15,15 +15,15 @@ import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import oblivion.blocks.meta.*;
 // aka status field block with funky lore
-public class SigilExecuter extends Block {
+public class StatusBomb extends Block {
 	public StatusEffect status;
 	public float statusDuration = 60f;
 	public Effect craftEffect = Fx.none, shootEffect = Fx.none;
 	public TextureRegion rotator;
 	public float range = 80f, craftTime = 60f, cooldownTime = 60f;
-	public int sigilCapacity = 10;
+	public int bombCapacity = 10;
 
-	public SigilExecuter(String name) {
+	public StatusBomb(String name) {
 		super(name);
 		solid = destructible = true;
 		sync = update = true;
@@ -31,11 +31,16 @@ public class SigilExecuter extends Block {
 	}
 
 	@Override
+	public TextureRegion[] icons() {
+		return new TextureRegion[]{region, rotator};
+	}
+
+	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("charge", entity -> new Bar(Core.bundle.get("stat.reload"), Color.valueOf("E6875C"), () -> ((SigilExecuterBuild) entity).reload/cooldownTime));
-		bars.add("craftCharge", entity -> new Bar(Core.bundle.get("stat.productiontime"), Color.valueOf("FFA665"), () -> ((SigilExecuterBuild) entity).craftReload/craftTime));
-		bars.add("capacity", entity -> new Bar(Core.bundle.get("stat.ammo"), Pal.lancerLaser, () -> ((float) ((SigilExecuterBuild) entity).shots/sigilCapacity)));
+		bars.add("charge", entity -> new Bar(Core.bundle.get("stat.reload"), Color.valueOf("E6875C"), () -> ((StatusBombBuild) entity).reload/cooldownTime));
+		bars.add("craftCharge", entity -> new Bar(Core.bundle.get("stat.productiontime"), Color.valueOf("FFA665"), () -> ((StatusBombBuild) entity).craftReload/craftTime));
+		bars.add("capacity", entity -> new Bar(Core.bundle.get("stat.ammo"), Pal.lancerLaser, () -> ((float) ((StatusBombBuild) entity).shots/sigilCapacity)));
 	}
 
 	@Override
@@ -49,7 +54,7 @@ public class SigilExecuter extends Block {
 		super.setStats();
 	}
 
-	public class SigilExecuterBuild extends Building {
+	public class StatusBombBuild extends Building {
 		public int shots = 0;
 		public float reload = 0f, craftReload = 0f;
 
