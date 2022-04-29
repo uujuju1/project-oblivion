@@ -9,9 +9,10 @@ import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.entities.*;
+import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import oblivion.blocks.meta.*;
-// aka status field block
+// aka status field block with funky lore
 public class SigilExecuter extends Block {
 	public StatusEffect status;
 	public Effect preChargeEffect = Fx.none, posChargeEffect = Fx.none;
@@ -23,6 +24,12 @@ public class SigilExecuter extends Block {
 		solid = destructible = true;
 		sync = update = true;
 		configurable = true;
+	}
+
+	@Override
+	public void setBars() {
+		super.setBars();
+		bars.add("charge", entity -> new Bar(Core.bundle.get("bar.charge"), Pal.accent, () entity.reload/chargeTime));
 	}
 
 	@Override

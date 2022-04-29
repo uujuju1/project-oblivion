@@ -100,5 +100,48 @@ public class OblivionFx {
 			  Drawf.tri(e.x, e.y, 8f , 20f * Interp.slowFast.apply(e.foutpow()), (i * 90f) + (mfin * 2f) + 45f);
 			}
 			Lines.circle(e.x, e.y, 20f * Interp.slowFast.apply(e.foutpow()));
+		}),
+		calamityCharge = new Effect(900f, e -> {
+			Draw.color(Color.valueOf("FF9191"));
+			Lines.stroke(3f * e.fout());
+			Lines.circle(e.x, e.y, e.fin() * 80f);
+			Draw.alpha(0.7f * e.fout());
+			Fill.circle(e.x, e.y, e.fin() * 80f);
+			Draw.alpha(1f);
+			for (int i = 0; i < 4; i++) {
+				float x = e.x + Angles.trnsx(Time.time * 2f + (90f * i), e.fin() * 80f, 0f);
+				float y = e.y + Angles.trnsy(Time.time * 2f + (90f * i), e.fin() * 80f, 0f);
+				Drawf.tri(x, y, e.fout() * 18ff, e.fin() * 60f, 90f * i + Time.time * 2f);
+			}
+			for (int i = 0; i < 4; i++) {
+				float x = e.x + Angles.trnsx(Time.time + (90f * i), e.fin() * 80f, 0f);
+				float y = e.y + Angles.trnsy(Time.time + (90f * i), e.fin() * 80f, 0f);
+				Drawf.tri(x, y, e.fout() * 18ff, e.fin() * 60f, 90f * i + Time.time + 180f);
+			}
+			Draw.color();
+			for (int i = 0; i < 4; i++) {
+				float x = e.x + Angles.trnsx(Time.time * 2f + (90f * i), e.fin() * 80f, 0f);
+				float y = e.y + Angles.trnsy(Time.time * 2f + (90f * i), e.fin() * 80f, 0f);
+				Drawf.tri(x, y, e.fout() * 12ff, e.fin() * 40f, 90f * i + Time.time * 2f);
+			}
+			for (int i = 0; i < 4; i++) {
+				float x = e.x + Angles.trnsx(Time.time + (90f * i), e.fin() * 80f, 0f);
+				float y = e.y + Angles.trnsy(Time.time + (90f * i), e.fin() * 80f, 0f);
+				Drawf.tri(x, y, e.fout() * 12ff, e.fin() * 40f, 90f * i + Time.time + 180f);
+			}
+		}),
+		calamityShoot = new Effect(600f, e -> {
+			Draw.color(Color.valueOf("FF9191"));
+			Lines.stroke(3f * e.fout());
+			Lines.circle(e.x, e.y, e.fin() * 120f);
+			Draw.alpha(0.7f * e.fout());
+			Fill.circle(e.x, e.y, e.fin() * 120f);
+			Draw.alpha(1f);
+			Angles.randLenVectors(e.id, 20f, e.fin() * 120f, (x, y) => {
+				Fill.circle(e.x + x, e.y + y, 3f * e.fout());
+			});
+			Angles.randLenVectors(e.id + 1f, 20f, e.fin() * 120f, (x, y) => {
+				Fill.square(e.x + x, e.y + y, 2f * e.fout(), 45f);
+			});
 		});
 }
