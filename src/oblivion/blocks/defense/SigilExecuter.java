@@ -79,7 +79,7 @@ public class SigilExecuter extends Block {
 		}
 
 		public void shoot() {
-			if (shots <= 0 && reload <= 0) {
+			if (shots > 0 && reload <= 0) {
 				shootEffect.at(x, y);
 				Damage.status(team, x, y, range, status, statusDuration, true, true);
 				reload = cooldownTime;
