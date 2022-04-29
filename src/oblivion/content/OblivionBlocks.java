@@ -629,8 +629,8 @@ public class OblivionBlocks implements ContentList {
 			health = 350;
 			size = 5;
 			chargeTime = 900f;
-			preChargeEffect = Fx.instShoot;
-			posChargeEffect = Fx.instTrail;
+			preChargeEffect = OblivionFx.calamityCharge;
+			posChargeEffect = OblivionFx.calamityShoot;
 			status = StatusEffects.unmoving;
 			statusDuration = 180f;
 		}};

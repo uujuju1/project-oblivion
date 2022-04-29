@@ -29,7 +29,7 @@ public class SigilExecuter extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("charge", entity -> new Bar(Core.bundle.get("bar.charge"), Pal.accent, () entity.reload/chargeTime));
+		bars.add("charge", entity -> new Bar(Core.bundle.get("bar.charge"), Pal.accent, () -> entity.reload/chargeTime));
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class SigilExecuter extends Block {
 	public class SigilExecuterBuild extends Building {
 		public boolean shoots = false;
 		public float reload = 0f;
-		
+
 		@Override
 		public void buildConfiguration(Table table) {
 			table.button(Icon.upload, () -> {
