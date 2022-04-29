@@ -33,7 +33,7 @@ public class SigilExecuter extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("charge", entity -> new Bar(Core.bundle.get("bar.reload"), Color.valueOf("E6875C"), () -> ((SigilExecuterBuild) entity).reload/cooldownTime));
+		bars.add("charge", entity -> new Bar(Core.bundle.get("stat.reload"), Color.valueOf("E6875C"), () -> ((SigilExecuterBuild) entity).reload/cooldownTime));
 		bars.add("craftCharge", entity -> new Bar(Core.bundle.get("stat.productiontime"), Color.valueOf("FFA665"), () -> ((SigilExecuterBuild) entity).craftReload/craftTime));
 		bars.add("capacity", entity -> new Bar(Core.bundle.get("stat.ammo"), Pal.lancerLaser, () -> ((float) ((SigilExecuterBuild) entity).shots/sigilCapacity)));
 	}
