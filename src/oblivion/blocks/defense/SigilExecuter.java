@@ -2,6 +2,7 @@ package oblivion.blocks.defense;
 
 import arc.*;
 import arc.util.*;
+import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.scene.ui.layout.*;
 import mindustry.ui.*;
@@ -63,6 +64,7 @@ public class SigilExecuter extends Block {
 				craftReload += Time.delta;
 				if (craftReload >= craftTime) {
 					craftEffect.at(x, y);
+					craftReload = 0f;
 					consume();
 					shots++;
 				}

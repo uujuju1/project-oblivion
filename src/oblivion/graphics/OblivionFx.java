@@ -131,7 +131,7 @@ public class OblivionFx {
 				Drawf.tri(x, y, e.fout() * 12f, e.fin() * 40f, 90f * i + Time.time + 180f);
 			}
 		}),
-		calamityShoot = new Effect(600f, e -> {
+		calamityShoot = new Effect(180f, e -> {
 			Draw.color(Color.valueOf("FF9191"));
 			Lines.stroke(3f * e.fout());
 			Lines.circle(e.x, e.y, e.fin() * 120f);
