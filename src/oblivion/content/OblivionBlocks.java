@@ -631,7 +631,7 @@ public class OblivionBlocks implements ContentList {
 			size = 5;
 			craftTime = 900f;
 			cooldownTime = 900f;
-			craftEffect = OblivionFx.calamityCharge;
+			craftEffect = OblivionFx.calamityCraft;
 			shootEffect = OblivionFx.calamityShoot;
 			status = OblivionStatuses.calamity;
 			statusDuration = 600f;
@@ -653,6 +653,8 @@ public class OblivionBlocks implements ContentList {
 			size = 5;
 			craftTime = 420f;
 			cooldownTime = 600f;
+			craftEffect = OblivionFx.fearCraft;
+			shootEffect = OblivionFx.fearShoot;
 			status = OblivionStatuses.fear;
 			statusDuration = 300f;
 			itemCapacity = 100;
@@ -674,6 +676,8 @@ public class OblivionBlocks implements ContentList {
 			size = 5;
 			craftTime = 1200f;
 			cooldownTime = 900f;
+			craftEffect = OblivionFx.abyssCraft;
+			shootEffect = OblivionFx.abyssShoot;
 			status = OblivionStatuses.abyss;
 			statusDuration = 150f;
 			itemCapacity = 160;
