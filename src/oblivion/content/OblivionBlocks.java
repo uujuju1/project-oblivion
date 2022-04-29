@@ -22,6 +22,7 @@ import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
+import oblivion.blocks.defense.*;
 import oblivion.blocks.production.*;
 
 import static mindustry.type.ItemStack.*;
@@ -30,7 +31,7 @@ public class OblivionBlocks implements ContentList {
 	public static Block 
 		start,
 
-		mesoForge, calonicKiln, moloniteSmelter,
+		mesoForge, calonicKiln, 
 		uno, rain, granite,
 		solfreniteFactory,
 
@@ -41,6 +42,9 @@ public class OblivionBlocks implements ContentList {
 		carbonicInfuser,
 		inductionDrill,
 		alomeriTube, alomeriConveyor,
+
+		moloniteSmelter,
+		test, 
 
 		mandlebrotReconstructor,
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
@@ -615,6 +619,23 @@ public class OblivionBlocks implements ContentList {
 				new UnitType[]{UnitTypes.toxopid, OblivionUnits.archaranid},
 				new UnitType[]{UnitTypes.eclipse, OblivionUnits.bloodmoon}
 			);
+		}};
+
+		test = new SigilExecuter("calamity-sigil") {{
+			requirements(Category.units, with(
+				OblivionResources.mothalate, 250,
+				Items.silicon, 600,
+				Items.surgeAlloy, 300,
+				OblivionResources.carmanite, 450,
+				Items.graphite, 800
+			));
+			health = 350;
+			size = 5;
+			chargeTime = 900f;
+			preChargeEffect = Fx.instShoot;
+			posChargeEffect = Fx.instTrail;
+			status = StatusEffects.unmoving;
+			statusDuration = 180f;
 		}};
 	}
 }

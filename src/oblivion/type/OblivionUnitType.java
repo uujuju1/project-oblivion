@@ -1,11 +1,20 @@
 package oblivion.type;
 
 import arc.func.*;
+import arc.math.*;
+import arc.util.*;
+import arc.math.geom.*;
+import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+import mindustry.entities.abilities.*;
+import mindustry.graphics.*;
+
+import mindustry.Vars;
 
 // engineSize and engineOffset is now useless {:
 public class OblivionUnitType extends UnitType {
+	private static final Vec2 legOffset = new Vec2();
 	public Cons<Unit> engineDrawer = unit -> {}, topDrawer = unit -> {};
 
 	public OblivionUnitType(String name) {
@@ -15,11 +24,5 @@ public class OblivionUnitType extends UnitType {
 	@Override
 	public void drawEngine(Unit unit) {
 		engineDrawer.get(unit);
-	}
-	
-	@Override
-	public void draw(Unit unit) {
-		super.draw(unit);
-		topDrawer.get(unit);
 	}
 }

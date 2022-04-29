@@ -21,7 +21,7 @@ public class OblivionUnits implements ContentList {
 	pioli, taneki, notremite, dopretile, niboletra,
 	assaultDrone,
 
-	republic, giga, archaranid, bloodmoon;
+	republic, giga, archaranid, bloodmoon, yetinus;
 
 	@Override
 	public void load() {
@@ -687,6 +687,59 @@ public class OblivionUnits implements ContentList {
 							trailWidth = 1.8f;
 							trailLength = 8;
 						}};
+					}};
+				}}
+			);
+		}};
+
+		yetinus = new OblivionUnitType("yetinus") {{
+			health = 65000;
+			speed = 0.3f;
+			drag = 0.18f;
+			hitSize = 58f;
+			armor = 25f;
+			accel = 0.19f;
+			rotateSpeed = 0.3f;
+			rotateShooting = true;
+			constructor = UnitWaterMove::create;
+			trailLength = 70;
+			trailX = 23f;
+			trailY = -32f;
+			trailScl = 3.5f;
+			range = 600f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-yetinus-railgun") {{
+					x = 0f;
+					y = 41.25f;
+					reload = 90f;
+					mirror = false;
+					recoil = 5f;
+					shootY = 12f;
+					shake = 8f;
+					shootCone = 45f;
+					shootSound = Sounds.railgun;
+					bullet = new BasicBulletType(6f, 620) {{
+						shootEffect = Fx.railShoot;
+						lifetime = 100;
+						width = height = 40;
+						homingRange = 600f;
+						homingPower = 0.1f;
+						hitEffect = Fx.massiveExplosion;
+						smokeEffect = Fx.shootBig2;
+					}};
+				}},
+				new Weapon("oblivion-yetinus-laser") {{
+					x = 0f;
+					y = 0f;
+					reload = 30f;
+					mirror = false;
+					recoil = 2f;
+					shootY = 4f;
+					shootSound = Sounds.laser;
+					bullet = new LaserBulletType(150) {{
+						width = 12f;
+						length = 300f;
 					}};
 				}}
 			);
