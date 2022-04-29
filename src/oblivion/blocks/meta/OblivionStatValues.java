@@ -5,7 +5,7 @@ import arc.scene.ui.*;
 import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.meta.*;
-
+// custom ui moment
 public class OblivionStatValues {
 
 	public static StatValue sigilStatus(StatusEffect status, float duration) {
@@ -16,7 +16,7 @@ public class OblivionStatValues {
 			  bt.row();
 			  bt.add(status.localizedName);
 			  bt.row();
-			  bt.add(Core.bundle.get("stat.duration") + ":" + duration);
+			  bt.add(Core.bundle.get("stat.duration") + ": " + duration/60 + " Seconds");
 			});
 		};
 	}

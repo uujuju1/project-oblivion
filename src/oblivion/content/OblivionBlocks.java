@@ -631,11 +631,12 @@ public class OblivionBlocks implements ContentList {
 			));
 			health = 350;
 			size = 5;
-			chargeTime = 900f;
-			preChargeEffect = Fx.instShoot;
-			posChargeEffect = Fx.instTrail;
+			craftTime = 900f;
+			cooldownTime = 900f;
+			craftEffect = OblivionFx.calamityCharge;
+			shootEffect = OblivionFx.calamityShoot;
 			status = StatusEffects.unmoving;
-			statusDuration = 180f;
+			statusDuration = 600f;
 		}};
 	}
 }
