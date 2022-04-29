@@ -54,7 +54,7 @@ public class SigilExecuter extends Block {
 
 		@Override
 		public void buildConfiguration(Table table) {
-			table.button(Icon.upload, () -> {shoot()});
+			table.button(Icon.upload, () -> {shoot();});
 		}
 
 		@Override
