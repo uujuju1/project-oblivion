@@ -209,7 +209,7 @@ public class OblivionUnits implements ContentList {
 					reload = 90f;
 					shots = 7;
 					inaccuracy = 15f;
-					velocityInaccuracy = 1f;
+					velocityRnd = 1f;
 					shootSound = Sounds.artillery;
 					bullet = new BasicBulletType(8f, 200) {{
 						drag = 0.04f;
