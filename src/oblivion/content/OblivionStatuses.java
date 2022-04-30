@@ -16,7 +16,18 @@ public class OblivionStatuses implements ContentList {
 			});
 		}};
 		calamity = new StatusEffect("calamity") {{
-			damage = 1f;
+			damage = 1.6f;
+			healthMultiplier = 2f;
+		}};
+		fear = new StatusEffect("fear") {{
+			speedMultiplier = 0.3f;
+			reloadMultiplier = 0.4f;
+			damageMultiplier = 0.5f;
+		}};
+		abyss = new StatusEffect("abyss") {{
+			disarm = true;
+			speedMultiplier = 0f;
+			dragMultiplier = 69420f;
 		}};
 	}
 }

@@ -102,7 +102,7 @@ public class OblivionFx {
 			}
 			Lines.circle(e.x, e.y, 20f * Interp.slowFast.apply(e.foutpow()));
 		}),
-		calamityCharge = new Effect(900f, e -> {
+		calamityCraft = new Effect(900f, e -> {
 			Draw.color(Color.valueOf("FF9191"));
 			Lines.stroke(3f * e.fout());
 			Lines.circle(e.x, e.y, e.fin() * 80f);
@@ -143,6 +143,89 @@ public class OblivionFx {
 			});
 			Angles.randLenVectors(e.id + 1, 20, e.fin() * 120f, (x, y) -> {
 				Fill.square(e.x + x, e.y + y, 2f * e.fout(), 45f);
+			});
+		}),
+		fearCraft = new Effect(60f, e -> {
+			Draw.color(Pal.lancerLaser);
+			Lines.stroke(3f * e.foutpow());
+			for (int i = 0; i < 4; i++) {
+				Drawf.tri(e.x, e.y, 10f * e.fout(), 80f * e.finpow(), (i * 90f) + (e.foutpow() * 360f));
+				Drawf.tri(e.x, e.y, 10f * e.fout(), 80f * e.finpow(), (i * 90f) + 45f);
+			}
+			Angles.randLenVectors(e.id, 20, 80f * e.finpow(), (x, y) -> {
+				Lines.square(e.x + x, e.y + y, 5f * e.foutpow(), 45f);
+			});
+			Lines.circle(e.x, e.y, 80f * e.finpow());
+		}),
+		fearShoot = new Effect(60f, e -> {
+			Draw.color(Pal.lancerLaser);
+			e.scaled(15f, b -> {
+				Lines.stroke(3f * b.fout());
+				Lines.circle(e.x, e.y, 80f * b.fin());
+			});
+			e.scaled(30f, b -> {
+				Lines.stroke(3f * b.fout());
+				Lines.circle(e.x, e.y, 80f * b.fin());
+			});
+			e.scaled(45f, b -> {
+				Lines.stroke(3f * b.fout());
+				Lines.circle(e.x, e.y, 80f * b.fin());
+			});
+			Lines.stroke(3f * e.fout());
+			Lines.circle(e.x, e.y, 80f * e.fin());
+			
+			Angles.randLenVectors(e.id, 4, 80f * e.finpow(), (x, y) -> {
+				for (var i = 0; i < 4; i++) {
+					Drawf.tri(e.x + x, e.y + y, 10f * e.foutpow(), 10f * e.finpow(), i * 90f + e.finpow());
+				}
+			});
+		}),
+		abyssCraft = new Effect(60f, e -> {
+			Lines.stroke(3f * e.foutpow());
+			Lines.circle(e.x, e.y, 80f * e.fin());
+			
+			e.scaled(30f, b -> {
+				for (var i = 0; i < 4; i++) {
+					float x = e.x + Angles.trnsx((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					float y = e.y + Angles.trnsy((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					Drawf.tri(x, y, 10f * b.fout(), 30f * b.fin(), (i * 90f) + b.fin() * 180f + 180f);
+				}
+			});
+			e.scaled(45f, b -> {
+				for (var i = 0; i < 4; i++) {
+					float x = e.x + Angles.trnsx((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					float y = e.y + Angles.trnsy((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					Drawf.tri(x, y, 10f * b.fout(), 30f * b.fin(), (i * 90f) + b.fin() * 180f + 180f);
+				}
+			});
+		}),
+		abyssShoot = new Effect(60f, e -> {
+			Lines.stroke(3f * e.foutpow());
+			Lines.circle(e.x, e.y, 80f * e.fin());
+			
+			e.scaled(30f, b -> {
+				for (int i = 0; i < 4; i++) {
+					float x = e.x + Angles.trnsx((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					float y = e.y + Angles.trnsy((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					Drawf.tri(x, y, 10f * b.fout(), 30f * b.fin(), (i * 90f) + b.fin() * 180f);
+				}
+				for (int i = 0; i < 4; i++) {
+					float x = e.x + Angles.trnsx((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					float y = e.y + Angles.trnsy((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					Drawf.tri(x, y, 10f * b.fout(), 30f * b.fin(), (i * 90f) + b.fin() * 180f + 180f);
+				}
+			});
+			e.scaled(45f, b -> {
+				for (int i = 0; i < 4; i++) {
+					float x = e.x + Angles.trnsx((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					float y = e.y + Angles.trnsy((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					Drawf.tri(x, y, 10f * b.fout(), 30f * b.fin(), (i * 90f) + b.fin() * 180f);
+				}
+				for (int i = 0; i < 4; i++) {
+					float x = e.x + Angles.trnsx((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					float y = e.y + Angles.trnsy((i * 90f) + b.fin() * 180f, 80f * e.fin(), 0f);
+					Drawf.tri(x, y, 10f * b.fout(), 30f * b.fin(), (i * 90f) + b.fin() * 180f + 180f);
+				}
 			});
 		});
 }
