@@ -54,7 +54,7 @@ public class StatusBomb extends Block {
 	public void setStats() {
 		super.setStats();
 		stats.add(Stat.range, range/8, StatUnit.blocks);
-		stats.add(Stat.productiontime, craftTime/60, StatUnit.seconds);
+		stats.add(Stat.productionTime, craftTime/60, StatUnit.seconds);
 		stats.add(Stat.abilities, OblivionStatValues.displayStatus(status, statusDuration));
 	}
 
