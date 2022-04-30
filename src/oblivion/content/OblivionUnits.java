@@ -143,8 +143,9 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-mount") {{
 					x = 15.25f;
 					y = 4f;
-					reload = 40f;
+					reload = 30f;
 					shots = 3;
+					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(6f, 60) {{
 						width = height = 10f;
@@ -158,8 +159,9 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-mount") {{
 					x = 15f;
 					y = -14f;
-					reload = 40f;
+					reload = 30f;
 					shots = 3;
+					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(6f, 60) {{
 						width = height = 10f;
