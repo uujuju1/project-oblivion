@@ -98,7 +98,11 @@ public class OblivionTechTree implements ContentList {
 				});
 				node(OblivionBlocks.uno, Seq.with(new Produce(OblivionResources.mesulfate)), () -> {
 					node(OblivionBlocks.rain, Seq.with(new SectorComplete(SectorPresets.craters)), () -> {
-						node(OblivionBlocks.granite, Seq.with(new SectorComplete(SectorPresets.ruinousShores), new Research(Blocks.ripple)));
+						node(OblivionBlocks.granite, Seq.with(new SectorComplete(SectorPresets.ruinousShores), new Research(Blocks.ripple)), () -> {
+							node(OblivionBlocks.fearSigil, Seq.with(new Produce(OblivionResources.mothalate)));
+							node(OblivionBlocks.calamitySigil, Seq.with(new Produce(OblivionResources.mothalate), new Produce(OblivionResources.mesulfate)));
+							node(OblivionBlocks.abyssSigil, Seq.with(new Produce(OblivionResources.mothalate), new Produce(OblivionResources.carmanite)));
+						});
 					});
 				});
 				node(OblivionBlocks.solfreniteFactory, Seq.with(new Produce(OblivionResources.mesulfate)), () -> {
@@ -155,6 +159,9 @@ public class OblivionTechTree implements ContentList {
 		});
 		extendNode(UnitTypes.eclipse, () -> {
 			node(OblivionUnits.bloodmoon, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
+		});
+		extendNode(UnitTypes.omura, () -> {
+			node(OblivionUnits.yetinus, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
 		});
 	}
 }
