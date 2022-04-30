@@ -117,7 +117,7 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 		taleni = new UnitType("taleni") {{
-			health = 7500;
+			health = 5500;
 			armor = 11f;
 			speed = 1f;
 			flying = true;
@@ -143,14 +143,14 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-mount") {{
 					x = 15.25f;
 					y = 4f;
-					reload = 30f;
+					reload = 35f;
 					shots = 3;
 					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(6f, 60) {{
 						width = height = 10f;
 						lifetime = 50f;
-						splashDamage = 80f;
+						splashDamage = 70f;
                                                 splashDamageRadius = 10f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
@@ -159,14 +159,14 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-mount") {{
 					x = 15f;
 					y = -14f;
-					reload = 30f;
+					reload = 35f;
 					shots = 3;
 					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(6f, 60) {{
 						width = height = 10f;
 						lifetime = 50f;
-						splashDamage = 80f;
+						splashDamage = 70f;
                                                 splashDamageRadius = 10f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
@@ -209,12 +209,12 @@ public class OblivionUnits implements ContentList {
 					x = 24.25f;
 					y = -12f;
 					reload = 90f;
-					range = 280f;
+					range = 300f;
 					shots = 6;
 					inaccuracy = 15f;
 					velocityRnd = 0.6f;
 					shootSound = Sounds.artillery;
-					bullet = new BasicBulletType(9f, 200) {{
+					bullet = new BasicBulletType(11f, 200) {{
 						drag = 0.04f;
 						width = height = 12f;
 						lifetime = 300f;
