@@ -731,9 +731,8 @@ public class OblivionUnits implements ContentList {
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
-						hitColor = Pal.bulletYellow;
 						hitEffect = Fx.sapExplosion;
-						color =  Pal.bulletYellow;
+						hitColor = Pal.bulletYellow;
 						smokeEffect = Fx.shootBig2;
 					}};
 				}},
