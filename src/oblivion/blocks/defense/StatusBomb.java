@@ -2,6 +2,7 @@ package oblivion.blocks.defense;
 
 import arc.*;
 import arc.util.*;
+import arc.util.io.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
 import arc.scene.ui.layout.*;
@@ -52,6 +53,9 @@ public class StatusBomb extends Block {
 	@Override
 	public void setStats() {
 		super.setStats();
+		stats.add(Stat.range, range/8, StatUnit.blocks);
+		stats.add(Stat.productionTime, craftTime/60, StatUnit.seconds);
+		stats.add(Stat.abilities, OblivionStatValues.displayStatus(status, statusDuration));
 	}
 
 	public class StatusBombBuild extends Building {
@@ -90,6 +94,23 @@ public class StatusBomb extends Block {
 				reload = cooldownTime;
 				shots--;
 			}
+		}
+
+		@Override
+		public void write(Writes write){
+			super.write(write);
+			write.f(reload);
+			write.f(craftReload);
+			write.i(shots);
+			
+		}
+
+		@Override
+		public void read(Reads read, byte revision){
+			super.read(read, revision);
+			reload = read.f();
+			craftReload = read.f();
+			shots = read.i();
 		}
 	}
 }

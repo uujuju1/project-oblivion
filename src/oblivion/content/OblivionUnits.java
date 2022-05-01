@@ -755,11 +755,12 @@ public class OblivionUnits implements ContentList {
 					rotate = true;
 					rotateSpeed = 1.5f;
 					mirror = false;
+					rotate = true;
 					recoil = 2f;
 					shootY = 4f;
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(150) {{
-						width = 12f;
+						width = 20f;
 						length = 300f;
 					}};
 				}}

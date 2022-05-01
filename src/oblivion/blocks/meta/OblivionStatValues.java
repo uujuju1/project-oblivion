@@ -8,7 +8,7 @@ import mindustry.world.meta.*;
 // custom ui moment
 public class OblivionStatValues {
 
-	public static StatValue sigilStatus(StatusEffect status, float duration) {
+	public static StatValue displayStatus(StatusEffect status, float duration) {
 		return table -> {
 			table.row();
 			table.table(Tex.underline, bt -> {
