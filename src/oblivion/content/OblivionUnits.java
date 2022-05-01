@@ -67,8 +67,13 @@ public class OblivionUnits implements ContentList {
 					reload = 60f;
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(1.5f, 30) {{
+					        hitEffect = Fx.blastExplosion;
 						lifetime = 101f;
+						knockback = 0.6f;
 						collides = true;
+						collidesTiles = true;
+		                                splashDamageRadius = 35f;
+                                                splashDamage = 60f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 					}};
