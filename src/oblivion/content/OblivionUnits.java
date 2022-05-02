@@ -73,7 +73,7 @@ public class OblivionUnits implements ContentList {
 						collides = true;
 						collidesTiles = true;
 		                                splashDamageRadius = 35f;
-                                                splashDamage = 60f;
+                                                splashDamage = 20f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 					}};
