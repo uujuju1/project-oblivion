@@ -225,7 +225,7 @@ public class OblivionUnits implements ContentList {
 						lifetime = 300f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
-						fragBullets = 4;
+						fragBullets = 5;
 						fragBullet = new BasicBulletType(8f, 30) {{
 					                homingPower = 1f;
 							homingRange = 400f;
@@ -431,7 +431,7 @@ public class OblivionUnits implements ContentList {
 						damage = 125f;
 						length = 304;
 						drawSize = 200f;
-						lifetime = 240f;
+						lifetime = 200f;
 						status = OblivionStatuses.infested;
 						shake = 1f;
 						width = 6f;
