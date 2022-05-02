@@ -566,13 +566,14 @@ public class OblivionUnits implements ContentList {
 					recoil = 3f;
 					shootY = 2f;
 					shootSound = Sounds.missile;
-					alternate = false;
+					alternate = true;
 					shots = 6;
 					inaccuracy = 7f;
-					bullet = new MissileBulletType(4f, 30) {{
+					bullet = new MissileBulletType(4f, 40) {{
 						healPercent = 0.1f;
 						width = height = 8f;
 						lifetime = 100f;
+						collidesTeam = true;
                                                 backColor = trailColor = hitColor = lightColor = lightningColor = Pal.heal;
                                                 frontColor = Color.white;
 					}};
