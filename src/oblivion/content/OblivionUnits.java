@@ -602,7 +602,7 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 		archaranid = new UnitType("archaranid") {{
-			health = 60000;
+			health = 63500;
 			armor = 17f;
 			speed = 0.3f;
 			legCount = 8;
@@ -719,7 +719,7 @@ public class OblivionUnits implements ContentList {
 							homingRange = 400f;
 							lifetime = 300f;
 							splashDamageRadius = 40f;
-						        splashDamage = 40f;
+						        splashDamage = 30f;
 							hitSound = despawnSound = Sounds.plasmaboom;
 							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
 							trailChance = 5f;
@@ -762,7 +762,7 @@ public class OblivionUnits implements ContentList {
 						shootEffect = Fx.railShoot;
 						lifetime = 100;
 						splashDamageRadius = 180f;
-						splashDamage = 450f;
+						splashDamage = 500f;
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
