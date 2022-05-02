@@ -635,7 +635,7 @@ public class OblivionUnits implements ContentList {
 					shootY = 28f;
 					shake = 10f;
 					shootSound = Sounds.artillery;
-					bullet = new ArtilleryBulletType(2f, 180) {{
+					bullet = new ArtilleryBulletType(2f, 200) {{
 						width = height = 35f;
 						collides = collidesTiles = true;
 						lifetime = 180f;
