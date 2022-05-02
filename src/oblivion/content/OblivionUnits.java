@@ -225,6 +225,15 @@ public class OblivionUnits implements ContentList {
 						lifetime = 300f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
+						fragBullets = 5;
+						fragBullet = new BasicBulletType(5f, 45) {{
+							homingPower = 1f;
+							homingRange = 400f;
+							lifetime = 100f;
+							hitSound = despawnSound = none;
+							hitEffect = despawnEffect = none;
+							frontColor = OblivionPal.mesoMedium;
+						        backColor = OblivionPal.mesoDark;
 					}};
 				}}
 			);
@@ -691,7 +700,7 @@ public class OblivionUnits implements ContentList {
 						width = height = 20;
 						lifetime = 320f;
 						splashDamageRadius = 60f;
-						splashDamage = 100f;
+						splashDamage = 150f;
 						collides = collidesTiles = collidesAir = collidesGround = true;
 						hitSound = despawnSound = Sounds.plasmaboom;
 						hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
@@ -701,7 +710,7 @@ public class OblivionUnits implements ContentList {
 							homingRange = 400f;
 							lifetime = 300f;
 							splashDamageRadius = 40f;
-						        splashDamage = 40f;
+						        splashDamage = 50f;
 							hitSound = despawnSound = Sounds.plasmaboom;
 							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
 							trailChance = 5f;
@@ -740,11 +749,11 @@ public class OblivionUnits implements ContentList {
 					shake = 8f;
 					shootCone = 45f;
 					shootSound = Sounds.railgun;
-					bullet = new BasicBulletType(6f, 620) {{
+					bullet = new BasicBulletType(6f, 0) {{
 						shootEffect = Fx.railShoot;
 						lifetime = 100;
 						splashDamageRadius = 180f;
-						splashDamage = 350f;
+						splashDamage = 850f;
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
