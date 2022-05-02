@@ -653,6 +653,7 @@ public class OblivionUnits implements ContentList {
 						fragBullet = new LaserBulletType(120) {{
 							width = 10f;
 							length = 80f;
+							collides = collidesTiles = true;
 							shootEffect = OblivionFx.instSapShoot;
 							hitEffect = OblivionFx.instSapHit;
 							colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
