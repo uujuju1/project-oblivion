@@ -226,7 +226,7 @@ public class OblivionUnits implements ContentList {
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 						fragBullets = 5;
-						fragBullet = new BasicBulletType(5f, 45) {{
+						fragBullet = new BasicBulletType(8f, 45) {{
 					                homingPower = 1f;
 							homingRange = 400f;
 							lifetime = 100f;
