@@ -228,7 +228,7 @@ public class OblivionFx {
 				}
 			});
 		}),
-		carmaniteHit = new Effect(30f, b -> {
+		carmaniteHit = new Effect(30f, e -> {
 			for (var i = 0; i < 4; i++) {
 				Drawf.tri(e.x, e.y, 8f * e.fout(), 16f * e.fin(), (i * 90f) + e.finpow() * 180f);
 				Drawf.tri(e.x, e.y, 8f * e.fout(), 16f * e.fin(), (i * 90f) + 45f);

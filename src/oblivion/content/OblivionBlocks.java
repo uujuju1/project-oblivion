@@ -694,7 +694,7 @@ public class OblivionBlocks implements ContentList {
 		}};
 
 		earthquake = new StatusBomb("earthquake") {{
-			requirements(Cartegory.defense, with(
+			requirements(Category.defense, with(
 				OblivionResources.carmanite, 30,
 				Items.graphite, 60,
 				Items.titanium, 25,
@@ -703,7 +703,7 @@ public class OblivionBlocks implements ContentList {
 			size = 2;
 			craftTime = 180f;
 			cooldownTime = 120f;
-			craftEffect = OblivionResources.calciteSmelt;
+			craftEffect = OblivionFx.calciteSmelt;
 			shootEffect = OblivionFx.carmaniteHit;
 			status = StatusEffects.unmoving;
 			statusDuration = 60f;

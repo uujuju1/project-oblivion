@@ -884,7 +884,7 @@ public class OblivionUnits implements ContentList {
 						lifetime = 13 * 8;
 						width = height = 16f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
-						frontColor = Collor.white;
+						frontColor = Color.white;
 						backColor = Color.valueOf("DCDCDC");
 					}};
 				}}
