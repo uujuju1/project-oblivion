@@ -757,11 +757,11 @@ public class OblivionUnits implements ContentList {
 					shake = 8f;
 					shootCone = 45f;
 					shootSound = Sounds.railgun;
-					bullet = new BasicBulletType(6f, 0) {{
+					bullet = new BasicBulletType(6f, 350) {{
 						shootEffect = Fx.railShoot;
 						lifetime = 100;
 						splashDamageRadius = 180f;
-						splashDamage = 850f;
+						splashDamage = 750f;
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
