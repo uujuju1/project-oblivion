@@ -202,7 +202,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-laser") {{
 					x = 26.5f;
 					y = 16.75f;
-					reload = 60f;
+					reload = 40f;
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(100) {{
 						width = 11f;
@@ -225,12 +225,12 @@ public class OblivionUnits implements ContentList {
 						lifetime = 300f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
-						fragBullets = 5;
-						fragBullet = new BasicBulletType(8f, 45) {{
+						fragBullets = 4;
+						fragBullet = new BasicBulletType(8f, 40) {{
 					                homingPower = 1f;
 							homingRange = 400f;
 							lifetime = 100f;
-							hitSound = despawnSound = Sounds.artilery;
+							hitSound = despawnSound = Sounds.artillery;
 							hitEffect = despawnEffect = Fx.blastExplosion;
 							frontColor = OblivionPal.mesoMedium;
 						        backColor = OblivionPal.mesoDark;
