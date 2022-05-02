@@ -573,7 +573,8 @@ public class OblivionUnits implements ContentList {
 						healPercent = 0.1f;
 						width = height = 8f;
 						lifetime = 100f;
-					        colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
+                                                backColor = Pal.heal;
+                                                frontColor = Color.white;
 					}};
 				}},
 				new Weapon() {{
