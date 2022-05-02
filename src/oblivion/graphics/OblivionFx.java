@@ -234,6 +234,6 @@ public class OblivionFx {
 				Drawf.tri(e.x, e.y, 8f * e.fout(), 16f * e.fin(), (i * 90f) + 45f);
 			}
 			Lines.stroke(3f * e.foutpow());
-			Lines.circle(e.x, e.y, 16d * e.finpow());
+			Lines.circle(e.x, e.y, 16f * e.finpow());
 		});
 }
