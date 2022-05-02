@@ -227,13 +227,14 @@ public class OblivionUnits implements ContentList {
 						backColor = OblivionPal.mesoDark;
 						fragBullets = 5;
 						fragBullet = new BasicBulletType(5f, 45) {{
-							homingPower = 1f;
+					                homingPower = 1f;
 							homingRange = 400f;
 							lifetime = 100f;
 							hitSound = despawnSound = none;
 							hitEffect = despawnEffect = none;
 							frontColor = OblivionPal.mesoMedium;
 						        backColor = OblivionPal.mesoDark;
+						}};	
 					}};
 				}}
 			);
