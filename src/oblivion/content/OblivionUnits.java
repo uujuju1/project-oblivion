@@ -553,6 +553,7 @@ public class OblivionUnits implements ContentList {
 					shootY = 6f;
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(80) {{
+						healPercent = 0.2f;
 						width = 50f;
 						length = 400f;
 						colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
@@ -566,9 +567,13 @@ public class OblivionUnits implements ContentList {
 					shootY = 2f;
 					shootSound = Sounds.missile;
 					alternate = false;
-					bullet = new MissileBulletType(4f, 75) {{
-						width = height = 15f;
+					shots = 6;
+					inaccuracy = 7f;
+					bullet = new MissileBulletType(4f, 30) {{
+						healPercent = 0.1f;
+						width = height = 8f;
 						lifetime = 100f;
+					        colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
 					}};
 				}},
 				new Weapon() {{
@@ -584,6 +589,7 @@ public class OblivionUnits implements ContentList {
 					mirror = false;
 					continuous = true;
 					bullet = new ContinuousLaserBulletType(210) {{
+						healPercent = 0.4f;
 						lifetime = 60f;
 						incendAmount = 0;
 						incendSpread = 0;
