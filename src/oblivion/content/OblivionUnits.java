@@ -19,7 +19,7 @@ public class OblivionUnits implements ContentList {
 	public static UnitType 
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
-	assaultDrone,
+	phi, root,
 
 	republic, giga, archaranid, bloodmoon, yetinus;
 
@@ -772,36 +772,48 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 
-		assaultDrone = new OblivionUnitType("assault-drone") {{
-			health = 600;
+		phi = new OblivionUnitType("phi") {{
+			health = 450;
 			speed = 2.5f;
 			flying = true;
 			constructor = UnitEntity::create;
 			outlineColor = Color.valueOf("2E2B2A");
-			hitSize = 8f;
-			topDrawer = unit -> {
-			  for(int i = 0; i < 4; i ++) {
-			    Draw.rect(Core.atlas.find(name + "-rotor"), unit.x, unit.y, unit.rotation * i + (Time.time * 15));
-			  }
-			  Draw.rect(Core.atlas.find(name + "-rotor-joint"), unit.x, unit.y, unit.rotation - 90);
-			};
 			range = 18f * 8f;
 			maxRange = range;
 			weapons.add(
-				new Weapon("oblivion-assault-mount") {{
-					x = 2.25f;
-					y = -3f;
+				new Weapon("oblivion-phi-weapon") {{
+					x = 5.25f;
+					y = 0.5f;
 					reload = 30f;
+					top = false;
 					bullet = new BasicBulletType(2f, 20) {{
 						lifetime = 18 * 4f;
+						frontColor = Color.white;
+						backColor = Color.valueOf("DCDCDC");
 					}};
-				}},
-				new Weapon("oblivion-assault-mount") {{
-					x = 1.75f;
-					y = 3.75f;
-					reload = 30f;
-					bullet = new BasicBulletType(2f, 20) {{
-						lifetime = 18 * 4f;
+				}}
+			);
+		}};
+		root = new OblivionUnitType("root") {{
+			health = 920;
+			speed = 2f;
+			flying = true;
+			constructor = UnitEntity::create;
+			outlineColor = Color.valueOf("2E2B2A");
+			range = 23 * 8f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-root-weapon") {{
+					x = 8f;
+					y = -0.75f;
+					reload = 60f;
+					top = false;
+					bullet = new ArtilleryBulletType(1f, 60) {{
+						lifetime = 23 * 8f;
+						frontColor = Color.white;
+						backColor = Color.valueOf("DCDCDC");
+						homingRange = 80f;
+						homingPower = 0.05f;
 					}};
 				}}
 			);
