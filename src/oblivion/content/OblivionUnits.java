@@ -215,7 +215,7 @@ public class OblivionUnits implements ContentList {
 					y = -12f;
 					reload = 90f;
 					range = 300f;
-					shots = 6;
+					shots = 4;
 					inaccuracy = 15f;
 					velocityRnd = 0.6f;
 					shootSound = Sounds.artillery;
