@@ -665,7 +665,7 @@ public class OblivionUnits implements ContentList {
 					reload = 30f;
 					recoil = 2f;
 					shootSound = Sounds.railgun;
-					bullet = new LaserBulletType(150) {{
+					bullet = new LaserBulletType(175) {{
 						length = 180f;
 						width = 12f;
 						shootEffect = OblivionFx.instSapShoot;
@@ -709,7 +709,7 @@ public class OblivionUnits implements ContentList {
 						width = height = 20;
 						lifetime = 320f;
 						splashDamageRadius = 60f;
-						splashDamage = 150f;
+						splashDamage = 80f;
 						collides = collidesTiles = collidesAir = collidesGround = true;
 						hitSound = despawnSound = Sounds.plasmaboom;
 						hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
@@ -719,7 +719,7 @@ public class OblivionUnits implements ContentList {
 							homingRange = 400f;
 							lifetime = 300f;
 							splashDamageRadius = 40f;
-						        splashDamage = 50f;
+						        splashDamage = 40f;
 							hitSound = despawnSound = Sounds.plasmaboom;
 							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
 							trailChance = 5f;
