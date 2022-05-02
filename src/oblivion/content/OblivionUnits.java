@@ -122,7 +122,7 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 		taleni = new UnitType("taleni") {{
-			health = 5500;
+			health = 7500;
 			armor = 11f;
 			speed = 1f;
 			flying = true;
@@ -431,7 +431,7 @@ public class OblivionUnits implements ContentList {
 						damage = 125f;
 						length = 304;
 						drawSize = 200f;
-						lifetime = 80f;
+						lifetime = 240f;
 						status = OblivionStatuses.infested;
 						shake = 1f;
 						width = 6f;
