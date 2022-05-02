@@ -226,10 +226,10 @@ public class OblivionUnits implements ContentList {
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 						fragBullets = 4;
-						fragBullet = new BasicBulletType(8f, 40) {{
+						fragBullet = new BasicBulletType(8f, 30) {{
 					                homingPower = 1f;
 							homingRange = 400f;
-							lifetime = 100f;
+							lifetime = 65f;
 							hitSound = despawnSound = Sounds.artillery;
 							hitEffect = despawnEffect = Fx.blastExplosion;
 							frontColor = OblivionPal.mesoMedium;
