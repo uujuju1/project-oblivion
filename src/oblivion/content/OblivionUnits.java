@@ -230,8 +230,8 @@ public class OblivionUnits implements ContentList {
 					                homingPower = 1f;
 							homingRange = 400f;
 							lifetime = 100f;
-							hitSound = despawnSound = none;
-							hitEffect = despawnEffect = none;
+							hitSound = despawnSound = Sounds.artilery;
+							hitEffect = despawnEffect = Fx.blastExplosion;
 							frontColor = OblivionPal.mesoMedium;
 						        backColor = OblivionPal.mesoDark;
 						}};	
