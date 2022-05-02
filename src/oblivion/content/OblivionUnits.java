@@ -67,8 +67,13 @@ public class OblivionUnits implements ContentList {
 					reload = 60f;
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(1.5f, 30) {{
+					        hitEffect = Fx.blastExplosion;
 						lifetime = 101f;
+						knockback = 0.6f;
 						collides = true;
+						collidesTiles = true;
+		                                splashDamageRadius = 35f;
+                                                splashDamage = 20f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 					}};
@@ -117,8 +122,8 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 		taleni = new UnitType("taleni") {{
-			health = 6000;
-			armor = 10f;
+			health = 7500;
+			armor = 11f;
 			speed = 1f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -134,7 +139,7 @@ public class OblivionUnits implements ContentList {
 					shake = 3f;
 					shootSound = Sounds.plasmadrop;
 					mirror = false;
-					bullet = new LaserBulletType(150) {{
+					bullet = new LaserBulletType(175) {{
 						width = 10f;
 						length = 256f;
 						colors = new Color[]{OblivionPal.mesoDark, OblivionPal.mesoMedium, OblivionPal.mesoLight};
@@ -143,11 +148,15 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-mount") {{
 					x = 15.25f;
 					y = 4f;
-					reload = 60f;
+					reload = 35f;
+					shots = 3;
+					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
-					bullet = new BasicBulletType(2f, 50) {{
+					bullet = new BasicBulletType(6f, 60) {{
 						width = height = 10f;
-						lifetime = 128f;
+						lifetime = 50f;
+						splashDamage = 70f;
+                                                splashDamageRadius = 10f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 					}};
@@ -155,11 +164,15 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-mount") {{
 					x = 15f;
 					y = -14f;
-					reload = 60f;
+					reload = 35f;
+					shots = 3;
+					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
-					bullet = new BasicBulletType(2f, 50) {{
+					bullet = new BasicBulletType(6f, 60) {{
 						width = height = 10f;
-						lifetime = 128f;
+						lifetime = 50f;
+						splashDamage = 70f;
+                                                splashDamageRadius = 10f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 					}};
@@ -189,7 +202,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-laser") {{
 					x = 26.5f;
 					y = 16.75f;
-					reload = 60f;
+					reload = 40f;
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(100) {{
 						width = 11f;
@@ -200,14 +213,28 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-mine") {{
 					x = 24.25f;
 					y = -12f;
-					reload = 30f;
+					reload = 90f;
+					range = 300f;
+					shots = 4;
+					inaccuracy = 15f;
+					velocityRnd = 0.6f;
 					shootSound = Sounds.artillery;
-					bullet = new BasicBulletType(4f, 200) {{
+					bullet = new BasicBulletType(11f, 200) {{
 						drag = 0.04f;
 						width = height = 12f;
 						lifetime = 300f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
+						fragBullets = 5;
+						fragBullet = new BasicBulletType(8f, 30) {{
+					                homingPower = 1f;
+							homingRange = 400f;
+							lifetime = 65f;
+							hitSound = despawnSound = Sounds.artillery;
+							hitEffect = despawnEffect = Fx.blastExplosion;
+							frontColor = OblivionPal.mesoMedium;
+						        backColor = OblivionPal.mesoDark;
+						}};	
 					}};
 				}}
 			);
@@ -404,7 +431,7 @@ public class OblivionUnits implements ContentList {
 						damage = 125f;
 						length = 304;
 						drawSize = 200f;
-						lifetime = 80f;
+						lifetime = 200f;
 						status = OblivionStatuses.infested;
 						shake = 1f;
 						width = 6f;
@@ -526,6 +553,7 @@ public class OblivionUnits implements ContentList {
 					shootY = 6f;
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(80) {{
+						healPercent = 0.2f;
 						width = 50f;
 						length = 400f;
 						colors = new Color[]{Pal.heal.cpy().a(0.4f), Pal.heal, Color.white};
@@ -538,10 +566,16 @@ public class OblivionUnits implements ContentList {
 					recoil = 3f;
 					shootY = 2f;
 					shootSound = Sounds.missile;
-					alternate = false;
-					bullet = new MissileBulletType(4f, 75) {{
-						width = height = 15f;
+					alternate = true;
+					shots = 6;
+					inaccuracy = 7f;
+					bullet = new MissileBulletType(4f, 40) {{
+						healPercent = 0.1f;
+						width = height = 8f;
 						lifetime = 100f;
+						collidesTeam = true;
+                                                backColor = trailColor = hitColor = lightColor = lightningColor = Pal.heal;
+                                                frontColor = Color.white;
 					}};
 				}},
 				new Weapon() {{
@@ -557,6 +591,7 @@ public class OblivionUnits implements ContentList {
 					mirror = false;
 					continuous = true;
 					bullet = new ContinuousLaserBulletType(210) {{
+						healPercent = 0.4f;
 						lifetime = 60f;
 						incendAmount = 0;
 						incendSpread = 0;
@@ -567,7 +602,7 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 		archaranid = new UnitType("archaranid") {{
-			health = 60000;
+			health = 63500;
 			armor = 17f;
 			speed = 0.3f;
 			legCount = 8;
@@ -600,7 +635,7 @@ public class OblivionUnits implements ContentList {
 					shootY = 28f;
 					shake = 10f;
 					shootSound = Sounds.artillery;
-					bullet = new ArtilleryBulletType(2f, 180) {{
+					bullet = new ArtilleryBulletType(2f, 200) {{
 						width = height = 35f;
 						collides = collidesTiles = true;
 						lifetime = 180f;
@@ -618,6 +653,7 @@ public class OblivionUnits implements ContentList {
 						fragBullet = new LaserBulletType(120) {{
 							width = 10f;
 							length = 80f;
+							collides = collidesTiles = true;
 							shootEffect = OblivionFx.instSapShoot;
 							hitEffect = OblivionFx.instSapHit;
 							colors = new Color[]{Pal.sapBullet, Pal.sapBullet, Pal.sapBulletBack};
@@ -630,7 +666,7 @@ public class OblivionUnits implements ContentList {
 					reload = 30f;
 					recoil = 2f;
 					shootSound = Sounds.railgun;
-					bullet = new LaserBulletType(150) {{
+					bullet = new LaserBulletType(175) {{
 						length = 180f;
 						width = 12f;
 						shootEffect = OblivionFx.instSapShoot;
@@ -673,6 +709,8 @@ public class OblivionUnits implements ContentList {
 					bullet = new ArtilleryBulletType(1.25f, 250) {{
 						width = height = 20;
 						lifetime = 320f;
+						splashDamageRadius = 60f;
+						splashDamage = 80f;
 						collides = collidesTiles = collidesAir = collidesGround = true;
 						hitSound = despawnSound = Sounds.plasmaboom;
 						hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
@@ -681,6 +719,8 @@ public class OblivionUnits implements ContentList {
 							homingPower = 0.03f;
 							homingRange = 400f;
 							lifetime = 300f;
+							splashDamageRadius = 40f;
+						        splashDamage = 30f;
 							hitSound = despawnSound = Sounds.plasmaboom;
 							hitEffect = despawnEffect = OblivionFx.bloodmoonHit;
 							trailChance = 5f;
@@ -719,13 +759,16 @@ public class OblivionUnits implements ContentList {
 					shake = 8f;
 					shootCone = 45f;
 					shootSound = Sounds.railgun;
-					bullet = new BasicBulletType(6f, 620) {{
+					bullet = new BasicBulletType(6f, 650) {{
 						shootEffect = Fx.railShoot;
 						lifetime = 100;
+						splashDamageRadius = 180f;
+						splashDamage = 500f;
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
-						hitEffect = Fx.massiveExplosion;
+						hitEffect = Fx.impactShockwave;
+						hitColor = Pal.bulletYellow;
 						smokeEffect = Fx.shootBig2;
 					}};
 				}},
@@ -733,6 +776,8 @@ public class OblivionUnits implements ContentList {
 					x = 0f;
 					y = 0f;
 					reload = 30f;
+					rotate = true;
+					rotateSpeed = 1.5f;
 					mirror = false;
 					rotate = true;
 					recoil = 2f;
