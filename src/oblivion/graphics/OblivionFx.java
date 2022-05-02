@@ -227,5 +227,13 @@ public class OblivionFx {
 					Drawf.tri(x, y, 10f * b.fout(), 30f * b.fin(), (i * 90f) + b.fin() * 180f + 180f);
 				}
 			});
+		}),
+		carmaniteHit = new Effect(30f, b -> {
+			for (var i = 0; i < 4; i++) {
+				Drawf.tri(e.x, e.y, 8f * e.fout(), 16f * e.fin(), (i * 90f) + e.finpow() * 180f);
+				Drawf.tri(e.x, e.y, 8f * e.fout(), 16f * e.fin(), (i * 90f) + 45f);
+			}
+			Lines.stroke(3f * e.foutpow());
+			Lines.circle(e.x, e.y, 16d * e.finpow());
 		});
 }

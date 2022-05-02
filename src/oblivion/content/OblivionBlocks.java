@@ -42,6 +42,7 @@ public class OblivionBlocks implements ContentList {
 		carbonicInfuser,
 		inductionDrill,
 		alomeriTube, alomeriConveyor,
+		earthquake,
 
 		moloniteSmelter,
 		calamitySigil, fearSigil, abyssSigil,
@@ -687,6 +688,28 @@ public class OblivionBlocks implements ContentList {
 				OblivionResources.carmanite, 80
 			));
 			consumes.power(7f);
+		}};
+
+		earthquake = new StatusBomb("earthquake") {{
+			requirements(Cartegory.defense, with(
+				OblivionResources.carmanite, 30,
+				Items.graphite, 60,
+				Items.titanium, 25,
+				Items.copper, 80
+			));
+			size = 2;
+			craftTime = 180f;
+			cooldownTime = 120f;
+			craftEffect = OblivionResources.calciteSmelt;
+			shootEffect = OblivionFx.carmaniteHit;
+			status = StatusEffects.unmoving;
+			statusDuration = 60f;
+			itemCapacity = 20;
+			bombCapacity = 5;
+			consumes.items(with(
+				OblivionResources.carmanite, 10
+			));
+			consumes.power(2f);
 		}};
 	}
 }

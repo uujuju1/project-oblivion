@@ -19,7 +19,7 @@ public class OblivionUnits implements ContentList {
 	public static UnitType 
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
-	phi, root,
+	phi, root, multi,
 
 	republic, giga, archaranid, bloodmoon, yetinus;
 
@@ -453,13 +453,13 @@ public class OblivionUnits implements ContentList {
 					shake = 5f;
 					top = false;
 					bullet = new BasicBulletType(8f, 150) {{
-						 pierce = true;
-						 pierceCap = 7;
+						pierce = true;
+						pierceCap = 7;
 						lifetime = 40f;
 						width = height = 15f;
-		                                hitEffect = Fx.flakExplosion;
-                                                splashDamage = 20f;
-                                                splashDamageRadius = 10f;
+						hitEffect = Fx.flakExplosion;
+						splashDamage = 20f;
+						splashDamageRadius = 10f;
 						shootEffect = OblivionFx.bigFlameShoot;
 					}};
 				}},
@@ -751,7 +751,11 @@ public class OblivionUnits implements ContentList {
 			speed = 2.5f;
 			flying = true;
 			constructor = UnitEntity::create;
-			outlineColor = Color.valueOf("2E2B2A");
+			outlineColor = Color.valueOf("3F424D");
+			engineDrawer = unit -> {
+				DrawEx.circleEngine(unit, 2.5f, -5.5f, 2f);
+				DrawEx.circleEngine(unit, -2.5f, -5.5f, 2f);
+			};
 			range = 18f * 8f;
 			maxRange = range;
 			weapons.add(
@@ -773,7 +777,10 @@ public class OblivionUnits implements ContentList {
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
-			outlineColor = Color.valueOf("2E2B2A");
+			outlineColor = Color.valueOf("3F424D");
+			engineDrawer = unit -> {
+				DrawEx.circleEngine(unit, 0f, -5.5f, 4f);
+			};
 			range = 23 * 8f;
 			maxRange = range;
 			weapons.add(
@@ -782,14 +789,43 @@ public class OblivionUnits implements ContentList {
 					y = -0.75f;
 					reload = 60f;
 					top = false;
+					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(1f, 60) {{
 						lifetime = 23 * 8f;
+						width = height = 12f;
 						frontColor = Color.white;
 						backColor = Color.valueOf("DCDCDC");
 						homingRange = 80f;
 						homingPower = 0.05f;
+						collides = collidesTiles = collidesGround = collidesAir = true;
 					}};
 				}}
+			);
+		}};
+		multi = new OblivionUnitType("multi") {{
+			health = 1200;
+			speed = 1.65f;
+			flying = lowAltitude = true;
+			constructor = UnitEntity::create;
+			outlineColor = Color.valueOf("3F424D");
+			range = 26f * 8f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-multi-weapon") {{
+					x = 15.75f;
+					y = 0f;
+					reload = 30f;
+					shots = 3;
+					shotDelay = 5f;
+					shake = 3f;
+					shootSound = Sounds.shootBig;
+					bullet = new BasicBulletType(2f, 45) {{
+						width = height = 13f;
+						lifetime = 13f * 8f;
+						frontColor = Color.white;
+						backColor = Color.valueOf("DCDCDC");
+					}};
+				}},
 			);
 		}};
 	}
