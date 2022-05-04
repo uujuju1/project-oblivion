@@ -685,17 +685,10 @@ public class OblivionUnits implements ContentList {
 			hitSize = 56f;
 			range = 50f * 8f;
 			engineDrawer = unit -> {
-				Draw.color(unit.team.color);;
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, -15, -35), unit.y + Angles.trnsy(unit.rotation - 90, -15, -35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 15, -35), unit.y + Angles.trnsy(unit.rotation - 90, 15, -35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, -20, 35), unit.y + Angles.trnsy(unit.rotation - 90, -20, 35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 20, 35), unit.y + Angles.trnsy(unit.rotation - 90, 20, 35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation);
-				
-				Draw.color();
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, -20, -30), unit.y + Angles.trnsy(unit.rotation - 90, -20, -30), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation / 2);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 20, -30), unit.y + Angles.trnsy(unit.rotation - 90, 20, -30), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation / 2);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, -25, 35), unit.y + Angles.trnsy(unit.rotation - 90, -25, 35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation / 2);
-				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 25, 35), unit.y + Angles.trnsy(unit.rotation - 90, 25, 35), (10 + Mathf.absin(Time.time, 2, 10 / 4)) * unit.elevation / 2);
+				DrawEx.circleEngine(unit, -20, -30, 10);
+				DrawEx.circleEngine(unit, 20, -30, 10);
+				DrawEx.circleEngine(unit, -25, 35, 10);
+				DrawEx.circleEngine(unit, 25, 35, 10);
 			};
 			maxRange = range;
 			weapons.add(
@@ -855,16 +848,24 @@ public class OblivionUnits implements ContentList {
 			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
 			outlineColor = Color.valueOf("3F424D");
+			engineDrawer = unit -> {
+				DrawEx.circleEngine(unit, 8f, 7f, 4f);
+				DrawEx.circleEngine(unit, -8f, 7f, 4f);
+				DrawEx.circleEngine(unit, 6f, -11f, 4f);
+				DrawEx.circleEngine(unit, -8f, -11f, 4f);
+			};
 			range = 26f * 8f;
 			maxRange = range;
 			weapons.add(
 				new Weapon("oblivion-multi-weapon") {{
 					x = 15.75f;
 					y = 0f;
-					reload = 30f;
+					reload = 90f;
 					shots = 3;
 					shotDelay = 5f;
 					shake = 3f;
+					top = false;
+					shootY = 12f;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(2f, 45) {{
 						width = height = 13f;
@@ -876,14 +877,15 @@ public class OblivionUnits implements ContentList {
 				}},
 				new Weapon("oblivion-multi-cannon") {{
 					x = y = 0f;
-					reload = 90f;
+					reload = 120f;
 					mirror = false;
 					shake = 2;
-					shootSound = Sounds.shootBig;
+					shootSound = Sounds.plasmadrop;
 					bullet = new ArtilleryBulletType(2f, 80) {{
 						lifetime = 13 * 8;
 						width = height = 16f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
+						collidesAir = collidesGround = collidesTiles = collides = true;
 						frontColor = Color.white;
 						backColor = Color.valueOf("DCDCDC");
 					}};

@@ -16,11 +16,11 @@ public class DrawEx {
 		float dx = unit.x + Angles.trnsx(unit.rotation - 90, x, y);
 		float dy = unit.y + Angles.trnsy(unit.rotation - 90, x, y);
 		Draw.color(unit.team.color);
-		Fill.circle(dx, dy, size * Mathf.absin(Time.time, 2, size / 4) * unit.elevation);
+		Fill.circle(dx, dy, size + Mathf.absin(Time.time, 2, size / 4) * unit.elevation);
 		Draw.color();
-		Fill.circle(dx, dy, size * Mathf.absin(Time.time, 2, size / 4) * unit.elevation / 2);
+		Fill.circle(dx, dy, size + Mathf.absin(Time.time, 2, size / 4) * unit.elevation / 2);
 	}
-	public static void triangleEngine(Unit unit, float x, float y, float width, float length, float offsetY, float rotation) {
+	public static void triangleEngine(Unit unit, float x, float y, float width, float length, float rotation) {
 		float dx = unit.x + Angles.trnsx(unit.rotation - 90, x, y);
 		float dy = unit.y + Angles.trnsy(unit.rotation - 90, x, y);
 		Draw.color(unit.team.color);
