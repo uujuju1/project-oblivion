@@ -19,7 +19,7 @@ public class OblivionUnits implements ContentList {
 	public static UnitType 
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
-	phi, root, multi,
+	phi, root, multi, pow,
 
 	republic, giga, archaranid, bloodmoon, yetinus;
 
@@ -884,6 +884,68 @@ public class OblivionUnits implements ContentList {
 					bullet = new ArtilleryBulletType(2f, 80) {{
 						lifetime = 13 * 8;
 						width = height = 16f;
+						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
+						collidesAir = collidesGround = collidesTiles = collides = true;
+						frontColor = Color.white;
+						backColor = Color.valueOf("DCDCDC");
+					}};
+				}}
+			);
+		}};
+		pow = new OblivionUnitType("pow") {{
+			health = 6500;
+			speed = 1.05f;
+			flying = lowAltitude = true;
+			constructor = UnitEntity::create;
+			outlineColor = Color.valueOf("3F424D");
+			range = 33 * 8f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-pow-weapon") {{
+					x = 18f;
+					y = 0f;
+					reload = 50f;
+					shots = 5;
+					shotDelay = 5f;
+					shake = 5f;
+					top = false;
+					shootSound = Sounds.shootBig;
+					bullet = new BasicBulletType(6f, 65) {{
+						lifetime = 5.5 * 8f;
+						width = height = 16f;
+						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
+						frontColor = Color.white;
+						backColor = Color.valueOf("DCDCDC");
+					}};
+				}},
+				new Weapon("oblivion-pow-artillery") {{
+					x = y = 0f;
+					reload = 90f;
+					shots = 3;
+					inaccuracy = 10;
+					shake = 7f;
+					top = false;
+					shootSound = Sounds.artillery;
+					bullet = new ArtilleryBulletType(2f, 140) {{
+						lifetime = 12 * 8f;
+						width = height = 22f;
+						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
+						collidesAir = collidesGround = collidesTiles = collides = true;
+						frontColor = Color.white;
+						backColor = Color.valueOf("DCDCDC");
+					}};
+				}},
+				new Weapon("oblivion-pow-artillery") {{
+					x = y = 0f;
+					reload = 90f;
+					shots = 3;
+					inaccuracy = 10;
+					shake = 7f;
+					top = false;
+					shootSound = Sounds.artillery;
+					bullet = new ArtilleryBulletType(2f, 140) {{
+						lifetime = 12 * 8f;
+						width = height = 22f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
 						collidesAir = collidesGround = collidesTiles = collides = true;
 						frontColor = Color.white;
