@@ -911,7 +911,7 @@ public class OblivionUnits implements ContentList {
 					top = false;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(6f, 65) {{
-						lifetime = 5.5 * 8f;
+						lifetime = 5.5f * 8f;
 						width = height = 16f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
 						frontColor = Color.white;
