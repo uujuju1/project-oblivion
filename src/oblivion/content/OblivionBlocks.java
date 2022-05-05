@@ -717,7 +717,7 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(2f);
 		}};
 
-		test = new PayloadCrafter("router-crafter") {{
+		test = new BlockCrafter("router-crafter") {{
 			requirements(Category.crafting, with(
 				Items.copper, 1
 			));
