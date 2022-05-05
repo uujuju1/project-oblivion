@@ -898,6 +898,13 @@ public class OblivionUnits implements ContentList {
 			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
 			outlineColor = Color.valueOf("3F424D");
+			engineDrawer = unit -> {
+				for (int i = -1; i <= 2; i += 2) {
+					circleEngine(unit, i * 10f, 11f, 4f);
+					circleEngine(unit, i * 10f, 0f, 4f);
+					circleEngine(unit, i * 10f, -15f, 4f);
+				}
+			};
 			range = 33 * 8f;
 			maxRange = range;
 			weapons.add(
@@ -908,6 +915,8 @@ public class OblivionUnits implements ContentList {
 					shots = 5;
 					shotDelay = 5f;
 					shake = 5f;
+					shootY = 18f;
+					shootCone = 15f;
 					top = false;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(6f, 65) {{
@@ -919,12 +928,13 @@ public class OblivionUnits implements ContentList {
 					}};
 				}},
 				new Weapon("oblivion-pow-artillery") {{
-					x = y = 0f;
+					x = 8.25f;
+					y = -6.5f;
 					reload = 90f;
 					shots = 3;
 					inaccuracy = 10;
 					shake = 7f;
-					top = false;
+					velocityRnd = 0.1f;
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(2f, 140) {{
 						lifetime = 12 * 8f;
@@ -936,12 +946,14 @@ public class OblivionUnits implements ContentList {
 					}};
 				}},
 				new Weapon("oblivion-pow-artillery") {{
-					x = y = 0f;
+					x = -8f;
+					y = 7.75f;
+					flipSprite = true;
 					reload = 90f;
 					shots = 3;
 					inaccuracy = 10;
 					shake = 7f;
-					top = false;
+					velocityRnd = 0.1f;
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(2f, 140) {{
 						lifetime = 12 * 8f;

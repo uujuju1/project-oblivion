@@ -43,6 +43,7 @@ public class OblivionBlocks implements ContentList {
 		inductionDrill,
 		alomeriTube, alomeriConveyor,
 		earthquake,
+		test, 
 
 		moloniteSmelter,
 		calamitySigil, fearSigil, abyssSigil,
@@ -713,6 +714,15 @@ public class OblivionBlocks implements ContentList {
 				OblivionResources.carmanite, 10
 			));
 			consumes.power(2f);
+		}};
+
+		test = new PayloadCrafter("router-crafter") {{
+			requirements(Category.crafting, with(
+				Items.copper, 1
+			));
+			size = 5;
+			health = 150;
+			consumes.add(with(Items.copper, 1));
 		}};
 	}
 }
