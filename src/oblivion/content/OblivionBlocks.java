@@ -723,7 +723,7 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 5;
 			health = 150;
-			consumes.add(with(Items.copper, 1));
+			consumes.items(with(Items.copper, 1));
 		}};
 	}
 }
