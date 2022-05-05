@@ -900,9 +900,9 @@ public class OblivionUnits implements ContentList {
 			outlineColor = Color.valueOf("3F424D");
 			engineDrawer = unit -> {
 				for (int i = -1; i <= 2; i += 2) {
-					circleEngine(unit, i * 10f, 11f, 4f);
-					circleEngine(unit, i * 10f, 0f, 4f);
-					circleEngine(unit, i * 10f, -15f, 4f);
+					DrawEx.circleEngine(unit, i * 10f, 11f, 4f);
+					DrawEx.circleEngine(unit, i * 10f, 0f, 4f);
+					DrawEx.circleEngine(unit, i * 10f, -15f, 4f);
 				}
 			};
 			range = 33 * 8f;
