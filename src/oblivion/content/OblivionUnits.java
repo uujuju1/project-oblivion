@@ -756,7 +756,7 @@ public class OblivionUnits implements ContentList {
 						shootEffect = Fx.railShoot;
 						lifetime = 100;
 						splashDamageRadius = 180f;
-						splashDamage = 500f;
+						splashDamage = 370f;
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
@@ -776,7 +776,7 @@ public class OblivionUnits implements ContentList {
 					recoil = 2f;
 					shootY = 4f;
 					shootSound = Sounds.laser;
-					bullet = new LaserBulletType(150) {{
+					bullet = new LaserBulletType(100) {{
 						width = 20f;
 						length = 300f;
 					}};
