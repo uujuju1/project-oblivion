@@ -22,6 +22,7 @@ import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
+import oblivion.blocks.payload.*;
 import oblivion.blocks.defense.*;
 import oblivion.blocks.production.*;
 
