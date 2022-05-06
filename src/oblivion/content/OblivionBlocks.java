@@ -481,8 +481,8 @@ public class OblivionBlocks implements ContentList {
 			health = 200 * 9;
 			reloadTime = 85f;
 			range = 30f * 8f;
-			shots = 3f;
-			velocityRnd = 0.8f;
+			shots = 3;
+			velocityInaccuracy = 1f;
 			rotateSpeed = 4.5f;
 			ammo(
 				OblivionResources.calenmite, new BasicBulletType(2.5f, 35) {{
@@ -759,15 +759,6 @@ public class OblivionBlocks implements ContentList {
 				OblivionResources.carmanite, 10
 			));
 			consumes.power(2f);
-		}};
-
-		test = new BlockCrafter("router-crafter") {{
-			requirements(Category.crafting, with(
-				Items.copper, 1
-			));
-			size = 5;
-			health = 150;
-			consumes.items(with(Items.copper, 1));
 		}};
 	}
 }
