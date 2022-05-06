@@ -15,7 +15,7 @@ public class OblivionPlanets implements ContentList {
 
 	@Override
 	public void load() {
-		berenit = new Planet("benerit", Planets.sun, 0, 3) {{
+		berenit = new Planet("benerit", Planets.sun, 0, 3f) {{
 			bloom = true;
 			accessible = false;
 			orbitRadius = 750f;
