@@ -991,7 +991,7 @@ public class OblivionUnits implements ContentList {
 						frontColor = Color.white;
 						backColor = Color.valueOf("DCDCDC");
 					}};
-				}},
+				}}
 			);
 		}};
 	}
