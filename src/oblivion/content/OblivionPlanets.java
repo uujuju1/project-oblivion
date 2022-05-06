@@ -9,10 +9,28 @@ import mindustry.graphics.g3d.*;
 import oblivion.planets.*;
 
 public class OblivionPlanets implements ContentList {
-	public static Planet lonela;
+	public static Planet 
+	berenit,
+	lamoni, lonela;
 
 	@Override
 	public void load() {
+		berenit = new Planet("benerit", Planets.sun, 0, 3) {{
+			bloom = true;
+			accessible = false;
+			orbitRadius = 750f;
+			meshLoader = () -> new SunMesh(
+				this, 6,
+				5, 0.3, 1.7, 1.2, 1,
+				1.1f,
+				Color.valueOf("FF4D0C"),
+				Color.valueOf("FF6625"),
+				Color.valueOf("FF8948"),
+				Color.valueOf("FFA564"),
+				Color.valueOf("FFBC7B"),
+				Color.valueOf("FFE3A2")
+			);
+		}};
 		lonela = new Planet("lonela", Planets.sun, 3, 1f) {{
 			generator = new LonelaPlanetGenerator();
 			meshLoader = () -> new HexMesh(this, 6);
