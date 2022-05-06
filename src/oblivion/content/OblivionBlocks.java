@@ -22,7 +22,6 @@ import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
-import oblivion.blocks.payload.*;
 import oblivion.blocks.defense.*;
 import oblivion.blocks.production.*;
 
@@ -44,11 +43,10 @@ public class OblivionBlocks implements ContentList {
 		inductionDrill,
 		alomeriTube, alomeriConveyor,
 		earthquake,
-		test, 
+		hammer, press,
 
 		moloniteSmelter,
 		calamitySigil, fearSigil, abyssSigil,
-
 		mandlebrotReconstructor,
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
 
@@ -448,6 +446,52 @@ public class OblivionBlocks implements ContentList {
 					shootSound = Sounds.artillery;
 					status = OblivionStatuses.infested;
 					statusDuration = 60f * 12f;
+				}}
+			);
+		}};
+		hammer = new ItemTurret("hammer") {{
+			requirements(Category.turret, with(
+				OblivionResources.calenmite, 40,
+				Items.silicon, 50,
+				Items.titanium, 20
+			));
+			size = 2;
+			health = 200 * 4;
+			reloadTime = 45f;
+			range = 20f * 8f;
+			rotateSpeed = 4.5f;
+			ammo(
+				OblivionResources.calenmite, new BasicBulletType(2f, 35) {{
+					lifetime = range/speed;
+					width = height = 13f;
+					frontColor = Color.white;
+					backColor = Color.valueOf("DCDCDC");
+					hitEffect = OblivionFx.carmaniteHit;
+					shootSound = Sounds.artillery;
+				}}
+			);
+		}};
+		press = new ItemTurret("press") {{
+			requirements(Category.turret, with(
+				OblivionResources.calenmite, 140,
+				Items.silicon, 90,
+				Items.titanium, 50
+			));
+			size = 3;
+			health = 200 * 9;
+			reloadTime = 85f;
+			range = 30f * 8f;
+			shots = 3f;
+			velocityRnd = 0.8f;
+			rotateSpeed = 4.5f;
+			ammo(
+				OblivionResources.calenmite, new BasicBulletType(2.5f, 35) {{
+					lifetime = range/speed;
+					width = height = 17f;
+					frontColor = Color.white;
+					backColor = Color.valueOf("DCDCDC");
+					hitEffect = OblivionFx.carmaniteHit;
+					shootSound = Sounds.artillery;
 				}}
 			);
 		}};
