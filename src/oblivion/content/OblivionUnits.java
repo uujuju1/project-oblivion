@@ -988,7 +988,7 @@ public class OblivionUnits implements ContentList {
 			maxRange = range;
 			weapons.add(
 				new Weapon("oblivion-pow-weapon") {{
-					x = 25f;
+					x = 24.25f;
 					y = 0f;
 					reload = 10f;
 					shake = 5f;

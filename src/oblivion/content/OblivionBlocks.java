@@ -483,7 +483,8 @@ public class OblivionBlocks implements ContentList {
 			reloadTime = 85f;
 			range = 30f * 8f;
 			shots = 3;
-			velocityInaccuracy = 1f;
+			inaccuracy = 3f;
+			velocityInaccuracy = 0.9f;
 			rotateSpeed = 4.5f;
 			ammo(
 				OblivionResources.calenmite, new BasicBulletType(2.5f, 35) {{
