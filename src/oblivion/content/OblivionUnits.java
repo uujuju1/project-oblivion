@@ -123,8 +123,8 @@ public class OblivionUnits implements ContentList {
 		}};
 		taleni = new UnitType("taleni") {{
 			health = 7500;
-			armor = 11f;
-			speed = 1f;
+			armor = 10f;
+			speed = 0.6f;
 			flying = true;
 			constructor = UnitEntity::create;
 			hitSize = 30f;
@@ -181,7 +181,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		kolete = new UnitType("kolete") {{
 			health = 22000;
-			armor = 15f;
+			armor = 14f;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -345,7 +345,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		dopretile = new UnitType("dopretile") {{
 			health = 13000;
-			speed = 1.2f;
+			speed = 1.0f;
 			armor = 8f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -399,7 +399,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		niboletra = new OblivionUnitType("niboletra") {{
 			health = 20000;
-			armor = 12f;
+			armor = 11f;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -456,7 +456,7 @@ public class OblivionUnits implements ContentList {
 				Fill.circle(unit.x + Angles.trnsx(unit.rotation - 90, 0, -20), unit.y + Angles.trnsy(unit.rotation - 90, 0, -20), (6 + Mathf.absin(Time.time, 2, 10 / 4)) / 2 * unit.elevation);
 				Drawf.tri(unit.x + Angles.trnsx(unit.rotation - 90, 0, -20 - unit.elevation), unit.y + Angles.trnsy(unit.rotation - 90, 0, -20 - unit.elevation), (14 + Mathf.absin(Time.time, 2, 13 / 2)) / 2 * unit.elevation, (15 + Mathf.absin(Time.time, 2, 10 / 2)) / 2 * unit.elevation, unit.rotation - 180);
 			};
-			rotateSpeed = 0.7f;
+			rotateSpeed = 1.4f;
 			armor = 20f;
 			mechStepParticles = true;
 			mechStepShake = 0.75f;
@@ -603,7 +603,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		archaranid = new UnitType("archaranid") {{
 			health = 63500;
-			armor = 17f;
+			armor = 18f;
 			speed = 0.3f;
 			legCount = 8;
 			legMoveSpace = 1.2f;
