@@ -44,6 +44,7 @@ public class OblivionBlocks implements ContentList {
 		alomeriTube, alomeriConveyor,
 		earthquake,
 		hammer, press,
+		functiveFactory,
 
 		moloniteSmelter,
 		calamitySigil, fearSigil, abyssSigil,
@@ -547,6 +548,19 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(2f);
 			plans = Seq.with(
 				new UnitPlan(OblivionUnits.pioli, 60f * 30f, with(Items.silicon, 6, OblivionResources.copremite, 20))
+			);
+		}};
+		functiveFactory = new UnitFactory("functive-factory") {{
+			requirements(Category.units, with(
+				Items.silicon, 60,
+				Items.plastanium, 50,
+				OblivionResources.copremite, 60
+			));
+			size = 3;
+			health = 200;
+			consumes.power(2f);
+			plans = Seq.with(
+				new UnitPlan(OblivionUnits.phi, 60f * 27f, with(Items.silicon, 6, OblivionResources.carmanite, 20))
 			);
 		}};
 

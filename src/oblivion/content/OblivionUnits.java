@@ -19,7 +19,7 @@ public class OblivionUnits implements ContentList {
 	public static UnitType 
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
-	phi, root, multi, pow,
+	phi, root, multi, pow, expo,
 
 	republic, giga, archaranid, bloodmoon, yetinus;
 
@@ -964,6 +964,34 @@ public class OblivionUnits implements ContentList {
 						backColor = Color.valueOf("DCDCDC");
 					}};
 				}}
+			);
+		}};
+		expo = new OblivionUnitType("expo") {{
+			health = 22000;
+			speed = 1.05f;
+			flying = lowAltitude = true;
+			constructor = UnitEntity::create;
+			outlineColor = Color.valueOf("3F424D");
+			range = 33 * 8f;
+			maxRange = range;
+			weapons.add(
+				new Weapon("oblivion-pow-weapon") {{
+					x = 0f;
+					y = 0f;
+					reload = 10f;
+					shake = 5f;
+					shootY = 18f;
+					shootCone = 15f;
+					top = false;
+					shootSound = Sounds.shootBig;
+					bullet = new BasicBulletType(6f, 80) {{
+						lifetime = 5.5f * 8f;
+						width = height = 22f;
+						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
+						frontColor = Color.white;
+						backColor = Color.valueOf("DCDCDC");
+					}};
+				}},
 			);
 		}};
 	}

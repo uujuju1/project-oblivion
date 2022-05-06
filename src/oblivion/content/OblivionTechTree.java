@@ -104,6 +104,14 @@ public class OblivionTechTree implements ContentList {
 							node(OblivionBlocks.abyssSigil, Seq.with(new Produce(OblivionResources.mothalate), new Produce(OblivionResources.carmanite)));
 						});
 					});
+					node(OblivionBlocks.toxic, Seq.with(new Produce(OblivionResources.copremite)), () -> {
+						node(OblivionBlocks.corrosive, Seq.with(new SectorComplete(SectorPresets.craters)), () -> {
+							node(OblivionBlocks.acidic, Seq.with(new SectorComplete(SectorPresets.ruinousShores), new Research(Blocks.ripple)));
+						});
+					});
+					node(OblivionBlocks.hammer, Seq.with(new Produce(OblivionResources.calenmite)), () -> {
+						node(OblivionBlocks.press, Seq.with(new SectorComplete(SectorPresets.craters)));
+					});
 				});
 				node(OblivionBlocks.solfreniteFactory, Seq.with(new Produce(OblivionResources.mesulfate)), () -> {
 					node(OblivionUnits.slop, () -> {
@@ -121,6 +129,17 @@ public class OblivionTechTree implements ContentList {
 								node(OblivionUnits.notremite, Seq.with(new Research(OblivionBlocks.betaReconstructor)), () -> {
 									node(OblivionUnits.dopretile, Seq.with(new Research(OblivionBlocks.gammaReconstructor)), () -> {
 										node(OblivionUnits.niboletra, Seq.with(new Research(OblivionBlocks.omegaReconstructor)));
+									});
+								});	
+							});
+						});
+					});
+					node(OblivionBlocks.functiveFactory, Seq.with(new Produce(OblivionResources.carmanite)), () -> {
+						node(OblivionUnits.phi, () -> {
+							node(OblivionUnits.root, Seq.with(new Research(OblivionBlocks.alphaReconstructor)), () -> {
+								node(OblivionUnits.multi, Seq.with(new Research(OblivionBlocks.betaReconstructor)), () -> {
+									node(OblivionUnits.pow, Seq.with(new Research(OblivionBlocks.gammaReconstructor)), () -> {
+										node(OblivionUnits.expo, Seq.with(new Research(OblivionBlocks.omegaReconstructor)));
 									});
 								});	
 							});
