@@ -794,6 +794,7 @@ public class OblivionUnits implements ContentList {
 				DrawEx.circleEngine(unit, 2.5f, -5.5f, 2f);
 				DrawEx.circleEngine(unit, -2.5f, -5.5f, 2f);
 			};
+			hitSize = 7f;
 			range = 18f * 8f;
 			maxRange = range;
 			weapons.add(
@@ -820,6 +821,7 @@ public class OblivionUnits implements ContentList {
 			engineDrawer = unit -> {
 				DrawEx.circleEngine(unit, 0f, -5.5f, 4f);
 			};
+			hitSize = 13f;
 			range = 23 * 8f;
 			maxRange = range;
 			weapons.add(
@@ -854,6 +856,7 @@ public class OblivionUnits implements ContentList {
 				DrawEx.circleEngine(unit, 6f, -11f, 4f);
 				DrawEx.circleEngine(unit, -8f, -11f, 4f);
 			};
+			hitSize = 20f;
 			range = 26f * 8f;
 			maxRange = range;
 			weapons.add(
@@ -905,6 +908,7 @@ public class OblivionUnits implements ContentList {
 					DrawEx.circleEngine(unit, i * 10f, -15f, 4f);
 				}
 			};
+			hitSize = 25f;
 			range = 33 * 8f;
 			maxRange = range;
 			weapons.add(
@@ -972,11 +976,19 @@ public class OblivionUnits implements ContentList {
 			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
 			outlineColor = Color.valueOf("3F424D");
+			engineDrawer = unit -> {
+				for (int i = -1; i <= 2; i += 2) {
+					DrawEx.circleEngine(unit, i * 12f, 14f, 4f);
+					DrawEx.circleEngine(unit, i * 9f, -11f, 4f);
+				}
+				DrawEx.circleEngine(unit, 0f, -13f, 8f);
+			};
+			hitSize = 28f;
 			range = 33 * 8f;
 			maxRange = range;
 			weapons.add(
 				new Weapon("oblivion-pow-weapon") {{
-					x = 0f;
+					x = 25f;
 					y = 0f;
 					reload = 10f;
 					shake = 5f;
