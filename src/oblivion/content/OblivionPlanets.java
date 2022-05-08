@@ -31,6 +31,13 @@ public class OblivionPlanets implements ContentList {
 				Color.valueOf("FFE3A2")
 			);
 		}};
+		lamoni = new Planet("lamoni", berenit, 3, 1f) {{
+			generator = new LamoniPlanetGenerator();
+			meshLoader = () -> new HexMesh(this, 6);
+			startSector = 15;
+			accessible = true;
+			alwaysUnlocked = true;
+		}};
 		lonela = new Planet("lonela", Planets.sun, 3, 1f) {{
 			generator = new LonelaPlanetGenerator();
 			meshLoader = () -> new HexMesh(this, 6);
