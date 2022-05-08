@@ -51,9 +51,6 @@ public class OblivionBlocks implements ContentList {
 		mandlebrotReconstructor,
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
 
-		baletise, powderite, tobolite, driedpowder,
-		baletiseWall, powderiteWall, toboliteWall, driedpowderWall;
-
 	@Override
 	public void load() {
 		start = new Block("start"){{
@@ -564,28 +561,6 @@ public class OblivionBlocks implements ContentList {
 				new UnitPlan(OblivionUnits.phi, 60f * 27f, with(Items.silicon, 6, OblivionResources.carmanite, 20))
 			);
 		}};
-
-		baletise = new Floor("baletise") {{
-			attributes.set(Attribute.oil, -1f);
-			attributes.set(Attribute.water, 0f);
-		}};
-		powderite = new Floor("powderite") {{
-			attributes.set(Attribute.oil, -1f);
-			attributes.set(Attribute.water, -1f);
-		}};
-		tobolite = new Floor("tobolite") {{
-			attributes.set(Attribute.oil, -1f);
-			attributes.set(Attribute.water, -1f);
-		}};
-		driedpowder = new Floor("driedpowder") {{
-			itemDrop = Items.sand;
-			attributes.set(Attribute.oil, -1f);
-			attributes.set(Attribute.water, -1f);
-		}};
-		baletiseWall = new StaticWall("baletise-wall");
-		powderiteWall = new StaticWall("powderite-wall");
-		toboliteWall = new StaticWall("tobolite-wall");
-		driedpowderWall = new StaticWall("driedpowder-wall");
 
 		alphaReconstructor = new Reconstructor("alpha-reconstructor"){{
 			requirements(Category.units, with(
