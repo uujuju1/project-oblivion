@@ -2,6 +2,7 @@ package oblivion.content;
 
 import mindustry.ctype.*;
 import mindustry.world.*;
+import mindustry.world.meta.*;
 import mindustry.world.blocks.environment.*;
 
 public class OblivionEnvironment implements ContentList {
