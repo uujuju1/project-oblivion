@@ -453,12 +453,12 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 					boolean all = true;
 					for(Point2 p : Geometry.d4){
 						Tile other = tiles.get(x + p.x, y + p.y);
-						if(other == null || (other.floor() != Blocks.hotrock && other.floor() != OblivionEnvironment.malenatitegmarock)){
+						if(other == null || (other.floor() != Blocks.hotrock && other.floor() != Blocks.magmarock)){
 							all = false;
 						}
 					}
 					if(all){
-						floor = OblivionEnvironment.malenatitegmarock;
+						floor = Blocks.magmarock;
 					}
 				}
 			}else if(genLakes && floor != Blocks.basalt && floor != Blocks.ice && floor.asFloor().hasSurface()){

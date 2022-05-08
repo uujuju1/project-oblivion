@@ -15,7 +15,7 @@ public class OblivionPlanets implements ContentList {
 
 	@Override
 	public void load() {
-		berenit = new Planet("benerit", Planets.sun, 0, 3f) {{
+		berenit = new Planet("berenit", Planets.sun, 0, 3f) {{
 			bloom = true;
 			accessible = false;
 			orbitRadius = 750f;
@@ -34,7 +34,7 @@ public class OblivionPlanets implements ContentList {
 		lamoni = new Planet("lamoni", berenit, 3, 1f) {{
 			generator = new LamoniPlanetGenerator();
 			meshLoader = () -> new HexMesh(this, 6);
-			solarSystem = benerit;
+			solarSystem = berenit;
 			startSector = 15;
 			accessible = true;
 			alwaysUnlocked = true;
