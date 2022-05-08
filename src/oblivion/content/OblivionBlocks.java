@@ -49,7 +49,7 @@ public class OblivionBlocks implements ContentList {
 		moloniteSmelter,
 		calamitySigil, fearSigil, abyssSigil,
 		mandlebrotReconstructor,
-		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
+		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor;
 
 	@Override
 	public void load() {
