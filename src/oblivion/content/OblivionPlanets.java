@@ -34,6 +34,7 @@ public class OblivionPlanets implements ContentList {
 		lamoni = new Planet("lamoni", berenit, 3, 1f) {{
 			generator = new LamoniPlanetGenerator();
 			meshLoader = () -> new HexMesh(this, 6);
+			solarSystem = benerit;
 			startSector = 15;
 			accessible = true;
 			alwaysUnlocked = true;

@@ -32,19 +32,19 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 
 	public Block[][] arr =
 	{
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
-	{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass}
+{OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime},
+{OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime},
+{OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.malenatite, OblivionEnvironment.paletolime, OblivionEnvironment.malenatite, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.goletenira, OblivionEnvironment.paletolime, OblivionEnvironment.malenatite, OblivionEnvironment.paletolime},
+{OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, Blocks.grass},
+{OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira},
+{OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine},
+{OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.argeletine},
+{Blocks.grass, Blocks.grass, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, Blocks.grass, OblivionEnvironment.mudone, Blocks.grass, Blocks.grass, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone},
+{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, OblivionEnvironment.mudone, Blocks.grass, Blocks.grass, Blocks.grass, OblivionEnvironment.mudone},
+{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
+{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
+{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass},
+{Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.grass}
 	};
 
 	ObjectMap<Block, Block> dec = ObjectMap.of(
@@ -453,12 +453,12 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 					boolean all = true;
 					for(Point2 p : Geometry.d4){
 						Tile other = tiles.get(x + p.x, y + p.y);
-						if(other == null || (other.floor() != Blocks.hotrock && other.floor() != Blocks.magmarock)){
+						if(other == null || (other.floor() != Blocks.hotrock && other.floor() != OblivionEnvironment.malenatitegmarock)){
 							all = false;
 						}
 					}
 					if(all){
-						floor = Blocks.magmarock;
+						floor = OblivionEnvironment.malenatitegmarock;
 					}
 				}
 			}else if(genLakes && floor != Blocks.basalt && floor != Blocks.ice && floor.asFloor().hasSurface()){
