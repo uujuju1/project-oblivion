@@ -48,14 +48,14 @@ public class ManualDrill extends Drill {
 			});
 		}}
 
-		@Override
-		public void updateTile() {
-			super.update();
-			if (hold >= 0f) {
-				hold -= Time.delta;
-			} else {
-				decay -= Time.delta;
-			}
-		}
+		// @Override
+		// public void updateTile() {
+		// 	super.update();
+		// 	if (hold >= 0f) {
+		// 		hold -= Time.delta;
+		// 	} else {
+		// 		decay -= Time.delta;
+		// 	}
+		// }
 	}
 }
