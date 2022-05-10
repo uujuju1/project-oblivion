@@ -35,6 +35,6 @@ public class OblivionStatValues {
 				bt.row();
 				bt.add(Core.bundle.get("stat.decay") + ": " + decay/60f + " " + Core.bundle.get("unit.seconds"));
 			});
-		}
+		};
 	}
 }

@@ -52,6 +52,7 @@ public class OblivionBlocks implements ContentList {
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
 
 		// lamoni
+		mantlePulverizer,
 		imperialDrill;
 
 	@Override
@@ -764,11 +765,23 @@ public class OblivionBlocks implements ContentList {
 			requirements(Category.production, with(
 				OblivionResources.niobium, 120
 			));
+			health = 200;
 			size = 3;
 			drillTime = 60f;
 			tier = 1;
 			holdTime = 300f;
 			decayTime = 300f;
+			updateEffect = LamoniFx.imperialSmelt;
+		}};
+
+		mantlePulverizer = new DrawableCrafter("mantle-pulverizer") {{
+			requirements(Category.production, with(
+				OblivionResources.niobium, 200
+			));
+			health = 200;
+			size = 3;
+			craftTime = 10f;
+			updateEffect = LamoniFx.imperialSmelt;
 		}};
 	}
 }
