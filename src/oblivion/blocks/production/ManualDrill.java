@@ -1,7 +1,11 @@
 package oblivion.blocks.production;
 
+import arc.*;
+import arc.util.*;
 import arc.scene.ui.layout.*;
+import mindustry.ui.*;
 import mindustry.gen.*;
+import mindustry.graphics.*;
 import mindustry.world.blocks.production.*;
 import oblivion.blocks.meta.*;
 // like abyss's 
@@ -22,7 +26,7 @@ public class ManualDrill extends Drill {
 	@Override
 	public void setStats() {
 		super.setStats();
-		stats.add(Stats.abilities, OblivionStatValues.chargeDrill(holdTime, decayTime));
+		stats.add(Stat.abilities, OblivionStatValues.chargeDrill(holdTime, decayTime));
 	}
 
 	public class ManualDrillBuild extends DrillBuild {
@@ -35,7 +39,7 @@ public class ManualDrill extends Drill {
 
 		@Override
 		public void buildConfiguration(Table table) {{
-			table.button(Icon.settings, b -> {
+			table.button(Icon.settings, () -> {
 				if (hold <= 0f) {
 					hold = holdTime;
 					decay = decayTime;

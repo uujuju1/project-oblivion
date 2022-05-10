@@ -408,7 +408,7 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		state.rules.enemyCoreBuildRadius = 600f;
 
 		//spawn air only when spawn is blocked
-		state.rules.spawns = Waves.generate(difficulty, new Rand(sector.id), state.rules.attackMode, state.rules.attackMode && spawner.countGroundSpawns() == 0, naval);
+		state.rules.spawns = Waves.generate(difficulty, new Rand(sector.id), state.rules.attackMode, state.rules.attackMode && spawner.countGroundSpawns() == 0, false);
 	}
 
 	@Override
