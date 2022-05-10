@@ -6,6 +6,7 @@ import arc.scene.ui.layout.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
 import mindustry.graphics.*;
+import mindustry.world.meta.*;
 import mindustry.world.blocks.production.*;
 import oblivion.blocks.meta.*;
 // like abyss's 
