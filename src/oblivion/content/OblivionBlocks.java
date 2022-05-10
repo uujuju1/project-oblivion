@@ -30,7 +30,7 @@ import static mindustry.type.ItemStack.*;
 public class OblivionBlocks implements ContentList {
 	public static Block 
 		start,
-
+		// lonela
 		mesoForge, calonicKiln, 
 		uno, rain, granite,
 		solfreniteFactory,
@@ -49,7 +49,10 @@ public class OblivionBlocks implements ContentList {
 		moloniteSmelter,
 		calamitySigil, fearSigil, abyssSigil,
 		mandlebrotReconstructor,
-		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor;
+		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
+
+		// lamoni
+		imperialDrill;
 
 	@Override
 	public void load() {
@@ -575,7 +578,8 @@ public class OblivionBlocks implements ContentList {
 
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.slop, OblivionUnits.detra},
-				new UnitType[]{OblivionUnits.pioli, OblivionUnits.taneki}
+				new UnitType[]{OblivionUnits.pioli, OblivionUnits.taneki},
+				new UnitType[]{OblivionUnits.phi, OblivionUnits.root}
 			);
 		}};
 
@@ -593,7 +597,8 @@ public class OblivionBlocks implements ContentList {
 
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.detra, OblivionUnits.tedri},
-				new UnitType[]{OblivionUnits.taneki, OblivionUnits.notremite}
+				new UnitType[]{OblivionUnits.taneki, OblivionUnits.notremite},
+				new UnitType[]{OblivionUnits.root, OblivionUnits.multi}
 			);
 		}};
 
@@ -613,7 +618,8 @@ public class OblivionBlocks implements ContentList {
 
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.tedri, OblivionUnits.taleni},
-				new UnitType[]{OblivionUnits.notremite, OblivionUnits.dopretile}
+				new UnitType[]{OblivionUnits.notremite, OblivionUnits.dopretile},
+				new UnitType[]{OblivionUnits.multi, OblivionUnits.pow}
 			);
 		}};
 
@@ -633,7 +639,8 @@ public class OblivionBlocks implements ContentList {
 
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.taleni, OblivionUnits.kolete},
-				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra}
+				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra},
+				new UnitType[]{OblivionUnits.pow, OblivionUnits.expo}
 			);
 		}};
 
@@ -749,6 +756,19 @@ public class OblivionBlocks implements ContentList {
 				OblivionResources.carmanite, 10
 			));
 			consumes.power(2f);
+		}};
+
+		// lamoni
+
+		imperialDrill = new ManualDrill("imperial-drill") {{
+			requirements(Category.production, with(
+				OblivionResources.niobium, 120
+			));
+			size = 3;
+			drillTime = 60f;
+			tier = 1;
+			holdTime = 300f;
+			decayTime = 300f;
 		}};
 	}
 }

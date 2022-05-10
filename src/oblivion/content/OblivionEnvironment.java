@@ -12,7 +12,8 @@ public class OblivionEnvironment implements ContentList {
 		baletiseWall, powderiteWall, toboliteWall, driedpowderWall,
 
 		argeletine, goletenira, malenatite, paletolime, mudone,
-		argeletineWall, goleteniraWall, malenatiteWall, paletolimeWall, mudoneWall;
+		argeletineWall, goleteniraWall, malenatiteWall, paletolimeWall, mudoneWall,
+		oreNiobium;
 
 	@Override
 	public void load() {
@@ -68,5 +69,7 @@ public class OblivionEnvironment implements ContentList {
 		goleteniraWall = new StaticWall("goletenira-wall");
 		malenatiteWall = new StaticWall("malenatite-wall");
 		paletolimeWall = new StaticWall("paletolime-wall");
+
+		oreNiobium = new OreBlock(OblivionResources.niobium);
 	}
 }

@@ -12,12 +12,29 @@ public class OblivionStatValues {
 		return table -> {
 			table.row();
 			table.table(Tex.underline, bt -> {
-			  bt.add(new Image(status.uiIcon)).size(30);
+			  bt.add(new Image(status.uiIcon)).size(30f);
 			  bt.row();
 			  bt.add(status.localizedName);
 			  bt.row();
-			  bt.add(Core.bundle.get("stat.duration") + ": " + duration/60 + " Seconds");
+			  bt.add(Core.bundle.get("stat.duration") + ": " + duration/60f + " " + Core.bundle.get("unit.seconds"));
 			});
 		};
+	}
+
+	public static StatValue chargeDrill(float hold, float decay) {
+		return table -> {
+			table.row();
+			table.add(new Image(Icon.settings)).size(30f);
+			table.row();
+			table.table(Tex.underline, bt -> {
+				bt.add(Core.bundle.get("stat.manualDrill"));
+			});
+			table.row();
+			table.table(bt -> {
+				bt.add(Core.bundle.get("stat.hold") + ": " + hold/60f + " " + Core.bundle.get("unit.seconds"));
+				bt.row();
+				bt.add(Core.bundle.get("stat.decay") + ": " + decay/60f + " " + Core.bundle.get("unit.seconds"));
+			});
+		}
 	}
 }
