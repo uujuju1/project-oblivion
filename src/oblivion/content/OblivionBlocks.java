@@ -783,7 +783,7 @@ public class OblivionBlocks implements ContentList {
 			craftTime = 10f;
 			updateEffect = LamoniFx.imperialSmelt;
 			consumes.power(0.5f);
-			outputItem = new ItemStack.with(Items.sand, 1);
+			outputItem = new with(Items.sand, 1);
 		}};
 	}
 }
