@@ -219,7 +219,7 @@ public class OblivionUnits implements ContentList {
 					inaccuracy = 15f;
 					velocityRnd = 0.6f;
 					shootSound = Sounds.artillery;
-					bullet = new BasicBulletType(11f, 70) {{
+					bullet = new BasicBulletType(11f, 100) {{
 						drag = 0.04f;
 						width = height = 12f;
 						lifetime = 300f;
@@ -419,7 +419,7 @@ public class OblivionUnits implements ContentList {
 			range = 304f;
 			maxRange = range;
 			hitSize = 36f;
-			 immunities.add(StatusEffects.oblivion-infested);
+			 immunities.add(StatusEffects.infested);
 			weapons.add(
 				new Weapon("oblivion-copremite-plasma-cannon") {{
 					x = 0f;
@@ -769,7 +769,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-yetinus-laser") {{
 					x = 0f;
 					y = 0f;
-					reload = 80f;
+					reload = 60f;
 					rotate = true;
 					rotateSpeed = 1.5f;
 					mirror = false;
