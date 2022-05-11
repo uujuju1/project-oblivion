@@ -181,7 +181,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		kolete = new UnitType("kolete") {{
 			health = 22000;
-			armor = 11f;
+			armor = 13f;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -398,7 +398,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		niboletra = new OblivionUnitType("niboletra") {{
 			health = 20000;
-			armor = 9f;
+			armor = 10f;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
