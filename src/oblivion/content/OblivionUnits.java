@@ -204,7 +204,7 @@ public class OblivionUnits implements ContentList {
 					y = 16.75f;
 					reload = 60f;
 					shootSound = Sounds.laser;
-					bullet = new LaserBulletType(100) {{
+					bullet = new LaserBulletType(70) {{
 						width = 11f;
 						length = 300f;
 						colors = new Color[]{OblivionPal.mesoDark, OblivionPal.mesoMedium, OblivionPal.mesoLight};
