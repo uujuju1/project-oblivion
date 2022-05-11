@@ -152,10 +152,10 @@ public class OblivionUnits implements ContentList {
 					shots = 3;
 					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
-					bullet = new BasicBulletType(6f, 60) {{
+					bullet = new BasicBulletType(6f, 40) {{
 						width = height = 10f;
 						lifetime = 50f;
-						splashDamage = 70f;
+						splashDamage = 50f;
 						splashDamageRadius = 10f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
@@ -168,10 +168,10 @@ public class OblivionUnits implements ContentList {
 					shots = 3;
 					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
-					bullet = new BasicBulletType(6f, 60) {{
+					bullet = new BasicBulletType(6f, 40) {{
 						width = height = 10f;
 						lifetime = 50f;
-						splashDamage = 70f;
+						splashDamage = 50f;
 						splashDamageRadius = 10f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
