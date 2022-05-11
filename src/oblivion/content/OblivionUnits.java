@@ -814,7 +814,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		root = new OblivionUnitType("root") {{
 			health = 920;
-			armor = 2f
+			armor = 2f;
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -847,7 +847,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		multi = new OblivionUnitType("multi") {{
 			health = 1200;
-			armor = 3f;
+			armor = 5f;
 			speed = 1.65f;
 			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
