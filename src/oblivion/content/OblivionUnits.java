@@ -364,6 +364,7 @@ public class OblivionUnits implements ContentList {
 					bullet = new LaserBulletType(150) {{
 						width = 9f;
 						length = 224f;
+						status = OblivionStatuses.infested;
 						colors = new Color[]{OblivionPal.copreDark, OblivionPal.copreMedium, OblivionPal.copreLight};
 					}};
 				}},
@@ -376,7 +377,6 @@ public class OblivionUnits implements ContentList {
 						width = 9f;
 						height = 12f;
 						lifetime = 89.6f;
-						status = OblivionStatuses.infested;
 						frontColor = OblivionPal.copreLight;
 						backColor = OblivionPal.copreMedium;
 					}};
@@ -390,7 +390,6 @@ public class OblivionUnits implements ContentList {
 						width = 9f;
 						height = 12f;
 						lifetime = 89.6f;
-						status = OblivionStatuses.infested;
 						frontColor = OblivionPal.copreLight;
 						backColor = OblivionPal.copreMedium;
 					}};
