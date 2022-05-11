@@ -761,7 +761,7 @@ public class OblivionBlocks implements ContentList {
 
 		// lamoni
 
-		imperialDrill = new ManualDrill("imperial-drill") {{
+		imperialDrill = new Drill("imperial-drill") {{
 			requirements(Category.production, with(
 				OblivionResources.niobium, 120
 			));
@@ -769,8 +769,8 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			drillTime = 60f;
 			tier = 1;
-			holdTime = 300f;
-			decayTime = 300f;
+			// holdTime = 300f;
+			// decayTime = 300f;
 			updateEffect = LamoniFx.imperialSmelt;
 		}};
 
@@ -782,6 +782,8 @@ public class OblivionBlocks implements ContentList {
 			size = 3;
 			craftTime = 10f;
 			updateEffect = LamoniFx.imperialSmelt;
+			consumes.power(0.5f);
+			outputItem = new ItemStack.with(Items.sand, 1);
 		}};
 	}
 }

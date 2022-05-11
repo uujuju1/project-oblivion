@@ -9,7 +9,7 @@ import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import mindustry.world.blocks.production.*;
 import oblivion.blocks.meta.*;
-// like abyss's 
+// like abyss's but better(broken)
 public class ManualDrill extends Drill {
 	public float holdTime = 60f, decayTime = 60f;
 
@@ -47,15 +47,5 @@ public class ManualDrill extends Drill {
 				}
 			});
 		}}
-
-		// @Override
-		// public void updateTile() {
-		// 	super.update();
-		// 	if (hold >= 0f) {
-		// 		hold -= Time.delta;
-		// 	} else {
-		// 		decay -= Time.delta;
-		// 	}
-		// }
 	}
 }
