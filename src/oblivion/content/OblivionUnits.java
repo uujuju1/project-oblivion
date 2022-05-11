@@ -419,7 +419,7 @@ public class OblivionUnits implements ContentList {
 			range = 304f;
 			maxRange = range;
 			hitSize = 36f;
-		        immunities.add(StatusEffects.infested);
+		        immunities.add(StatusEffects.oblivion-infested);
 			weapons.add(
 				new Weapon("oblivion-copremite-plasma-cannon") {{
 					x = 0f;
