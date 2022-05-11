@@ -373,7 +373,7 @@ public class OblivionUnits implements ContentList {
 					y = 12.75f;
 					reload = 15f;
 					shootSound = Sounds.artillery;
-					bullet = new BasicBulletType(2.5f, 65) {{
+					bullet = new BasicBulletType(2.5f, 45) {{
 						width = 9f;
 						height = 12f;
 						lifetime = 89.6f;
@@ -386,7 +386,7 @@ public class OblivionUnits implements ContentList {
 					y = -8.25f;
 					reload = 15f;
 					shootSound = Sounds.artillery;
-					bullet = new BasicBulletType(2.5f, 65) {{
+					bullet = new BasicBulletType(2.5f, 45) {{
 						width = 9f;
 						height = 12f;
 						lifetime = 89.6f;
