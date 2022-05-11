@@ -27,7 +27,7 @@ public class OblivionUnits implements ContentList {
 	public void load() {
 		slop = new UnitType("slop") {{
 			health = 240;
-			armor = 3f;
+			armor = 1f;
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -52,7 +52,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		detra = new UnitType("detra") {{
 			health = 450;
-			armor = 4f;
+			armor = 3f;
 			speed = 1.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -82,7 +82,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		tedri = new UnitType("tedri") {{
 			health = 740;
-			armor = 6f;
+			armor = 5f;
 			speed = 1.5f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -123,7 +123,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		taleni = new UnitType("taleni") {{
 			health = 7500;
-			armor = 10f;
+			armor = 7f;
 			speed = 0.6f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -181,7 +181,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		kolete = new UnitType("kolete") {{
 			health = 22000;
-			armor = 14f;
+			armor = 11f;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -202,7 +202,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-mesulfate-big-laser") {{
 					x = 26.5f;
 					y = 16.75f;
-					reload = 40f;
+					reload = 60f;
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(100) {{
 						width = 11f;
@@ -219,7 +219,7 @@ public class OblivionUnits implements ContentList {
 					inaccuracy = 15f;
 					velocityRnd = 0.6f;
 					shootSound = Sounds.artillery;
-					bullet = new BasicBulletType(11f, 200) {{
+					bullet = new BasicBulletType(11f, 120) {{
 						drag = 0.04f;
 						width = height = 12f;
 						lifetime = 300f;
@@ -242,7 +242,7 @@ public class OblivionUnits implements ContentList {
 
 		pioli = new UnitType("pioli") {{
 			health = 200;
-			armor = 1f;
+			armor = 0f;
 			speed = 2.5f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -278,7 +278,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		taneki = new UnitType("taneki") {{
 			health = 530;
-			armor = 3f;
+			armor = 1f;
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -319,7 +319,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		notremite = new UnitType("notremite") {{
 			health = 920;
-			armor = 6f;
+			armor = 4f;
 			speed = 1.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -346,7 +346,7 @@ public class OblivionUnits implements ContentList {
 		dopretile = new UnitType("dopretile") {{
 			health = 13000;
 			speed = 1.0f;
-			armor = 8f;
+			armor = 6f;
 			flying = true;
 			constructor = UnitEntity::create;
 			engineOffset = 27f;
@@ -399,7 +399,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		niboletra = new OblivionUnitType("niboletra") {{
 			health = 20000;
-			armor = 11f;
+			armor = 9f;
 			speed = 0.7f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -431,7 +431,7 @@ public class OblivionUnits implements ContentList {
 						damage = 125f;
 						length = 304;
 						drawSize = 200f;
-						lifetime = 200f;
+						lifetime = 120f;
 						status = OblivionStatuses.infested;
 						shake = 1f;
 						width = 6f;
@@ -768,7 +768,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-yetinus-laser") {{
 					x = 0f;
 					y = 0f;
-					reload = 30f;
+					reload = 80f;
 					rotate = true;
 					rotateSpeed = 1.5f;
 					mirror = false;
@@ -803,7 +803,7 @@ public class OblivionUnits implements ContentList {
 					y = 0.5f;
 					reload = 30f;
 					top = false;
-					bullet = new BasicBulletType(2f, 20) {{
+					bullet = new BasicBulletType(2.5f, 15) {{
 						lifetime = 18 * 4f;
 						hitEffect = OblivionFx.carmaniteHit;
 						frontColor = Color.white;
@@ -814,6 +814,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		root = new OblivionUnitType("root") {{
 			health = 920;
+			armor = 2f
 			speed = 2f;
 			flying = true;
 			constructor = UnitEntity::create;
@@ -831,7 +832,7 @@ public class OblivionUnits implements ContentList {
 					reload = 60f;
 					top = false;
 					shootSound = Sounds.artillery;
-					bullet = new ArtilleryBulletType(1f, 60) {{
+					bullet = new ArtilleryBulletType(3f, 40) {{
 						lifetime = 23 * 8f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
 						width = height = 12f;
@@ -846,6 +847,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		multi = new OblivionUnitType("multi") {{
 			health = 1200;
+			armor = 3f;
 			speed = 1.65f;
 			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
@@ -870,9 +872,9 @@ public class OblivionUnits implements ContentList {
 					top = false;
 					shootY = 12f;
 					shootSound = Sounds.shootBig;
-					bullet = new BasicBulletType(2f, 45) {{
+					bullet = new BasicBulletType(4f, 45) {{
 						width = height = 13f;
-						lifetime = 13f * 8f;
+						lifetime = 6.6f * 8f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
 						frontColor = Color.white;
 						backColor = Color.valueOf("DCDCDC");
@@ -897,6 +899,7 @@ public class OblivionUnits implements ContentList {
 		}};
 		pow = new OblivionUnitType("pow") {{
 			health = 6500;
+			armor = 7f;
 			speed = 1.05f;
 			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
@@ -940,9 +943,11 @@ public class OblivionUnits implements ContentList {
 					shake = 7f;
 					velocityRnd = 0.1f;
 					shootSound = Sounds.artillery;
-					bullet = new ArtilleryBulletType(2f, 140) {{
+					bullet = new ArtilleryBulletType(2f, 40) {{
 						lifetime = 12 * 8f;
 						width = height = 22f;
+						splashDamage = 70f;
+						splashDamageRadius = 30f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
 						collidesAir = collidesGround = collidesTiles = collides = true;
 						frontColor = Color.white;
@@ -962,6 +967,8 @@ public class OblivionUnits implements ContentList {
 					bullet = new ArtilleryBulletType(2f, 140) {{
 						lifetime = 12 * 8f;
 						width = height = 22f;
+						splashDamage = 70f;
+						splashDamageRadius = 30f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
 						collidesAir = collidesGround = collidesTiles = collides = true;
 						frontColor = Color.white;
@@ -973,6 +980,7 @@ public class OblivionUnits implements ContentList {
 		expo = new OblivionUnitType("expo") {{
 			health = 22000;
 			speed = 1.05f;
+			armor = 12f;
 			flying = lowAltitude = true;
 			constructor = UnitEntity::create;
 			outlineColor = Color.valueOf("3F424D");
@@ -996,7 +1004,7 @@ public class OblivionUnits implements ContentList {
 					shootCone = 15f;
 					top = false;
 					shootSound = Sounds.shootBig;
-					bullet = new BasicBulletType(6f, 80) {{
+					bullet = new BasicBulletType(6f, 100) {{
 						lifetime = 5.5f * 8f;
 						width = height = 22f;
 						despawnEffect = hitEffect = OblivionFx.carmaniteHit;
