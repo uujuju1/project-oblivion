@@ -62,7 +62,7 @@ public class OblivionBlocks {
 			alwaysUnlocked = true;
 		}};
 
-		mesoForge = new DrawableCrafter("meso-forge") {{
+		mesoForge = new GenericCrafter("meso-forge") {{
 			requirements(Category.crafting, with(
 				Items.silicon, 40,
 				Items.graphite, 60,
@@ -72,6 +72,7 @@ public class OblivionBlocks {
 			size = 3;
 			health = 200;
 			craftTime = 30f;
+			/*
 			draw = bu -> {
 				Draw.rect(Core.atlas.find("oblivion-meso-forge"), bu.x, bu.y, 0f);
 				Draw.alpha(bu.warmup);
@@ -99,6 +100,7 @@ public class OblivionBlocks {
 				Draw.reset();
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
 			};
+			*/
 			consumesItems(with(
 				Items.copper, 2,
 				Items.lead, 2
