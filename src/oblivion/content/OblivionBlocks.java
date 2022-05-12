@@ -270,9 +270,13 @@ public class OblivionBlocks {
 			reload = 60f;
 			range = 120f;
 			rotateSpeed = 10f;
-			drawer = new DrawTurret("meso-") {{
-				parts.add(new RegionPart("-base"));
-				parts.add(new RegionPart("-shoot") {{moveY = -1f;}});
+			drawer = new DrawTurret("mesobase-") {{
+				parts.addAll(new RegionPart("-base"));
+				parts.addAll(
+					new RegionPart("-shoot") {{
+						moveY = -1f;
+					}}
+				);
 			}};
 			ammo(
 				OblivionResources.mesulfate, new BasicBulletType(2f, 15) {{
