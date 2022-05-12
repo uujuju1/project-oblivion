@@ -767,7 +767,7 @@ public class OblivionBlocks implements ContentList {
 			));
 			health = 200;
 			size = 3;
-			drillTime = 60f;
+			drillTime = 1200f;
 			tier = 1;
 			// holdTime = 300f;
 			// decayTime = 300f;
