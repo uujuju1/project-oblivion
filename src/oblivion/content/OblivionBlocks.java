@@ -100,11 +100,11 @@ public class OblivionBlocks {
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
 			};
 			*/
-			consumesItems(with(
+			consumeItems(with(
 				Items.copper, 2,
 				Items.lead, 2
 			));
-			consumesPower(1f);
+			consumePower(1f);
 			outputItem = new ItemStack(OblivionResources.mesulfate, 1);
 		}};
 
