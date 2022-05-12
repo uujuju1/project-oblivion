@@ -361,7 +361,7 @@ public class OblivionUnits implements ContentList {
 					reload = 60f;
 					shootSound = Sounds.plasmadrop;
 					mirror = false;
-					bullet = new LaserBulletType(150) {{
+					bullet = new LaserBulletType(160) {{
 						width = 9f;
 						length = 224f;
 						status = OblivionStatuses.infested;
@@ -373,7 +373,7 @@ public class OblivionUnits implements ContentList {
 					y = 12.75f;
 					reload = 15f;
 					shootSound = Sounds.artillery;
-					bullet = new BasicBulletType(2.5f, 45) {{
+					bullet = new BasicBulletType(2.5f, 40) {{
 						width = 9f;
 						height = 12f;
 						lifetime = 89.6f;
@@ -386,7 +386,7 @@ public class OblivionUnits implements ContentList {
 					y = -8.25f;
 					reload = 15f;
 					shootSound = Sounds.artillery;
-					bullet = new BasicBulletType(2.5f, 45) {{
+					bullet = new BasicBulletType(2.5f, 40) {{
 						width = 9f;
 						height = 12f;
 						lifetime = 89.6f;
@@ -751,11 +751,11 @@ public class OblivionUnits implements ContentList {
 					shake = 8f;
 					shootCone = 45f;
 					shootSound = Sounds.railgun;
-					bullet = new BasicBulletType(6f, 650) {{
+					bullet = new BasicBulletType(6f, 800) {{
 						shootEffect = Fx.railShoot;
 						lifetime = 100;
 						splashDamageRadius = 180f;
-						splashDamage = 370f;
+						splashDamage =400f;
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
@@ -767,7 +767,7 @@ public class OblivionUnits implements ContentList {
 				new Weapon("oblivion-yetinus-laser") {{
 					x = 0f;
 					y = 0f;
-					reload = 60f;
+					reload = 45f;
 					rotate = true;
 					rotateSpeed = 1.5f;
 					mirror = false;
