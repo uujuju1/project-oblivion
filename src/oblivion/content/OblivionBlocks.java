@@ -22,7 +22,7 @@ import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
 // import oblivion.blocks.defense.*;
-// import oblivion.blocks.production.*;
+import oblivion.blocks.production.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -257,7 +257,7 @@ public class OblivionBlocks {
 			consumePower(2.5f);
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
 		}};
-		/*
+		
 		uno = new ItemTurret("uno") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 10,
@@ -266,9 +266,13 @@ public class OblivionBlocks {
 			));
 			size = 1;
 			health = 160;
-			reloadTime = 60f;
+			reload = 60f;
 			range = 120f;
 			rotateSpeed = 10f;
+			drawer = new DrawTurret("meso-") {{
+				parts.add(new RegionPart("-base"));
+				parts.add(new RegionPart("-shoot") {{moveY = -1f;}});
+			}};
 			ammo(
 				OblivionResources.mesulfate, new BasicBulletType(2f, 15) {{
 					lifetime = 60f;
@@ -287,6 +291,7 @@ public class OblivionBlocks {
 				}}
 			); 
 		}};
+		/*
 		rain = new ItemTurret("rain") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 75,
