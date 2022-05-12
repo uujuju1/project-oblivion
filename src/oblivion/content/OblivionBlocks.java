@@ -27,7 +27,7 @@ import oblivion.blocks.production.*;
 
 import static mindustry.type.ItemStack.*;
 
-public class OblivionBlocks implements ContentList {
+public class OblivionBlocks {
 	public static Block 
 		start,
 		// lonela
@@ -55,7 +55,6 @@ public class OblivionBlocks implements ContentList {
 		mantlePulverizer,
 		imperialDrill;
 
-	@Override
 	public void load() {
 		start = new Block("start"){{
 			buildVisibility = BuildVisibility.debugOnly;
@@ -100,13 +99,16 @@ public class OblivionBlocks implements ContentList {
 				Draw.reset();
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
 			};
-			consumes.items(with(
+			consumesItems(with(
 				Items.copper, 2,
 				Items.lead, 2
 			));
-			consumes.power(1f);
+			consumesPower(1f);
 			outputItem = new ItemStack(OblivionResources.mesulfate, 1);
 		}};
+
+		/*
+		stuff that is broken(most)
 		carbonicInfuser = new DrawableCrafter("carbonic-infuser") {{
 			requirements(Category.crafting, with(
 				OblivionResources.mesulfate, 80,
@@ -785,5 +787,7 @@ public class OblivionBlocks implements ContentList {
 			consumes.power(0.5f);
 			outputItem = new ItemStack(Items.sand, 1);
 		}};
+
+		*/
 	}
 }
