@@ -271,10 +271,16 @@ public class OblivionBlocks {
 			range = 120f;
 			rotateSpeed = 10f;
 			drawer = new DrawTurret("mesobase-") {{
-				parts.addAll(new RegionPart("-base"));
+				parts.addAll(
+					new RegionPart("-base") {{
+						moveY = -0.2f;
+						progress = PartProgress.reload;
+					}}
+				);
 				parts.addAll(
 					new RegionPart("-shoot") {{
 						moveY = -1f;
+						progress = PartProgress.reload;
 					}}
 				);
 			}};
