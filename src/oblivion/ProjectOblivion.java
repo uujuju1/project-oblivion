@@ -28,10 +28,10 @@ public class ProjectOblivion extends Mod{
 
 	@Override
 	public void loadContent(){
-		new OblivionStatuses().load();
+		// new OblivionStatuses().load();
 		new OblivionResources().load();
 		// new OblivionUnits().load();
-		// new OblivionEnvironment().load();
+		new OblivionEnvironment().load();
 		new OblivionBlocks().load();
 		// new OblivionPlanets().load();
 		// new OblivionSectors().load();

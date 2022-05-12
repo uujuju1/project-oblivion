@@ -8,7 +8,6 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
-import mindustry.ctype.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.graphics.*;
@@ -22,8 +21,8 @@ import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
-import oblivion.blocks.defense.*;
-import oblivion.blocks.production.*;
+// import oblivion.blocks.defense.*;
+// import oblivion.blocks.production.*;
 
 import static mindustry.type.ItemStack.*;
 

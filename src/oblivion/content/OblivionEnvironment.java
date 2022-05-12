@@ -1,12 +1,11 @@
 package oblivion.content;
 
-import mindustry.ctype.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.world.meta.*;
 import mindustry.world.blocks.environment.*;
 
-public class OblivionEnvironment implements ContentList {
+public class OblivionEnvironment {
 	public static Block
 		baletise, powderite, tobolite, driedpowder,
 		baletiseWall, powderiteWall, toboliteWall, driedpowderWall,
@@ -15,7 +14,6 @@ public class OblivionEnvironment implements ContentList {
 		argeletineWall, goleteniraWall, malenatiteWall, paletolimeWall, mudoneWall,
 		oreNiobium;
 
-	@Override
 	public void load() {
 
 		// lonela
