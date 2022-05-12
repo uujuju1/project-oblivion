@@ -61,7 +61,7 @@ public class OblivionBlocks {
 			alwaysUnlocked = true;
 		}};
 
-		mesoForge = new GenericCrafter("meso-forge") {{
+		mesoForge = new DrawableCrafter("meso-forge") {{
 			requirements(Category.crafting, with(
 				Items.silicon, 40,
 				Items.graphite, 60,
@@ -71,7 +71,6 @@ public class OblivionBlocks {
 			size = 3;
 			health = 200;
 			craftTime = 30f;
-			/*
 			draw = bu -> {
 				Draw.rect(Core.atlas.find("oblivion-meso-forge"), bu.x, bu.y, 0f);
 				Draw.alpha(bu.warmup);
@@ -99,7 +98,6 @@ public class OblivionBlocks {
 				Draw.reset();
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
 			};
-			*/
 			consumeItems(with(
 				Items.copper, 2,
 				Items.lead, 2
@@ -107,9 +105,6 @@ public class OblivionBlocks {
 			consumePower(1f);
 			outputItem = new ItemStack(OblivionResources.mesulfate, 1);
 		}};
-
-		/*
-		stuff that is broken(most)
 		carbonicInfuser = new DrawableCrafter("carbonic-infuser") {{
 			requirements(Category.crafting, with(
 				OblivionResources.mesulfate, 80,
@@ -142,11 +137,11 @@ public class OblivionBlocks {
 				  Drawf.tri(x, y, 4 * bu.warmup, 4 * bu.warmup, (i * 90) + 45 + Time.time);
 				}
 			};
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.calenmite, 3,
 				Items.silicon, 2
 			));
-			consumes.power(1.5f);
+			consumePower(1.5f);
 			outputItem = new ItemStack(OblivionResources.carmanite, 2);
 		}};
 		cloroSynthetizer = new DrawableCrafter("cloro-synthetizer") {{
@@ -172,11 +167,11 @@ public class OblivionBlocks {
 				Draw.reset();
 				Draw.rect(Core.atlas.find("oblivion-cloro-synthetizer-top"), bu.x, bu.y, 0f);
 			};
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mesulfate, 1,
 				Items.sporePod, 1
 			));
-			consumes.power(0.5f);
+			consumePower(0.5f);
 			outputItem = new ItemStack(OblivionResources.copremite, 1);
 		}};
 		calonicKiln = new DrawableCrafter("calonic-kiln") {{
@@ -215,11 +210,11 @@ public class OblivionBlocks {
 				Draw.reset();
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
 			};
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mesulfate, 1,
 				Items.metaglass, 3
 			));
-			consumes.power(0.25f);
+			consumePower(0.25f);
 			outputItem = new ItemStack(OblivionResources.calenmite, 1);
 		}};
 		moloniteSmelter = new DrawableCrafter("molonite-smelter") {{
@@ -254,15 +249,15 @@ public class OblivionBlocks {
 				  Drawf.tri(x, y, 4 * bu.warmup, 4 * bu.warmup, (i * 90) + 45 + Time.time);
 				}
 			};
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mesulfate, 5,
 				Items.thorium, 4,
 				Items.silicon, 6
 			));
-			consumes.power(2.5f);
+			consumePower(2.5f);
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
 		}};
-
+		/*
 		uno = new ItemTurret("uno") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 10,
@@ -513,8 +508,8 @@ public class OblivionBlocks {
 			tier = 3;
 			drillTime = 280f;
 			hasPower = true;
-			consumes.power(1f);
-			consumes.liquid(Liquids.water, 0.06f).boost();
+			consumePower(1f);
+			consumesLiquid(new LiquidStack(Liquids.water, 0.06f)).boost();
 		}};
 
 		alomeriConveyor = new Conveyor("alomeri-conveyor") {{
@@ -537,7 +532,7 @@ public class OblivionBlocks {
 			));
 			size = 3;
 			health = 200;
-			consumes.power(1.5f);
+			consumePower(1.5f);
 			plans = Seq.with(
 				new UnitPlan(OblivionUnits.slop, 60f * 25f, with(Items.silicon, 10, OblivionResources.mesulfate, 15))
 			);
@@ -550,7 +545,7 @@ public class OblivionBlocks {
 			));
 			size = 3;
 			health = 200;
-			consumes.power(2f);
+			consumePower(2f);
 			plans = Seq.with(
 				new UnitPlan(OblivionUnits.pioli, 60f * 30f, with(Items.silicon, 6, OblivionResources.copremite, 20))
 			);
@@ -563,7 +558,7 @@ public class OblivionBlocks {
 			));
 			size = 3;
 			health = 200;
-			consumes.power(2f);
+			consumePower(2f);
 			plans = Seq.with(
 				new UnitPlan(OblivionUnits.phi, 60f * 27f, with(Items.silicon, 6, OblivionResources.carmanite, 20))
 			);
@@ -575,8 +570,8 @@ public class OblivionBlocks {
 			));
 
 			size = 3;
-			consumes.power(3f);
-			consumes.items(with(Items.silicon, 40, Items.graphite, 40));
+			consumePower(3f);
+			consumeItems(with(Items.silicon, 40, Items.graphite, 40));
 
 			constructTime = 60f * 10f;
 
@@ -594,8 +589,8 @@ public class OblivionBlocks {
 			));
 
 			size = 5;
-			consumes.power(6f);
-			consumes.items(with(Items.silicon, 130, Items.titanium, 80, Items.metaglass, 40));
+			consumePower(6f);
+			consumeItems(with(Items.silicon, 130, Items.titanium, 80, Items.metaglass, 40));
 
 			constructTime = 60f * 30f;
 
@@ -613,9 +608,9 @@ public class OblivionBlocks {
 			));
 
 			size = 7;
-			consumes.power(13f);
-			consumes.items(with(Items.silicon, 850, Items.titanium, 750, Items.plastanium, 650));
-			consumes.liquid(Liquids.cryofluid, 1f);
+			consumePower(13f);
+			consumeItems(with(Items.silicon, 850, Items.titanium, 750, Items.plastanium, 650));
+			consumesLiquid(Liquids.cryofluid, 1f);
 
 			constructTime = 60f * 60f * 1.5f;
 			liquidCapacity = 60f;
@@ -634,9 +629,9 @@ public class OblivionBlocks {
 			));
 
 			size = 9;
-			consumes.power(25f);
-			consumes.items(with(Items.silicon, 1000, Items.plastanium, 600, Items.surgeAlloy, 500, Items.phaseFabric, 350));
-			consumes.liquid(Liquids.cryofluid, 3f);
+			consumePower(25f);
+			consumeItems(with(Items.silicon, 1000, Items.plastanium, 600, Items.surgeAlloy, 500, Items.phaseFabric, 350));
+			consumesLiquid(Liquids.cryofluid, 3f);
 
 			constructTime = 60f * 60f * 4;
 			liquidCapacity = 180f;
@@ -655,9 +650,9 @@ public class OblivionBlocks {
 			));
 
 			size = 12;
-			consumes.power(30f);
-			consumes.items(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450));
-			consumes.liquid(Liquids.cryofluid, 9f);
+			consumePower(30f);
+			consumeItems(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450));
+			consumesLiquid(Liquids.cryofluid, 9f);
 
 			constructTime = 60f * 60f * 10;
 			liquidCapacity = 360f;
@@ -687,11 +682,11 @@ public class OblivionBlocks {
 			status = OblivionStatuses.calamity;
 			statusDuration = 600f;
 			itemCapacity = 150;
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mesulfate, 100,
 				OblivionResources.mothalate, 5
 			));
-			consumes.power(5f);
+			consumePower(5f);
 		}};
 		fearSigil = new StatusBomb("fear-sigil") {{
 			requirements(Category.units, with(
@@ -710,10 +705,10 @@ public class OblivionBlocks {
 			statusDuration = 300f;
 			itemCapacity = 100;
 			bombCapacity = 15;
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mothalate, 50
 			));
-			consumes.power(3f);
+			consumePower(3f);
 		}};
 		abyssSigil = new StatusBomb("abyss-sigil") {{
 			requirements(Category.units, with(
@@ -733,11 +728,11 @@ public class OblivionBlocks {
 			statusDuration = 150f;
 			itemCapacity = 160;
 			bombCapacity = 35;
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mothalate, 10,
 				OblivionResources.carmanite, 80
 			));
-			consumes.power(7f);
+			consumePower(7f);
 		}};
 
 		earthquake = new StatusBomb("earthquake") {{
@@ -756,10 +751,10 @@ public class OblivionBlocks {
 			statusDuration = 60f;
 			itemCapacity = 20;
 			bombCapacity = 5;
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.carmanite, 10
 			));
-			consumes.power(2f);
+			consumePower(2f);
 		}};
 
 		// lamoni
@@ -785,7 +780,7 @@ public class OblivionBlocks {
 			size = 3;
 			craftTime = 10f;
 			updateEffect = LamoniFx.imperialSmelt;
-			consumes.power(0.5f);
+			consumePower(0.5f);
 			outputItem = new ItemStack(Items.sand, 1);
 		}};
 
