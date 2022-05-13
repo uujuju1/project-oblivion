@@ -378,7 +378,6 @@ public class OblivionBlocks {
 			reload = 90f;
 			range = 240f;
 			inaccuracy = 8f;
-			velocityInaccuracy = 0.8f;
 			rotateSpeed = 5f;
 			shoot = new ShootPattern() {{
 				shots = 4;
