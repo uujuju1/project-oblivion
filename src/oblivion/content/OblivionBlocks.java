@@ -382,6 +382,28 @@ public class OblivionBlocks {
 			shoot = new ShootPattern() {{
 				shots = 4;
 			}};
+			drawer = new DrawTurret("mesobase-") {{
+				parts.addAll(
+					new RegionPart("-base") {{
+						moveY = -1f;
+						progress = PartProgress.reload;
+						children.addAll(
+							new RegionPart("-wing") {{
+								x = 6.6f;
+								y = -4f;
+								moveRot = 15f;
+								progress = PartProgress.warmup;
+							}}
+						);
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-shoot") {{
+						moveY = -3f;
+						progress = PartProgress.warmup;
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.mesulfate, new ArtilleryBulletType(3f, 35) {{
 					lifetime = 80f;
