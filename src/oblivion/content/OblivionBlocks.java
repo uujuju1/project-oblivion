@@ -15,6 +15,7 @@ import mindustry.world.meta.*;
 import mindustry.world.draw.*;
 import mindustry.entities.part.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.*;
 import mindustry.world.blocks.units.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.production.*;
@@ -312,17 +313,14 @@ public class OblivionBlocks {
 			));
 			size = 2;
 			health = 640;
-			reloadTime = 10f;
-			spread = 4f;
-			shots = 2;
-			alternate = true;
+			reload = 10f;
 			range = 184f;
 			rotateSpeed = 7.5f;
 			shoot = new ShootAlternate() {{
 				spread = 7f;
 			}};
 			drawer = new DrawTurret("mesobase-") {{
-				part.addAll(
+				parts.addAll(
 					new RegionPart("-cannon") {{
 						x = 3.5f;
 						y = 2f;
@@ -377,12 +375,14 @@ public class OblivionBlocks {
 			));
 			size = 3;
 			health = 1440;
-			reloadTime = 90f;
+			reload = 90f;
 			range = 240f;
-			shots = 4;
-			burstSpacing = 9f;
 			inaccuracy = 8f;
+			velocityInaccuracy = 0.8f;
 			rotateSpeed = 5f;
+			shoot = new ShootPattern() {{
+				shots = 4;
+			}};
 			ammo(
 				OblivionResources.mesulfate, new ArtilleryBulletType(3f, 35) {{
 					lifetime = 80f;
@@ -426,7 +426,7 @@ public class OblivionBlocks {
 			));
 			size = 1;
 			health = 180;
-			reloadTime = 45f;
+			reload = 45f;
 			spread = 4f;
 			shots = 2;
 			alternate = true;
@@ -453,7 +453,7 @@ public class OblivionBlocks {
 			));
 			size = 2;
 			health = 180 * 4;
-			reloadTime = 30f;
+			reload = 30f;
 			range = 18f * 8f;
 			rotateSpeed = 6f;
 			ammo(
@@ -478,7 +478,7 @@ public class OblivionBlocks {
 			));
 			size = 3;
 			health = 180 * 9;
-			reloadTime = 75f;
+			reload = 75f;
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
 			ammo(
@@ -502,7 +502,7 @@ public class OblivionBlocks {
 			));
 			size = 2;
 			health = 200 * 4;
-			reloadTime = 45f;
+			reload = 45f;
 			range = 20f * 8f;
 			rotateSpeed = 4.5f;
 			ammo(
@@ -524,7 +524,7 @@ public class OblivionBlocks {
 			));
 			size = 3;
 			health = 200 * 9;
-			reloadTime = 85f;
+			reload = 85f;
 			range = 30f * 8f;
 			shots = 3;
 			inaccuracy = 3f;
