@@ -302,7 +302,7 @@ public class OblivionBlocks {
 				}}
 			); 
 		}};
-		/*
+		
 		rain = new ItemTurret("rain") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 75,
@@ -318,6 +318,34 @@ public class OblivionBlocks {
 			alternate = true;
 			range = 184f;
 			rotateSpeed = 7.5f;
+			shoot = new ShootAlternate() {{
+				spread = 7f;
+			}};
+			drawer = new DrawTurret("mesobase-") {{
+				part.addAll(
+					new RegionPart("-cannon") {{
+						x = 3.5f;
+						y = 2f;
+						moveY = -2f;
+						progress = PartProgress.reload;
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-base") {{
+						moveY = -0.5f;
+						progress = PartProgress.reload;
+						children.addAll(
+							new RegionPart("-lock") {{
+								x = 5.5f;
+								y = -8f;
+								moveRot = -45f;
+								progress = PartProgress.warmup;
+								mirror = true;
+							}}
+						);
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.mesulfate, new BasicBulletType(5f, 20) {{
 					lifetime = 36.8f;
@@ -390,6 +418,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
+		/*
 		toxic = new ItemTurret("toxic") {{
 			requirements(Category.turret, with(
 				Items.graphite, 20,
