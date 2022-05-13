@@ -322,7 +322,7 @@ public class OblivionBlocks {
 			drawer = new DrawTurret("mesobase-") {{
 				parts.addAll(
 					new RegionPart("-cannon") {{
-						x = 3.5f;
+						x = 0f;
 						y = 2f;
 						moveY = -2f;
 						progress = PartProgress.reload;
@@ -354,8 +354,6 @@ public class OblivionBlocks {
 				Items.graphite, new BasicBulletType(2f, 27) {{
 					lifetime = 73.6f;
 					shootSound = Sounds.artillery;
-					frontColor = Color.valueOf("95ABD9");
-					backColor = Color.valueOf("626F9B");
 				}},
 				Items.silicon, new MissileBulletType(2f, 17) {{
 					lifetime = 73.6f;
@@ -391,8 +389,9 @@ public class OblivionBlocks {
 							new RegionPart("-wing") {{
 								x = 6.6f;
 								y = -4f;
-								moveRot = 15f;
+								moveRot = -15f;
 								progress = PartProgress.warmup;
+								mirror = true;
 							}}
 						);
 					}}
@@ -400,7 +399,7 @@ public class OblivionBlocks {
 				parts.addAll(
 					new RegionPart("-shoot") {{
 						moveY = -3f;
-						progress = PartProgress.warmup;
+						progress = PartProgress.reload;
 					}}
 				);
 			}};
@@ -424,8 +423,6 @@ public class OblivionBlocks {
 					splashDamageRadius = 20f;
 					collides = true;
 					shootSound = Sounds.shootBig;
-					frontColor = Color.valueOf("95ABD9");
-					backColor = Color.valueOf("626F9B");
 				}},
 				Items.silicon, new ArtilleryBulletType(3f, 20) {{
 					lifetime = 80f;
