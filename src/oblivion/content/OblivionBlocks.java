@@ -270,14 +270,9 @@ public class OblivionBlocks {
 			health = 160;
 			reload = 60f;
 			range = 120f;
+			recoilAmount = 0.2f;
 			rotateSpeed = 10f;
 			drawer = new DrawTurret("mesobase-") {{
-				parts.addAll(
-					new RegionPart("-base") {{
-						moveY = -0.2f;
-						progress = PartProgress.reload;
-					}}
-				);
 				parts.addAll(
 					new RegionPart("-shoot") {{
 						moveY = -1f;
@@ -316,6 +311,7 @@ public class OblivionBlocks {
 			reload = 10f;
 			range = 184f;
 			rotateSpeed = 7.5f;
+			recoilAmount = 0.7f;
 			shoot = new ShootAlternate() {{
 				spread = 7f;
 			}};
@@ -329,18 +325,12 @@ public class OblivionBlocks {
 					}}
 				);
 				parts.addAll(
-					new RegionPart("-base") {{
-						moveY = -0.5f;
-						progress = PartProgress.reload;
-						children.addAll(
-							new RegionPart("-lock") {{
-								x = 5.5f;
-								y = -8f;
-								moveRot = -45f;
-								progress = PartProgress.warmup;
-								mirror = true;
-							}}
-						);
+					new RegionPart("-lock") {{
+						x = 5.5f;
+						y = -8f;
+						moveRot = -45f;
+						progress = PartProgress.warmup;
+						mirror = true;
 					}}
 				);
 			}};
@@ -377,23 +367,18 @@ public class OblivionBlocks {
 			range = 240f;
 			inaccuracy = 8f;
 			rotateSpeed = 5f;
+			recoilAmount = 1f;
 			shoot = new ShootPattern() {{
 				shots = 4;
 			}};
 			drawer = new DrawTurret("mesobase-") {{
 				parts.addAll(
-					new RegionPart("-base") {{
-						moveY = -1f;
-						progress = PartProgress.reload;
-						children.addAll(
-							new RegionPart("-wing") {{
-								x = 6.6f;
-								y = -4f;
-								moveRot = -15f;
-								progress = PartProgress.warmup;
-								mirror = true;
-							}}
-						);
+					new RegionPart("-wing") {{
+						x = 6.6f;
+						y = -4f;
+						moveRot = -15f;
+						progress = PartProgress.warmup;
+						mirror = true;
 					}},
 					new RegionPart("-shoot") {{
 						moveY = -3f;
