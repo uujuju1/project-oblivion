@@ -272,7 +272,7 @@ public class OblivionBlocks {
 			range = 120f;
 			recoil = 0.2f;
 			rotateSpeed = 10f;
-			drawer = new DrawTurret("mesobase-") {{
+			drawer = new DrawTurret() {{
 				parts.addAll(
 					new RegionPart("-shoot") {{
 						moveY = -1f;
@@ -315,7 +315,7 @@ public class OblivionBlocks {
 			shoot = new ShootAlternate() {{
 				spread = 7f;
 			}};
-			drawer = new DrawTurret("mesobase-") {{
+			drawer = new DrawTurret() {{
 				parts.addAll(
 					new RegionPart("-cannon") {{
 						x = 0f;
@@ -329,7 +329,7 @@ public class OblivionBlocks {
 					new RegionPart("-lock") {{
 						x = 5.5f;
 						y = -2f;
-						moveRot = -45f;
+						moveRot = 45f;
 						progress = PartProgress.warmup;
 						mirror = true;
 					}}
@@ -372,7 +372,7 @@ public class OblivionBlocks {
 			shoot = new ShootPattern() {{
 				shots = 4;
 			}};
-			drawer = new DrawTurret("mesobase-") {{
+			drawer = new DrawTurret() {{
 				parts.addAll(
 					new RegionPart("-wing") {{
 						x = 6.6f;
