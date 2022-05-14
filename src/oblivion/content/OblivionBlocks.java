@@ -503,29 +503,13 @@ public class OblivionBlocks {
 			reload = 75f;
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
-			recoil = 1.5f;
+			recoil = 2.25f;
 			drawer = new DrawTurret() {{
-				parts.addAll(
-					new RegionPart("-cannon") {{
-						moveY = -3f;
-						progress = PartProgress.reload.curve(Interp.pow2In);
-						children.addAll(
-							new RegionPart("-blade") {{
-								x = 4.5f;
-								y = 0.75f;
-								moveX = -1.25f;
-								moveY = 1f;
-								progress = PartProgress.warmup;
-								mirror = true;
-							}}
-						);
-					}}
-				);
 				parts.addAll(
 					new RegionPart("-wing") {{
 						x = 7.75f;
 						y = -1.75f;
-						moveRot = -30f;
+						moveRot = -45f;
 						under = mirror = true;
 					}}
 				);
@@ -543,7 +527,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
-		/*
+		
 		hammer = new ItemTurret("hammer") {{
 			requirements(Category.turret, with(
 				OblivionResources.calenmite, 40,
@@ -555,6 +539,21 @@ public class OblivionBlocks {
 			reload = 45f;
 			range = 20f * 8f;
 			rotateSpeed = 4.5f;
+			recoil = 10f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-support") {{
+						moveY = -2f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						moveY = -5f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.calenmite, new BasicBulletType(2f, 35) {{
 					lifetime = range/speed;
@@ -578,8 +577,28 @@ public class OblivionBlocks {
 			range = 30f * 8f;
 			shots = 3;
 			inaccuracy = 3f;
-			velocityInaccuracy = 0.9f;
 			rotateSpeed = 4.5f;
+			recoil = 1.5f;
+			shoot = new ShootPattern() {{
+				shots = 4f;
+			}};
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-wing") {{
+						x = 6.5f;
+						y = -5f;
+						moveRot = 45f;
+						progress = PartProgress.warmup;
+						under = mirror = true;
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						moveY = -3f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.calenmite, new BasicBulletType(2.5f, 35) {{
 					lifetime = range/speed;
@@ -591,7 +610,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
-
+		/*
 		inductionDrill = new Drill("induction-drill") {{
 			requirements(Category.production, with(
 				Items.silicon, 25,
