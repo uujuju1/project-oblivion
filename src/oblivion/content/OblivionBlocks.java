@@ -298,7 +298,6 @@ public class OblivionBlocks {
 				}}
 			); 
 		}};
-		
 		rain = new ItemTurret("rain") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 75,
@@ -329,7 +328,7 @@ public class OblivionBlocks {
 					new RegionPart("-lock") {{
 						x = 5.5f;
 						y = -2f;
-						moveRot = 45f;
+						moveRot = -45f;
 						progress = PartProgress.warmup;
 						mirror = true;
 					}}
@@ -354,7 +353,6 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
-		/*
 		granite = new ItemTurret("granite") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 160,
@@ -381,7 +379,9 @@ public class OblivionBlocks {
 						moveRot = -15f;
 						progress = PartProgress.warmup;
 						mirror = true;
-					}},
+					}}
+				);
+				parts.addAll(
 					new RegionPart("-shoot") {{
 						moveY = -3f;
 						progress = PartProgress.reload;
@@ -421,7 +421,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
-		
+		/*
 		toxic = new ItemTurret("toxic") {{
 			requirements(Category.turret, with(
 				Items.graphite, 20,
