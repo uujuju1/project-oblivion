@@ -575,12 +575,11 @@ public class OblivionBlocks {
 			health = 200 * 9;
 			reload = 85f;
 			range = 30f * 8f;
-			shots = 3;
 			inaccuracy = 3f;
 			rotateSpeed = 4.5f;
 			recoil = 1.5f;
 			shoot = new ShootPattern() {{
-				shots = 4f;
+				shots = 3;
 			}};
 			drawer = new DrawTurret() {{
 				parts.addAll(
