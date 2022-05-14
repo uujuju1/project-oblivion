@@ -421,7 +421,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
-		/*
+		
 		toxic = new ItemTurret("toxic") {{
 			requirements(Category.turret, with(
 				Items.graphite, 20,
@@ -432,12 +432,9 @@ public class OblivionBlocks {
 			reload = 45f;
 			range = 13f * 8f;
 			rotateSpeed = 7f;
-			drawer = new DrawTurret("poisobase-") {{
+			recoil = 0.2f;
+			drawer = new DrawTurret() {{
 				parts.addAll(
-					new RegionPart("-base") {{
-						moveY = -0.2f;
-						progress = PartProgress.reload;
-					}},
 					new RegionPart("-shoot") {{
 						moveY = -1f;
 						progress = PartProgress.reload;
@@ -468,6 +465,19 @@ public class OblivionBlocks {
 			reload = 30f;
 			range = 18f * 8f;
 			rotateSpeed = 6f;
+			recoil = 1.5f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-blade") {{
+						x = 1.5f;
+						y = 2.5f;
+						moveX = 1f;
+						moveY = 1f;
+						progress = PartProgress.warmup;
+						under = mirror = true;
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2f, 13) {{
 					lifetime = range/speed;
@@ -480,6 +490,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
+		/*
 		acidic = new ItemTurret("acidic") {{
 			requirements(Category.turret, with(
 				Items.graphite, 120,
