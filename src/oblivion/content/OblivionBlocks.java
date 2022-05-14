@@ -276,7 +276,7 @@ public class OblivionBlocks {
 				parts.addAll(
 					new RegionPart("-shoot") {{
 						moveY = -1f;
-						progress = PartProgress.reload;
+						progress = PartProgress.reload.curve(Interp.pow2In);
 					}}
 				);
 			}};
@@ -298,7 +298,7 @@ public class OblivionBlocks {
 				}}
 			); 
 		}};
-		/*
+		
 		rain = new ItemTurret("rain") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 75,
@@ -354,6 +354,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
+		/*
 		granite = new ItemTurret("granite") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 160,
