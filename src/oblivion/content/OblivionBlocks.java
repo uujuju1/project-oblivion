@@ -459,7 +459,7 @@ public class OblivionBlocks {
 					new RegionPart("-shoot") {{
 						moveY = -1f;
 						progress = PartProgress.reload;
-					}},
+					}}
 				);
 			}};
 			ammo(
