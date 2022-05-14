@@ -270,7 +270,7 @@ public class OblivionBlocks {
 			health = 160;
 			reload = 60f;
 			range = 120f;
-			recoilAmount = 0.2f;
+			recoil = 0.2f;
 			rotateSpeed = 10f;
 			drawer = new DrawTurret("mesobase-") {{
 				parts.addAll(
@@ -311,7 +311,7 @@ public class OblivionBlocks {
 			reload = 10f;
 			range = 184f;
 			rotateSpeed = 7.5f;
-			recoilAmount = 0.7f;
+			recoil = 0.7f;
 			shoot = new ShootAlternate() {{
 				spread = 7f;
 			}};
@@ -367,7 +367,7 @@ public class OblivionBlocks {
 			range = 240f;
 			inaccuracy = 8f;
 			rotateSpeed = 5f;
-			recoilAmount = 1f;
+			recoil = 1f;
 			shoot = new ShootPattern() {{
 				shots = 4;
 			}};
