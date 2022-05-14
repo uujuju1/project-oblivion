@@ -377,7 +377,7 @@ public class OblivionBlocks {
 			range = 240f;
 			inaccuracy = 8f;
 			rotateSpeed = 5f;
-			shoot = new ShootPattern() {{
+			shoot = new ShootAlternate() {{
 				shots = 4;
 			}};
 			drawer = new DrawTurret("mesobase-") {{
@@ -394,9 +394,7 @@ public class OblivionBlocks {
 								mirror = true;
 							}}
 						);
-					}}
-				);
-				parts.addAll(
+					}},
 					new RegionPart("-shoot") {{
 						moveY = -3f;
 						progress = PartProgress.reload;
@@ -436,7 +434,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
-		/*
+		
 		toxic = new ItemTurret("toxic") {{
 			requirements(Category.turret, with(
 				Items.graphite, 20,
@@ -447,9 +445,23 @@ public class OblivionBlocks {
 			reload = 45f;
 			spread = 4f;
 			shots = 2;
-			alternate = true;
 			range = 13f * 8f;
 			rotateSpeed = 7f;
+			shoot = new ShootPattern() {{
+				spread = 4f;
+			}};
+			drawer = new DrawTurret("poisobase-") {{
+				parts.addAll(
+					new RegionPart("-base") {{
+						moveY = -0.2f;
+						progress = PartProgress.reload;
+					}},
+					new RegionPart("-shoot") {{
+						moveY = -1f;
+						progress = PartProgress.reload;
+					}},
+				);
+			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(1.5f, 8) {{
 					lifetime = range/speed;
@@ -512,6 +524,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
+		/*
 		hammer = new ItemTurret("hammer") {{
 			requirements(Category.turret, with(
 				OblivionResources.calenmite, 40,
