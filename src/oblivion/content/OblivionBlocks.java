@@ -276,7 +276,7 @@ public class OblivionBlocks {
 				parts.addAll(
 					new RegionPart("-shoot") {{
 						moveY = -1f;
-						progress = PartProgress.reload;
+						progress = PartProgress.reload.curve(Interp.pow2In);
 					}}
 				);
 			}};
@@ -321,13 +321,14 @@ public class OblivionBlocks {
 						x = 0f;
 						y = 2f;
 						moveY = -2f;
-						progress = PartProgress.reload;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+						under = true;
 					}}
 				);
 				parts.addAll(
 					new RegionPart("-lock") {{
 						x = 5.5f;
-						y = -8f;
+						y = -2f;
 						moveRot = -45f;
 						progress = PartProgress.warmup;
 						mirror = true;
