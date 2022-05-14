@@ -503,7 +503,7 @@ public class OblivionBlocks {
 			reload = 75f;
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
-			recoil = -1.5f;
+			recoil = 1.5f;
 			drawer = new DrawTurret() {{
 				parts.addAll(
 					new RegionPart("-cannon") {{
@@ -516,8 +516,17 @@ public class OblivionBlocks {
 								moveX = -1.25f;
 								moveY = 1f;
 								progress = PartProgress.warmup;
+								mirror = true;
 							}}
 						);
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-wing") {{
+						x = 7.75f;
+						y = -1.75f;
+						moveRot = -30f;
+						under = mirror = true;
 					}}
 				);
 			}};
