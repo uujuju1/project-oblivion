@@ -490,7 +490,6 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
-		/*
 		acidic = new ItemTurret("acidic") {{
 			requirements(Category.turret, with(
 				Items.graphite, 120,
@@ -504,6 +503,24 @@ public class OblivionBlocks {
 			reload = 75f;
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
+			recoil = -1.5f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						moveY = -3f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+						children.addAll(
+							new RegionPart("-blade") {{
+								x = 4.5f;
+								y = 0.75f;
+								moveX = -1.25f;
+								moveY = 1f;
+								progress = PartProgress.warmup;
+							}}
+						);
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2.5f, 25) {{
 					lifetime = range/speed;
@@ -517,7 +534,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
-		
+		/*
 		hammer = new ItemTurret("hammer") {{
 			requirements(Category.turret, with(
 				OblivionResources.calenmite, 40,
