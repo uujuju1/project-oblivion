@@ -377,7 +377,7 @@ public class OblivionBlocks {
 			range = 240f;
 			inaccuracy = 8f;
 			rotateSpeed = 5f;
-			shoot = new ShootAlternate() {{
+			shoot = new ShootPattern() {{
 				shots = 4;
 			}};
 			drawer = new DrawTurret("mesobase-") {{
@@ -443,13 +443,8 @@ public class OblivionBlocks {
 			size = 1;
 			health = 180;
 			reload = 45f;
-			spread = 4f;
-			shots = 2;
 			range = 13f * 8f;
 			rotateSpeed = 7f;
-			shoot = new ShootPattern() {{
-				spread = 4f;
-			}};
 			drawer = new DrawTurret("poisobase-") {{
 				parts.addAll(
 					new RegionPart("-base") {{
@@ -469,8 +464,8 @@ public class OblivionBlocks {
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
-					status = OblivionStatuses.infested;
-					statusDuration = 60f * 4.5f;
+					// status = OblivionStatuses.infested;
+					// statusDuration = 60f * 4.5f;
 				}}
 			);
 		}};
@@ -493,8 +488,8 @@ public class OblivionBlocks {
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
-					status = OblivionStatuses.infested;
-					statusDuration = 60f * 6f;
+					// status = OblivionStatuses.infested;
+					// statusDuration = 60f * 6f;
 				}}
 			);
 		}};
@@ -519,8 +514,8 @@ public class OblivionBlocks {
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
 					shootSound = Sounds.artillery;
-					status = OblivionStatuses.infested;
-					statusDuration = 60f * 12f;
+					// status = OblivionStatuses.infested;
+					// statusDuration = 60f * 12f;
 				}}
 			);
 		}};
