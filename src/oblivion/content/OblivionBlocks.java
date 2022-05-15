@@ -780,7 +780,8 @@ public class OblivionBlocks {
 				new UnitType[]{UnitTypes.reign, OblivionUnits.republic},
 				new UnitType[]{UnitTypes.corvus, OblivionUnits.giga},
 				new UnitType[]{UnitTypes.toxopid, OblivionUnits.archaranid},
-				new UnitType[]{UnitTypes.eclipse, OblivionUnits.bloodmoon}
+				new UnitType[]{UnitTypes.eclipse, OblivionUnits.bloodmoon},
+				new UnitType[]{UnitTypes.omura, OblivionUnits.yetinus}
 			);
 		}};
 		
