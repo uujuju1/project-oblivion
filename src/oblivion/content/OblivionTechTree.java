@@ -2,6 +2,7 @@ package oblivion.content;
 
 import arc.struct.*;
 import arc.util.*;
+import mindustry.content.*;
 import mindustry.entities.bullet.*;
 import mindustry.game.Objectives.*;
 import mindustry.type.*;
@@ -11,7 +12,7 @@ import mindustry.world.blocks.defense.turrets.*;
 import static mindustry.Vars.*;
 import static mindustry.content.TechTree.*;
 
-public class OblivionTechtree {
+public class OblivionTechTree {
 
 	public void load() {
 		OblivionPlanets.lonela.techTree = nodeRoot("lonela", OblivionBlocks.start, true, () -> {
