@@ -8,7 +8,7 @@ import mindustry.graphics.*;
 import mindustry.graphics.g3d.*;
 import oblivion.planets.*;
 
-public class OblivionPlanets implements {
+public class OblivionPlanets {
 	public static Planet 
 	berenit,
 	lamoni, lonela;

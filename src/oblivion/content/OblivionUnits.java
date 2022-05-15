@@ -115,7 +115,7 @@ public class OblivionUnits{
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 						for (int i = 1; i <= 5; i++) {
-							float speedMultiplier 3f / i;
+							float speedMultiplier = 3f / i;
 							spawnBullets.addAll(
 								new BasicBulletType(speedMultiplier, 7) {{
 									width = height = 5f;
