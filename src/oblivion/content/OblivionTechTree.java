@@ -14,7 +14,7 @@ import static mindustry.content.TechTree.*;
 public class OblivionTechtree {
 
 	public void load() {
-		OblivionPlanets.lonela.techTree = nodeRoot("lonela", OblivionBlocks.start, true () -> {
+		OblivionPlanets.lonela.techTree = nodeRoot("lonela", OblivionBlocks.start, true, () -> {
 			// items
 			nodeProduce(OblivionResources.mesulfate, Seq.with(new Produce(Items.silicon)), () -> {
 				nodeProduce(OblivionResources.calenmite, Seq.with(new Produce(Items.metaglass)), () -> {
