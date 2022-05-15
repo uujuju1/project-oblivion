@@ -40,18 +40,18 @@ public class OblivionTechTree {
 			node(OblivionBlocks.uno, Seq.with(new Produce(OblivionResources.mesulfate)), () -> {
 				node(OblivionBlocks.rain, Seq.with(new Research(Blocks.hail)), () -> {
 					node(OblivionBlocks.granite, Seq.with(new Research(Blocks.ripple)), () -> {
-						node(OblivionBlocks.fearSigil, Seq.with(new Produce(OblivionResources.mothalate)));
+						node(OblivionBlocks.fearSigil, Seq.with(new Produce(OblivionResources.mothalate)), () -> {});
 						node(OblivionBlocks.calamitySigil, Seq.with(new Produce(OblivionResources.mothalate), new Produce(OblivionResources.mesulfate)), () -> {});
 						node(OblivionBlocks.abyssSigil, Seq.with(new Produce(OblivionResources.mothalate), new Produce(OblivionResources.carmanite)), () -> {});
 					});
 				});
 				node(OblivionBlocks.toxic, Seq.with(new Produce(OblivionResources.copremite)), () -> {
 					node(OblivionBlocks.corrosive, Seq.with(new Research(Blocks.salvo)), () -> {
-						node(OblivionBlocks.acidic, Seq.with(new Research(Blocks.scepter), new Research(Blocks.ripple)), () -> {});
+						node(OblivionBlocks.acidic, Seq.with(new Research(Blocks.spectre), new Research(Blocks.ripple)), () -> {});
 					});
 				});
 				node(OblivionBlocks.hammer, Seq.with(new Produce(OblivionResources.calenmite)), () -> {
-					node(OblivionBlocks.press, Seq.with(new Research(Blocks.ripple)));
+					node(OblivionBlocks.press, Seq.with(new Research(Blocks.ripple)), () -> {});
 				});
 			});
 
@@ -62,7 +62,7 @@ public class OblivionTechTree {
 					node(OblivionUnits.detra, Seq.with(new Research(OblivionBlocks.alphaReconstructor)), () -> {
 						node(OblivionUnits.tedri, Seq.with(new Research(OblivionBlocks.betaReconstructor)), () -> {
 							node(OblivionUnits.taleni, Seq.with(new Research(OblivionBlocks.gammaReconstructor)), () -> {
-								node(OblivionUnits.kolete, Seq.with(new Research(OblivionBlocks.omegaReconstructor)));
+								node(OblivionUnits.kolete, Seq.with(new Research(OblivionBlocks.omegaReconstructor)), () -> {});
 							});
 						});	
 					});
@@ -105,7 +105,7 @@ public class OblivionTechTree {
 
 			// skill issue
 			// t6
-			node(OblivionBlocks.mandlebrotReconstructor, Seq.with(new Produce(OblivionResources.mothalate), new Research(UnitTypes.reign)));
+			node(OblivionBlocks.mandlebrotReconstructor, Seq.with(new Produce(OblivionResources.mothalate), new Research(UnitTypes.reign)), () -> {});
 			node(OblivionUnits.republic, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)), () -> {});
 			node(OblivionUnits.giga, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)), () -> {});
 			node(OblivionUnits.archaranid, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)), () -> {});
