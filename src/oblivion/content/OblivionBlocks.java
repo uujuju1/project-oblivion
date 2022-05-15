@@ -23,7 +23,7 @@ import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
-// import oblivion.blocks.defense.*;
+import oblivion.blocks.defense.*;
 import oblivion.blocks.production.*;
 
 import static mindustry.type.ItemStack.*;
@@ -443,13 +443,13 @@ public class OblivionBlocks {
 			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(1.5f, 8) {{
-					lifetime = range/speed;
+					lifetime = 69f; /* unintentionally nice */
 					width = height = 8f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
-					// status = OblivionStatuses.infested;
-					// statusDuration = 60f * 4.5f;
+					status = OblivionStatuses.infested;
+					statusDuration = 60f * 4.5f;
 				}}
 			);
 		}};
@@ -480,13 +480,13 @@ public class OblivionBlocks {
 			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2f, 13) {{
-					lifetime = range/speed;
+					lifetime = 72f;
 					width = height = 10f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
-					// status = OblivionStatuses.infested;
-					// statusDuration = 60f * 6f;
+					status = OblivionStatuses.infested;
+					statusDuration = 60f * 6f;
 				}}
 			);
 		}};
@@ -516,14 +516,14 @@ public class OblivionBlocks {
 			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2.5f, 25) {{
-					lifetime = range/speed;
+					lifetime = 86.4f;
 					width = height = 13f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
 					shootEffect = OblivionFx.poisonShoot;
 					shootSound = Sounds.artillery;
-					// status = OblivionStatuses.infested;
-					// statusDuration = 60f * 12f;
+					status = OblivionStatuses.infested;
+					statusDuration = 60f * 12f;
 				}}
 			);
 		}};
