@@ -30,7 +30,7 @@ public class ProjectOblivion extends Mod{
 	public void loadContent(){
 		new OblivionStatuses().load();
 		new OblivionResources().load();
-		// new OblivionUnits().load();
+		new OblivionUnits().load();
 		new OblivionEnvironment().load();
 		new OblivionBlocks().load();
 		// new OblivionPlanets().load();
