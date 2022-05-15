@@ -119,7 +119,7 @@ public class OblivionUnits{
 							spawnBullets.addAll(
 								new BasicBulletType(speedMultiplier, 7) {{
 									width = height = 5f;
-									lifetime = lifeFraction;
+									lifetime = 66.6f;
 									frontColor = OblivionPal.mesoMedium;
 									backColor = OblivionPal.mesoDark;
 								}}
