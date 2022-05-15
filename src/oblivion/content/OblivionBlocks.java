@@ -70,6 +70,7 @@ public class OblivionBlocks {
 				Items.copper, 50,
 				Items.lead, 80
 			));
+			alwaysUnlocked = true;
 			size = 3;
 			health = 200;
 			craftTime = 30f;
@@ -894,7 +895,7 @@ public class OblivionBlocks {
 		}};
 
 		mantlePulverizer = new GenericCrafter("mantle-pulverizer") {{
-			requirements(Category.production, with(
+			requirements(Category.crafting, with(
 				OblivionResources.niobium, 200
 			));
 			health = 200;
