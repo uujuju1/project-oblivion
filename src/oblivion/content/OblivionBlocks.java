@@ -912,10 +912,12 @@ public class OblivionBlocks {
 						heatProgress = PartProgress.reload.curve(Interp.pow2In);
 					}}
 				);
-				parts.addAll("-heat") {{
-					drawRegion = false;
-					heatProgress = PartProgress.warmup;
-				}}
+				parts.addAll(
+					new RegionPart("-heat") {{
+						drawRegion = false;
+						heatProgress = PartProgress.warmup;
+					}}
+				);
 			}};
 			shoot = new shootSpread(10, 10);
 			ammo(
