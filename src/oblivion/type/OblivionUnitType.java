@@ -14,7 +14,6 @@ import mindustry.Vars;
 
 // engineSize and engineOffset is now useless {:
 public class OblivionUnitType extends UnitType {
-	private static final Vec2 legOffset = new Vec2();
 	public Cons<Unit> engineDrawer = unit -> {}, topDrawer = unit -> {};
 
 	public OblivionUnitType(String name) {
