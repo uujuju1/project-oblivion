@@ -919,7 +919,7 @@ public class OblivionBlocks {
 					}}
 				);
 			}};
-			shoot = new shootSpread(10, 10);
+			shoot = new ShootSpread(10, 10);
 			ammo(
 				OblivionResources.niobium, new BasicBulletType(2f, 5) {{
 					lifetime = 80f;
