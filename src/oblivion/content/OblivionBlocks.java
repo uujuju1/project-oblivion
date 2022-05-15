@@ -54,6 +54,8 @@ public class OblivionBlocks {
 
 		// lamoni
 		mantlePulverizer,
+		spread,
+		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
 		imperialDrill;
 
 	public void load() {
@@ -889,9 +891,61 @@ public class OblivionBlocks {
 			size = 3;
 			drillTime = 1200f;
 			tier = 1;
-			// holdTime = 300f;
-			// decayTime = 300f;
 			updateEffect = LamoniFx.imperialSmelt;
+		}};
+
+		spread = new ItemTurret("spread") {{
+			requirements(Category.turret, with(
+				OblivionResources.niobium, 60
+			));
+			health = 320;
+			size = 2;
+			reload = 90f;
+			recoil = 1f;
+			range = 20 * 8f;
+			inaccuracy = 3f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						moveY = -1f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+						heatProgress = PartProgress.reload.curve(Interp.pow2In);
+					}}
+				);
+				parts.addAll("-heat") {{
+					drawRegion = false;
+					heatProgress = PartProgress.warmup;
+				}}
+			}};
+			shoot = new shootSpread(10, 10);
+			ammo(
+				OblivionResources.niobium, new BasicBulletType(2f, 5) {{
+					lifetime = 80f;
+					width = height = 10f;
+				}}
+			);
+		}};
+
+		niobiumWall = new Wall("niobium-wall") {{
+			requirements(Category.defense, with(
+				OblivionResources.niobium, 6
+			));
+			health = 200;
+			size = 1;
+		}};
+		largeNiobiumWall = new Wall("niobium-wall-large") {{
+			requirements(Category.defense, with(
+				OblivionResources.niobium, 24
+			));
+			health = 800;
+			size = 2;
+		}};
+		hugeNiobiumWall = new Wall("niobium-wall-huge") {{
+			requirements(Category.defense, with(
+				OblivionResources.niobium, 54
+			));
+			health = 1800;
+			size = 3;
 		}};
 
 		mantlePulverizer = new GenericCrafter("mantle-pulverizer") {{
