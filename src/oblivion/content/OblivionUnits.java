@@ -20,7 +20,7 @@ public class OblivionUnits{
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
 	phi, root, multi, pow, expo,
-	
+
 	republic, giga, archaranid, bloodmoon, yetinus;
 
 	public void load() {
@@ -115,9 +115,9 @@ public class OblivionUnits{
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 						for (int i = 1; i <= 5; i++) {
-							float lifeFraction = lifetime / i;
+							float speedMultiplier 3f / i;
 							spawnBullets.addAll(
-								new BasicBulletType(3f, 7) {{
+								new BasicBulletType(speedMultiplier, 7) {{
 									width = height = 5f;
 									lifetime = lifeFraction;
 									frontColor = OblivionPal.mesoMedium;

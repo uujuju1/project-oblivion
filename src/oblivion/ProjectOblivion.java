@@ -33,7 +33,7 @@ public class ProjectOblivion extends Mod{
 		new OblivionUnits().load();
 		new OblivionEnvironment().load();
 		new OblivionBlocks().load();
-		// new OblivionPlanets().load();
+		new OblivionPlanets().load();
 		// new OblivionSectors().load();
 		// new OblivionTechTree().load();
 	}
