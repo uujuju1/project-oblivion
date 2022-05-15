@@ -900,10 +900,15 @@ public class OblivionBlocks {
 			size = 3;
 			craftTime = 10f;
 			updateEffect = LamoniFx.imperialSmelt;
-			drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawArcSmelt() {{
-				flameColor = Color.valueOf("D1EFFF");
-				midColor = Color.valueOf("8CA9E8");
-			}}, new DrawDefault(), new DrawGlowRegion("-light"))
+			drawer = new DrawMulti(
+				new DrawRegion("-bottom"),
+				new DrawArcSmelt() {{
+					flameColor = Color.valueOf("D1EFFF");
+					midColor = Color.valueOf("8CA9E8");
+				}},
+				new DrawDefault(),
+				new DrawGlowRegion("-light")
+			);
 			consumePower(0.5f);
 			outputItem = new ItemStack(Items.sand, 1);
 		}};
