@@ -539,7 +539,7 @@ public class OblivionBlocks {
 			reload = 45f;
 			range = 20f * 8f;
 			rotateSpeed = 4.5f;
-			recoil = 10f;
+			recoil = 1f;
 			drawer = new DrawTurret() {{
 				parts.addAll(
 					new RegionPart("-support") {{
@@ -555,13 +555,14 @@ public class OblivionBlocks {
 				);
 			}};
 			ammo(
-				OblivionResources.calenmite, new BasicBulletType(2f, 35) {{
-					lifetime = range/speed;
+				OblivionResources.calenmite, new ArtilleryBulletType(2f, 35) {{
+					lifetime = 90;
 					width = height = 13f;
 					frontColor = Color.white;
 					backColor = Color.valueOf("DCDCDC");
 					hitEffect = OblivionFx.carmaniteHit;
 					shootSound = Sounds.artillery;
+					collides = collidesTiles = collidesGround = collidesAir = true;
 				}}
 			);
 		}};
@@ -599,17 +600,18 @@ public class OblivionBlocks {
 				);
 			}};
 			ammo(
-				OblivionResources.calenmite, new BasicBulletType(2.5f, 35) {{
-					lifetime = range/speed;
+				OblivionResources.calenmite, new ArtilleryBulletType(2.5f, 35) {{
+					lifetime = 96;
 					width = height = 17f;
 					frontColor = Color.white;
 					backColor = Color.valueOf("DCDCDC");
 					hitEffect = OblivionFx.carmaniteHit;
 					shootSound = Sounds.artillery;
+					collides = collidesTiles = collidesGround = collidesAir = true;
 				}}
 			);
 		}};
-		/*
+		
 		inductionDrill = new Drill("induction-drill") {{
 			requirements(Category.production, with(
 				Items.silicon, 25,
@@ -646,9 +648,9 @@ public class OblivionBlocks {
 			size = 3;
 			health = 200;
 			consumePower(1.5f);
-			plans = Seq.with(
-				new UnitPlan(OblivionUnits.slop, 60f * 25f, with(Items.silicon, 10, OblivionResources.mesulfate, 15))
-			);
+			// plans = Seq.with(
+			// 	new UnitPlan(OblivionUnits.slop, 60f * 25f, with(Items.silicon, 10, OblivionResources.mesulfate, 15))
+			// );
 		}};
 		infestromeniFactory = new UnitFactory("infestromeni-factory") {{
 			requirements(Category.units, with(
@@ -659,9 +661,9 @@ public class OblivionBlocks {
 			size = 3;
 			health = 200;
 			consumePower(2f);
-			plans = Seq.with(
-				new UnitPlan(OblivionUnits.pioli, 60f * 30f, with(Items.silicon, 6, OblivionResources.copremite, 20))
-			);
+			// plans = Seq.with(
+			// 	new UnitPlan(OblivionUnits.pioli, 60f * 30f, with(Items.silicon, 6, OblivionResources.copremite, 20))
+			// );
 		}};
 		functiveFactory = new UnitFactory("functive-factory") {{
 			requirements(Category.units, with(
@@ -672,9 +674,9 @@ public class OblivionBlocks {
 			size = 3;
 			health = 200;
 			consumePower(2f);
-			plans = Seq.with(
-				new UnitPlan(OblivionUnits.phi, 60f * 27f, with(Items.silicon, 6, OblivionResources.carmanite, 20))
-			);
+			// plans = Seq.with(
+			// 	new UnitPlan(OblivionUnits.phi, 60f * 27f, with(Items.silicon, 6, OblivionResources.carmanite, 20))
+			// );
 		}};
 
 		alphaReconstructor = new Reconstructor("alpha-reconstructor"){{
@@ -683,16 +685,17 @@ public class OblivionBlocks {
 			));
 
 			size = 3;
+			health = 360;
 			consumePower(3f);
 			consumeItems(with(Items.silicon, 40, Items.graphite, 40));
 
 			constructTime = 60f * 10f;
 
-			upgrades.addAll(
-				new UnitType[]{OblivionUnits.slop, OblivionUnits.detra},
-				new UnitType[]{OblivionUnits.pioli, OblivionUnits.taneki},
-				new UnitType[]{OblivionUnits.phi, OblivionUnits.root}
-			);
+			// upgrades.addAll(
+			// 	new UnitType[]{OblivionUnits.slop, OblivionUnits.detra},
+			// 	new UnitType[]{OblivionUnits.pioli, OblivionUnits.taneki},
+			// 	new UnitType[]{OblivionUnits.phi, OblivionUnits.root}
+			// );
 		}};
 
 		betaReconstructor = new Reconstructor("beta-reconstructor"){{
@@ -702,16 +705,17 @@ public class OblivionBlocks {
 			));
 
 			size = 5;
+			health = 1200;
 			consumePower(6f);
 			consumeItems(with(Items.silicon, 130, Items.titanium, 80, Items.metaglass, 40));
 
 			constructTime = 60f * 30f;
 
-			upgrades.addAll(
-				new UnitType[]{OblivionUnits.detra, OblivionUnits.tedri},
-				new UnitType[]{OblivionUnits.taneki, OblivionUnits.notremite},
-				new UnitType[]{OblivionUnits.root, OblivionUnits.multi}
-			);
+			// upgrades.addAll(
+			// 	new UnitType[]{OblivionUnits.detra, OblivionUnits.tedri},
+			// 	new UnitType[]{OblivionUnits.taneki, OblivionUnits.notremite},
+			// 	new UnitType[]{OblivionUnits.root, OblivionUnits.multi}
+			// );
 		}};
 
 		gammaReconstructor = new Reconstructor("gamma-reconstructor"){{
@@ -721,6 +725,7 @@ public class OblivionBlocks {
 			));
 
 			size = 7;
+			health = 3035;
 			consumePower(13f);
 			consumeItems(with(Items.silicon, 850, Items.titanium, 750, Items.plastanium, 650));
 			consumesLiquid(Liquids.cryofluid, 1f);
@@ -728,11 +733,11 @@ public class OblivionBlocks {
 			constructTime = 60f * 60f * 1.5f;
 			liquidCapacity = 60f;
 
-			upgrades.addAll(
-				new UnitType[]{OblivionUnits.tedri, OblivionUnits.taleni},
-				new UnitType[]{OblivionUnits.notremite, OblivionUnits.dopretile},
-				new UnitType[]{OblivionUnits.multi, OblivionUnits.pow}
-			);
+			// upgrades.addAll(
+			// 	new UnitType[]{OblivionUnits.tedri, OblivionUnits.taleni},
+			// 	new UnitType[]{OblivionUnits.notremite, OblivionUnits.dopretile},
+			// 	new UnitType[]{OblivionUnits.multi, OblivionUnits.pow}
+			// );
 		}};
 
 		omegaReconstructor = new Reconstructor("omega-reconstructor"){{
@@ -742,6 +747,7 @@ public class OblivionBlocks {
 			));
 
 			size = 9;
+			health = 5830;
 			consumePower(25f);
 			consumeItems(with(Items.silicon, 1000, Items.plastanium, 600, Items.surgeAlloy, 500, Items.phaseFabric, 350));
 			consumesLiquid(Liquids.cryofluid, 3f);
@@ -749,11 +755,11 @@ public class OblivionBlocks {
 			constructTime = 60f * 60f * 4;
 			liquidCapacity = 180f;
 
-			upgrades.addAll(
-				new UnitType[]{OblivionUnits.taleni, OblivionUnits.kolete},
-				new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra},
-				new UnitType[]{OblivionUnits.pow, OblivionUnits.expo}
-			);
+			// upgrades.addAll(
+			// 	new UnitType[]{OblivionUnits.taleni, OblivionUnits.kolete},
+			// 	new UnitType[]{OblivionUnits.dopretile, OblivionUnits.niboletra},
+			// 	new UnitType[]{OblivionUnits.pow, OblivionUnits.expo}
+			// );
 		}};
 
 		mandlebrotReconstructor = new Reconstructor("mandlebrot-reconstructor") {{
@@ -763,20 +769,21 @@ public class OblivionBlocks {
 			));
 
 			size = 12;
+			health = 7840;
 			consumePower(30f);
 			consumeItems(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450));
 			consumesLiquid(Liquids.cryofluid, 9f);
 
 			constructTime = 60f * 60f * 10;
 			liquidCapacity = 360f;
-			upgrades.addAll(
-				new UnitType[]{UnitTypes.reign, OblivionUnits.republic},
-				new UnitType[]{UnitTypes.corvus, OblivionUnits.giga},
-				new UnitType[]{UnitTypes.toxopid, OblivionUnits.archaranid},
-				new UnitType[]{UnitTypes.eclipse, OblivionUnits.bloodmoon}
-			);
+			// upgrades.addAll(
+			// 	new UnitType[]{UnitTypes.reign, OblivionUnits.republic},
+			// 	new UnitType[]{UnitTypes.corvus, OblivionUnits.giga},
+			// 	new UnitType[]{UnitTypes.toxopid, OblivionUnits.archaranid},
+			// 	new UnitType[]{UnitTypes.eclipse, OblivionUnits.bloodmoon}
+			// );
 		}};
-
+		
 		calamitySigil = new StatusBomb("calamity-sigil") {{
 			requirements(Category.units, with(
 				OblivionResources.mothalate, 250,
@@ -885,7 +892,7 @@ public class OblivionBlocks {
 			updateEffect = LamoniFx.imperialSmelt;
 		}};
 
-		mantlePulverizer = new DrawableCrafter("mantle-pulverizer") {{
+		mantlePulverizer = new GenericCrafter("mantle-pulverizer") {{
 			requirements(Category.production, with(
 				OblivionResources.niobium, 200
 			));
@@ -893,10 +900,12 @@ public class OblivionBlocks {
 			size = 3;
 			craftTime = 10f;
 			updateEffect = LamoniFx.imperialSmelt;
+			drawer = new DrawMulti(new DrawRegion("-bottom"), new DrawArcSmelt() {{
+				flameColor = Color.valueOf("D1EFFF");
+				midColor = Color.valueOf("8CA9E8");
+			}}, new DrawDefault(), new DrawGlowRegion("-light"))
 			consumePower(0.5f);
 			outputItem = new ItemStack(Items.sand, 1);
 		}};
-
-		*/
 	}
 }
