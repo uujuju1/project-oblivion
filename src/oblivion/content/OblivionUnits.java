@@ -10,6 +10,7 @@ import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.graphics.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.*;
 import mindustry.entities.abilities.*;
 import oblivion.type.*;
 import oblivion.graphics.*;
@@ -552,7 +553,6 @@ public class OblivionUnits{
 			legMoveSpace = 1.5f;
 			legFowardScl = 0.58f;
 			hovering = true;
-			visualElevation = 0.2f;
 			groundLayer = Layer.legUnit;
 			range = 400f;
 			weapons.add(
@@ -626,7 +626,6 @@ public class OblivionUnits{
 			legLength = 100f;
 			legExtension = -20;
 			legBaseOffset = 10f;
-			landShake = 1f;
 			legLengthScl = 0.93f;
 			legSpeed = 0.19f;
 			legSplashDamage = 80;
@@ -752,7 +751,7 @@ public class OblivionUnits{
 			trailLength = 70;
 			waveTrailX = 23f;
 			waveTrailY = -32f;
-			waveTrailScl = 3.5f;
+			trailScl = 3.5f;
 			range = 600f;
 			maxRange = range;
 			weapons.add(
