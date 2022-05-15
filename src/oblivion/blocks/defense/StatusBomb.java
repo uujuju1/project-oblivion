@@ -39,9 +39,9 @@ public class StatusBomb extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		bars.add("charge", entity -> new Bar(Core.bundle.get("stat.reload"), Color.valueOf("E6875C"), () -> ((StatusBombBuild) entity).reload/cooldownTime));
-		bars.add("craftCharge", entity -> new Bar(Core.bundle.get("stat.productiontime"), Color.valueOf("FFA665"), () -> ((StatusBombBuild) entity).craftReload/craftTime));
-		bars.add("capacity", entity -> new Bar(Core.bundle.get("stat.ammo"), Pal.lancerLaser, () -> ((float) ((StatusBombBuild) entity).shots/bombCapacity)));
+		addBar("charge", entity -> new Bar(Core.bundle.get("stat.reload"), Color.valueOf("E6875C"), () -> ((StatusBombBuild) entity).reload/cooldownTime));
+		addBar("craftCharge", entity -> new Bar(Core.bundle.get("stat.productiontime"), Color.valueOf("FFA665"), () -> ((StatusBombBuild) entity).craftReload/craftTime));
+		addBar("capacity", entity -> new Bar(Core.bundle.get("stat.ammo"), Pal.lancerLaser, () -> ((float) ((StatusBombBuild) entity).shots/bombCapacity)));
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class StatusBomb extends Block {
 
 		@Override
 		public void updateTile() {
-			if (consValid() && shots < bombCapacity) {
+			if (efficiency > 0f && shots < bombCapacity) {
 				craftReload += Time.delta;
 				if (craftReload >= craftTime) {
 					craftEffect.at(x, y);
