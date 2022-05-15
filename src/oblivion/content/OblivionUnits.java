@@ -551,7 +551,7 @@ public class OblivionUnits{
 			legLength = 30f;
 			legBaseOffset = 15f;
 			legMoveSpace = 1.5f;
-			legFowardScl = 0.58f;
+			legForwardScl = 0.58f;
 			hovering = true;
 			groundLayer = Layer.legUnit;
 			range = 400f;
@@ -602,7 +602,7 @@ public class OblivionUnits{
 					top = false;
 					mirror = false;
 					continuous = true;
-					shoot = new BulletPattern() {{
+					shoot = new ShootPattern() {{
 						firstShotDelay = Fx.greenLaserCharge.lifetime;
 					}};
 					bullet = new ContinuousLaserBulletType(210) {{
@@ -738,7 +738,7 @@ public class OblivionUnits{
 			);
 		}};
 
-		yetinus = new OblivionUnitType("yetinus") {{
+		yetinus = new UnitType("yetinus") {{
 			health = 65000;
 			speed = 0.3f;
 			drag = 0.18f;
@@ -746,12 +746,10 @@ public class OblivionUnits{
 			armor = 25f;
 			accel = 0.19f;
 			rotateSpeed = 0.3f;
-			rotateShooting = true;
 			constructor = UnitWaterMove::create;
 			trailLength = 70;
 			waveTrailX = 23f;
 			waveTrailY = -32f;
-			trailScl = 3.5f;
 			range = 600f;
 			maxRange = range;
 			weapons.add(
@@ -773,7 +771,6 @@ public class OblivionUnits{
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
-						hitEffect = Fx.impactShockwave;
 						hitColor = Pal.bulletYellow;
 						smokeEffect = Fx.shootBig2;
 					}};
@@ -785,7 +782,6 @@ public class OblivionUnits{
 					rotate = true;
 					rotateSpeed = 1.5f;
 					mirror = false;
-					rotate = true;
 					recoil = 2f;
 					shootY = 4f;
 					shootSound = Sounds.laser;
