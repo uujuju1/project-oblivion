@@ -3,7 +3,7 @@ package oblivion.content;
 import mindustry.type.*;
 import mindustry.content.*;
 
-public class OblivionStatuses implements{
+public class OblivionStatuses {
 	public static StatusEffect infested, calamity, fear, abyss;
 
 	public void load() {
