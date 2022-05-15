@@ -69,7 +69,7 @@ public class StatusBomb extends Block {
 
 		@Override
 		public void updateTile() {
-			if (cons.valid() && shots < bombCapacity) {
+			if (consValid() && shots < bombCapacity) {
 				craftReload += Time.delta;
 				if (craftReload >= craftTime) {
 					craftEffect.at(x, y);
