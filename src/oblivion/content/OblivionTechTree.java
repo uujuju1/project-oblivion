@@ -19,7 +19,7 @@ public class OblivionTechTree {
 			// items
 			nodeProduce(OblivionResources.mesulfate, Seq.with(new Produce(Items.silicon)), () -> {
 				nodeProduce(OblivionResources.calenmite, Seq.with(new Produce(Items.metaglass)), () -> {
-					nodeProduce(OblivionResources.carmanite, Seq.with(new SectorComplete(SectorPresets.stainedMountains)));
+					nodeProduce(OblivionResources.carmanite, Seq.with(new Produce(Items.plastanium)));
 				});
 				nodeProduce(OblivionResources.copremite, Seq.with(new Produce(Items.sporePod)), () -> {
 					nodeProduce(OblivionResources.mothalate, Seq.with(new Produce(OblivionResources.carmanite)));
@@ -38,20 +38,20 @@ public class OblivionTechTree {
 
 			// turrets
 			node(OblivionBlocks.uno, Seq.with(new Produce(OblivionResources.mesulfate)), () -> {
-				node(OblivionBlocks.rain, Seq.with(new SectorComplete(SectorPresets.craters)), () -> {
-					node(OblivionBlocks.granite, Seq.with(new SectorComplete(SectorPresets.ruinousShores), new Research(Blocks.ripple)), () -> {
+				node(OblivionBlocks.rain, Seq.with(new Research(Blocks.hail)), () -> {
+					node(OblivionBlocks.granite, Seq.with(new Research(Blocks.ripple)), () -> {
 						node(OblivionBlocks.fearSigil, Seq.with(new Produce(OblivionResources.mothalate)));
 						node(OblivionBlocks.calamitySigil, Seq.with(new Produce(OblivionResources.mothalate), new Produce(OblivionResources.mesulfate)));
 						node(OblivionBlocks.abyssSigil, Seq.with(new Produce(OblivionResources.mothalate), new Produce(OblivionResources.carmanite)));
 					});
 				});
 				node(OblivionBlocks.toxic, Seq.with(new Produce(OblivionResources.copremite)), () -> {
-					node(OblivionBlocks.corrosive, Seq.with(new SectorComplete(SectorPresets.craters)), () -> {
-						node(OblivionBlocks.acidic, Seq.with(new SectorComplete(SectorPresets.ruinousShores), new Research(Blocks.ripple)));
+					node(OblivionBlocks.corrosive, Seq.with(new Research(Blocks.salvo)), () -> {
+						node(OblivionBlocks.acidic, Seq.with(new Research(Blocks.scepter), new Research(Blocks.ripple)));
 					});
 				});
 				node(OblivionBlocks.hammer, Seq.with(new Produce(OblivionResources.calenmite)), () -> {
-					node(OblivionBlocks.press, Seq.with(new SectorComplete(SectorPresets.craters)));
+					node(OblivionBlocks.press, Seq.with(new Research(Blocks.ripple)));
 				});
 			});
 
@@ -99,36 +99,18 @@ public class OblivionTechTree {
 			});
 
 			// sectors
-			node(OblivionSectors.newWorld, Seq.with(
-				new SectorComplete(OblivionSectors.newWorld),
-				new Research(OblivionBlocks.mesoForge)
-			), () -> {
-				node(OblivionSectors.oldTown, Seq.with(
-					new SectorComplete(OblivionSectors.oldTown),
-					new Research(OblivionBlocks.solfreniteFactory)
-				));
+			node(OblivionSectors.newWorld, Seq.with(new Research(OblivionBlocks.mesoForge)), () -> {
+				node(OblivionSectors.oldTown, Seq.with(new Research(OblivionBlocks.solfreniteFactory)));
 			});
 
 			// skill issue
 			// t6
-			extendNode(Blocks.tetrativeReconstructor, () -> {
-				node(OblivionBlocks.mandlebrotReconstructor, Seq.with(new Produce(OblivionResources.mothalate), new Research(UnitTypes.reign)));
-			}); 
-			extendNode(UnitTypes.reign, () -> {
-				node(OblivionUnits.republic, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
-			});
-			extendNode(UnitTypes.corvus, () -> {
-				node(OblivionUnits.giga, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
-			});
-			extendNode(UnitTypes.toxopid, () -> {
-				node(OblivionUnits.archaranid, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
-			});
-			extendNode(UnitTypes.eclipse, () -> {
-				node(OblivionUnits.bloodmoon, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
-			});
-			extendNode(UnitTypes.omura, () -> {
-				node(OblivionUnits.yetinus, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
-			});
+			node(OblivionBlocks.mandlebrotReconstructor, Seq.with(new Produce(OblivionResources.mothalate), new Research(UnitTypes.reign)));
+			node(OblivionUnits.republic, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
+			node(OblivionUnits.giga, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
+			node(OblivionUnits.archaranid, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
+			node(OblivionUnits.bloodmoon, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
+			node(OblivionUnits.yetinus, Seq.with(new Research(OblivionBlocks.mandlebrotReconstructor)));
 		}); 
 	}
 }
