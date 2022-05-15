@@ -8,13 +8,14 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
-import mindustry.ctype.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import mindustry.world.draw.*;
+import mindustry.entities.part.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.*;
 import mindustry.world.blocks.units.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.production.*;
@@ -27,7 +28,7 @@ import oblivion.blocks.production.*;
 
 import static mindustry.type.ItemStack.*;
 
-public class OblivionBlocks implements ContentList {
+public class OblivionBlocks {
 	public static Block 
 		start,
 		// lonela
@@ -55,7 +56,6 @@ public class OblivionBlocks implements ContentList {
 		mantlePulverizer,
 		imperialDrill;
 
-	@Override
 	public void load() {
 		start = new Block("start"){{
 			buildVisibility = BuildVisibility.debugOnly;
@@ -70,6 +70,7 @@ public class OblivionBlocks implements ContentList {
 				Items.copper, 50,
 				Items.lead, 80
 			));
+			alwaysUnlocked = true;
 			size = 3;
 			health = 200;
 			craftTime = 30f;
@@ -100,11 +101,11 @@ public class OblivionBlocks implements ContentList {
 				Draw.reset();
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
 			};
-			consumes.items(with(
+			consumeItems(with(
 				Items.copper, 2,
 				Items.lead, 2
 			));
-			consumes.power(1f);
+			consumePower(1f);
 			outputItem = new ItemStack(OblivionResources.mesulfate, 1);
 		}};
 		carbonicInfuser = new DrawableCrafter("carbonic-infuser") {{
@@ -139,11 +140,11 @@ public class OblivionBlocks implements ContentList {
 				  Drawf.tri(x, y, 4 * bu.warmup, 4 * bu.warmup, (i * 90) + 45 + Time.time);
 				}
 			};
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.calenmite, 3,
 				Items.silicon, 2
 			));
-			consumes.power(1.5f);
+			consumePower(1.5f);
 			outputItem = new ItemStack(OblivionResources.carmanite, 2);
 		}};
 		cloroSynthetizer = new DrawableCrafter("cloro-synthetizer") {{
@@ -169,11 +170,11 @@ public class OblivionBlocks implements ContentList {
 				Draw.reset();
 				Draw.rect(Core.atlas.find("oblivion-cloro-synthetizer-top"), bu.x, bu.y, 0f);
 			};
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mesulfate, 1,
 				Items.sporePod, 1
 			));
-			consumes.power(0.5f);
+			consumePower(0.5f);
 			outputItem = new ItemStack(OblivionResources.copremite, 1);
 		}};
 		calonicKiln = new DrawableCrafter("calonic-kiln") {{
@@ -212,11 +213,11 @@ public class OblivionBlocks implements ContentList {
 				Draw.reset();
 				Fill.circle(bu.x, bu.y, (5f + Mathf.absin(5f, 1f)) /2f * bu.warmup);
 			};
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mesulfate, 1,
 				Items.metaglass, 3
 			));
-			consumes.power(0.25f);
+			consumePower(0.25f);
 			outputItem = new ItemStack(OblivionResources.calenmite, 1);
 		}};
 		moloniteSmelter = new DrawableCrafter("molonite-smelter") {{
@@ -251,15 +252,15 @@ public class OblivionBlocks implements ContentList {
 				  Drawf.tri(x, y, 4 * bu.warmup, 4 * bu.warmup, (i * 90) + 45 + Time.time);
 				}
 			};
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mesulfate, 5,
 				Items.thorium, 4,
 				Items.silicon, 6
 			));
-			consumes.power(2.5f);
+			consumePower(2.5f);
 			outputItem = new ItemStack(OblivionResources.mothalate, 1);
 		}};
-
+		
 		uno = new ItemTurret("uno") {{
 			requirements(Category.turret, with(
 				OblivionResources.mesulfate, 10,
@@ -268,9 +269,18 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 1;
 			health = 160;
-			reloadTime = 60f;
+			reload = 60f;
 			range = 120f;
+			recoil = 0.2f;
 			rotateSpeed = 10f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-shoot") {{
+						moveY = -1f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.mesulfate, new BasicBulletType(2f, 15) {{
 					lifetime = 60f;
@@ -298,12 +308,33 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 2;
 			health = 640;
-			reloadTime = 10f;
-			spread = 4f;
-			shots = 2;
-			alternate = true;
+			reload = 10f;
 			range = 184f;
 			rotateSpeed = 7.5f;
+			recoil = 0.7f;
+			shoot = new ShootAlternate() {{
+				spread = 7f;
+			}};
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						x = 0f;
+						y = 2f;
+						moveY = -2f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+						under = true;
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-lock") {{
+						x = 5.5f;
+						y = -2f;
+						moveRot = -45f;
+						progress = PartProgress.warmup;
+						mirror = true;
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.mesulfate, new BasicBulletType(5f, 20) {{
 					lifetime = 36.8f;
@@ -314,8 +345,6 @@ public class OblivionBlocks implements ContentList {
 				Items.graphite, new BasicBulletType(2f, 27) {{
 					lifetime = 73.6f;
 					shootSound = Sounds.artillery;
-					frontColor = Color.valueOf("95ABD9");
-					backColor = Color.valueOf("626F9B");
 				}},
 				Items.silicon, new MissileBulletType(2f, 17) {{
 					lifetime = 73.6f;
@@ -335,12 +364,31 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 3;
 			health = 1440;
-			reloadTime = 90f;
+			reload = 90f;
 			range = 240f;
-			shots = 4;
-			burstSpacing = 9f;
 			inaccuracy = 8f;
 			rotateSpeed = 5f;
+			recoil = 1f;
+			shoot = new ShootPattern() {{
+				shots = 4;
+			}};
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-wing") {{
+						x = 6.6f;
+						y = -4f;
+						moveRot = -15f;
+						progress = PartProgress.warmup;
+						mirror = true;
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-shoot") {{
+						moveY = -3f;
+						progress = PartProgress.reload;
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.mesulfate, new ArtilleryBulletType(3f, 35) {{
 					lifetime = 80f;
@@ -361,8 +409,6 @@ public class OblivionBlocks implements ContentList {
 					splashDamageRadius = 20f;
 					collides = true;
 					shootSound = Sounds.shootBig;
-					frontColor = Color.valueOf("95ABD9");
-					backColor = Color.valueOf("626F9B");
 				}},
 				Items.silicon, new ArtilleryBulletType(3f, 20) {{
 					lifetime = 80f;
@@ -376,6 +422,7 @@ public class OblivionBlocks implements ContentList {
 				}}
 			);
 		}};
+		
 		toxic = new ItemTurret("toxic") {{
 			requirements(Category.turret, with(
 				Items.graphite, 20,
@@ -383,15 +430,21 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 1;
 			health = 180;
-			reloadTime = 45f;
-			spread = 4f;
-			shots = 2;
-			alternate = true;
+			reload = 45f;
 			range = 13f * 8f;
 			rotateSpeed = 7f;
+			recoil = 0.2f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-shoot") {{
+						moveY = -1f;
+						progress = PartProgress.reload;
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(1.5f, 8) {{
-					lifetime = range/speed;
+					lifetime = 69f; /* unintentionally nice */
 					width = height = 8f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
@@ -410,12 +463,25 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 2;
 			health = 180 * 4;
-			reloadTime = 30f;
+			reload = 30f;
 			range = 18f * 8f;
 			rotateSpeed = 6f;
+			recoil = 1.5f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-blade") {{
+						x = 1.5f;
+						y = 2.5f;
+						moveX = 1f;
+						moveY = 1f;
+						progress = PartProgress.warmup;
+						under = mirror = true;
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2f, 13) {{
-					lifetime = range/speed;
+					lifetime = 72f;
 					width = height = 10f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
@@ -435,12 +501,23 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 3;
 			health = 180 * 9;
-			reloadTime = 75f;
+			reload = 75f;
 			range = 27f * 8f;
 			rotateSpeed = 4.5f;
+			recoil = 2.25f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-wing") {{
+						x = 7.75f;
+						y = -1.75f;
+						moveRot = -45f;
+						under = mirror = true;
+					}}
+				);
+			}};
 			ammo(
 				OblivionResources.copremite, new BasicBulletType(2.5f, 25) {{
-					lifetime = range/speed;
+					lifetime = 86.4f;
 					width = height = 13f;
 					frontColor = Color.valueOf("74C272");
 					backColor = Color.valueOf("4F824B");
@@ -451,6 +528,7 @@ public class OblivionBlocks implements ContentList {
 				}}
 			);
 		}};
+		
 		hammer = new ItemTurret("hammer") {{
 			requirements(Category.turret, with(
 				OblivionResources.calenmite, 40,
@@ -459,17 +537,33 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 2;
 			health = 200 * 4;
-			reloadTime = 45f;
+			reload = 45f;
 			range = 20f * 8f;
 			rotateSpeed = 4.5f;
+			recoil = 1f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-support") {{
+						moveY = -2f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						moveY = -5f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+					}}
+				);
+			}};
 			ammo(
-				OblivionResources.calenmite, new BasicBulletType(2f, 35) {{
-					lifetime = range/speed;
+				OblivionResources.calenmite, new ArtilleryBulletType(2f, 35) {{
+					lifetime = 90;
 					width = height = 13f;
 					frontColor = Color.white;
 					backColor = Color.valueOf("DCDCDC");
 					hitEffect = OblivionFx.carmaniteHit;
 					shootSound = Sounds.artillery;
+					collides = collidesTiles = collidesGround = collidesAir = true;
 				}}
 			);
 		}};
@@ -481,24 +575,44 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 3;
 			health = 200 * 9;
-			reloadTime = 85f;
+			reload = 85f;
 			range = 30f * 8f;
-			shots = 3;
 			inaccuracy = 3f;
-			velocityInaccuracy = 0.9f;
 			rotateSpeed = 4.5f;
+			recoil = 1.5f;
+			shoot = new ShootPattern() {{
+				shots = 3;
+			}};
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-wing") {{
+						x = 6.5f;
+						y = -5f;
+						moveRot = 45f;
+						progress = PartProgress.warmup;
+						under = mirror = true;
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						moveY = -3f;
+						progress = PartProgress.reload.curve(Interp.pow2In);
+					}}
+				);
+			}};
 			ammo(
-				OblivionResources.calenmite, new BasicBulletType(2.5f, 35) {{
-					lifetime = range/speed;
+				OblivionResources.calenmite, new ArtilleryBulletType(2.5f, 35) {{
+					lifetime = 96;
 					width = height = 17f;
 					frontColor = Color.white;
 					backColor = Color.valueOf("DCDCDC");
 					hitEffect = OblivionFx.carmaniteHit;
 					shootSound = Sounds.artillery;
+					collides = collidesTiles = collidesGround = collidesAir = true;
 				}}
 			);
 		}};
-
+		
 		inductionDrill = new Drill("induction-drill") {{
 			requirements(Category.production, with(
 				Items.silicon, 25,
@@ -510,8 +624,8 @@ public class OblivionBlocks implements ContentList {
 			tier = 3;
 			drillTime = 280f;
 			hasPower = true;
-			consumes.power(1f);
-			consumes.liquid(Liquids.water, 0.06f).boost();
+			consumePower(1f);
+			consumeLiquid(Liquids.water, 0.06f).boost();
 		}};
 
 		alomeriConveyor = new Conveyor("alomeri-conveyor") {{
@@ -534,7 +648,7 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 3;
 			health = 200;
-			consumes.power(1.5f);
+			consumePower(1.5f);
 			plans = Seq.with(
 				new UnitPlan(OblivionUnits.slop, 60f * 25f, with(Items.silicon, 10, OblivionResources.mesulfate, 15))
 			);
@@ -547,7 +661,7 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 3;
 			health = 200;
-			consumes.power(2f);
+			consumePower(2f);
 			plans = Seq.with(
 				new UnitPlan(OblivionUnits.pioli, 60f * 30f, with(Items.silicon, 6, OblivionResources.copremite, 20))
 			);
@@ -560,7 +674,7 @@ public class OblivionBlocks implements ContentList {
 			));
 			size = 3;
 			health = 200;
-			consumes.power(2f);
+			consumePower(2f);
 			plans = Seq.with(
 				new UnitPlan(OblivionUnits.phi, 60f * 27f, with(Items.silicon, 6, OblivionResources.carmanite, 20))
 			);
@@ -572,8 +686,9 @@ public class OblivionBlocks implements ContentList {
 			));
 
 			size = 3;
-			consumes.power(3f);
-			consumes.items(with(Items.silicon, 40, Items.graphite, 40));
+			health = 360;
+			consumePower(3f);
+			consumeItems(with(Items.silicon, 40, Items.graphite, 40));
 
 			constructTime = 60f * 10f;
 
@@ -591,8 +706,9 @@ public class OblivionBlocks implements ContentList {
 			));
 
 			size = 5;
-			consumes.power(6f);
-			consumes.items(with(Items.silicon, 130, Items.titanium, 80, Items.metaglass, 40));
+			health = 1200;
+			consumePower(6f);
+			consumeItems(with(Items.silicon, 130, Items.titanium, 80, Items.metaglass, 40));
 
 			constructTime = 60f * 30f;
 
@@ -610,9 +726,10 @@ public class OblivionBlocks implements ContentList {
 			));
 
 			size = 7;
-			consumes.power(13f);
-			consumes.items(with(Items.silicon, 850, Items.titanium, 750, Items.plastanium, 650));
-			consumes.liquid(Liquids.cryofluid, 1f);
+			health = 3035;
+			consumePower(13f);
+			consumeItems(with(Items.silicon, 850, Items.titanium, 750, Items.plastanium, 650));
+			consumeLiquid(Liquids.cryofluid, 1f);
 
 			constructTime = 60f * 60f * 1.5f;
 			liquidCapacity = 60f;
@@ -631,9 +748,10 @@ public class OblivionBlocks implements ContentList {
 			));
 
 			size = 9;
-			consumes.power(25f);
-			consumes.items(with(Items.silicon, 1000, Items.plastanium, 600, Items.surgeAlloy, 500, Items.phaseFabric, 350));
-			consumes.liquid(Liquids.cryofluid, 3f);
+			health = 5830;
+			consumePower(25f);
+			consumeItems(with(Items.silicon, 1000, Items.plastanium, 600, Items.surgeAlloy, 500, Items.phaseFabric, 350));
+			consumeLiquid(Liquids.cryofluid, 3f);
 
 			constructTime = 60f * 60f * 4;
 			liquidCapacity = 180f;
@@ -652,9 +770,10 @@ public class OblivionBlocks implements ContentList {
 			));
 
 			size = 12;
-			consumes.power(30f);
-			consumes.items(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450));
-			consumes.liquid(Liquids.cryofluid, 9f);
+			health = 7840;
+			consumePower(30f);
+			consumeItems(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450));
+			consumeLiquid(Liquids.cryofluid, 9f);
 
 			constructTime = 60f * 60f * 10;
 			liquidCapacity = 360f;
@@ -662,10 +781,11 @@ public class OblivionBlocks implements ContentList {
 				new UnitType[]{UnitTypes.reign, OblivionUnits.republic},
 				new UnitType[]{UnitTypes.corvus, OblivionUnits.giga},
 				new UnitType[]{UnitTypes.toxopid, OblivionUnits.archaranid},
-				new UnitType[]{UnitTypes.eclipse, OblivionUnits.bloodmoon}
+				new UnitType[]{UnitTypes.eclipse, OblivionUnits.bloodmoon},
+				new UnitType[]{UnitTypes.omura, OblivionUnits.yetinus}
 			);
 		}};
-
+		
 		calamitySigil = new StatusBomb("calamity-sigil") {{
 			requirements(Category.units, with(
 				OblivionResources.mothalate, 250,
@@ -684,11 +804,11 @@ public class OblivionBlocks implements ContentList {
 			status = OblivionStatuses.calamity;
 			statusDuration = 600f;
 			itemCapacity = 150;
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mesulfate, 100,
 				OblivionResources.mothalate, 5
 			));
-			consumes.power(5f);
+			consumePower(5f);
 		}};
 		fearSigil = new StatusBomb("fear-sigil") {{
 			requirements(Category.units, with(
@@ -707,10 +827,10 @@ public class OblivionBlocks implements ContentList {
 			statusDuration = 300f;
 			itemCapacity = 100;
 			bombCapacity = 15;
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mothalate, 50
 			));
-			consumes.power(3f);
+			consumePower(3f);
 		}};
 		abyssSigil = new StatusBomb("abyss-sigil") {{
 			requirements(Category.units, with(
@@ -730,11 +850,11 @@ public class OblivionBlocks implements ContentList {
 			statusDuration = 150f;
 			itemCapacity = 160;
 			bombCapacity = 35;
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.mothalate, 10,
 				OblivionResources.carmanite, 80
 			));
-			consumes.power(7f);
+			consumePower(7f);
 		}};
 
 		earthquake = new StatusBomb("earthquake") {{
@@ -753,10 +873,10 @@ public class OblivionBlocks implements ContentList {
 			statusDuration = 60f;
 			itemCapacity = 20;
 			bombCapacity = 5;
-			consumes.items(with(
+			consumeItems(with(
 				OblivionResources.carmanite, 10
 			));
-			consumes.power(2f);
+			consumePower(2f);
 		}};
 
 		// lamoni
@@ -767,22 +887,31 @@ public class OblivionBlocks implements ContentList {
 			));
 			health = 200;
 			size = 3;
-			drillTime = 60f;
+			drillTime = 1200f;
 			tier = 1;
 			// holdTime = 300f;
 			// decayTime = 300f;
 			updateEffect = LamoniFx.imperialSmelt;
 		}};
 
-		mantlePulverizer = new DrawableCrafter("mantle-pulverizer") {{
-			requirements(Category.production, with(
+		mantlePulverizer = new GenericCrafter("mantle-pulverizer") {{
+			requirements(Category.crafting, with(
 				OblivionResources.niobium, 200
 			));
 			health = 200;
 			size = 3;
 			craftTime = 10f;
 			updateEffect = LamoniFx.imperialSmelt;
-			consumes.power(0.5f);
+			drawer = new DrawMulti(
+				new DrawRegion("-bottom"),
+				new DrawArcSmelt() {{
+					flameColor = Color.valueOf("D1EFFF");
+					midColor = Color.valueOf("8CA9E8");
+				}},
+				new DrawDefault(),
+				new DrawGlowRegion("-light")
+			);
+			consumePower(0.5f);
 			outputItem = new ItemStack(Items.sand, 1);
 		}};
 	}

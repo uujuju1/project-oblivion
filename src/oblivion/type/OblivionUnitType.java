@@ -12,9 +12,8 @@ import mindustry.graphics.*;
 
 import mindustry.Vars;
 
-// engineSize and engineOffset is now useless {:
+// lazy to remove class and rework depending units
 public class OblivionUnitType extends UnitType {
-	private static final Vec2 legOffset = new Vec2();
 	public Cons<Unit> engineDrawer = unit -> {}, topDrawer = unit -> {};
 
 	public OblivionUnitType(String name) {
@@ -22,7 +21,7 @@ public class OblivionUnitType extends UnitType {
 	}
 
 	@Override
-	public void drawEngine(Unit unit) {
+	public void drawEngines(Unit unit) {
 		engineDrawer.get(unit);
 	}
 }

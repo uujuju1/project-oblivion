@@ -1,16 +1,14 @@
 package oblivion.content;
 
 import arc.graphics.*;
-import mindustry.ctype.ContentList;
 import mindustry.type.*;
 
-public class OblivionResources implements ContentList {
+public class OblivionResources {
 	// lonela
 	public static Item mesulfate, calenmite, copremite, mothalate, carmanite,
 	// lamoni
 		niobium;
 
-	@Override
 	public void load() {
 		// lonela
 		mesulfate = new Item("mesulfate", Color.valueOf("E86F6F")) {{cost = 2;}};

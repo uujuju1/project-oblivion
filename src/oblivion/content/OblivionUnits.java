@@ -10,12 +10,12 @@ import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.graphics.*;
 import mindustry.entities.bullet.*;
+import mindustry.entities.pattern.*;
 import mindustry.entities.abilities.*;
-import mindustry.ctype.ContentList;
 import oblivion.type.*;
 import oblivion.graphics.*;
 
-public class OblivionUnits implements ContentList {
+public class OblivionUnits{
 	public static UnitType 
 	slop, detra, tedri, taleni, kolete,
 	pioli, taneki, notremite, dopretile, niboletra,
@@ -23,7 +23,6 @@ public class OblivionUnits implements ContentList {
 
 	republic, giga, archaranid, bloodmoon, yetinus;
 
-	@Override
 	public void load() {
 		slop = new UnitType("slop") {{
 			health = 240;
@@ -67,13 +66,13 @@ public class OblivionUnits implements ContentList {
 					reload = 60f;
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(1.5f, 30) {{
-					        hitEffect = Fx.blastExplosion;
+					hitEffect = Fx.blastExplosion;
 						lifetime = 101f;
 						knockback = 0.6f;
 						collides = true;
 						collidesTiles = true;
-		                                splashDamageRadius = 35f;
-                                                splashDamage = 20f;
+						splashDamageRadius = 35f;
+						splashDamage = 20f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 					}};
@@ -108,8 +107,6 @@ public class OblivionUnits implements ContentList {
 					y = 6f;
 					mirror = false;
 					reload = 150f;
-					shots = 5;
-					shotDelay = 10f;
 					shake = 3;
 					shootSound = Sounds.shootBig;
 					bullet = new BasicBulletType(3f, 34) {{
@@ -117,6 +114,17 @@ public class OblivionUnits implements ContentList {
 						lifetime = 66.6f; //ohno ohfu-
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
+						for (int i = 1; i <= 5; i++) {
+							float speedMultiplier = 3f / i;
+							spawnBullets.addAll(
+								new BasicBulletType(speedMultiplier, 7) {{
+									width = height = 5f;
+									lifetime = 66.6f;
+									frontColor = OblivionPal.mesoMedium;
+									backColor = OblivionPal.mesoDark;
+								}}
+							);
+						}
 					}};
 				}}
 			);
@@ -149,9 +157,11 @@ public class OblivionUnits implements ContentList {
 					x = 15.25f;
 					y = 4f;
 					reload = 35f;
-					shots = 3;
-					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
+					shoot = new ShootPattern() {{
+						shots = 3;
+						shotDelay = 5f;
+					}};
 					bullet = new BasicBulletType(6f, 40) {{
 						width = height = 10f;
 						lifetime = 50f;
@@ -165,9 +175,11 @@ public class OblivionUnits implements ContentList {
 					x = 15f;
 					y = -14f;
 					reload = 35f;
-					shots = 3;
-					shotDelay = 5f;
 					shootSound = Sounds.shootBig;
+					shoot = new ShootPattern() {{
+						shots = 3;
+						shotDelay = 5f;
+					}};
 					bullet = new BasicBulletType(6f, 40) {{
 						width = height = 10f;
 						lifetime = 50f;
@@ -215,10 +227,11 @@ public class OblivionUnits implements ContentList {
 					y = -12f;
 					reload = 90f;
 					range = 300f;
-					shots = 4;
 					inaccuracy = 15f;
-					velocityRnd = 0.6f;
 					shootSound = Sounds.artillery;
+					shoot = new ShootPattern() {{
+						shots = 4;
+					}};
 					bullet = new BasicBulletType(11f, 100) {{
 						drag = 0.04f;
 						width = height = 12f;
@@ -458,7 +471,7 @@ public class OblivionUnits implements ContentList {
 			rotateSpeed = 1.4f;
 			armor = 20f;
 			mechStepParticles = true;
-			mechStepShake = 0.75f;
+			mechLandShake = 3f;
 			canBoost = true;
 			drownTimeMultiplier = 10f;
 			mechFrontSway = 0.2f;
@@ -474,10 +487,12 @@ public class OblivionUnits implements ContentList {
 					recoil = 10f;
 					shootY = 12f;
 					shootSound = Sounds.shootBig;
-					shots = 3;
-					shotDelay = 5f;
 					shake = 5f;
 					top = false;
+					shoot = new ShootPattern() {{
+						shots = 3;
+						shotDelay = 5f;
+					}};
 					bullet = new BasicBulletType(8f, 150) {{
 						pierce = true;
 						pierceCap = 7;
@@ -529,18 +544,15 @@ public class OblivionUnits implements ContentList {
 			armor = 13f;
 			speed = 0.3f;
 			hitSize = 32f;
-			landShake = 1.5f;
 			rotateSpeed = 1.5f;
 			drownTimeMultiplier = 6f;
-			commandLimit = 8;
 			constructor = LegsUnit::create;
 			legCount = 6;
 			legLength = 30f;
 			legBaseOffset = 15f;
 			legMoveSpace = 1.5f;
-			legTrns = 0.58f;
+			legForwardScl = 0.58f;
 			hovering = true;
-			visualElevation = 0.2f;
 			groundLayer = Layer.legUnit;
 			range = 400f;
 			weapons.add(
@@ -566,7 +578,9 @@ public class OblivionUnits implements ContentList {
 					shootY = 2f;
 					shootSound = Sounds.missile;
 					alternate = true;
-					shots = 6;
+					shoot = new ShootPattern() {{
+						shots = 6;
+					}};
 					inaccuracy = 7f;
 					bullet = new MissileBulletType(4f, 40) {{
 						healPercent = 0.1f;
@@ -585,10 +599,12 @@ public class OblivionUnits implements ContentList {
 					shake = 20f;
 					shootSound = Sounds.laserblast;
 					chargeSound = Sounds.lasercharge;
-					firstShotDelay = Fx.greenLaserCharge.lifetime;
 					top = false;
 					mirror = false;
 					continuous = true;
+					shoot = new ShootPattern() {{
+						firstShotDelay = Fx.greenLaserCharge.lifetime;
+					}};
 					bullet = new ContinuousLaserBulletType(210) {{
 						healPercent = 0.4f;
 						lifetime = 60f;
@@ -610,14 +626,12 @@ public class OblivionUnits implements ContentList {
 			legLength = 100f;
 			legExtension = -20;
 			legBaseOffset = 10f;
-			landShake = 1f;
 			legLengthScl = 0.93f;
 			legSpeed = 0.19f;
 			legSplashDamage = 80;
 			legSplashRange = 60;
 			hitSize = 32f;
 			hovering = true;
-			visualElevation = 0.95f;
 			groundLayer = Layer.legUnit;
 			constructor = LegsUnit::create;
 			range = 45f * 8f;
@@ -724,7 +738,7 @@ public class OblivionUnits implements ContentList {
 			);
 		}};
 
-		yetinus = new OblivionUnitType("yetinus") {{
+		yetinus = new UnitType("yetinus") {{
 			health = 65000;
 			speed = 0.3f;
 			drag = 0.18f;
@@ -732,12 +746,10 @@ public class OblivionUnits implements ContentList {
 			armor = 25f;
 			accel = 0.19f;
 			rotateSpeed = 0.3f;
-			rotateShooting = true;
 			constructor = UnitWaterMove::create;
 			trailLength = 70;
-			trailX = 23f;
-			trailY = -32f;
-			trailScl = 3.5f;
+			waveTrailX = 23f;
+			waveTrailY = -32f;
 			range = 600f;
 			maxRange = range;
 			weapons.add(
@@ -759,7 +771,6 @@ public class OblivionUnits implements ContentList {
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
-						hitEffect = Fx.impactShockwave;
 						hitColor = Pal.bulletYellow;
 						smokeEffect = Fx.shootBig2;
 					}};
@@ -771,7 +782,6 @@ public class OblivionUnits implements ContentList {
 					rotate = true;
 					rotateSpeed = 1.5f;
 					mirror = false;
-					rotate = true;
 					recoil = 2f;
 					shootY = 4f;
 					shootSound = Sounds.laser;
@@ -865,12 +875,14 @@ public class OblivionUnits implements ContentList {
 					x = 15.75f;
 					y = 0f;
 					reload = 90f;
-					shots = 3;
-					shotDelay = 5f;
 					shake = 3f;
 					top = false;
 					shootY = 12f;
 					shootSound = Sounds.shootBig;
+					shoot = new ShootPattern() {{
+						shots = 3;
+						shotDelay = 5f;
+					}};
 					bullet = new BasicBulletType(4f, 45) {{
 						width = height = 13f;
 						lifetime = 6.6f * 8f;
@@ -918,8 +930,10 @@ public class OblivionUnits implements ContentList {
 					x = 18f;
 					y = 0f;
 					reload = 50f;
-					shots = 5;
-					shotDelay = 5f;
+					shoot = new ShootPattern() {{
+						shots = 5;
+						shotDelay = 5f;
+					}};
 					shake = 5f;
 					shootY = 18f;
 					shootCone = 15f;
@@ -937,10 +951,11 @@ public class OblivionUnits implements ContentList {
 					x = 8.25f;
 					y = -6.5f;
 					reload = 90f;
-					shots = 3;
+					shoot = new ShootPattern() {{
+						shots = 3;
+					}};
 					inaccuracy = 10;
 					shake = 7f;
-					velocityRnd = 0.1f;
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(2f, 40) {{
 						lifetime = 12 * 8f;
@@ -958,10 +973,11 @@ public class OblivionUnits implements ContentList {
 					y = 7.75f;
 					flipSprite = true;
 					reload = 90f;
-					shots = 3;
+					shoot = new ShootPattern() {{
+						shots = 3;
+					}};
 					inaccuracy = 10;
 					shake = 7f;
-					velocityRnd = 0.1f;
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(2f, 40) {{
 						lifetime = 12 * 8f;

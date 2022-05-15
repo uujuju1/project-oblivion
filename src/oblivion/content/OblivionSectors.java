@@ -4,11 +4,10 @@ import mindustry.type.*;
 import mindustry.ctype.*;
 import oblivion.content.*;
 
-public class OblivionSectors implements ContentList{
+public class OblivionSectors {
 	public static SectorPreset
 		newWorld, oldTown;
 
-	@Override
 	public void load(){
 		newWorld = new SectorPreset("newWorld", OblivionPlanets.lonela, 15) {{
 			alwaysUnlocked = true;
