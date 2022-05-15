@@ -624,7 +624,7 @@ public class OblivionBlocks {
 			drillTime = 280f;
 			hasPower = true;
 			consumePower(1f);
-			consumesLiquid(new LiquidStack(Liquids.water, 0.06f)).boost();
+			consumeLiquid(Liquids.water, 0.06f).boost();
 		}};
 
 		alomeriConveyor = new Conveyor("alomeri-conveyor") {{
@@ -728,7 +728,7 @@ public class OblivionBlocks {
 			health = 3035;
 			consumePower(13f);
 			consumeItems(with(Items.silicon, 850, Items.titanium, 750, Items.plastanium, 650));
-			consumesLiquid(Liquids.cryofluid, 1f);
+			consumeLiquid(Liquids.cryofluid, 1f);
 
 			constructTime = 60f * 60f * 1.5f;
 			liquidCapacity = 60f;
@@ -750,7 +750,7 @@ public class OblivionBlocks {
 			health = 5830;
 			consumePower(25f);
 			consumeItems(with(Items.silicon, 1000, Items.plastanium, 600, Items.surgeAlloy, 500, Items.phaseFabric, 350));
-			consumesLiquid(Liquids.cryofluid, 3f);
+			consumeLiquid(Liquids.cryofluid, 3f);
 
 			constructTime = 60f * 60f * 4;
 			liquidCapacity = 180f;
@@ -772,7 +772,7 @@ public class OblivionBlocks {
 			health = 7840;
 			consumePower(30f);
 			consumeItems(with(Items.silicon, 2500, Items.plastanium, 1800, Items.surgeAlloy, 1000, OblivionResources.mothalate, 450));
-			consumesLiquid(Liquids.cryofluid, 9f);
+			consumeLiquid(Liquids.cryofluid, 9f);
 
 			constructTime = 60f * 60f * 10;
 			liquidCapacity = 360f;
