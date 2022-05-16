@@ -771,6 +771,7 @@ public class OblivionUnits{
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
+						hitEffect = impactShockwave;
 						hitColor = Pal.bulletYellow;
 						smokeEffect = Fx.shootBig2;
 					}};
