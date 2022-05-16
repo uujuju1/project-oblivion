@@ -228,6 +228,7 @@ public class OblivionUnits{
 					reload = 90f;
 					range = 300f;
 					inaccuracy = 15f;
+					velocityRnd = 0.5f;
 					shootSound = Sounds.artillery;
 					shoot = new ShootPattern() {{
 						shots = 4;
