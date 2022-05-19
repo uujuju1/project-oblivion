@@ -233,6 +233,7 @@ public class OblivionUnits{
 					reload = 90f;
 					range = 300f;
 					inaccuracy = 15f;
+					velocityRnd = 0.5f;
 					shootSound = Sounds.artillery;
 					shoot = new ShootPattern() {{
 						shots = 4;
@@ -776,6 +777,7 @@ public class OblivionUnits{
 						width = height = 40;
 						homingRange = 600f;
 						homingPower = 0.1f;
+						hitEffect = despawnEffect = Fx.spawnShockwave;
 						hitColor = Pal.bulletYellow;
 						smokeEffect = Fx.shootBig2;
 					}};
