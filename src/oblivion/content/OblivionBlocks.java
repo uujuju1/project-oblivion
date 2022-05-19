@@ -10,7 +10,6 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.content.*;
-import mindustry.ai.types.*;
 import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import mindustry.world.draw.*;
@@ -1043,7 +1042,7 @@ public class OblivionBlocks {
 				OblivionResources.niobium, 150
 			));
 			health = 210;
-			size = 4;
+			size = 3;
 			craftTime = 180f;
 			craftEffect = LamoniFx.hafniumSmelt;
 			drawer = new DrawMulti(

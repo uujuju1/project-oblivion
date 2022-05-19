@@ -18,11 +18,12 @@ public class LamoniTechTree {
 			nodeProduce(OblivionResources.niobium, () -> {
 				nodeProduce(Items.sand, () -> {
 					nodeProduce(OblivionResources.hafnium, () -> {});
-					
 				});
 			});
 
-			node(OblivionBlocks.mantlePulverizer, () -> {});
+			node(OblivionBlocks.mantlePulverizer, () -> {
+				node(OblivionBlocks.hafniumSmelter, () -> {});
+			});
 
 			node(OblivionBlocks.spread, () -> {
 				node(OblivionBlocks.reaction, () -> {});
