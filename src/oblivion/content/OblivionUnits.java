@@ -1065,6 +1065,7 @@ public class OblivionUnits{
 			payloadCapacity = 2f * 2f * tilesize * tilesize;
 			pickupUnits = false;
 			vulnerableWithPayloads = true;
+			constructor = UnitEntity::create;
 
       fogRadius = 0f;
       targetable = false;
