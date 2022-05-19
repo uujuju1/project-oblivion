@@ -33,25 +33,25 @@ public class LamoniFx {
 			Fill.circle(e.x + x, e.y + y, e.fout() * 2f);
 		});
 		Draw.color(Pal.accent);
-		e.scaled(20f * i, b -> {
+		e.scaled(20f, b -> {
 			Lines.stroke(b.fout());
 			Angles.randLenVectors(e.id + 1, 10, 40f * b.finpow(), (x, y) -> {
 				Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), 10f * b.foutpow());
 			});
 		});
-		e.scaled(40f * i, b -> {
+		e.scaled(40f, b -> {
 			Lines.stroke(b.fout());
 			Angles.randLenVectors(e.id + 2, 10, 40f * b.finpow(), (x, y) -> {
 				Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), 10f * b.foutpow());
 			});
 		});
-		e.scaled(60f * i, b -> {
+		e.scaled(60f, b -> {
 			Lines.stroke(b.fout());
 			Angles.randLenVectors(e.id + 3, 10, 40f * b.finpow(), (x, y) -> {
 				Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), 10f * b.foutpow());
 			});
 		});
-		e.scaled(80f * i, b -> {
+		e.scaled(80f, b -> {
 			Lines.stroke(b.fout());
 			Angles.randLenVectors(e.id + 4, 10, 40f * b.finpow(), (x, y) -> {
 				Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), 10f * b.foutpow());
