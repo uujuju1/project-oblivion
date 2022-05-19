@@ -53,8 +53,10 @@ public class OblivionBlocks {
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
 
 		// lamoni
-		mantlePulverizer,
-		spread,
+		coreVillage, coreMonarchy, coreEmpire,
+		niobiumDuct,
+		mantlePulverizer, hafniumSmelter,
+		spread, reaction,
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
 		imperialDrill;
 
@@ -883,6 +885,23 @@ public class OblivionBlocks {
 
 		// lamoni
 
+		coreVillage = new CoreBlock("core-village") {{
+			requirements(Category.units, with(
+				Items.niobium, 1200
+			));
+			size = 3;
+			health = 3200;
+			itemCapacity = 2500f;
+			alwaysUnlocked = isFirstTier = true;
+			unitType = OblivionUnits.citizen;
+		}};
+
+		niobiumDuct = new Duct("niobium-duct") {{
+			requirements(Category.distribution, with(OblivionResources.niobium, 1));
+			health = 120;
+			speed = 3.5f;
+		}};
+
 		imperialDrill = new Drill("imperial-drill") {{
 			requirements(Category.production, with(
 				OblivionResources.niobium, 120
@@ -898,13 +917,13 @@ public class OblivionBlocks {
 			requirements(Category.turret, with(
 				OblivionResources.niobium, 60
 			));
-			health = 320;
+			health = 520;
 			size = 2;
 			reload = 90f;
 			recoil = 1f;
 			range = 20 * 8f;
 			inaccuracy = 3f;
-			drawer = new DrawTurret() {{
+			drawer = new DrawTurret("reinforced-") {{
 				parts.addAll(
 					new RegionPart("-cannon") {{
 						moveY = -1f;
@@ -914,7 +933,7 @@ public class OblivionBlocks {
 				);
 				parts.addAll(
 					new RegionPart("-heat") {{
-						drawRegion = false;
+						drawOultine = false;
 						heatProgress = PartProgress.warmup;
 					}}
 				);
@@ -924,6 +943,51 @@ public class OblivionBlocks {
 				OblivionResources.niobium, new BasicBulletType(2f, 5) {{
 					lifetime = 80f;
 					width = height = 10f;
+				}}
+			);
+		}};
+		reaction = new ItemTurret("reaction") {{
+			requirements(Category.turret, with(
+				OblivionResources.niobium, 150
+			));
+			size = 2;
+			health = 600;
+			reload = 240;
+			recoil = 1.5f;
+			range = 25 * 8f;
+			drawer = new DrawTurret("reinforced-") {{
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						x = 1.5f;
+						y = 3.75f;
+						moveX = moveY = 1.25f;
+						progress = PartProgress.warmup;
+						heatProgress = PartProgress.reload.curve(Interp.pow2In);
+						under = mirror = true;
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-blade") {{
+						x = 5.25f;
+						y = 2f;
+						moveX = -1.25f;
+						moveY = -3.25f;
+						progress = PartProgress.warmup;
+						heatProgress = PartProgress.reload.curve(Interp.pow2In);
+						under = mirror = true;
+					}}
+				);
+				parts.addAll(
+					new RegionPart("-heat") {{
+						drawOultine = false;
+						progress = PartProgress.warmup;
+					}}
+				);
+			}};
+			ammo(
+				OblivionResources.niobium, new ContinuousLaserBulletType(12) {{
+					lifetime = 60f;
+					colors = new Color[]{Color.valueOf("58BBEC"), Color.valueOf("8FDAFF"), Color.white};
 				}}
 			);
 		}};
@@ -969,6 +1033,30 @@ public class OblivionBlocks {
 			);
 			consumePower(0.5f);
 			outputItem = new ItemStack(Items.sand, 1);
+		}};
+
+		hafniumSmelter = new GenericCrafter("hafnium-smelter") {{
+			requirements(Category.crafting, with(
+				OblivionResources.niobium, 150
+			));
+			health = 210
+			size = 4;
+			craftTime = 180f;
+			craftEffect = LamoniFx.harfniumSmelt;
+			drawer = new DrawMulti(
+				new DrawRegion("-bottom"),
+				new DrawArcSmelt() {{
+					flameColor = Pal.accent;
+					midColor = Pal.accent.cpy().mul(0.7f);
+				}},
+				new DrawDefault()
+			);
+			consumeItems(with(
+				OblivionResources.niobium, 2,
+				Items.sand, 3
+			));
+			consumePower(2f);
+			outputItem = new ItemStack(OblivionResources.hafnium, 5);
 		}};
 	}
 }

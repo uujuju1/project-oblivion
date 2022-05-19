@@ -24,5 +24,22 @@ public class LamoniFx {
 				Fill.circle(e.x + x, e.y + y, 3f * Interp.slowFast.apply(e.fout()));
 			});
 		}
+	}),
+
+	hafniumSmelt = new Effect(120f, e -> {
+		Draw.color(Color.black);
+		Draw.alpha(0.5f);
+		Angles.randLenVectors(e.id + 5, 20, 40 * e.finpow(), (x, y) -> {
+			Fill.circle(e.x + x, e.y + y, e.fout() * 2f);
+		});
+		Draw.color(Pal.accent)
+		for (int i = 1; i <= 4; i++) {
+			e.scaled(20f * i, b -> {
+				Lines.stroke(b.fout());
+				Angles.randLenVectors(b.id + i, 10, 40f * b.finpow(), (x, y) -> {
+					Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), 10f * b.foutpow());
+				});
+			});
+		}
 	});
 }
