@@ -32,7 +32,7 @@ public class LamoniFx {
 		Angles.randLenVectors(e.id + 5, 20, 40 * e.finpow(), (x, y) -> {
 			Fill.circle(e.x + x, e.y + y, e.fout() * 2f);
 		});
-		Draw.color(Pal.accent)
+		Draw.color(Pal.accent);
 		for (int i = 1; i <= 4; i++) {
 			e.scaled(20f * i, b -> {
 				Lines.stroke(b.fout());

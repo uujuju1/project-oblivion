@@ -1039,7 +1039,7 @@ public class OblivionBlocks {
 			requirements(Category.crafting, with(
 				OblivionResources.niobium, 150
 			));
-			health = 210
+			health = 210;
 			size = 4;
 			craftTime = 180f;
 			craftEffect = LamoniFx.harfniumSmelt;
