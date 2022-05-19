@@ -36,6 +36,6 @@ public class ProjectOblivion extends Mod{
 		new OblivionPlanets().load();
 		new OblivionSectors().load();
 		new OblivionTechTree().load();
-		new LamoniTechtree().load();
+		new LamoniTechTree().load();
 	}
 }
