@@ -14,7 +14,6 @@ import mindustry.ai.types.*;
 import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import mindustry.world.draw.*;
-import mindustry.type.weapons.*;
 import mindustry.entities.part.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
@@ -890,11 +889,12 @@ public class OblivionBlocks {
 
 		coreVillage = new CoreBlock("core-village") {{
 			requirements(Category.units, with(
-				Items.niobium, 1200
+				OblivionResources.niobium, 1200,
+				OblivionResources.hafnium, 700
 			));
 			size = 3;
 			health = 3200;
-			itemCapacity = 2500f;
+			itemCapacity = 2500;
 			alwaysUnlocked = isFirstTier = true;
 			unitType = OblivionUnits.citizen;
 		}};
@@ -936,7 +936,7 @@ public class OblivionBlocks {
 				);
 				parts.addAll(
 					new RegionPart("-heat") {{
-						drawOultine = false;
+						outline = false;
 						heatProgress = PartProgress.warmup;
 					}}
 				);
@@ -982,7 +982,7 @@ public class OblivionBlocks {
 				);
 				parts.addAll(
 					new RegionPart("-heat") {{
-						drawOultine = false;
+						outline = false;
 						progress = PartProgress.warmup;
 					}}
 				);

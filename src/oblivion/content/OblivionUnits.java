@@ -9,6 +9,7 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.graphics.*;
+import mindustry.type.weapons.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.entities.abilities.*;
