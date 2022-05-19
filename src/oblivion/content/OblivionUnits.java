@@ -1039,7 +1039,7 @@ public class OblivionUnits{
 
 		citizen = new UnitType("citizen") {{
 			coreUnitDock = true;
-			controller = u -> new BuilderAI(true, coreFleeRange);
+			controller = u -> new BuilderAI(true, 500f);
 			isEnemy = false;
 			envDisabled = 0;
 			targetPriority = -2;

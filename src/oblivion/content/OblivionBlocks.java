@@ -10,13 +10,16 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.content.*;
+import mindustry.ai.types.*;
 import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import mindustry.world.draw.*;
+import mindustry.type.weapons.*;
 import mindustry.entities.part.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.world.blocks.units.*;
+import mindustry.world.blocks.storage.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.environment.*;
@@ -1042,7 +1045,7 @@ public class OblivionBlocks {
 			health = 210;
 			size = 4;
 			craftTime = 180f;
-			craftEffect = LamoniFx.harfniumSmelt;
+			craftEffect = LamoniFx.hafniumSmelt;
 			drawer = new DrawMulti(
 				new DrawRegion("-bottom"),
 				new DrawArcSmelt() {{
