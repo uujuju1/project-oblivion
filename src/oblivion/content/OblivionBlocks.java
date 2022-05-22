@@ -57,7 +57,9 @@ public class OblivionBlocks {
 		coreVillage, coreMonarchy, coreEmpire,
 		niobiumDuct,
 		mantlePulverizer, hafniumSmelter,
-		spread, reaction,
+		vaccumPump, 
+		spread, reaction, evaporate,
+		niobiumCombustor,
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
 		imperialDrill;
 
@@ -935,7 +937,7 @@ public class OblivionBlocks {
 				);
 				parts.addAll(
 					new RegionPart("-heat") {{
-						outline = false;
+						drawRegion = false;
 						heatProgress = PartProgress.warmup;
 					}}
 				);
@@ -981,7 +983,7 @@ public class OblivionBlocks {
 				);
 				parts.addAll(
 					new RegionPart("-heat") {{
-						outline = false;
+						drawRegion = false;
 						progress = PartProgress.warmup;
 					}}
 				);
@@ -990,6 +992,32 @@ public class OblivionBlocks {
 				OblivionResources.niobium, new ContinuousLaserBulletType(12) {{
 					lifetime = 60f;
 					colors = new Color[]{Color.valueOf("58BBEC"), Color.valueOf("8FDAFF"), Color.white};
+				}}
+			);
+		}};
+		evaporate = new ContinuousLiquidTurret("evaporate") {{
+			requirements(Category.turret, with(
+				OblivionResources.niobium, 150,
+				OblivionResources.hafnium, 120
+			));
+			size = 3;
+			health = 200;
+			range = 23f * 8f;
+			drawer = new DrawTurret("oblivion-hafronite-") {{
+				parts.addAll(
+					new RegionPart("-cannon") {{
+						moveY = -2.5f;
+						progress = PartProgress.warmup;
+						under = true;
+					}}
+				);
+			}};
+			ammo(
+				Liquids.water, new ContinuousFlameBulletType(30) {{
+					Color watercol = Liquids.water.color;
+					length = 26f * 8f;
+					colors = new Color[]{watercol.cpy().mul(1.5f), watercol.cpy().mul(1.6f), watercol.cpy().mul(1.7f), watercol.cpy().mul(1.8f), Color.white};
+					hitColor = lightColor = flareColor = colors[2];
 				}}
 			);
 		}};
@@ -1059,6 +1087,37 @@ public class OblivionBlocks {
 			));
 			consumePower(2f);
 			outputItem = new ItemStack(OblivionResources.hafnium, 5);
+		}};
+
+		niobiumCombustor = new ConsumeGenerator("niobium-combustor") {{
+			requirements(Category.power, with(
+				OblivionResources.niobium, 30
+			));
+			size = 2;
+			health = 160;
+			powerProduction = 3f;
+			itemDuration = 180f;
+			drawer = new DrawMulti(DrawDefault(), DrawWarmupRegion());
+			consumeItems(with(OblivionResources.niobium, 1));
+		}};
+
+		vaccumPump = new AttributeCrafter("vaccum-pump") {{
+			requirements(Category.production, with(
+				OblivionResources.niobium, 50,
+				OblivionResources.hafnium, 30
+			));
+			size = 3;
+			health = 120;
+			craftTime = 30f;
+			craftEffect = LamoniFx.waterSpill;
+			drawer = new DrawMulti(
+				new DrawRegion("-bottom"),
+				new DrawBlurSpin("-rotator"),
+				new DrawRegion("-top"),
+				new DrawDefault()
+			);
+			consumePower(1f);
+			outputLiquid = new LiquidsStack(Liquids.water, 15);
 		}};
 	}
 }
