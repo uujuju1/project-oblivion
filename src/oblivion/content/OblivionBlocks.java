@@ -17,6 +17,7 @@ import mindustry.entities.part.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.world.blocks.units.*;
+import mindustry.world.blocks.power.*;
 import mindustry.world.blocks.storage.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.production.*;
@@ -1097,7 +1098,7 @@ public class OblivionBlocks {
 			health = 160;
 			powerProduction = 3f;
 			itemDuration = 180f;
-			drawer = new DrawMulti(DrawDefault(), DrawWarmupRegion());
+			drawer = new DrawMulti(new DrawDefault(), new DrawWarmupRegion());
 			consumeItems(with(OblivionResources.niobium, 1));
 		}};
 
@@ -1112,7 +1113,7 @@ public class OblivionBlocks {
 			craftEffect = LamoniFx.waterSpill;
 			drawer = new DrawMulti(
 				new DrawRegion("-bottom"),
-				new DrawBlurSpin("-rotator"),
+				new DrawBlurSpin("-rotator", 15f),
 				new DrawRegion("-top"),
 				new DrawDefault()
 			);
