@@ -1118,7 +1118,7 @@ public class OblivionBlocks {
 				new DrawDefault()
 			);
 			consumePower(1f);
-			outputLiquid = new LiquidsStack(Liquids.water, 15);
+			outputLiquid = new LiquidStack(Liquids.water, 15);
 		}};
 	}
 }
