@@ -7,7 +7,7 @@ public class OblivionResources {
 	// lonela
 	public static Item mesulfate, calenmite, copremite, mothalate, carmanite,
 	// lamoni
-		niobium, hafnium;
+		niobium, hafnium, sodium;
 
 	public void load() {
 		// lonela
@@ -18,7 +18,8 @@ public class OblivionResources {
 		mothalate = new Item("mothalate", Color.valueOf("313B7A")) {{cost = 7;}};
 
 		// lamoni
-		niobium = new Item("niobium", Color.valueOf("5D687F")) {{cost = 0.5f;}};
-		hafnium = new Item("hafnium", Color.valueOf("404040")) {{}};
+		niobium = new Item("niobium", Color.valueOf("5D687F")) {{cost = 0.5f; hardness = 0;}};
+		hafnium = new Item("hafnium", Color.valueOf("404040")) {{cost = 0.3f;}};
+		sodium = new Item("sodium", Color.valueOf("9FCF9C")) {{}};
 	}
 }

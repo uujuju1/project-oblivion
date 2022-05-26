@@ -57,7 +57,8 @@ public class OblivionBlocks {
 		// lamoni
 		coreVillage, coreMonarchy, coreEmpire,
 		niobiumDuct,
-		mantlePulverizer, hafniumSmelter,
+		mantlePulverizer, hafniumSmelter, sodiumMixer,
+		pistomCombustor,
 		vaccumPump, 
 		spread, reaction, evaporate,
 		niobiumCombustor,
@@ -1090,6 +1091,46 @@ public class OblivionBlocks {
 			outputItem = new ItemStack(OblivionResources.hafnium, 5);
 		}};
 
+		sodiumMixer = new GenericCrafter("sodium-mixer") {{
+			requirements(Category.crafting, with(
+				OblivionResources.niobium, 150,
+				OblivionResources.hafnium, 200
+			));
+			size = 4;
+			health = 260;
+			craftTime = 60f;
+			craftEffect = LamoniFx.waterSpill;
+			drawer = new DrawMulti(
+				new DrawRegion("-bottom"),
+				new DrawWeave(),
+				new DrawCultivator() {{
+					plantColor = Color.valueOf("9FCF9C");
+					plantColorLight = Color.valueOf("BAF2B7");
+				}},
+				new DrawDefault()
+			);
+			consumeItems(with(
+				OblivionResources.hafnium, 1,
+				OblivionResources.niobium, 2
+			));
+			consumeLiquid(Liquids.water, 10f);
+			consumePower(1f);
+			outputItem = new ItemStack(OblivionResources.sodium, 2);
+		}};
+
+		pistomCombustor = new EfficiencyBlock("pistom-combustor") {{
+			requirements(Category.crafting, with(
+				OblivionResources.sodium, 100,
+				OblivionResources.hafnium, 150
+			));
+			size = 3;
+			health = 400;
+			effCap = 0.125f;
+			consumeTime = 60f;
+			consumeItems(with(OblivionResources.sodium, 2));
+			consumeLiquid(Liquids.water, 5f);
+		}};
+
 		niobiumCombustor = new ConsumeGenerator("niobium-combustor") {{
 			requirements(Category.power, with(
 				OblivionResources.niobium, 30
@@ -1107,7 +1148,7 @@ public class OblivionBlocks {
 				OblivionResources.niobium, 50,
 				OblivionResources.hafnium, 30
 			));
-			size = 3;
+			size = 2;
 			health = 120;
 			craftTime = 30f;
 			craftEffect = LamoniFx.waterSpill;

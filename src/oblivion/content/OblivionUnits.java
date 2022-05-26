@@ -52,6 +52,7 @@ public class OblivionUnits{
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
 						trailColor = OblivionPal.mesoLight;
+						hitEffect = despawnEffect = MesoFx.mesoHit;
 					}};
 				}}
 			);

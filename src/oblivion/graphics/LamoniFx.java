@@ -67,7 +67,6 @@ public class LamoniFx {
 			Lines.lineAngle(e.x + x, e.y + y, Mathf.angle(x, y), 10f * e.foutpow());
 		});
 		
-		
 		Lines.stroke(e.fout());
 		Angles.randLenVectors(e.id + 1, 5, 40f * e.finpow(), (x, y) -> {
 			Lines.circle(e.x + x, e.y + y, 5f * e.foutpow());

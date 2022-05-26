@@ -38,9 +38,9 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		{OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira},
 		{OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine},
 		{OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.argeletine},
-		{Blocks.grass, Blocks.grass, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, Blocks.grass, OblivionEnvironment.mudone, Blocks.grass, Blocks.stone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone},
-		{Blocks.stone, Blocks.stone, Blocks.grass, Blocks.grass, Blocks.grass, Blocks.stone, Blocks.grass, Blocks.stone, OblivionEnvironment.mudone, Blocks.grass, Blocks.grass, Blocks.grass, OblivionEnvironment.mudone},
-		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.grass, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.grass},
+		{OblivionEnvironment.boronite, OblivionEnvironment.tarrobonite, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.boronite, OblivionEnvironment.mudone, OblivionEnvironment.tarrobonite, Blocks.stone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone},
+		{Blocks.stone, Blocks.stone, OblivionEnvironment.boronite, OblivionEnvironment.tarrobonite, OblivionEnvironment.boronite, Blocks.stone, OblivionEnvironment.tarrobonite, Blocks.stone, OblivionEnvironment.mudone, OblivionEnvironment.tarrobonite, OblivionEnvironment.boronite, OblivionEnvironment.tarrobonite, OblivionEnvironment.mudone},
+		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, OblivionEnvironment.tarrobonite, Blocks.stone, Blocks.stone, Blocks.stone, OblivionEnvironment.tarrobonite},
 		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone},
 		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone},
 		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone}
@@ -67,8 +67,6 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 	@Override
 	public Color getColor(Vec3 position){
 		Block block = getBlock(position);
-		//replace salt with sand color
-		if(block == Blocks.salt) return Blocks.sand.mapColor;
 		return Tmp.c1.set(block.mapColor).a(1f - block.albedo);
 	}
 
