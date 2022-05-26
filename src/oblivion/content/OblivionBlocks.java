@@ -58,7 +58,6 @@ public class OblivionBlocks {
 		coreVillage, coreMonarchy, coreEmpire,
 		niobiumDuct,
 		mantlePulverizer, hafniumSmelter, sodiumMixer,
-		pistomCombustor,
 		vaccumPump, 
 		spread, reaction, evaporate,
 		niobiumCombustor,
@@ -1116,19 +1115,6 @@ public class OblivionBlocks {
 			consumeLiquid(Liquids.water, 10f);
 			consumePower(1f);
 			outputItem = new ItemStack(OblivionResources.sodium, 2);
-		}};
-
-		pistomCombustor = new EfficiencyBlock("pistom-combustor") {{
-			requirements(Category.crafting, with(
-				OblivionResources.sodium, 100,
-				OblivionResources.hafnium, 150
-			));
-			size = 3;
-			health = 400;
-			effCap = 0.125f;
-			consumeTime = 60f;
-			consumeItems(with(OblivionResources.sodium, 2));
-			consumeLiquid(Liquids.water, 5f);
 		}};
 
 		niobiumCombustor = new ConsumeGenerator("niobium-combustor") {{

@@ -11,7 +11,7 @@ import mindustry.entities.*;
 public class MesoFx {
 	public static final Effect 
 	mesoHit = new Effect(30f, e -> {
-		Draw.color(OblvionPal.mesoMedium);
+		Draw.color(OblivionPal.mesoMedium);
 		Lines.stroke(e.foutpow() * 5f);
 		Lines.circle(e.x, e.y, e.finpow() * 10f);
 		for (var i = 0; i < 4; i++) {
@@ -19,7 +19,7 @@ public class MesoFx {
 			float y = e.y + Angles.trnsy(e.rotation + (90f * i), e.finpow() * 10f, 0f);
 		Drawf.tri(x, y, 10f * e.foutpow(), 25f * e.foutpow(), (90f * i) + e.finpow() * -90f);
 		}
-		Draw.color(OblvionPal.mesoLight);
+		Draw.color(OblivionPal.mesoLight);
 		Lines.stroke(e.foutpow() * 2.5f);
 		Lines.circle(e.x, e.y, e.finpow() * 10f);
 		for (var i = 0; i < 4; i++) {
