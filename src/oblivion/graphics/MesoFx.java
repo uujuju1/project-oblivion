@@ -31,9 +31,9 @@ public class MesoFx {
 	mesoChargeSmall = new Effect(30f, e -> {
 		Fill.circle(e.x, e.y, e.finpow() * 5f)
 		for (var i = -1; i < 2; i += 2) {
-			float x = e.x + Angles.trnsx(e.rotation + i * (90f * Mathf.pow(e.fout(), 0.2f)), e.finpow() * 5f, 0f)
-			float y = e.y + Angles.trnsy(e.rotation + i * (90f * Mathf.pow(e.fout(), 0.2f)), e.finpow() * 5f, 0f)
-			Drawf.tri(x, y, 5f * Mathf.pow(e.fout(), 0.2f), 12.5f * Mathf.pow(e.fout(), 0.2f), 90f * Mathf.pow(e.fout(), 0.2f) * i)
+			float x = e.x + Angles.trnsx(e.rotation + i * (90f * Mathf.pow(e.fout(), 0.2f)), e.finpow() * 5f, 0f);
+			float y = e.y + Angles.trnsy(e.rotation + i * (90f * Mathf.pow(e.fout(), 0.2f)), e.finpow() * 5f, 0f);
+			Drawf.tri(x, y, 5f * Mathf.pow(e.fout(), 0.2f), 12.5f * Mathf.pow(e.fout(), 0.2f), 90f * Mathf.pow(e.fout(), 0.2f) * i);
 		}
 	}),
 	mesoShoot = new Effect(60f, e -> {
