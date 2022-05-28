@@ -57,7 +57,7 @@ public class OblivionBlocks {
 		// lamoni
 		coreVillage, coreMonarchy, coreEmpire,
 		niobiumDuct,
-		mantlePulverizer, hafniumSmelter, sodiumMixer,
+		mantlePulverizer, hafniumSmelter, demineralizer,
 		vaccumPump, 
 		spread, reaction, evaporate,
 		niobiumCombustor,
@@ -1090,7 +1090,7 @@ public class OblivionBlocks {
 			outputItem = new ItemStack(OblivionResources.hafnium, 5);
 		}};
 
-		sodiumMixer = new GenericCrafter("sodium-mixer") {{
+		demineralizer = new GenericCrafter("demineralizer") {{
 			requirements(Category.crafting, with(
 				OblivionResources.niobium, 150,
 				OblivionResources.hafnium, 200

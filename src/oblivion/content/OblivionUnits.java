@@ -28,7 +28,8 @@ public class OblivionUnits{
 	republic, giga, archaranid, bloodmoon, yetinus,
 
 	
-	citizen;
+	citizen,
+	mercurie;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -69,8 +70,8 @@ public class OblivionUnits{
 			engineOffset = 2f;
 			weapons.add(
 				new Weapon("oblivion-mesulfate-artillery") {{
-					x = 4.5f;
-					y = -1.5f;
+					x = 2.25f;
+					y = 3.75f;
 					reload = 60f;
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(1.5f, 30) {{
@@ -83,6 +84,8 @@ public class OblivionUnits{
 						splashDamage = 20f;
 						frontColor = OblivionPal.mesoMedium;
 						backColor = OblivionPal.mesoDark;
+						shootEffect = MesoFx.mesoShoot;
+						hitEffect = despawnEffect = MesoFx.mesoHit;
 					}};
 				}}
 			);
@@ -1100,6 +1103,36 @@ public class OblivionUnits{
 					maxRange = 60f;
 				}};
 			}});
+		}};
+		mercurie = new OblivionUnitType("mercurie") {{
+			health = 250;
+			speed = 4f;
+			flying = true;
+			constructor = UnitEntity::create;
+			engineSize = 0f;
+			outlineColor = Color.valueOf("3F424D");
+			range = 20 * 8f;
+			maxRange = range;
+			topDrawers.addAll(
+				new RotorDrawer("-rotor") {{
+					x = 0f;
+					y = 2f;
+					bladeCount = 4;
+					speed = 15f;
+				}}
+			);
+			hitSize = 7;
+			weapons.addAll(
+				new Weapon("oblivion-mercurie-weapon") {{
+					x = 4f;
+					y = 5f;
+					reload = 10f;
+					recoil = 0.5f;
+					bullet = new BasicBulletType(2f, 15f) {{
+						lifetime = 80f;
+					}};
+				}}
+			);
 		}};
 	}
 }

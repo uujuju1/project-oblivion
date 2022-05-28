@@ -19,6 +19,7 @@ public class LamoniTechTree {
 				nodeProduce(Items.sand, () -> {
 					nodeProduce(OblivionResources.hafnium, () -> {});
 				});
+				nodeProduce(Liquids.water, () -> {});
 			});
 
 			node(OblivionBlocks.mantlePulverizer, () -> {
