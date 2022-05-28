@@ -7,12 +7,14 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
-// a class that contains the information to draw a rotor
+// drawRotor eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 public class RotorDrawer {
 	public String suffix;
 	public TextureRegion region, topRegion, cellRegion;
 	public float x = 0f, y = 0f;
 	public float speed = 1f;
+	public float deatSlowdownScl = 3f;
+	public float deatSlowdownWarmup = 0.02f;
 	public int bladeCount = 4;
 
 	public RotorDrawer(String suffix) {
@@ -26,19 +28,34 @@ public class RotorDrawer {
 	}
 
 	public void draw(Unit unit) {
+		float slowdown, invSlowdown;
 		float dx = unit.x + Angles.trnsx(unit.rotation - 90f, x, y);
 		float dy = unit.y + Angles.trnsy(unit.rotation - 90f, x, y);
-		for (int i = 0; i < bladeCount; i++) {
-			Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed) + (360/bladeCount * i));
-			drawCell(unit, dx, dy);
+
+		if (unit.dead) {
+			slowdown = Mathf.approachDelta(slowdown, 1f, deatSlowdownWarmup);
+			invSlowdown = Mathf.approachDelta(slowdown, 0f, deatSlowdownWarmup);
+		} else{
+			slowdown = Mathf.approachDelta(slowdown, 0f, deatSlowdownWarmup);
+			invSlowdown = Mathf.approachDelta(slowdown, 1f, deatSlowdownWarmup);
 		}
+
+		Draw.aplha(slowdown);
+		for (int i = 0; i < bladeCount; i++) {
+			Draw.rect(region, dx, dy, (unit.rotation + unit.id + (Time.time * speed) + (360f / bladeCount * i)) / deatSlowdownScl);
+			drawCell(unit, dx, dy, (360f / bladeCount * i) / deatSlowdownScl);
+		}
+		Draw.aplha(invSlowdown);
+		Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed) + (360f / bladeCount * i));
+
+		Draw.reset();
 		Draw.rect(topRegion, dx, dy, unit.rotation - 90f);
 	}
 
-	public void drawCell(Unit unit, float x, float y) {
+	public void drawCell(Unit unit, float x, float y, float rotation) {
 		Draw.color(cellColor(unit));
-		Draw.rect(cellRegion, x, y, unit.rotation + unit.id + (Time.time * speed));
-		Draw.color();
+		Draw.rect(cellRegion, x, y, unit.rotation + rotation + unit.id + (Time.time * speed));
+		Draw.reset();
 	}
 
 	public Color cellColor(Unit unit){
