@@ -1109,6 +1109,7 @@ public class OblivionUnits{
 			health = 250;
 			speed = 4f;
 			flying = true;
+			fallSpeed = 0.01f;
 			constructor = UnitEntity::create;
 			engineSize = 0f;
 			outlineColor = Color.valueOf("3F424D");
