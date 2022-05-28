@@ -16,6 +16,7 @@ public class RotorDrawer {
 	public float deathSlowdownScl = 3f;
 	public float deathSlowdownWarmup = 0.02f;
 	public int bladeCount = 4;
+	float slowdown, invSlowdown;
 
 	public RotorDrawer(String suffix) {
 		this.suffix = suffix;
@@ -34,7 +35,6 @@ public class RotorDrawer {
 	}
 
 	public void draw(Unit unit) {
-		float slowdown, invSlowdown;
 		float dx = unit.x + Angles.trnsx(unit.rotation - 90f, x, y);
 		float dy = unit.y + Angles.trnsy(unit.rotation - 90f, x, y);
 
