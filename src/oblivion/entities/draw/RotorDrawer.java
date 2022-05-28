@@ -31,7 +31,6 @@ public class RotorDrawer {
 
 	public void init() {
 		slowdown = 0f;
-		invSlowdown = 1f;
 	}
 
 	public void draw(Unit unit) {
@@ -40,18 +39,16 @@ public class RotorDrawer {
 
 		if (unit.dead) {
 			slowdown = Mathf.approachDelta(slowdown, 1f, deathSlowdownWarmup);
-			invSlowdown = Mathf.approachDelta(invSlowdown, 0f, deathSlowdownWarmup);
 		} else{
 			slowdown = Mathf.approachDelta(slowdown, 0f, deathSlowdownWarmup);
-			invSlowdown = Mathf.approachDelta(invSlowdown, 1f, deathSlowdownWarmup);
 		}
 
 		Draw.alpha(slowdown);
 		for (int i = 0; i < bladeCount; i++) {
-			Draw.rect(region, dx, dy, (unit.rotation + unit.id + (Time.time * speed) + (360f / bladeCount * i)) / deathSlowdownScl);
-			drawCell(unit, dx, dy, (360f / bladeCount * i) / deathSlowdownScl);
+			Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
+			drawCell(unit, dx, dy, (360f / bladeCount * i));
 		}
-		Draw.alpha(invSlowdown);
+		Draw.alpha(-slowdown + );
 		Draw.rect(blurRegion, dx, dy, unit.rotation + unit.id + (Time.time * speed));
 
 		Draw.reset();
@@ -60,7 +57,7 @@ public class RotorDrawer {
 
 	public void drawCell(Unit unit, float x, float y, float rotation) {
 		Draw.color(cellColor(unit));
-		Draw.rect(cellRegion, x, y, unit.rotation + rotation + unit.id + (Time.time * speed));
+		Draw.rect(cellRegion, x, y, unit.rotation + rotation + unit.id + (Time.time * speed / deathSlowdownScl));
 		Draw.reset();
 	}
 
