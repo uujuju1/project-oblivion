@@ -36,6 +36,12 @@ public class OblivionUnitType extends UnitType {
 	}
 
 	@Override
+	public void init() {
+		super.init();
+		topDrawers.each(d -> d.init());
+	}
+
+	@Override
 	public void drawEngines(Unit unit) {
 		engineDrawer.get(unit);
 	}

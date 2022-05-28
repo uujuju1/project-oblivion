@@ -28,6 +28,11 @@ public class RotorDrawer {
 		blurRegion = Core.atlas.find(unit.name + suffix + "-blur");
 	}
 
+	public void init() {
+		slowdown = 0f;
+		invSlowdown = 1f;
+	}
+
 	public void draw(Unit unit) {
 		float slowdown, invSlowdown;
 		float dx = unit.x + Angles.trnsx(unit.rotation - 90f, x, y);
@@ -35,10 +40,10 @@ public class RotorDrawer {
 
 		if (unit.dead) {
 			slowdown = Mathf.approachDelta(slowdown, 1f, deathSlowdownWarmup);
-			invSlowdown = Mathf.approachDelta(slowdown, 0f, deathSlowdownWarmup);
+			invSlowdown = Mathf.approachDelta(invSlowdown, 0f, deathSlowdownWarmup);
 		} else{
 			slowdown = Mathf.approachDelta(slowdown, 0f, deathSlowdownWarmup);
-			invSlowdown = Mathf.approachDelta(slowdown, 1f, deathSlowdownWarmup);
+			invSlowdown = Mathf.approachDelta(invSlowdown, 1f, deathSlowdownWarmup);
 		}
 
 		Draw.alpha(slowdown);
