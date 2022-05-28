@@ -14,7 +14,7 @@ public class RotorDrawer {
 	public float x = 0f, y = 0f;
 	public float speed = 1f;
 	public float deathSlowdownScl = 3f;
-	public float deathSlowdownWarmup = 0.02f;
+	public float deathSlowdownWarmup = 0.008f;
 	public int bladeCount = 4;
 	float slowdown, invSlowdown;
 
@@ -39,18 +39,23 @@ public class RotorDrawer {
 
 		if (unit.dead) {
 			slowdown = Mathf.approachDelta(slowdown, 1f, deathSlowdownWarmup);
+			invSlowdown = Mathf.approachDelta(slowdown, 0f, deathSlowdownWarmup);
 		} else{
 			slowdown = Mathf.approachDelta(slowdown, 0f, deathSlowdownWarmup);
+			invSlowdown = Mathf.approachDelta(slowdown, 1f, deathSlowdownWarmup);
 		}
 
 		Draw.alpha(slowdown);
-		for (int i = 0; i < bladeCount; i++) {
-			Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
-			drawCell(unit, dx, dy, (360f / bladeCount * i));
+		if (!unit.dead) {
+			for (int i = 0; i < bladeCount; i++) {
+				Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
+				drawCell(unit, dx, dy, (360f / bladeCount * i));
+			}
 		}
-		Draw.alpha(-slowdown + 1f);
+		
+		Draw.alpha(invSlowdown);
 		Draw.rect(blurRegion, dx, dy, unit.rotation + unit.id + (Time.time * speed));
-
+		
 		Draw.reset();
 		Draw.rect(topRegion, dx, dy, unit.rotation - 90f);
 	}
