@@ -48,7 +48,7 @@ public class RotorDrawer {
 			Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
 			drawCell(unit, dx, dy, (360f / bladeCount * i));
 		}
-		Draw.alpha(-slowdown + );
+		Draw.alpha(-slowdown + 1f);
 		Draw.rect(blurRegion, dx, dy, unit.rotation + unit.id + (Time.time * speed));
 
 		Draw.reset();
