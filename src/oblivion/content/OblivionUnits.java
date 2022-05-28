@@ -16,7 +16,7 @@ import mindustry.entities.pattern.*;
 import mindustry.entities.abilities.*;
 import oblivion.type.*;
 import oblivion.graphics.*;
-import oblivion.entities.graphics.*;
+import oblivion.entities.draw.*;
 
 import static mindustry.Vars.*;
 
