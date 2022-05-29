@@ -1160,6 +1160,7 @@ public class OblivionUnits{
 					x = 5f;
 					y = 6f;
 					reload = 60f;
+					shootSound = Sounds.missile;
 					bullet = new MissileBulletType(2.5f, 30) {{
 						lifetime = 80f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");

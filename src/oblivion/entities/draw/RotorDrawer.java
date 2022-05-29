@@ -39,15 +39,15 @@ public class RotorDrawer {
 
 		if (unit.dead) {
 			slowdown = Mathf.approachDelta(slowdown, 1f, deathSlowdownWarmup);
-			invSlowdown = Mathf.approachDelta(slowdown, 0f, deathSlowdownWarmup);
+			invSlowdown = Mathf.approachDelta(invSlowdown, 0f, deathSlowdownWarmup);
 		} else{
 			slowdown = Mathf.approachDelta(slowdown, 0f, deathSlowdownWarmup);
-			invSlowdown = Mathf.approachDelta(slowdown, 1f, deathSlowdownWarmup);
+			invSlowdown = Mathf.approachDelta(invSlowdown, 1f, deathSlowdownWarmup);
 		}
 
 		if (unit.dead) {
-			Draw.alpha(slowdown);
 			for (int i = 0; i < bladeCount; i++) {
+				Draw.alpha(slowdown);
 				Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
 				drawCell(unit, dx, dy, (360f / bladeCount * i));
 			}
