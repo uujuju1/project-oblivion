@@ -30,7 +30,7 @@ public class OblivionUnits{
 
 	
 	citizen,
-	mercurie;
+	mercurie, aphrodite;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1130,8 +1130,40 @@ public class OblivionUnits{
 					y = 5f;
 					reload = 10f;
 					recoil = 0.5f;
-					bullet = new BasicBulletType(2f, 15f) {{
+					bullet = new BasicBulletType(2f, 15) {{
 						lifetime = 80f;
+						frontColor = Color.valueOf("BAF2B7");
+						backColor = Color.valueOf("87B085");
+					}};
+				}}
+			);
+		}};
+		aphrodite = new OblivionUnitType("aphrodite") {{
+			health = 560;
+			speed = 3.5f;
+			flying = true;
+			fallSpeed = 0.009f;
+			engineSize = 0f;
+			range = 25f * 8f;
+			maxRange = range;
+			constructor = UnitEntity::create;
+			topDrawers.addAll(
+				new RotorDrawer("-rotor") {{
+					x = 0f;
+					y = 4f;
+					bladeCount = 4f;
+					speed = 15.5f;
+				}}
+			);
+			weapons.addAll(
+				new Weapon("oblivion-aphrodite-missile") {{
+					x = 5f;
+					y = 6f;
+					reload = 60f;
+					bullet = new MissileBulletType(2.5f, 30) {{
+						lifetime = 80f;
+						frontColor = trailColor = Color.valueOf("BAF2B7");
+						backColor = Color.valueOf("87B085");
 					}};
 				}}
 			);
