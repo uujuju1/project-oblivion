@@ -1181,7 +1181,7 @@ public class OblivionUnits{
 						lifetime = 100f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
-					}}
+					}};
 				}}
 			);
 		}};
