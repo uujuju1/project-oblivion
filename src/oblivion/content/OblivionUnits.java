@@ -30,7 +30,7 @@ public class OblivionUnits{
 
 	
 	citizen,
-	mercurie, aphrodite;
+	mercurie, aphrodite, apollo;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1130,6 +1130,7 @@ public class OblivionUnits{
 					y = 5f;
 					reload = 10f;
 					recoil = 0.5f;
+					top = false;
 					bullet = new BasicBulletType(2f, 15) {{
 						lifetime = 80f;
 						frontColor = Color.valueOf("BAF2B7");
@@ -1145,6 +1146,7 @@ public class OblivionUnits{
 			fallSpeed = 0.009f;
 			engineSize = 0f;
 			range = 25f * 8f;
+			hitSize = 9f;
 			maxRange = range;
 			constructor = UnitEntity::create;
 			topDrawers.addAll(
@@ -1160,12 +1162,45 @@ public class OblivionUnits{
 					x = 5f;
 					y = 6f;
 					reload = 60f;
+					top = false;
 					shootSound = Sounds.missile;
 					bullet = new MissileBulletType(2.5f, 30) {{
 						lifetime = 80f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
 					}};
+				}},
+				new Weapon("oblivion-aphrodite-mount") {{
+					x = 3.75f;
+					y = -4f;
+					reload = 10f;
+					top = false;
+					shootSound = Sounds.artillery;
+					maxRange = 12.5f * 8f;
+					bullet = new ArtilleryBulletType(1f, 13) {{
+						lifetime = 100f;
+						frontColor = trailColor = Color.valueOf("BAF2B7");
+						backColor = Color.valueOf("87B085");
+					}}
+				}}
+			);
+		}};
+		apollo = new OblivionUnitType("apollo") {{
+			health = 1160;
+			speed = 3f;
+			flying = true;
+			fallSpeed = 0.008f;
+			engineSize = 0f;
+			range = 28f * 8f;
+			hitSize = 14f;
+			maxRange = range;
+			constructor = UnitEntity::create;
+			topDrawers.addAll(
+				new RotorDrawer("-rotor") {{
+					x = 0f;
+					y = 4f;
+					bladeCount = 4f;
+					speed = 17f;
 				}}
 			);
 		}};

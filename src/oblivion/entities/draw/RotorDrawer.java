@@ -31,6 +31,7 @@ public class RotorDrawer {
 
 	public void init() {
 		slowdown = 0f;
+		invSlowdown = 1f;
 	}
 
 	public void draw(Unit unit) {
@@ -45,12 +46,10 @@ public class RotorDrawer {
 			invSlowdown = Mathf.approachDelta(invSlowdown, 1f, deathSlowdownWarmup);
 		}
 
-		if (unit.dead) {
-			for (int i = 0; i < bladeCount; i++) {
-				Draw.alpha(slowdown);
-				Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
-				drawCell(unit, dx, dy, (360f / bladeCount * i));
-			}
+		for (int i = 0; i < bladeCount; i++) {
+			Draw.alpha(slowdown);
+			Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
+			drawCell(unit, dx, dy, (360f / bladeCount * i));
 		}
 		
 		Draw.alpha(invSlowdown);
