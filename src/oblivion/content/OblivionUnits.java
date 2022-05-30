@@ -17,6 +17,7 @@ import mindustry.entities.abilities.*;
 import oblivion.type.*;
 import oblivion.graphics.*;
 import oblivion.entities.draw.*;
+import oblivion.entities.comp.*;
 
 import static mindustry.Vars.*;
 
@@ -1110,7 +1111,7 @@ public class OblivionUnits{
 			speed = 4f;
 			flying = true;
 			fallSpeed = 0.01f;
-			constructor = UnitEntity::create;
+			constructor = CopterComp::create;
 			engineSize = 0f;
 			outlineColor = Color.valueOf("3F424D");
 			range = 20 * 8f;
@@ -1148,7 +1149,7 @@ public class OblivionUnits{
 			range = 25f * 8f;
 			hitSize = 9f;
 			maxRange = range;
-			constructor = UnitEntity::create;
+			constructor = CopterComp::create;
 			topDrawers.addAll(
 				new RotorDrawer("-rotor") {{
 					x = 0f;
@@ -1194,7 +1195,7 @@ public class OblivionUnits{
 			range = 28f * 8f;
 			hitSize = 14f;
 			maxRange = range;
-			constructor = UnitEntity::create;
+			constructor = CopterComp::create;
 			topDrawers.addAll(
 				new RotorDrawer("-rotor") {{
 					x = 0f;

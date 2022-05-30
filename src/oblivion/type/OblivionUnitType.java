@@ -32,6 +32,9 @@ public class OblivionUnitType extends UnitType {
 	@Override
 	public void draw(Unit unit) {
 		super.draw(unit);
+		if (unit instanceof CopterComp) {
+			
+		}
 		topDrawers.each(d -> d.draw(unit));
 	}
 

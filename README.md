@@ -2,6 +2,8 @@
 A sequel to [Project Abyss](https://github.com/uujuju1/project-abyss).
 <br> Will likelly be archived if i lose motivation.
 
+[Discord server](https://discord.gg/78RUftBQkP)
+
 ## Building for Desktop Testing
 
 1. Install JDK **17**.
@@ -39,8 +41,6 @@ Only use `implementation` if you want to package another Java library *with your
 
 *[1]* *On Linux/Mac it's `./gradlew`, but if you're using Linux I assume you know how to run executables properly anyway.*  
 *[2]: Yes, I know this is stupid. It's a Github UI limitation - while the jar itself is uploaded unzipped, there is currently no way to download it as a single file.*
-
-
 
 ---
 ## *Kingfrankbobn't Was here*

@@ -16,7 +16,6 @@ public class RotorDrawer {
 	public float deathSlowdownScl = 3f;
 	public float deathSlowdownWarmup = 0.008f;
 	public int bladeCount = 4;
-	float slowdown, invSlowdown;
 
 	public RotorDrawer(String suffix) {
 		this.suffix = suffix;
@@ -29,43 +28,30 @@ public class RotorDrawer {
 		blurRegion = Core.atlas.find(unit.name + suffix + "-blur");
 	}
 
-	public void init() {
-		slowdown = 0f;
-		invSlowdown = 1f;
-	}
-
-	public void draw(Unit unit) {
+	public void draw(CopterComp unit) {
 		float dx = unit.x + Angles.trnsx(unit.rotation - 90f, x, y);
 		float dy = unit.y + Angles.trnsy(unit.rotation - 90f, x, y);
 
-		if (unit.dead) {
-			slowdown = Mathf.approachDelta(slowdown, 1f, deathSlowdownWarmup);
-			invSlowdown = Mathf.approachDelta(invSlowdown, 0f, deathSlowdownWarmup);
-		} else{
-			slowdown = Mathf.approachDelta(slowdown, 0f, deathSlowdownWarmup);
-			invSlowdown = Mathf.approachDelta(invSlowdown, 1f, deathSlowdownWarmup);
-		}
-
 		for (int i = 0; i < bladeCount; i++) {
-			Draw.alpha(slowdown);
+			Draw.alpha(unit.slowdown);
 			Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
 			drawCell(unit, dx, dy, (360f / bladeCount * i));
 		}
 		
-		Draw.alpha(invSlowdown);
+		Draw.alpha(unit.invSlowdown);
 		Draw.rect(blurRegion, dx, dy, unit.rotation + unit.id + (Time.time * speed));
 		
 		Draw.reset();
 		Draw.rect(topRegion, dx, dy, unit.rotation - 90f);
 	}
 
-	public void drawCell(Unit unit, float x, float y, float rotation) {
+	public void drawCell(CopterComp unit, float x, float y, float rotation) {
 		Draw.color(cellColor(unit));
 		Draw.rect(cellRegion, x, y, unit.rotation + rotation + unit.id + (Time.time * speed / deathSlowdownScl));
 		Draw.reset();
 	}
 
-	public Color cellColor(Unit unit){
+	public Color cellColor(CopterComp unit){
 		float f = Mathf.clamp(unit.healthf());
 		return Tmp.c1.set(Color.black).lerp(unit.team.color, f + Mathf.absin(Time.time, Math.max(f * 5f, 1f), 1f - f));
 	}
