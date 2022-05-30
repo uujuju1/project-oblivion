@@ -1199,7 +1199,7 @@ public class OblivionUnits{
 				new RotorDrawer("-rotor") {{
 					x = 0f;
 					y = 4f;
-					bladeCount = 4f;
+					bladeCount = 4;
 					speed = 17f;
 				}}
 			);
