@@ -36,7 +36,7 @@ public class RotorDrawer {
 
 		for (int i = 0; i < bladeCount; i++) {
 			Draw.alpha(type.slowdown);
-			Draw.rect(region, dx, dy, type.rotation + utypeid + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
+			Draw.rect(region, dx, dy, type.rotation + type.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
 			drawCell(type, dx, dy, (360f / bladeCount * i));
 		}
 		
