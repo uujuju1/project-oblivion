@@ -3,6 +3,7 @@ package oblivion.entities.comp;
 import arc.math.*;
 import mindustry.gen.*;
 import oblivion.type.*;
+import oblivion.entities.draw.*;
 
 public class CopterComp extends UnitEntity {
 	public float slowdown;
