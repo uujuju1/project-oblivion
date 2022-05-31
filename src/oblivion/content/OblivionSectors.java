@@ -16,7 +16,7 @@ public class OblivionSectors {
 			difficulty = 1;
 			startWaveTimeMultiplier = 3f;
 		}};
-		oldTown = new SectorPreset("oldTown", OblivionPlanets.lonela, 130) {{
+		brokenOutpost = new SectorPreset("brokenOutpost", OblivionPlanets.lonela, 130) {{
 			captureWave = 20;
 			difficulty = 2;
 			startWaveTimeMultiplier = 2f;

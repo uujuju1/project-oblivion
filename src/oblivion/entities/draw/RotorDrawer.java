@@ -7,6 +7,7 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+import oblivion.entities.comp.*;
 // drawRotor eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 public class RotorDrawer {
 	public String suffix;
@@ -14,7 +15,6 @@ public class RotorDrawer {
 	public float x = 0f, y = 0f;
 	public float speed = 1f;
 	public float deathSlowdownScl = 3f;
-	public float deathSlowdownWarmup = 0.008f;
 	public int bladeCount = 4;
 
 	public RotorDrawer(String suffix) {

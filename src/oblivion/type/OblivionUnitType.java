@@ -18,6 +18,7 @@ import mindustry.Vars;
 public class OblivionUnitType extends UnitType {
 	public Cons<Unit> engineDrawer = unit -> {};
 	public Seq<RotorDrawer> topDrawers = new Seq<>();
+	public float rotorDeathSlowness = 0.008f;
 
 	public OblivionUnitType(String name) {
 		super(name);
@@ -36,12 +37,6 @@ public class OblivionUnitType extends UnitType {
 			
 		}
 		topDrawers.each(d -> d.draw(unit));
-	}
-
-	@Override
-	public void init() {
-		super.init();
-		topDrawers.each(d -> d.init());
 	}
 
 	@Override
