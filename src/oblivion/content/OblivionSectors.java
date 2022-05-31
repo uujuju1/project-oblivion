@@ -6,7 +6,7 @@ import oblivion.content.*;
 
 public class OblivionSectors {
 	public static SectorPreset
-		newWorld, brokenOutpost;
+		newWorld;
 
 	public void load(){
 		newWorld = new SectorPreset("newWorld", OblivionPlanets.lonela, 15) {{
@@ -15,11 +15,6 @@ public class OblivionSectors {
 			captureWave = 10;
 			difficulty = 1;
 			startWaveTimeMultiplier = 3f;
-		}};
-		brokenOutpost = new SectorPreset("brokenOutpost", OblivionPlanets.lonela, 130) {{
-			captureWave = 20;
-			difficulty = 2;
-			startWaveTimeMultiplier = 2f;
 		}};
 	}
 }
