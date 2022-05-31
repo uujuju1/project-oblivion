@@ -21,7 +21,7 @@ public class RotorDrawer {
 		this.suffix = suffix;
 	}
 
-	public void load(UnitType unit) {
+	public void load(OblivionUnitType unit) {
 		region = Core.atlas.find(unit.name + suffix);
 		topRegion = Core.atlas.find(unit.name + suffix + "-top");
 		cellRegion = Core.atlas.find(unit.name + suffix + "-cell", "clear");
@@ -38,7 +38,7 @@ public class RotorDrawer {
 			drawCell(unit, dx, dy, (360f / bladeCount * i));
 		}
 		
-		Draw.alpha(unit.invSlowdown);
+		Draw.alpha(-unit.slowdown + 1);
 		Draw.rect(blurRegion, dx, dy, unit.rotation + unit.id + (Time.time * speed));
 		
 		Draw.reset();
