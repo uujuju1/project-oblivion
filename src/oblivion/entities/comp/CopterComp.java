@@ -7,11 +7,6 @@ import oblivion.type.*;
 public class CopterComp extends UnitEntity {
 	public float slowdown;
 
-	public void initialize() {
-		slowdown = 1f;
-		create();
-	}
-
 	@Override
 	public void update() {
 		OblivionUnitType type = ((OblivionUnitType) this.type);
@@ -21,5 +16,15 @@ public class CopterComp extends UnitEntity {
 			slowdown = Mathf.approachDelta(slowdown, 0f, type.rotorDeathSlowness);	
 		}
 		super.update();
+	}
+
+	@Override
+	public void draw() {
+		super.draw();
+		type.topDrawers.each(rotor -> {
+			if (rotor instanceof RotorDrawer) {
+				rotor.draw(this);
+			}
+		});
 	}
 }
