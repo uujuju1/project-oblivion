@@ -22,7 +22,7 @@ public class CopterComp extends UnitEntity {
 	@Override
 	public void draw() {
 		super.draw();
-		type.topDrawers.each(rotor -> {
+		((OblivionUnitType) type).topDrawers.each(rotor -> {
 			if (rotor instanceof RotorDrawer) {
 				rotor.draw(this);
 			}
