@@ -7,10 +7,9 @@ import oblivion.type.*;
 public class CopterComp extends UnitEntity {
 	public float slowdown;
 
-	@Override
-	public void create() {
+	public void initialize() {
 		slowdown = 1f;
-		super.create();
+		create();
 	}
 
 	@Override

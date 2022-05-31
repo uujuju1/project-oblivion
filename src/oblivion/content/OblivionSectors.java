@@ -6,7 +6,7 @@ import oblivion.content.*;
 
 public class OblivionSectors {
 	public static SectorPreset
-		newWorld, oldTown;
+		newWorld, brokenOutpost;
 
 	public void load(){
 		newWorld = new SectorPreset("newWorld", OblivionPlanets.lonela, 15) {{

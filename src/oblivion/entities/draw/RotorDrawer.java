@@ -7,6 +7,7 @@ import arc.graphics.*;
 import arc.graphics.g2d.*;
 import mindustry.gen.*;
 import mindustry.type.*;
+import oblivion.type.*;
 import oblivion.entities.comp.*;
 // drawRotor eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 public class RotorDrawer {
@@ -21,28 +22,29 @@ public class RotorDrawer {
 		this.suffix = suffix;
 	}
 
-	public void load(OblivionUnitType unit) {
+	public void load(UnitType unit) {
 		region = Core.atlas.find(unit.name + suffix);
 		topRegion = Core.atlas.find(unit.name + suffix + "-top");
 		cellRegion = Core.atlas.find(unit.name + suffix + "-cell", "clear");
 		blurRegion = Core.atlas.find(unit.name + suffix + "-blur");
 	}
 
-	public void draw(CopterComp unit) {
-		float dx = unit.x + Angles.trnsx(unit.rotation - 90f, x, y);
-		float dy = unit.y + Angles.trnsy(unit.rotation - 90f, x, y);
+	public void draw(Unit unit) {
+		CopterComp type = ((CopterComp) unit);
+		float dx = type.x + Angles.trnsx(type.rotation - 90f, x, y);
+		float dy = type.y + Angles.trnsy(type.rotation - 90f, x, y);
 
 		for (int i = 0; i < bladeCount; i++) {
-			Draw.alpha(unit.slowdown);
-			Draw.rect(region, dx, dy, unit.rotation + unit.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
-			drawCell(unit, dx, dy, (360f / bladeCount * i));
+			Draw.alpha(type.slowdown);
+			Draw.rect(region, dx, dy, type.rotation + utypeid + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
+			drawCell(type, dx, dy, (360f / bladeCount * i));
 		}
 		
-		Draw.alpha(-unit.slowdown + 1);
-		Draw.rect(blurRegion, dx, dy, unit.rotation + unit.id + (Time.time * speed));
+		Draw.alpha(-type.slowdown + 1);
+		Draw.rect(blurRegion, dx, dy, type.rotation + type.id + (Time.time * speed));
 		
 		Draw.reset();
-		Draw.rect(topRegion, dx, dy, unit.rotation - 90f);
+		Draw.rect(topRegion, dx, dy, type.rotation - 90f);
 	}
 
 	public void drawCell(CopterComp unit, float x, float y, float rotation) {
