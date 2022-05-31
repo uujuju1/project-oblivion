@@ -99,9 +99,7 @@ public class OblivionTechTree {
 			});
 
 			// sectors
-			node(OblivionSectors.newWorld, Seq.with(new Research(OblivionBlocks.mesoForge)), () -> {
-				node(OblivionSectors.brokenOutpost, Seq.with(new Research(OblivionBlocks.solfreniteFactory)), () -> {});
-			});
+			node(OblivionSectors.newWorld, Seq.with(new Research(OblivionBlocks.mesoForge)), () -> {});
 
 			// skill issue
 			// t6
