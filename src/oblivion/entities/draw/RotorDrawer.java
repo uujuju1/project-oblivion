@@ -32,14 +32,14 @@ public class RotorDrawer {
 
 	public void draw(Unit unit) {
 		CopterComp type = ((CopterComp) unit);
-		for (int i = mirror ? -1 : 0; i < mirror ? 2 : 1; i += mirror ? 2 : 1) {
+		for (int i = (mirror ? -1 : 0); i < (mirror ? 2 : 1); i += (mirror ? 2 : 1)) {
 			float dx = type.x + Angles.trnsx(type.rotation - 90f, i * x, y);
 			float dy = type.y + Angles.trnsy(type.rotation - 90f, i * x, y);
 	
-			for (int i = 0; i < bladeCount; i++) {
+			for (int j = 0; j < bladeCount; j++) {
 				Draw.alpha(type.slowdown);
-				Draw.rect(region, dx, dy, type.rotation + type.id + ((alternate && i == 1 ? -Time.time : Time.time) * speed / deathSlowdownScl) + (360f / bladeCount * i));
-				drawCell(type, dx, dy, (360f / bladeCount * i));
+				Draw.rect(region, dx, dy, type.rotation + type.id + ((alternate && i == 1 ? -Time.time : Time.time) * speed / deathSlowdownScl) + (360f / bladeCount * j));
+				drawCell(type, dx, dy, (360f / bladeCount * j));
 			}
 			
 			Draw.alpha(-type.slowdown + 1);
