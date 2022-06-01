@@ -1,6 +1,7 @@
 package oblivion.entities.comp;
 
 import arc.math.*;
+import arc.util.io.*;
 import mindustry.gen.*;
 import oblivion.type.*;
 import oblivion.entities.draw.*;
@@ -27,5 +28,17 @@ public class CopterComp extends UnitEntity {
 				rotor.draw(this);
 			}
 		});
+	}
+
+	@Override
+	public void write(Writes w) {
+		super.write(w);
+		w.f(slowdown);
+	}
+
+	@Override
+	public void read(Reads r) {
+		super.read(r);
+		slowdown = r.f();
 	}
 }
