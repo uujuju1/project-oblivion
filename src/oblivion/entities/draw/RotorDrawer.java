@@ -60,4 +60,5 @@ public class RotorDrawer {
 		float f = Mathf.clamp(unit.healthf());
 		return Tmp.c1.set(Color.black).lerp(unit.team.color, f + Mathf.absin(Time.time, Math.max(f * 5f, 1f), 1f - f));
 	}
+
 }

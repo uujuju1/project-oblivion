@@ -31,7 +31,7 @@ public class OblivionUnits{
 
 	
 	citizen,
-	mercurie, aphrodite, apollo;
+	mercurie, aphrodite, apollo, zeus, chronos;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1210,6 +1210,7 @@ public class OblivionUnits{
 					y = 10f;
 					reload = 10f;
 					recoil = 1.5f;
+					mirror = false;
 					shoot = new ShootSpread(5, 5f);
 					bullet = new BasicBulletType(2f, 20) {{
 						lifetime = 60f;
@@ -1222,6 +1223,7 @@ public class OblivionUnits{
 					y = -5.5f;
 					reload = 60f;
 					recoil = 2f;
+					top = false;
 					bullet = new LaserBulletType(50) {{
 						width = 12f;
 						length = 28f * 8f;
@@ -1230,5 +1232,25 @@ public class OblivionUnits{
 				}}
 			);
 		}};
+		zeus = new OblivionUnitType("zeus") {{
+			health = 8830;
+			speed = 2f;
+			flying = true;
+			fallSpeed = 0.007f;
+			engineSize = 0f;
+			range = 32f * 8f;
+			hitSize = 20f;
+			maxRange = range;
+			constructor = CopterComp::new;
+			topDrawers.addAll(
+				new RotorDrawer("-rotor") {{
+					x = 12f;
+					y = 2.5f;
+					speed = 20f;
+					bladeCount = 4f;
+					mirror = true;
+				}}
+			);
+		}}
 	}
 }
