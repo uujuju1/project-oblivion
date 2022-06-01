@@ -1251,6 +1251,6 @@ public class OblivionUnits{
 					mirror = true;
 				}}
 			);
-		}}
+		}};
 	}
 }
