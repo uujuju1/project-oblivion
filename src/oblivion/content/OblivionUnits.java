@@ -1247,7 +1247,7 @@ public class OblivionUnits{
 					x = 12f;
 					y = 2.5f;
 					speed = 20f;
-					bladeCount = 4f;
+					bladeCount = 4;
 					mirror = true;
 				}}
 			);
