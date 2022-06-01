@@ -39,7 +39,7 @@ public class RotorDrawer {
 			for (int j = 0; j < bladeCount; j++) {
 				Draw.alpha(type.slowdown);
 				Draw.rect(region, dx, dy, type.rotation + type.id + ((alternate && i == 1 ? -Time.time : Time.time) * speed / deathSlowdownScl) + (360f / bladeCount * j));
-				drawCell(type, dx, dy, (360f / bladeCount * j));
+				drawCell(type, dx, dy, (360f / bladeCount * j), i);
 			}
 			
 			Draw.alpha(-type.slowdown + 1);
@@ -50,7 +50,7 @@ public class RotorDrawer {
 		}
 	}
 
-	public void drawCell(CopterComp unit, float x, float y, float rotation) {
+	public void drawCell(CopterComp unit, float x, float y, float rotation, int i) {
 		Draw.color(cellColor(unit));
 		Draw.rect(cellRegion, x, y, unit.rotation + rotation + unit.id + ((alternate && i == 1 ? -Time.time : Time.time) * speed / deathSlowdownScl));
 		Draw.reset();
