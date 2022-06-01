@@ -1204,6 +1204,31 @@ public class OblivionUnits{
 					speed = 17f;
 				}}
 			);
+			weapons.addAll(
+				new Weapon("oblivion-apollo-diffuse") {{
+					x = 0f;
+					y = 10f;
+					reload = 10f;
+					recoil = 1.5f;
+					shoot = new ShootSpread(5, 5f);
+					bullet = new BasicBulletType(2f, 20) {{
+						lifetime = 60f;
+						frontColor = Color.valueOf("BAF2B7");
+						backColor = Color.valueOf("87B085");
+					}};
+				}},
+				new Weapon("oblivion-apollo-laser") {{
+					x = 5f;
+					y = -5.5f;
+					reload = 60f;
+					recoil = 2f;
+					bullet = new LaserBulletType(50) {{
+						width = 12f;
+						length = 28f * 8f;
+						colors = new Color[]{Color.valueOf("BAF2B7"), Color.valueOf("87B085"), Color.white};
+					}};
+				}}
+			);
 		}};
 	}
 }

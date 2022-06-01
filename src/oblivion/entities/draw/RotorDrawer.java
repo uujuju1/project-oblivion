@@ -17,6 +17,7 @@ public class RotorDrawer {
 	public float speed = 1f;
 	public float deathSlowdownScl = 3f;
 	public int bladeCount = 4;
+	public boolean mirror = false, alternate = false;
 
 	public RotorDrawer(String suffix) {
 		this.suffix = suffix;
@@ -31,25 +32,27 @@ public class RotorDrawer {
 
 	public void draw(Unit unit) {
 		CopterComp type = ((CopterComp) unit);
-		float dx = type.x + Angles.trnsx(type.rotation - 90f, x, y);
-		float dy = type.y + Angles.trnsy(type.rotation - 90f, x, y);
-
-		for (int i = 0; i < bladeCount; i++) {
-			Draw.alpha(type.slowdown);
-			Draw.rect(region, dx, dy, type.rotation + type.id + (Time.time * speed / deathSlowdownScl) + (360f / bladeCount * i));
-			drawCell(type, dx, dy, (360f / bladeCount * i));
+		for (int i = mirror ? -1 : 0; i < mirror ? 2 : 1; i += mirror ? 2 : 1) {
+			float dx = type.x + Angles.trnsx(type.rotation - 90f, i * x, y);
+			float dy = type.y + Angles.trnsy(type.rotation - 90f, i * x, y);
+	
+			for (int i = 0; i < bladeCount; i++) {
+				Draw.alpha(type.slowdown);
+				Draw.rect(region, dx, dy, type.rotation + type.id + ((alternate && i == 1 ? -Time.time : Time.time) * speed / deathSlowdownScl) + (360f / bladeCount * i));
+				drawCell(type, dx, dy, (360f / bladeCount * i));
+			}
+			
+			Draw.alpha(-type.slowdown + 1);
+			Draw.rect(blurRegion, dx, dy, type.rotation + type.id + ((alternate && i == 1 ? -Time.time : Time.time) * speed));
+			
+			Draw.reset();
+			Draw.rect(topRegion, dx, dy, type.rotation - 90f);
 		}
-		
-		Draw.alpha(-type.slowdown + 1);
-		Draw.rect(blurRegion, dx, dy, type.rotation + type.id + (Time.time * speed));
-		
-		Draw.reset();
-		Draw.rect(topRegion, dx, dy, type.rotation - 90f);
 	}
 
 	public void drawCell(CopterComp unit, float x, float y, float rotation) {
 		Draw.color(cellColor(unit));
-		Draw.rect(cellRegion, x, y, unit.rotation + rotation + unit.id + (Time.time * speed / deathSlowdownScl));
+		Draw.rect(cellRegion, x, y, unit.rotation + rotation + unit.id + ((alternate && i == 1 ? -Time.time : Time.time) * speed / deathSlowdownScl));
 		Draw.reset();
 	}
 
