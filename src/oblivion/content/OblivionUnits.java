@@ -1182,6 +1182,7 @@ public class OblivionUnits{
 						lifetime = 100f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
+						collidesAir = collidesGround = collidesTiles = collides;
 					}};
 				}}
 			);
@@ -1249,6 +1250,35 @@ public class OblivionUnits{
 					speed = 20f;
 					bladeCount = 4;
 					mirror = true;
+				}}
+			);
+			weapons.addAll(
+				new Weapon("oblivion-zeus-cannon") {{
+					x = y = 0f;
+					reload = 60f;
+					recoil = 4f;
+					bullet = new ArtilleryBulletType(2f, 50) {{
+						lifetime = 128f;
+						frontColor = trailColor = Color.valueOf("BAF2B7");
+						backColor = Color.valueOf("87B085");
+						collidesAir = collidesGround = collidesTiles = collides;
+						bulletInterval = 10f;
+						intervalBullet = new LightningBulletType(){{
+							damage = 25;
+							lightningColor = Color.valueOf("BAF2B7");
+							lightningLength = 3;
+							lightningLengthRand = 6;
+							lightningType = new BulletType(0.0001f, 0f){{
+								lifetime = Fx.lightning.lifetime;
+								hitEffect = Fx.hitLancer;
+								despawnEffect = Fx.none;
+								status = StatusEffects.shocked;
+								statusDuration = 10f;
+								hittable = false;
+								lightColor = Color.valueOf("BAF2B7");
+							}};
+						}};
+					}};
 				}}
 			);
 		}};
