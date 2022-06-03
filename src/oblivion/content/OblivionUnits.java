@@ -1257,8 +1257,11 @@ public class OblivionUnits{
 					x = y = 0f;
 					reload = 60f;
 					recoil = 4f;
+					mirror = false;
+					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(2f, 50) {{
 						lifetime = 128f;
+						width = height = 20f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
 						collidesAir = collidesGround = collidesTiles = collides;
@@ -1278,6 +1281,91 @@ public class OblivionUnits{
 								lightColor = Color.valueOf("BAF2B7");
 							}};
 						}};
+					}};
+				}}
+			);
+			for (int i = -1; i < 2; i += 2) {
+				weapons.addAll(
+					new Weapon("oblivion-zeus-arc") {{
+						x = 8.5f;
+						y = 9.5f * i;
+						reload = 10f;
+						recoil = 2f;
+						shootSound = Sounds.spark;
+						bullet = new LightningBulletType(){{
+							damage = 70;
+							lightningColor = Color.valueOf("BAF2B7");
+							lightningLength = 3;
+							lightningLengthRand = 6;
+							lightningType = new BulletType(0.0001f, 0f){{
+								lifetime = Fx.lightning.lifetime;
+								hitEffect = Fx.hitLancer;
+								despawnEffect = Fx.none;
+								status = StatusEffects.shocked;
+								statusDuration = 10f;
+								hittable = false;
+								lightColor = Color.valueOf("BAF2B7");
+							}};
+						}};
+					}}
+				);
+			}
+		}};
+
+		chronos = new OblivionUnitType("chronos") {{
+			health = 25000f;
+			speed = 1f;
+			flying = true;
+			fallSpeed = 0.006f;
+			engineSize = 0f;
+			range = 38f * 8f;
+			hitSize = 32f;
+			maxRange = range;
+			rotors.addAll(
+				new RotorDrawer("-rotor") {{
+					x = 18f;
+					y = 4f;
+					speed = 25f;
+					bladeCount = 4;
+					mirror = true;
+				}},
+				new RotorDrawer("-rotor") {{
+					x = 0f;
+					y = -14f;
+					speed = 25f;
+					bladeCount = 4f;
+				}}
+			);
+			weapons.addAll(
+				new Weapon("oblivion-chronos-cannon") {{
+					x = y = 0f;
+					reload = 600f;
+					recoil = 6f;
+					mirror = false;
+					shootSound = Sounds.plasmadrop;
+					bullet = new BasicBulletType(1f, 200, "large-orb") {{
+						width = height = 30f;
+						lifetime = 10f;
+						trailInterval = 1
+						frontColor = trailColor = Color.valueOf("BAF2B7");
+						backColor = Color.valueOf("87B085");
+						drag = -0.01f;
+						trailChance = 5f;
+						trailWidth = 4f;
+						trailLength = 12;
+					}};
+				}},
+				new Weapon() {{
+					x = 12f;
+					y = 4f;
+					reload = 10f;
+					recoil = 0f;
+					shootSound = Sounds.shootBig;
+					bullet = new BasicBulletType(4f, 69, "missile-large") {{
+						width = height = 18f;
+						lifetime = 76f;
+						frontColor = trailColor = Color.valueOf("BAF2B7");
+						backColor = Color.valueOf("87B085");
 					}};
 				}}
 			);
