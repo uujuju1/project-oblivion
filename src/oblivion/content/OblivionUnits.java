@@ -1321,7 +1321,7 @@ public class OblivionUnits{
 			range = 38f * 8f;
 			hitSize = 32f;
 			maxRange = range;
-			rotors.addAll(
+			topDrawers.addAll(
 				new RotorDrawer("-rotor") {{
 					x = 18f;
 					y = 4f;
@@ -1333,7 +1333,7 @@ public class OblivionUnits{
 					x = 0f;
 					y = -14f;
 					speed = 25f;
-					bladeCount = 4f;
+					bladeCount = 4;
 				}}
 			);
 			weapons.addAll(
