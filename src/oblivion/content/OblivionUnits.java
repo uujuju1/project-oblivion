@@ -1282,34 +1282,52 @@ public class OblivionUnits{
 							}};
 						}};
 					}};
+				}},
+				new Weapon("oblivion-zeus-arc") {{
+					x = 8.5f;
+					y = 9.5f;
+					reload = 10f;
+					recoil = 2f;
+					shootSound = Sounds.spark;
+					bullet = new LightningBulletType(){{
+						damage = 70;
+						lightningColor = Color.valueOf("BAF2B7");
+						lightningLength = 3;
+						lightningLengthRand = 6;
+						lightningType = new BulletType(0.0001f, 0f){{
+							lifetime = Fx.lightning.lifetime;
+							hitEffect = Fx.hitLancer;
+							despawnEffect = Fx.none;
+							status = StatusEffects.shocked;
+							statusDuration = 10f;
+							hittable = false;
+							lightColor = Color.valueOf("BAF2B7");
+						}};
+					}};
+				}},
+				new Weapon("oblivion-zeus-arc") {{
+					x = 8.5f;
+					y = -9.5f;
+					reload = 10f;
+					recoil = 2f;
+					shootSound = Sounds.spark;
+					bullet = new LightningBulletType(){{
+						damage = 70;
+						lightningColor = Color.valueOf("BAF2B7");
+						lightningLength = 3;
+						lightningLengthRand = 6;
+						lightningType = new BulletType(0.0001f, 0f){{
+							lifetime = Fx.lightning.lifetime;
+							hitEffect = Fx.hitLancer;
+							despawnEffect = Fx.none;
+							status = StatusEffects.shocked;
+							statusDuration = 10f;
+							hittable = false;
+							lightColor = Color.valueOf("BAF2B7");
+						}};
+					}};
 				}}
 			);
-			for (int i = -1; i < 2; i += 2) {
-				weapons.addAll(
-					new Weapon("oblivion-zeus-arc") {{
-						x = 8.5f;
-						y = 9.5f * i;
-						reload = 10f;
-						recoil = 2f;
-						shootSound = Sounds.spark;
-						bullet = new LightningBulletType(){{
-							damage = 70;
-							lightningColor = Color.valueOf("BAF2B7");
-							lightningLength = 3;
-							lightningLengthRand = 6;
-							lightningType = new BulletType(0.0001f, 0f){{
-								lifetime = Fx.lightning.lifetime;
-								hitEffect = Fx.hitLancer;
-								despawnEffect = Fx.none;
-								status = StatusEffects.shocked;
-								statusDuration = 10f;
-								hittable = false;
-								lightColor = Color.valueOf("BAF2B7");
-							}};
-						}};
-					}}
-				);
-			}
 		}};
 
 		chronos = new OblivionUnitType("chronos") {{
