@@ -1346,7 +1346,6 @@ public class OblivionUnits{
 					bullet = new BasicBulletType(1f, 200, "large-orb") {{
 						width = height = 30f;
 						lifetime = 10f;
-						trailInterval = 1
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
 						drag = -0.01f;
