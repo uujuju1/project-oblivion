@@ -1339,6 +1339,7 @@ public class OblivionUnits{
 			range = 38f * 8f;
 			hitSize = 32f;
 			maxRange = range;
+			constructor = CopterComp::new;
 			topDrawers.addAll(
 				new RotorDrawer("-rotor") {{
 					x = 18f;
