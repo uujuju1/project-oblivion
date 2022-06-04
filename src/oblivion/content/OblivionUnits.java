@@ -1213,6 +1213,7 @@ public class OblivionUnits{
 					recoil = 1.5f;
 					mirror = false;
 					shoot = new ShootSpread(5, 5f);
+					shootSound = Sounds.bigshot;
 					bullet = new BasicBulletType(2f, 20) {{
 						lifetime = 60f;
 						frontColor = Color.valueOf("BAF2B7");
@@ -1225,6 +1226,7 @@ public class OblivionUnits{
 					reload = 60f;
 					recoil = 2f;
 					top = false;
+					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(50) {{
 						width = 12f;
 						length = 28f * 8f;
@@ -1367,7 +1369,6 @@ public class OblivionUnits{
 						lifetime = 10f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
-						drag = -0.01f;
 						trailChance = 5f;
 						trailWidth = 4f;
 						trailLength = 12;

@@ -13,6 +13,7 @@ import mindustry.content.*;
 import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import mindustry.world.draw.*;
+import mindustry.world.blocks.*;
 import mindustry.entities.part.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
@@ -57,9 +58,11 @@ public class OblivionBlocks {
 		// lamoni
 		coreVillage, coreMonarchy, coreEmpire,
 		niobiumDuct,
-		mantlePulverizer, hafniumSmelter, demineralizer,
+		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer,
 		vaccumPump, 
 		spread, reaction, evaporate,
+		sodaicFactory,
+		elevativeReconstructor,
 		niobiumCombustor,
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
 		imperialDrill;
@@ -1004,7 +1007,7 @@ public class OblivionBlocks {
 			size = 3;
 			health = 200;
 			range = 23f * 8f;
-			drawer = new DrawTurret("oblivion-hafronite-") {{
+			drawer = new DrawTurret() {{
 				parts.addAll(
 					new RegionPart("-cannon") {{
 						moveY = -2.5f;
@@ -1021,6 +1024,36 @@ public class OblivionBlocks {
 					hitColor = lightColor = flareColor = colors[2];
 				}}
 			);
+		}};
+
+		sodaicFactory = new UnitFactory("sodaic-factory") {{
+			requirements(Category.units, with(
+				OblivionResources.niobium, 30,
+				OblivionResources.hafnium, 50,
+				OblivionResources.sodium, 40
+			));
+			size = 3;
+			health = 200;
+			consumePower(2f);
+			plans.addAll(
+				new UnitPlan(OblivionUnits.mercurie, 60f * 60f, with(
+					OblivionResources.hafnium, 5,
+					OblivionResources.sodium, 7
+				))
+			);
+		}};
+
+		elevativeReconstructor = new Reconstructor("elevative-reconstructor") {{
+			requirements(Category.units, with(
+				OblivionResources.niobium, 60,
+				OblivionResources.hafnium, 80,
+				OblivionResources.sodium, 50
+			));
+			size = 3;
+			health = 350;
+			consumeItems(with(OblivionResources.hafnium, 30, OblivionResources.sodium, 50));
+			consumeLiquid(OblivionResources.xenonium, 2f);
+			consumePower(2f);
 		}};
 
 		niobiumWall = new Wall("niobium-wall") {{
@@ -1117,6 +1150,27 @@ public class OblivionBlocks {
 			outputItem = new ItemStack(OblivionResources.sodium, 2);
 		}};
 
+		xenoicMixer = new GenericCrafter("xenoicMixer") {{
+			requirements(Category.crafting, with(
+				OblivionResources.hafnium, 50
+				OblivionResources.sodium, 30
+			));
+			size = 3;
+			health = 160;
+			craftTime = 10;
+			drawer = new DrawMulti(
+				new DrawDefault(),
+				new DrawGlowRegion("-light"),
+				new DrawBlurSpin("-rotator")
+			);
+			consumeItems(with(
+				OblivionResources.niobium, 1
+				OblivionResources.sodium, 1
+			));
+			consumeLiquid(Liquids.water, 1f);
+			outputLiquid = new LiquidStack(OblivionResources.xenonium, 1f);
+		}};
+
 		niobiumCombustor = new ConsumeGenerator("niobium-combustor") {{
 			requirements(Category.power, with(
 				OblivionResources.niobium, 30
@@ -1138,6 +1192,7 @@ public class OblivionBlocks {
 			health = 120;
 			craftTime = 30f;
 			craftEffect = LamoniFx.waterSpill;
+			attribute = Attributes.water;
 			drawer = new DrawMulti(
 				new DrawRegion("-bottom"),
 				new DrawBlurSpin("-rotator", 15f),
