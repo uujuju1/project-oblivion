@@ -1152,7 +1152,7 @@ public class OblivionBlocks {
 
 		xenoicMixer = new GenericCrafter("xenoicMixer") {{
 			requirements(Category.crafting, with(
-				OblivionResources.hafnium, 50
+				OblivionResources.hafnium, 50,
 				OblivionResources.sodium, 30
 			));
 			size = 3;
@@ -1164,7 +1164,7 @@ public class OblivionBlocks {
 				new DrawBlurSpin("-rotator")
 			);
 			consumeItems(with(
-				OblivionResources.niobium, 1
+				OblivionResources.niobium, 1,
 				OblivionResources.sodium, 1
 			));
 			consumeLiquid(Liquids.water, 1f);
