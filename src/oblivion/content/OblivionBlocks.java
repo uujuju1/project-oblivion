@@ -1054,6 +1054,9 @@ public class OblivionBlocks {
 			consumeItems(with(OblivionResources.hafnium, 30, OblivionResources.sodium, 50));
 			consumeLiquid(OblivionResources.xenonium, 2f);
 			consumePower(2f);
+			upgrades.addAll(
+				new UnitType[]{OblivionUnits.mercurie, OblivionUnits.aphrodite}
+			);
 		}};
 
 		niobiumWall = new Wall("niobium-wall") {{
