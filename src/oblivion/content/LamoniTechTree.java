@@ -39,7 +39,7 @@ public class LamoniTechTree {
 
 			node(OblivionBlocks.spread, () -> {
 				node(OblivionBlocks.reaction, () -> {});
-				node(OblivionBlocks.evaporate, Seq.with(new Produce(OblivionResources.hafnium)));
+				node(OblivionBlocks.evaporate, Seq.with(new Produce(OblivionResources.hafnium)), () -> {});
 			});
 
 			node(OblivionBlocks.sodaicFactory, Seq.with(new Produce(OblivionResources.sodium)), () -> {

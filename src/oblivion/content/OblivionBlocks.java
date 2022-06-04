@@ -1161,7 +1161,7 @@ public class OblivionBlocks {
 			drawer = new DrawMulti(
 				new DrawDefault(),
 				new DrawGlowRegion("-light"),
-				new DrawBlurSpin("-rotator")
+				new DrawBlurSpin("-rotator", 20f)
 			);
 			consumeItems(with(
 				OblivionResources.niobium, 1,
@@ -1192,7 +1192,7 @@ public class OblivionBlocks {
 			health = 120;
 			craftTime = 30f;
 			craftEffect = LamoniFx.waterSpill;
-			attribute = Attributes.water;
+			attribute = Attribute.water;
 			drawer = new DrawMulti(
 				new DrawRegion("-bottom"),
 				new DrawBlurSpin("-rotator", 15f),
