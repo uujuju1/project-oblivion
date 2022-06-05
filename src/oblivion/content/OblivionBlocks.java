@@ -59,11 +59,12 @@ public class OblivionBlocks {
 		coreVillage, coreMonarchy, coreEmpire,
 		niobiumDuct,
 		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer,
-		vaccumPump, 
+		vaccumPump, presaltPump,
 		spread, reaction, evaporate,
 		sodaicFactory,
 		elevativeReconstructor,
 		niobiumCombustor,
+		lineNode,
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
 		imperialDrill;
 
@@ -1148,12 +1149,12 @@ public class OblivionBlocks {
 				OblivionResources.hafnium, 1,
 				OblivionResources.niobium, 2
 			));
-			consumeLiquid(Liquids.water, 10f);
+			consumeLiquid(Liquids.water, 0.1f);
 			consumePower(1f);
 			outputItem = new ItemStack(OblivionResources.sodium, 2);
 		}};
 
-		xenoicMixer = new GenericCrafter("xenoicMixer") {{
+		xenoicMixer = new GenericCrafter("xenoic-mixer") {{
 			requirements(Category.crafting, with(
 				OblivionResources.hafnium, 50,
 				OblivionResources.sodium, 30
@@ -1170,8 +1171,8 @@ public class OblivionBlocks {
 				OblivionResources.niobium, 1,
 				OblivionResources.sodium, 1
 			));
-			consumeLiquid(Liquids.water, 1f);
-			outputLiquid = new LiquidStack(OblivionResources.xenonium, 1f);
+			consumeLiquid(Liquids.water, 0.4f);
+			outputLiquid = new LiquidStack(OblivionResources.xenonium, 0.4f);
 		}};
 
 		niobiumCombustor = new ConsumeGenerator("niobium-combustor") {{
@@ -1184,6 +1185,16 @@ public class OblivionBlocks {
 			itemDuration = 180f;
 			drawer = new DrawMulti(new DrawDefault(), new DrawWarmupRegion());
 			consumeItems(with(OblivionResources.niobium, 1));
+		}};
+
+		lineNode = new BeamNode("line-node") {{
+			requirements(Category.power, with(
+				OblivionResources.niobium, 3
+			));
+			consumesPower = outputsPower = true;
+			health = 100;
+			consumePowerBuffered(1500f);
+			range = 12;
 		}};
 
 		vaccumPump = new AttributeCrafter("vaccum-pump") {{
@@ -1204,6 +1215,26 @@ public class OblivionBlocks {
 			);
 			consumePower(1f);
 			outputLiquid = new LiquidStack(Liquids.water, 15);
+		}};
+
+		presaltPump = new AttributeCrafter("presalt-pump") {{
+			requirements(Category.production, with(
+				OblivionResources.hafnium, 120,
+				OblivionResources.sodium, 75,
+				OblivionResources.niobium, 150
+			));
+			size = 2;
+			health = 200;
+			craftTime = 10f;
+			attribute = Attribute.oil;
+			drawer = new DrawMulti(
+				new DrawDefault(),
+				new DrawLiquidTile(Liquids.oil, 38f / 4f),
+				new DrawGlowRegion("-light"),
+				new DrawBlurSpin("-rotator", 20f)
+			);
+			consumePower(3f);
+			outputLiquid = new LiquidStack(Liquids.oil, 2f);
 		}};
 	}
 }

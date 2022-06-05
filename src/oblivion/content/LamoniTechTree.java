@@ -33,9 +33,11 @@ public class LamoniTechTree {
 				});
 			});
 
-			node(OblivionBlocks.niobiumCombustor, () -> {}); 
+			node(OblivionBlocks.niobiumCombustor); 
 
-			node(OblivionBlocks.imperialDrill, () -> {});
+			node(OblivionBlocks.imperialDrill);
+
+			node(OblivionBlocks.lineNode);
 
 			node(OblivionBlocks.spread, () -> {
 				node(OblivionBlocks.reaction, () -> {});
@@ -43,13 +45,13 @@ public class LamoniTechTree {
 			});
 
 			node(OblivionBlocks.sodaicFactory, Seq.with(new Produce(OblivionResources.sodium)), () -> {
-				node(OblivionUnits.mercurie, () -> {
-					node(OblivionUnits.aphrodite, Seq.with(new Research(OblivionBlocks.elevativeReconstructor)), () -> {});
+				node(OblivionUnits.mercurie);
+				node(OblivionBlocks.elevativeReconstructor, () -> {
+					node(OblivionUnits.aphrodite);
 				});
-				node(OblivionBlocks.elevativeReconstructor, () -> {});
 			});
 
-			node(OblivionBlocks.niobiumDuct, () -> {});
+			node(OblivionBlocks.niobiumDuct);
 
 			node(OblivionBlocks.niobiumWall, () -> {
 				node(OblivionBlocks.largeNiobiumWall, () -> {

@@ -13,8 +13,8 @@ public class OblivionEnvironment {
 		argeletine, goletenira, malenatite, paletolime, mudone,
 		argeletineWall, goleteniraWall, malenatiteWall, paletolimeWall, mudoneWall,
 		oreNiobium,
-		boronite, tarrobonite,
-		boroniteWall, tarroboniteWall;
+		boronite, tarrobonite, carmebonite,
+		boroniteWall, tarroboniteWall, carmeboniteWall;
 
 	public void load() {
 
@@ -78,8 +78,12 @@ public class OblivionEnvironment {
 		tarrobonite = new Floor("tarrobonite") {{
 			attributes.set(Attribute.oil, 2f);
 		}};
+		carmebonite = new Floor("carmebonite") {{
+			attributes.set(Attribute.oil, 1.75f);
+		}};
 
 		boroniteWall = new StaticWall("boronite-wall");
 		tarroboniteWall = new StaticWall("tarrobonite-wall");
+		carmeboniteWall = new StaticWall("carmebonite-wall");
 	}
 }

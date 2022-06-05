@@ -29,21 +29,32 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 	float scl = 5f;
 	float waterOffset = 0.07f;
 
+	Block pa = OblivionEnvironment.paletolime,
+		go = OblivionEnvironment.goletenira,
+		ar = OblivionEnvironment.argeletine,
+		ma = OblivionEnvironment.malenatite,
+		mu = OblvionEnvironment.mudone,
+		bo = OblivionEnvironment.boronite,
+		ta = OblivionEnvironment.tarrobonite,
+		ca = OblivionEnvironment.carmebonite,
+		gr = Blocks.grass,
+		st = Blocks.stone;
+
 	public Block[][] arr =
 	{
-		{OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime},
-		{OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime},
-		{OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.malenatite, OblivionEnvironment.paletolime, OblivionEnvironment.malenatite, OblivionEnvironment.paletolime, OblivionEnvironment.paletolime, OblivionEnvironment.goletenira, OblivionEnvironment.paletolime, OblivionEnvironment.malenatite, OblivionEnvironment.paletolime},
-		{OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, Blocks.stone},
-		{OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.goletenira, OblivionEnvironment.malenatite, OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira},
-		{OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.goletenira, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine, OblivionEnvironment.argeletine},
-		{OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.argeletine, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.argeletine},
-		{OblivionEnvironment.boronite, OblivionEnvironment.tarrobonite, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.boronite, OblivionEnvironment.mudone, OblivionEnvironment.tarrobonite, Blocks.stone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone, OblivionEnvironment.mudone},
-		{Blocks.stone, Blocks.stone, OblivionEnvironment.boronite, OblivionEnvironment.tarrobonite, OblivionEnvironment.boronite, Blocks.stone, OblivionEnvironment.tarrobonite, Blocks.stone, OblivionEnvironment.mudone, OblivionEnvironment.tarrobonite, OblivionEnvironment.boronite, OblivionEnvironment.tarrobonite, OblivionEnvironment.mudone},
-		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, OblivionEnvironment.tarrobonite, Blocks.stone, Blocks.stone, Blocks.stone, OblivionEnvironment.tarrobonite},
-		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone},
-		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone},
-		{Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone, Blocks.stone}
+		{pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa},
+		{pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa},
+		{pa, pa, pa, pa, ma, pa, ma, pa, pa, go, pa, ma, pa},
+		{ma, go, go, ma, go, go, ma, ma, go, ma, ma, go, st},
+		{go, ar, go, ma, go, ma, ar, go, go, ma, go, ar, go},
+		{mu, ar, go, ar, mu, ar, ar, ar, ar, ar, ar, ar, ar},
+		{mu, ar, mu, mu, mu, ar, mu, mu, mu, mu, mu, mu, ar},
+		{bo, ta, mu, mu, mu, bo, mu, ta, st, mu, mu, mu, mu},
+		{ca, st, bo, ta, bo, ca, ta, ca, mu, ta, bo, ta, mu},
+		{st, ca, ca, ca, ca, st, ca, st, ta, ca, ca, ca, ta},
+		{st, st, st, st, st, st, st, st, ca, st, st, st, ca},
+		{gr, st, gr, st, gr, st, gr, st, gr, st, gr, st, gr},
+		{gr, gr, gr, gr, gr, gr, gr, gr, gr, gr, gr, gr, gr}
 	};
 
 	float water = 0;
