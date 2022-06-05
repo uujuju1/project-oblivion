@@ -33,7 +33,7 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		go = OblivionEnvironment.goletenira,
 		ar = OblivionEnvironment.argeletine,
 		ma = OblivionEnvironment.malenatite,
-		mu = OblvionEnvironment.mudone,
+		mu = OblivionEnvironment.mudone,
 		bo = OblivionEnvironment.boronite,
 		ta = OblivionEnvironment.tarrobonite,
 		ca = OblivionEnvironment.carmebonite,
