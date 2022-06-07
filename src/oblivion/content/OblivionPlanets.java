@@ -58,6 +58,6 @@ public class OblivionPlanets {
 			meshLoader = () -> new HexMesh(this, 6);
 			accessible = true;
 			alwaysUnlocked = true;
-		}}
+		}};
 	}
 }
