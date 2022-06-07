@@ -28,19 +28,19 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	public float getHeight(Vec3 pos) {
-		return Mathf.max(minHeight, Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z));
+		return Math.max(minHeight, Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z));
 	}
 
 	@Override
 	public void generateSector(Sector sector) {}
 
 	@Override
-	public void getColor(Vec3 pos) {return getBlock(pos).mapColor;}
+	public Color getColor(Vec3 pos) {return getBlock(pos).mapColor;}
 
 	@Override
 	protected void generate() {
 		floor = Blocks.stone;
-		wall = Blocks.air;
+		block = Blocks.air;
 		ore = Blocks.air;
 	}
 }
