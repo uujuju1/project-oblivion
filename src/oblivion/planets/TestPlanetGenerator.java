@@ -37,6 +37,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				return heightMap[Mathf.clamp(i, 0, heightMap.length)];
 			}
 		}
+		return heightMap[heightMap.length];
 	}
 
 	@Override
