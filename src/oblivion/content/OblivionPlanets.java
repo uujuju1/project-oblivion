@@ -11,7 +11,7 @@ import oblivion.planets.*;
 public class OblivionPlanets {
 	public static Planet 
 	berenit,
-	lamoni, lonela;
+	lamoni, lonela, test;
 
 	public void load() {
 		berenit = new Planet("berenit", Planets.sun, 3f, 0) {{
@@ -53,5 +53,11 @@ public class OblivionPlanets {
 			alwaysUnlocked = true;
 			landCloudColor = Color.white.cpy().a(0.5f);
 		}};
+		test = new Planet("test", Planets.sun, 1f, 3) {{
+			generator = new TestPlanetGenerator();
+			meshLoader = () -> new HexMesh(this, 6);
+			accessible = true;
+			alwaysUnlocked = true;
+		}}
 	}
 }

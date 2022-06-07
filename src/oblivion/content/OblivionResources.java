@@ -13,7 +13,7 @@ public class OblivionResources {
 	public static Liquid xenonium;
 
 	public Seq<Item> lamoniItems = new Seq<>();
-	public Seq<Liqudi> lamoniLiquids = new Seq<>();
+	public Seq<Liquid> lamoniLiquids = new Seq<>();
 
 	public void load() {
 		// lonela
