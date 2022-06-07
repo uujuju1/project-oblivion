@@ -21,21 +21,36 @@ import oblivion.content.*;
 import static mindustry.Vars.*;
 
 public class TestPlanetGenerator extends PlanetGenerator {
-	public float heightScl = 1f, minHeight = 1f, octaves = 3, persistence = 0.5f;
+	public float heightScl = 1f, minHeight = 0.3f, octaves = 3, persistence = 0.5f;
 	public static int seed = 69; 
 
-	Block getBlock(Vec3 pos) {return Blocks.stone;}
+	public Block[] heightMap = {Blocks.water, Blocks.sand, Blocks.dirt, Blocks.stone, Blocks.snow};
+
+	float rawHeight(Vec3 pos) {
+		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
+	}
+
+	Block getBlock(Vec3 pos) {
+		float height = rawHeight(pos);
+		for (int i = 0; i < heightMap.length; i++) {
+			if (height < i && height > i + 1) {
+				return heightMap[Mathf.clamp(i, 0, heightMap.length)];
+			}
+		}
+	}
 
 	@Override
 	public float getHeight(Vec3 pos) {
-		return Math.max(minHeight, Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z));
+		return Math.max(minHeight, rawHeight());
 	}
 
 	@Override
 	public void generateSector(Sector sector) {}
 
 	@Override
-	public Color getColor(Vec3 pos) {return getBlock(pos).mapColor;}
+	public Color getColor(Vec3 pos) {
+		return getBlock(pos).mapColor;
+	}
 
 	@Override
 	protected void generate() {
