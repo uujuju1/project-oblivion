@@ -37,11 +37,11 @@ public class LamoniTechTree {
 			node(OblivionBlocks.mantlePulverizer, () -> {
 				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium), new Research(OblivionBlocks.expansion)), () -> {});
 				node(OblivionBlocks.vaccumPump, () -> {
-					node(OblivionBlocks.xenoicMixer, Seq.with(new Produce(OblivionResources.sodium),), () -> {});
+					node(OblivionBlocks.xenoicMixer, Seq.with(new Produce(OblivionResources.sodium) new Research(OblivionBlocks.evolution)), () -> {});
 					node(OblivionBlocks.presaltPump, Seq.with(new Produce(OblivionResources.xenonium)), () -> {});
 				});
 				node(OblivionBlocks.hafniumSmelter, () -> {
-					node(OblivionBlocks.plastaniumDensifier, Seq.with(new Produce(Liquids.oil), new Research(OblivionBlocks.evolution)), () -> {});
+					node(OblivionBlocks.plastaniumDensifier, Seq.with(new Produce(Liquids.oil), new Research(OblivionBlocks.finalization)), () -> {});
 				});
 			});
 

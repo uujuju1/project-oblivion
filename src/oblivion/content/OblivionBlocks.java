@@ -1215,7 +1215,7 @@ public class OblivionBlocks {
 			health = 250;
 			craftTime = 120f;
 			drawer = new DrawMulti(
-				new DrawDefault()
+				new DrawDefault(),
 				new DrawGlowRegion("-light")
 			);
 			consumeItems(with(
