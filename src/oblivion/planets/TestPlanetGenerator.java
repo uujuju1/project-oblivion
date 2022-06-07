@@ -31,9 +31,9 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	}
 
 	Block getBlock(Vec3 pos) {
-		float height = rawHeight(pos);
+		float height = rawHeight(pos) * heightMap.length;
 		for (int i = 0; i < heightMap.length; i++) {
-			if (height < i && height > i + 1) {
+			if (height > i && height < i + 1) {
 				return heightMap[Mathf.clamp(i, 0, heightMap.length)];
 			}
 		}
@@ -41,7 +41,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	public float getHeight(Vec3 pos) {
-		return Math.max(minHeight, rawHeight());
+		return Math.max(minHeight, rawHeight(pos));
 	}
 
 	@Override
