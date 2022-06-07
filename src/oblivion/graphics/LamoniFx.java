@@ -71,5 +71,26 @@ public class LamoniFx {
 		Angles.randLenVectors(e.id + 1, 5, 40f * e.finpow(), (x, y) -> {
 			Lines.circle(e.x + x, e.y + y, 5f * e.foutpow());
 		});
+	}),
+
+	copterShoot = new Effect(30f, e -> {
+		Draw.color(Pal.heal, Color.lightGray, Color.gray, e.fin());
+		Angles.randLenVectors(e.id, 5, e.finpow() * 6f, e.rotation, 20f, (x, y) -> {
+		  Fill.circle(e.x + x, e.y + y, e.fout() * 1.5f);
+		});
+	}),
+	copterShootBig = new Effect(30f, e -> {
+		Draw.color(Pal.heal, Color.lightGray, Color.gray, e.fin());
+		Angles.randLenVectors(e.id, 5, e.finpow() * 18f, e.rotation, 20f, (x, y) -> {
+		  Fill.circle(e.x + x, e.y + y, e.fout() * 3f);
+		});
+		Drawf.tri(e.x, e.y, 8f * e.fin(), 10f * e.fout(), e.rotation);
+		Drawf.tri(e.x, e.y, 8f * e.fin(), 10f * e.fout(), e.rotation + 180f);
+	}),
+	copterSparkShoot = new Effect(30f, e -> {
+		Draw.color(Pal.heal);
+		for(int i : Mathf.signs){
+		  Drawf.tri(e.x, e.y, 4f * e.fout(), 8f, e.rotation + 90f * i);
+		}
 	});
 }

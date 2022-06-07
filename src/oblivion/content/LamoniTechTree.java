@@ -22,14 +22,26 @@ public class LamoniTechTree {
 				});
 				nodeProduce(Liquids.water, () -> {
 					nodeProduce(OblivionResources.xenonium, Seq.with(new Produce(OblivionResources.sodium)), () -> {});
+					nodeProduce(Liquids.oil, () -> {});
+				});
+			});
+
+			node(OblivionBlocks.expansion, () -> {
+				node(OblivionBlocks.evolution, () -> {
+					node(OblivionBlocks.finalization, () -> {
+				
+					});
 				});
 			});
 
 			node(OblivionBlocks.mantlePulverizer, () -> {
-				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium)), () -> {});
-				node(OblivionBlocks.hafniumSmelter, () -> {});
+				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium), new Research(OblivionBlocks.expansion)), () -> {});
 				node(OblivionBlocks.vaccumPump, () -> {
-					node(OblivionBlocks.xenoicMixer, Seq.with(new Produce(OblivionResources.sodium)), () -> {});
+					node(OblivionBlocks.xenoicMixer, Seq.with(new Produce(OblivionResources.sodium),), () -> {});
+					node(OblivionBlocks.presaltPump, Seq.with(new Produce(OblivionResources.xenonium)), () -> {});
+				});
+				node(OblivionBlocks.hafniumSmelter, () -> {
+					node(OblivionBlocks.plastaniumDensifier, Seq.with(new Produce(Liquids.oil), new Research(OblivionBlocks.evolution)), () -> {});
 				});
 			});
 
@@ -46,8 +58,11 @@ public class LamoniTechTree {
 
 			node(OblivionBlocks.sodaicFactory, Seq.with(new Produce(OblivionResources.sodium)), () -> {
 				node(OblivionUnits.mercurie);
-				node(OblivionBlocks.elevativeReconstructor, () -> {
+				node(OblivionBlocks.elevativeReconstructor, Seq.with(new Produce(OblivionResources.xenonium)), () -> {
 					node(OblivionUnits.aphrodite);
+					node(OblivionBlocks.scalativeReconstructor, Seq.with(new Produce(Items.plastanium)), () -> {
+						node(OblivionUnits.apollo);
+					});
 				});
 			});
 

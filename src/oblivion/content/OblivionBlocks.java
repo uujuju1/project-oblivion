@@ -33,7 +33,7 @@ import static mindustry.type.ItemStack.*;
 
 public class OblivionBlocks {
 	public static Block 
-		start,
+		start, expansion, evolution, finalization,
 		// lonela
 		mesoForge, calonicKiln, 
 		uno, rain, granite,
@@ -58,11 +58,11 @@ public class OblivionBlocks {
 		// lamoni
 		coreVillage, coreMonarchy, coreEmpire,
 		niobiumDuct,
-		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer,
+		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer, plastaniumDensifier,
 		vaccumPump, presaltPump,
 		spread, reaction, evaporate,
 		sodaicFactory,
-		elevativeReconstructor,
+		elevativeReconstructor, scalativeReconstructor,
 		niobiumCombustor,
 		lineNode,
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
@@ -73,6 +73,21 @@ public class OblivionBlocks {
 			buildVisibility = BuildVisibility.debugOnly;
 			inEditor = false;
 			alwaysUnlocked = true;
+		}};
+		expansion = new Block("expansion"){{
+			buildVisibility = BuildVisibility.debugOnly;
+			inEditor = false;
+			researchCost = with(OblivionResources.niobium, 20000, OblivionResources.hafnium, 15000);
+		}};
+		evolution = new Block("evolution"){{
+			buildVisibility = BuildVisibility.debugOnly;
+			inEditor = false;
+			researchCost = with(OblivionResources.niobium, 70000, OblivionResources.hafnium, 25000, OblivionResources.sodium, 7000);
+		}};
+		finalization = new Block("finalization"){{
+			buildVisibility = BuildVisibility.debugOnly;
+			inEditor = false;
+			researchCost = with(OblivionResources.niobium, 120000, OblivionResources.hafnium, 60000, OblivionResources.sodium, 12000, Items.plastanium, 8500);
 		}};
 
 		mesoForge = new DrawableCrafter("meso-forge") {{
@@ -1052,11 +1067,29 @@ public class OblivionBlocks {
 			));
 			size = 3;
 			health = 350;
+			constructTime = 60f * 30f;
 			consumeItems(with(OblivionResources.hafnium, 30, OblivionResources.sodium, 50));
 			consumeLiquid(OblivionResources.xenonium, 2f);
 			consumePower(2f);
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.mercurie, OblivionUnits.aphrodite}
+			);
+		}};
+		scalativeReconstructor = new Reconstructor("scalative-reconstructor") {{
+			requirements(Category.units, with(
+				OblivionResources.niobium, 230,
+				OblivionResources.hafnium, 200,
+				OblivionResources.sodium, 180,
+				Items.plastanium, 150
+			));
+			size = 3;
+			health = 350;
+			constructTime = 60f * 50f;
+			consumeItems(with(Items.plastanium, 30, OblivionResources.sodium, 50));
+			consumeLiquid(OblivionResources.xenonium, 2.5f);
+			consumePower(2f);
+			upgrades.addAll(
+				new UnitType[]{OblivionUnits.aphrodite, OblivionUnits.apollo}
 			);
 		}};
 
@@ -1102,7 +1135,6 @@ public class OblivionBlocks {
 			consumePower(0.5f);
 			outputItem = new ItemStack(Items.sand, 1);
 		}};
-
 		hafniumSmelter = new GenericCrafter("hafnium-smelter") {{
 			requirements(Category.crafting, with(
 				OblivionResources.niobium, 150
@@ -1126,7 +1158,6 @@ public class OblivionBlocks {
 			consumePower(2f);
 			outputItem = new ItemStack(OblivionResources.hafnium, 5);
 		}};
-
 		demineralizer = new GenericCrafter("demineralizer") {{
 			requirements(Category.crafting, with(
 				OblivionResources.niobium, 150,
@@ -1153,13 +1184,12 @@ public class OblivionBlocks {
 			consumePower(1f);
 			outputItem = new ItemStack(OblivionResources.sodium, 2);
 		}};
-
 		xenoicMixer = new GenericCrafter("xenoic-mixer") {{
 			requirements(Category.crafting, with(
 				OblivionResources.hafnium, 50,
 				OblivionResources.sodium, 30
 			));
-			size = 3;
+			size = 2;
 			health = 160;
 			craftTime = 10;
 			drawer = new DrawMulti(
@@ -1172,7 +1202,29 @@ public class OblivionBlocks {
 				OblivionResources.sodium, 1
 			));
 			consumeLiquid(Liquids.water, 0.4f);
+			consumePower(2f);
 			outputLiquid = new LiquidStack(OblivionResources.xenonium, 0.4f);
+		}};
+		plastaniumDensifier = new GenericCrafter("plastanium-densifier") {{
+			requirements(Category.crafting, with(
+				OblivionResources.hafnium, 120,
+				OblivionResources.niobium, 150,
+				OblivionResources.sodium, 80
+			));
+			size = 4;
+			health = 250;
+			craftTime = 120f;
+			drawer = new DrawMulti(
+				new DrawDefault()
+				new DrawGlowRegion("-light")
+			);
+			consumeItems(with(
+				OblivionResources.hafnium, 4,
+				OblivionResources.sodium, 2
+			));
+			consumeLiquid(Liquids.oil, 0.01f);
+			consumePower(2f);
+			outputItem = new ItemStack(Items.plastanium, 3);
 		}};
 
 		niobiumCombustor = new ConsumeGenerator("niobium-combustor") {{
@@ -1223,7 +1275,7 @@ public class OblivionBlocks {
 				OblivionResources.sodium, 75,
 				OblivionResources.niobium, 150
 			));
-			size = 2;
+			size = 3;
 			health = 200;
 			craftTime = 10f;
 			attribute = Attribute.oil;
