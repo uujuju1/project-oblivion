@@ -57,8 +57,8 @@ public class OblivionBlocks {
 
 		// lamoni
 		coreVillage, coreMonarchy, coreEmpire,
-		niobiumDuct,
-		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer, plastaniumDensifier,
+		niobiumDuct, niobiumRouter, niobiumBridge,
+		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer, plastaniumDensifier, poloniumCollider, /*surgeCharger,*/
 		vaccumPump, presaltPump,
 		spread, reaction, evaporate,
 		sodaicFactory,
@@ -923,6 +923,16 @@ public class OblivionBlocks {
 		niobiumDuct = new Duct("niobium-duct") {{
 			requirements(Category.distribution, with(OblivionResources.niobium, 1));
 			health = 120;
+			speed = 3.5f;
+		}};
+		niobiumRouter = new DuctRouter("niobium-router") {{
+			requirements(Category.distribution, with(OblivionResources.niobium, 3));
+			health = 140;
+			speed = 3.5f;
+		}};
+		niobiumBridge = new DuctBridge("niobium-bridge") {{
+			requirements(Category.distribution, with(OblivionResources.niobium, 8));
+			health = 140;
 			speed = 3.5f;
 		}};
 

@@ -16,9 +16,14 @@ public class LamoniTechTree {
 	public void load() {
 		OblivionPlanets.lamoni.techTree = nodeRoot("lamoni", OblivionBlocks.coreVillage, true, () -> {
 			nodeProduce(OblivionResources.niobium, () -> {
-				nodeProduce(OblivionResources.sodium, Seq.with(new Produce(OblivionResources.hafnium)), () -> {});
+				nodeProduce(OblivionResources.sodium, Seq.with(new Produce(OblivionResources.hafnium)), () -> {
+					nodeProduce(OblivionResources.polonium, Seq.with(new Produce(Items.plastanium)));
+					nodeProduce(Items.surgeAlloy, Seq.with(new Produce(OblivionResources.polonium)));
+				});
 				nodeProduce(Items.sand, () -> {
-					nodeProduce(OblivionResources.hafnium, () -> {});
+					nodeProduce(OblivionResources.hafnium, () -> {
+						nodeProduce(Items.plastanium, () -> {});
+					});
 				});
 				nodeProduce(Liquids.water, () -> {
 					nodeProduce(OblivionResources.xenonium, Seq.with(new Produce(OblivionResources.sodium)), () -> {});
@@ -66,11 +71,19 @@ public class LamoniTechTree {
 				});
 			});
 
-			node(OblivionBlocks.niobiumDuct);
+			node(OblivionBlocks.niobiumDuct, () -> {
+				node(OblivionBlocks.niobiumRouter, () -> {
+					node(OblivionBlocks.niobiumBridge, () -> {});
+				});
+			});
 
 			node(OblivionBlocks.niobiumWall, () -> {
 				node(OblivionBlocks.largeNiobiumWall, () -> {
 					node(OblivionBlocks.hugeNiobiumWall, () -> {});
+				});
+				node(Blocks.plastaniumWall, Seq.with(new Produce(Items.plastanium)), () -> {
+					node(Blocks.plastaniumWallLarge, () -> {});
+					
 				});
 			});
 		});

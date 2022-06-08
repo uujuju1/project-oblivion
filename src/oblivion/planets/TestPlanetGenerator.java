@@ -24,7 +24,19 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	public float heightScl = 1f, minHeight = 0.3f, octaves = 3, persistence = 0.5f;
 	public static int seed = 69; 
 
-	public Block[] heightMap = {Blocks.water, Blocks.sand, Blocks.dirt, Blocks.stone, Blocks.snow};
+	public Block[] heightMap = 
+		{
+		OblivionEnvironment.paletolime,
+		OblivionEnvironment.malenatite,
+		OblivionEnvironment.goletenira, 
+		OblivionEnvironment.argeletine,
+		OblivionEnvironment.mudone,
+		OblivionEnvironment.tarrobonite,
+		OblivionEnvironment.tarrobonite,
+		OblivionEnvironment.boronite,
+		OblivionEnvironment.boronite,
+		OblivionEnvironment.carmebonite
+		};
 
 	float rawHeight(Vec3 pos) {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
