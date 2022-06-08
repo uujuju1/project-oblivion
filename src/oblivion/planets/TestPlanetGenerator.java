@@ -21,8 +21,10 @@ import oblivion.content.*;
 import static mindustry.Vars.*;
 
 public class TestPlanetGenerator extends PlanetGenerator {
-	public float heightScl = 1f, minHeight = 0.3f, octaves = 3, persistence = 0.5f;
-	public static int seed = 69; 
+	public float heightScl = 1f, minHeight = 0.1f, octaves = 12, persistence = 0.5f;
+	public float tempScl = 1f, tempOctaves = 3, tempPersistence = 0.5f;
+	public float dustScl = 1f, dustOctaves = 6, dustPersistence = 0.5f;
+	public static int seed = 69, tempSeed = 420, dustSeed = 96; 
 
 	public Block[] heightMap = 
 		{
@@ -38,6 +40,15 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		OblivionEnvironment.carmebonite
 		};
 
+	// bigger value, more powder'ish the ground is
+	float getDustyness(Vec3 pos) {
+		return Simplex.noise3d(dustSeed, dustOctaves, dustPersistence, dustScl, pos.x, pos.y, pos.z);
+	}
+	// bigger value, colder it is
+	float getTemperature(Vec3 pos) {
+		return Simplex.noise3d(tempSeed, tempOctaves, tempPersistence, tempScl, pos.x, pos.y, pos.z);
+	}
+ 
 	float rawHeight(Vec3 pos) {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
@@ -46,7 +57,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float height = rawHeight(pos) * heightMap.length;
 		for (int i = 0; i < heightMap.length; i++) {
 			if (height > i && height < i + 1) {
-				return heightMap[Mathf.clamp(i, 0, heightMap.length)];
+				return heightMap[Mathf.clamp(i - getDustyness() + getTemperature(), 0, heightMap.length)];
 			}
 		}
 		return heightMap[heightMap.length];
@@ -67,8 +78,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected void generate() {
-		floor = Blocks.stone;
-		block = Blocks.air;
-		ore = Blocks.air;
+		pass((x, y) -> {
+			floor = Blocks.stone;
+			block = Blocks.air;
+			ore = Blocks.air;
+		});
+
+		Schematics.placeLaunchLoadout(50, 50);
 	}
 }

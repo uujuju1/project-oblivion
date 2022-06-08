@@ -1204,16 +1204,18 @@ public class OblivionBlocks {
 			craftTime = 10;
 			drawer = new DrawMulti(
 				new DrawDefault(),
-				new DrawGlowRegion("-light"),
+				new DrawGlowRegion("-light") {{
+					color = Color.valueOf("E6D6FF").cpy();
+				}},
 				new DrawBlurSpin("-rotator", 20f)
 			);
 			consumeItems(with(
 				OblivionResources.niobium, 1,
 				OblivionResources.sodium, 1
 			));
-			consumeLiquid(Liquids.water, 0.4f);
+			consumeLiquid(Liquids.water, 0.2f);
 			consumePower(2f);
-			outputLiquid = new LiquidStack(OblivionResources.xenonium, 0.4f);
+			outputLiquid = new LiquidStack(OblivionResources.xenonium, 0.2f);
 		}};
 		plastaniumDensifier = new GenericCrafter("plastanium-densifier") {{
 			requirements(Category.crafting, with(
@@ -1226,15 +1228,47 @@ public class OblivionBlocks {
 			craftTime = 120f;
 			drawer = new DrawMulti(
 				new DrawDefault(),
-				new DrawGlowRegion("-light")
+				new DrawGlowRegion("-light") {{
+					color = Pal.heal.cpy();
+				}}
 			);
 			consumeItems(with(
 				OblivionResources.hafnium, 4,
 				OblivionResources.sodium, 2
 			));
-			consumeLiquid(Liquids.oil, 0.01f);
+			consumeLiquid(Liquids.oil, 0.016f);
 			consumePower(2f);
 			outputItem = new ItemStack(Items.plastanium, 3);
+		}};
+		poloniumCollider = new GenericCrafter("polonium-collider") {{
+			requirements(Category.crafting, with(
+				OblivionResources.niobium, 250
+				OblivionResources.hafnium, 300,
+				OblivionResources.sodium, 150,
+				Items.plastanium, 120
+			));
+			size = 4;
+			health = 250;
+			craftTime = 180f;
+			drawer = new DrawMulti(
+				new DrawRegion("-bottom"),
+				new DrawArcSmelt() {{
+					flameRad = 2f;
+					circleSpace = 4f;
+					flameRadiusScl = 6f;
+					flameRadiusMag = 0.6f;
+					circleStroke = 3f;
+				}},
+				new DrawDefault(),
+				new DrawGlowRegion("-light") {{
+					color = Pal.accent.cpy();
+				}}
+			);
+			consumeItems(with(
+				OblivionResources.hafnium, 3,
+				OblivionResources.sodium, 5
+			));
+			consumeLiquid(OblivionResources.xenonium, 0.1f);
 		}};
 
 		niobiumCombustor = new ConsumeGenerator("niobium-combustor") {{
@@ -1276,7 +1310,7 @@ public class OblivionBlocks {
 				new DrawDefault()
 			);
 			consumePower(1f);
-			outputLiquid = new LiquidStack(Liquids.water, 15);
+			outputLiquid = new LiquidStack(Liquids.water, 0.25f);
 		}};
 
 		presaltPump = new AttributeCrafter("presalt-pump") {{
@@ -1292,11 +1326,13 @@ public class OblivionBlocks {
 			drawer = new DrawMulti(
 				new DrawDefault(),
 				new DrawLiquidTile(Liquids.oil, 38f / 4f),
-				new DrawGlowRegion("-light"),
+				new DrawGlowRegion("-light") {{
+					color = Pal.heal.cpy();
+				}},
 				new DrawBlurSpin("-rotator", 20f)
 			);
 			consumePower(3f);
-			outputLiquid = new LiquidStack(Liquids.oil, 2f);
+			outputLiquid = new LiquidStack(Liquids.oil, 0.2f);
 		}};
 	}
 }
