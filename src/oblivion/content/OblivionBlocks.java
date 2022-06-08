@@ -58,7 +58,7 @@ public class OblivionBlocks {
 		// lamoni
 		coreVillage, coreMonarchy, coreEmpire,
 		niobiumDuct, niobiumRouter, niobiumBridge,
-		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer, plastaniumDensifier, poloniumCollider, /*surgeCharger,*/
+		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer, plastaniumDensifier, poloniumCollider, surgeCharger,
 		vaccumPump, presaltPump,
 		spread, reaction, evaporate,
 		sodaicFactory,
@@ -1261,7 +1261,7 @@ public class OblivionBlocks {
 				}},
 				new DrawDefault(),
 				new DrawGlowRegion("-light") {{
-					color = Pal.accent.cpy();
+					color = Color.valueOf("E6D6FF").cpy();
 				}}
 			);
 			consumeItems(with(
@@ -1269,6 +1269,44 @@ public class OblivionBlocks {
 				OblivionResources.sodium, 5
 			));
 			consumeLiquid(OblivionResources.xenonium, 0.1f);
+			consumePower(2.5f);
+			outputItem = new ItemStack(OblivionResources.polonium, 4);
+		}};
+		surgeCharger = new GenericCrafter("surge-charger") {{
+			requirements(Category.crafting, with(
+				OblivionResources.polonium, 350,
+				OblivionResources.hafnium, 400,
+				OblivionResources.sodium, 450,
+				OblivionResources.niobium, 500,
+				Items.plastanium, 300
+			));
+			size = 5;
+			health = 400;
+			craftTime = 90f;
+			drawer = new DrawMulti(
+				new DrawRegion("-bottom"),
+				new DrawArcSmelt() {{
+					flameRad = 2f;
+					circleSpace = 4f;
+					flameRadiusScl = 6f;
+					flameRadiusMag = 0.6f;
+					circleStroke = 3f;
+				}},
+				new DrawDefault(),
+				new DrawGlowRegion() {{
+					color = Pal.accent.cpy();
+				}},
+				new DrawGlowRegion() {{
+					color = Pal.accent.cpy();
+				}}
+			);
+			consumeItems(with(
+				OblivionResources.polonium, 5,
+				Items.plastanium, 4
+			));
+			consumeLiquid(Liquids.water, 0.4f);
+			consumesPower(5f);
+			outputItem = new ItemStack(Items.surgeAlloy, 3);
 		}};
 
 		niobiumCombustor = new ConsumeGenerator("niobium-combustor") {{

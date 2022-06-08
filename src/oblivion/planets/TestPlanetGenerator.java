@@ -85,10 +85,10 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		});
 		if (temp < 0.5) {
 			pass((x, y) -> {
-				float noise = noise(x, y, 3, 0.5f, 2f, 1f);
+				float noise = noise(x, y, 3, 0.5f, 280f, 1f);
 				if (noise > 0.7f) {
 					floor = OblivionEnvironment.boronite;
-					if (noise > 0.85f) {
+					if (noise > 0.9f) {
 						floor = OblivionEnvironment.tarrobonite;
 					}
 				} else {
