@@ -17,8 +17,8 @@ public class LamoniTechTree {
 		OblivionPlanets.lamoni.techTree = nodeRoot("lamoni", OblivionBlocks.coreVillage, true, () -> {
 			nodeProduce(OblivionResources.niobium, () -> {
 				nodeProduce(OblivionResources.sodium, Seq.with(new Produce(OblivionResources.hafnium)), () -> {
-					nodeProduce(OblivionResources.polonium, Seq.with(new Produce(Items.plastanium)));
-					nodeProduce(Items.surgeAlloy, Seq.with(new Produce(OblivionResources.polonium)));
+					nodeProduce(OblivionResources.polonium, Seq.with(new Produce(Items.plastanium)), () -> {});
+					nodeProduce(Items.surgeAlloy, Seq.with(new Produce(OblivionResources.polonium)), () -> {});
 				});
 				nodeProduce(Items.sand, () -> {
 					nodeProduce(OblivionResources.hafnium, () -> {
@@ -83,7 +83,7 @@ public class LamoniTechTree {
 				});
 				node(Blocks.plastaniumWall, Seq.with(new Produce(Items.plastanium)), () -> {
 					node(Blocks.plastaniumWallLarge, () -> {});
-					
+
 				});
 			});
 		});
