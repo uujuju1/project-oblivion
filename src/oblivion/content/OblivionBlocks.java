@@ -1242,7 +1242,7 @@ public class OblivionBlocks {
 		}};
 		poloniumCollider = new GenericCrafter("polonium-collider") {{
 			requirements(Category.crafting, with(
-				OblivionResources.niobium, 250
+				OblivionResources.niobium, 250,
 				OblivionResources.hafnium, 300,
 				OblivionResources.sodium, 150,
 				Items.plastanium, 120
