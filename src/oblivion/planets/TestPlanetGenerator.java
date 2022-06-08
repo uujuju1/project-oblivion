@@ -94,7 +94,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				} else {
 					floor = OblivionEnvironment.carmebonite;	
 				}
-			})
+			});
 		}
 		Schematics.placeLaunchLoadout(50, 50);
 	}
