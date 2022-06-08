@@ -57,7 +57,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float height = rawHeight(pos) * heightMap.length;
 		for (int i = 0; i < heightMap.length; i++) {
 			if (height > i && height < i + 1) {
-				return heightMap[Mathf.clamp(((int) i - getDustyness(pos) + getTemperature(pos)), 0, heightMap.length)];
+				return heightMap[(int) Mathf.clamp(i - getDustyness(pos) + getTemperature(pos), 0, heightMap.length)];
 			}
 		}
 		return heightMap[heightMap.length];
