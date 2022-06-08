@@ -78,12 +78,24 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected void generate() {
-		pass((x, y) -> {
-			floor = Blocks.stone;
-			block = Blocks.air;
-			ore = Blocks.air;
-		});
+		float temp = getTemperature(sector.tile.v);
 
+		pass((x, y) -> {
+			floor = OblivionEnvironment.paletolime;
+		});
+		if (temp < 0.5) {
+			pass((x, y) -> {
+				float noise = noise(x, y, 3, 0.5f, 2f, 1f);
+				if (noise > 0.7f) {
+					floor = OblivionEnvironment.boronite;
+					if (noise > 0.85f) {
+						floor = OblivionEnvironment = tarrobonite;
+					}
+				} else {
+					floor = OblivionEnvironment.carmebonite;	
+				}
+			})
+		}
 		Schematics.placeLaunchLoadout(50, 50);
 	}
 }
