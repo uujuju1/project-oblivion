@@ -89,7 +89,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				if (noise > 0.7f) {
 					floor = OblivionEnvironment.boronite;
 					if (noise > 0.85f) {
-						floor = OblivionEnvironment = tarrobonite;
+						floor = OblivionEnvironment.tarrobonite;
 					}
 				} else {
 					floor = OblivionEnvironment.carmebonite;	
