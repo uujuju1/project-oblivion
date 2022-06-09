@@ -56,16 +56,28 @@ public class OblivionBlocks {
 		alphaReconstructor, betaReconstructor, gammaReconstructor, omegaReconstructor,
 
 		// lamoni
-		coreVillage, coreMonarchy, coreEmpire,
+		coreVillage,
+
 		niobiumDuct, niobiumRouter, niobiumBridge,
-		mantlePulverizer, hafniumSmelter, demineralizer, xenoicMixer, plastaniumDensifier, poloniumCollider, surgeCharger,
+
+		mantlePulverizer, hafniumSmelter, demineralizer,
+		xenoicMixer, plastaniumDensifier, poloniumCollider,
+		surgeCharger,
+
 		vaccumPump, presaltPump,
+
 		spread, reaction, evaporate,
+
 		sodaicFactory,
-		elevativeReconstructor, scalativeReconstructor,
+
+		elevativeReconstructor, scalativeReconstructor, ascenditeReconstructor, skinialReconstructor,
+
 		niobiumCombustor,
+
 		lineNode,
+
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
+
 		imperialDrill;
 
 	public void load() {
@@ -1080,7 +1092,7 @@ public class OblivionBlocks {
 			constructTime = 60f * 30f;
 			consumeItems(with(OblivionResources.hafnium, 30, OblivionResources.sodium, 50));
 			consumeLiquid(OblivionResources.xenonium, 2f);
-			consumePower(2f);
+			consumePower(5f);
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.mercurie, OblivionUnits.aphrodite}
 			);
@@ -1092,16 +1104,53 @@ public class OblivionBlocks {
 				OblivionResources.sodium, 180,
 				Items.plastanium, 150
 			));
-			size = 3;
+			size = 5;
 			health = 350;
 			constructTime = 60f * 50f;
 			consumeItems(with(Items.plastanium, 30, OblivionResources.sodium, 50));
 			consumeLiquid(OblivionResources.xenonium, 2.5f);
-			consumePower(2f);
+			consumePower(9f);
 			upgrades.addAll(
 				new UnitType[]{OblivionUnits.aphrodite, OblivionUnits.apollo}
 			);
 		}};
+		ascenditeReconstructor = new Reconstructor("ascendite-reconstructor") {{
+			requirements(Category.units, with(
+				OblivionResources.niobium, 540,
+				OblivionResources.hafnium, 450,
+				OblivionResources.sodium, 300,
+				OblivionResources.polonium, 600
+				Items.plastanium, 350
+			));
+			size = 7;
+			health = 800;
+			constructTime = 60f * 120f;
+			consumeItems(with(Items.plastanium, 120, OblivionResources.sodium, 180, OblivionResources.polonium, 220));
+			consumeLiquid(OblivionResources.xenonium, 4f);
+			consumePower(15f);
+			upgrades.addAll(
+				new UnitType[]{OblivionUnits.apollo, OblivionUnits.zeus}
+			);
+		}};
+		skynialReconstructor = new Reconstructor("skynial-reconstructor") {{
+			requirements(Category.units, with(
+				OblivionResources.niobium, 1500,
+				OblivionResources.hafnium, 850,
+				OblivionResources.sodium, 900,
+				OblivionResources.polonium, 1200
+				Items.plastanium, 1350
+			));
+			size = 9;
+			health = 1500;
+			constructTime = 60f * 180f;
+			consumeItems(with(Items.plastanium, 350, OblivionResources.sodium, 280, OblivionResources.polonium, 500, Items.surgeAlloy, 400));
+			consumeLiquid(OblivionResources.xenonium, 8f);
+			consumePower(20f);
+			upgrades.addAll(
+				new UnitType[]{OblivionUnits.zeus, OblivionUnits.chronos}
+			);
+		}};
+
 
 		niobiumWall = new Wall("niobium-wall") {{
 			requirements(Category.defense, with(
@@ -1293,10 +1342,10 @@ public class OblivionBlocks {
 					circleStroke = 3f;
 				}},
 				new DrawDefault(),
-				new DrawGlowRegion() {{
+				new DrawGlowRegion("-light") {{
 					color = Pal.accent.cpy();
 				}},
-				new DrawGlowRegion() {{
+				new DrawGlowRegion("-vent") {{
 					color = Pal.accent.cpy();
 				}}
 			);

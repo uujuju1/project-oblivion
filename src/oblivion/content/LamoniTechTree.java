@@ -17,8 +17,8 @@ public class LamoniTechTree {
 		OblivionPlanets.lamoni.techTree = nodeRoot("lamoni", OblivionBlocks.coreVillage, true, () -> {
 			nodeProduce(OblivionResources.niobium, () -> {
 				nodeProduce(OblivionResources.sodium, Seq.with(new Produce(OblivionResources.hafnium)), () -> {
-					nodeProduce(OblivionResources.polonium, Seq.with(new Produce(Items.plastanium)), () -> { });
-					nodeProduce(Items.surgeAlloy, Seq.with(new Produce(OblivionResources.polonium)), () -> { });
+					nodeProduce(OblivionResources.polonium, Seq.with(new Produce(Items.plastanium)), () -> {});
+					nodeProduce(Items.surgeAlloy, Seq.with(new Produce(OblivionResources.polonium)), () -> {});
 				});
 				nodeProduce(Items.sand, () -> {
 					nodeProduce(OblivionResources.hafnium, () -> {
@@ -40,7 +40,10 @@ public class LamoniTechTree {
 			});
 
 			node(OblivionBlocks.mantlePulverizer, () -> {
-				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium), new Research(OblivionBlocks.expansion)), () -> {});
+				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium), new Research(OblivionBlocks.expansion)), () -> {
+					node(OblivionBlocks.poloniumCollider, Seq.with(new Research(OblivionBlocks.plastanium)), () -> {});
+					node(OblivionBlocks.surgeCharger, Seq.with(new Research(OblivionBlocks.poloniumCollider)), () -> {});
+				});
 				node(OblivionBlocks.vaccumPump, () -> {
 					node(OblivionBlocks.xenoicMixer, Seq.with(new Produce(OblivionResources.sodium), new Research(OblivionBlocks.evolution)), () -> {});
 					node(OblivionBlocks.presaltPump, Seq.with(new Produce(OblivionResources.xenonium)), () -> {});
@@ -67,6 +70,12 @@ public class LamoniTechTree {
 					node(OblivionUnits.aphrodite);
 					node(OblivionBlocks.scalativeReconstructor, Seq.with(new Produce(Items.plastanium)), () -> {
 						node(OblivionUnits.apollo);
+						node(OblivionBlocks.ascenditeReconstructor, Seq.with(new Produce(OblivionResources.polonium)), () -> {
+							node(OblivionUnits.zeus);
+							node(OblivionBlocks.skinialReconstructor, Seq.with(new Produce(Items.surgeAlloy)), () -> {
+								node(OblivionUnits.chronons);
+							});
+						});
 					});
 				});
 			});
