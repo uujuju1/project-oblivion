@@ -1132,7 +1132,7 @@ public class OblivionBlocks {
 				new UnitType[]{OblivionUnits.apollo, OblivionUnits.zeus}
 			);
 		}};
-		skynialReconstructor = new Reconstructor("skynial-reconstructor") {{
+		skinialReconstructor = new Reconstructor("skinial-reconstructor") {{
 			requirements(Category.units, with(
 				OblivionResources.niobium, 1500,
 				OblivionResources.hafnium, 850,
@@ -1354,7 +1354,7 @@ public class OblivionBlocks {
 				Items.plastanium, 4
 			));
 			consumeLiquid(Liquids.water, 0.4f);
-			consumesPower(5f);
+			consumePower(5f);
 			outputItem = new ItemStack(Items.surgeAlloy, 3);
 		}};
 
