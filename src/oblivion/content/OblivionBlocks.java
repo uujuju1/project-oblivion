@@ -1119,7 +1119,7 @@ public class OblivionBlocks {
 				OblivionResources.niobium, 540,
 				OblivionResources.hafnium, 450,
 				OblivionResources.sodium, 300,
-				OblivionResources.polonium, 600
+				OblivionResources.polonium, 600,
 				Items.plastanium, 350
 			));
 			size = 7;
@@ -1137,7 +1137,7 @@ public class OblivionBlocks {
 				OblivionResources.niobium, 1500,
 				OblivionResources.hafnium, 850,
 				OblivionResources.sodium, 900,
-				OblivionResources.polonium, 1200
+				OblivionResources.polonium, 1200,
 				Items.plastanium, 1350
 			));
 			size = 9;
