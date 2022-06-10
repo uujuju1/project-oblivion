@@ -80,11 +80,20 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	protected void generate() {
 		float temp = getTemperature(sector.tile.v);
 		float dust = getDustyness(sector.tile.v);
-		float height = getDustyness(sector.tile.v);
+		float height = rawHeight(sector.tile.v);
 
 		pass((x, y) -> {
 			floor = getBlock(sector.tile.v);
 		});
+
+		pass((x, y) -> {
+			float noise = noise(x, y, 7, 0.8f, 280f, 1f);
+
+			if (temp < 0.7f && dust > 0.7f && height > 0.3f && noise > 0.5f ) {
+				floor = OblivionEnvironment.boronite;
+			}
+		});
+
 		Schematics.placeLaunchLoadout(50, 50);
 	}
 }

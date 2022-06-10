@@ -1132,10 +1132,18 @@ public class OblivionUnits{
 					reload = 10f;
 					recoil = 0.5f;
 					top = false;
+					shootSound = Sounds.lasershoot;
 					bullet = new BasicBulletType(2f, 15) {{
 						lifetime = 80f;
-						frontColor = Color.valueOf("BAF2B7");
+						shootEffect = LamoniFx.coptetShoot;
+						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
+						weaveScale = 2f;
+						weaveMag = 5f;
+						trailEffect = LamoniFx.copterTrail;
+						trailInterval = 5f;
+						trailWidth = 1.8f;
+						trailLength = 12;
 					}};
 				}}
 			);
@@ -1167,8 +1175,15 @@ public class OblivionUnits{
 					shootSound = Sounds.missile;
 					bullet = new MissileBulletType(2.5f, 30) {{
 						lifetime = 80f;
+						shootEffect = LamoniFx.coptetShoot;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
+						weaveScale = 2f;
+						weaveMag = 5f;
+						trailEffect = LamoniFx.copterTrail;
+						trailInterval = 5f;
+						trailWidth = 1.8f;
+						trailLength = 12;
 					}};
 				}},
 				new Weapon("oblivion-aphrodite-mount") {{
@@ -1180,6 +1195,8 @@ public class OblivionUnits{
 					maxRange = 12.5f * 8f;
 					bullet = new ArtilleryBulletType(1f, 13) {{
 						lifetime = 100f;
+						shootEffect = LamoniFx.copterShootBig;
+						width = height = 10f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
 						collidesAir = collidesGround = collidesTiles = collides;
@@ -1216,8 +1233,15 @@ public class OblivionUnits{
 					shootSound = Sounds.bigshot;
 					bullet = new BasicBulletType(2f, 20) {{
 						lifetime = 60f;
-						frontColor = Color.valueOf("BAF2B7");
+						shootEffect = Fx.none;
+						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
+						weaveScale = 2f;
+						weaveMag = 5f;
+						trailEffect = LamoniFx.copterTrail;
+						trailInterval = 5f;
+						trailWidth = 1.8f;
+						trailLength = 12;
 					}};
 				}},
 				new Weapon("oblivion-apollo-laser") {{
@@ -1229,6 +1253,7 @@ public class OblivionUnits{
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(50) {{
 						width = 12f;
+						shootEffect = LamoniFx.copterLaserShoot;
 						length = 28f * 8f;
 						colors = new Color[]{Color.valueOf("BAF2B7"), Color.valueOf("87B085"), Color.white};
 					}};
@@ -1263,6 +1288,7 @@ public class OblivionUnits{
 					shootSound = Sounds.artillery;
 					bullet = new ArtilleryBulletType(2f, 50) {{
 						lifetime = 128f;
+						shootEffect = LamoniFx.copterShootBig;
 						width = height = 20f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
@@ -1293,6 +1319,7 @@ public class OblivionUnits{
 					shootSound = Sounds.spark;
 					bullet = new LightningBulletType(){{
 						damage = 70;
+						shootEffect = LamoniFx.copterLaserShoot;
 						lightningColor = Color.valueOf("BAF2B7");
 						lightningLength = 3;
 						lightningLengthRand = 6;
@@ -1315,6 +1342,7 @@ public class OblivionUnits{
 					shootSound = Sounds.spark;
 					bullet = new LightningBulletType(){{
 						damage = 70;
+						shootEffect = LamoniFx.copterLaserShoot;
 						lightningColor = Color.valueOf("BAF2B7");
 						lightningLength = 3;
 						lightningLengthRand = 6;
@@ -1331,7 +1359,6 @@ public class OblivionUnits{
 				}}
 			);
 		}};
-
 		chronos = new OblivionUnitType("chronos") {{
 			health = 25000f;
 			speed = 1f;

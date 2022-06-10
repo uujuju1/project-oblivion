@@ -92,5 +92,9 @@ public class LamoniFx {
 		for(int i : Mathf.signs){
 		  Drawf.tri(e.x, e.y, 4f * e.fout(), 8f, e.rotation + 90f * i);
 		}
+	}),
+	copterTrail = new Effect(30f, e -> {
+		Draw.color(Color.valueOf("BAF2B7"));
+		Fill.circle(e.x, e.y, 3f * e.foutpow());
 	});
 }

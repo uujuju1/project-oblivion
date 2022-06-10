@@ -962,6 +962,7 @@ public class OblivionBlocks {
 		niobiumConduitBridge = new LiquidBridge("niobium-conduit-bridge") {{
 			requirements(Category.distribution, with(OblivionResources.niobium, 8));
 			health = 140;
+			range = 6;
 		}};
 
 		imperialDrill = new Drill("imperial-drill") {{
