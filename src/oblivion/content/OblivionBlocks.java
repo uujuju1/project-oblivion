@@ -955,11 +955,11 @@ public class OblivionBlocks {
 			requirements(Category.distribution, with(OblivionResources.niobium, 2));
 			health = 100;
 		}};
-		niobiumRouter = new LiquidRouter("niobium-conduit-router") {{
+		niobiumConduitRouter = new LiquidRouter("niobium-conduit-router") {{
 			requirements(Category.distribution, with(OblivionResources.niobium, 4));
 			health = 120;
 		}};
-		niobiumRouter = new LiquidBridge("niobium-conduit-bridge") {{
+		niobiumConduitBridge = new LiquidBridge("niobium-conduit-bridge") {{
 			requirements(Category.distribution, with(OblivionResources.niobium, 8));
 			health = 140;
 		}};
