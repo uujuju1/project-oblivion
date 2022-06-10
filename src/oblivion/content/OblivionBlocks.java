@@ -19,6 +19,7 @@ import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.world.blocks.units.*;
 import mindustry.world.blocks.power.*;
+import mindustry.world.blocks.liquid.*;
 import mindustry.world.blocks.storage.*;
 import mindustry.world.blocks.defense.*;
 import mindustry.world.blocks.production.*;
@@ -59,6 +60,8 @@ public class OblivionBlocks {
 		coreVillage,
 
 		niobiumDuct, niobiumRouter, niobiumBridge,
+
+		niobiumConduit, niobiumConduitRouter, niobiumConduitBridge,
 
 		mantlePulverizer, hafniumSmelter, demineralizer,
 		xenoicMixer, plastaniumDensifier, poloniumCollider,
@@ -946,6 +949,19 @@ public class OblivionBlocks {
 			requirements(Category.distribution, with(OblivionResources.niobium, 8));
 			health = 140;
 			speed = 3.5f;
+		}};
+
+		niobiumConduit = new Conduit("niobium-conduit") {{
+			requirements(Category.distribution, with(OblivionResources.niobium, 2));
+			health = 100;
+		}};
+		niobiumRouter = new LiquidRouter("niobium-conduit-router") {{
+			requirements(Category.distribution, with(OblivionResources.niobium, 4));
+			health = 120;
+		}};
+		niobiumRouter = new LiquidBridge("niobium-conduit-bridge") {{
+			requirements(Category.distribution, with(OblivionResources.niobium, 8));
+			health = 140;
 		}};
 
 		imperialDrill = new Drill("imperial-drill") {{

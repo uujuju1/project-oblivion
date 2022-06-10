@@ -84,6 +84,11 @@ public class LamoniTechTree {
 				node(OblivionBlocks.niobiumRouter, () -> {
 					node(OblivionBlocks.niobiumBridge, () -> {});
 				});
+				node(OblivionBlocks.niobiumConduit, Seq.with(new Produce(Liquids.water)), () -> {
+					node(OblivionBlocks.niobiumConduitRouter, () -> {
+						node(OblivionBlocks.niobiumConduitBridge, () -> {});
+					});
+				});
 			});
 
 			node(OblivionBlocks.niobiumWall, () -> {
