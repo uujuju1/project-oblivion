@@ -6,7 +6,7 @@ import arc.util.io.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
 import mindustry.world.*;
-import mindustry.content.*;
+import mindustry.graphics.*;
 import mindustry.world.meta.*;
 import oblivion.blocks.meta.*;
 

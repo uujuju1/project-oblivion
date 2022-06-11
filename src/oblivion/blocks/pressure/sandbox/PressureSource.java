@@ -17,7 +17,7 @@ public class PressureSource extends PressureBlock {
 			for (int i = 0; i < this.proximity.size; i++) {
 				Building next = this.proximity.get(i);
 				if (next instanceof PressureBuild) {
-					if (next.acceptsPressure) ((PressureBuild) next).setPressure(next.getMax(), this);
+					if (next.acceptsPressure()) ((PressureBuild) next).setPressure(((PressureBuild) next).getMax(), this);
 				}
 			}
 		}
