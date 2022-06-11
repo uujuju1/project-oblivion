@@ -11,8 +11,10 @@ import mindustry.world.meta.*;
 import oblivion.blocks.meta.*;
 
 public class PressureBlock extends Block {
+	public TextureRegion pressureRegion;
 	public boolean acceptsPressure = false, outputsPressure = false;
 	public float minPressure = -35f, maxPressure = 35f;
+	public float pressureLeakPercent = 0.01f, pressureFlowPercent = 0.01f;
 
 	public PressureBlock(String name) {
 		super(name);
@@ -20,9 +22,15 @@ public class PressureBlock extends Block {
 	}
 
 	@Override
+	public void load() {
+		super.load();
+		pressureRegion = Core.atlas.find(name + "-pressure");
+	}
+
+	@Override
 	public void setBars() {
 		super.setBars();
-		addBar("pressure", entity -> new Bar(Core.bundle.get("bar.pressure"), Pal.accent, () -> ((PressureBuild) entity).pressureModule().pressure));
+		addBar("pressure", entity -> new Bar(Core.bundle.get("bar.pressure"), Pal.accent, () -> ((PressureBuild) entity).getPercentage()));
 	}
 
 	@Override
@@ -40,9 +48,24 @@ public class PressureBlock extends Block {
 		public float getMax() {
 			return ((PressureBlock) block).maxPressure;
 		}
+		public float getPercentage() {
+			return pressureMod().pressure/maxPressure;
+		}
 
 		@Override
-		public void updateTile() {overPressure();}
+		public void updateTile() {
+			overPressure();
+			if (outputsPressure()) {
+				for (int i = 0; i < this.proximity.size; i++) {
+					Building next = this.proximity.size;
+					if (((PressureBuild) next).acceptsPressure()) {
+						((PressureBuild) next).addPressure(pressureModule().pressure * pressureFlowPercent);
+						((PressureBuild) next).subPressure(pressureModule().pressure * pressureFlowPercent);
+					}
+				}
+			}
+			subPressure(pressureModule().pressure * pressureLeakPercent);
+		}
 
 		@Override
 		public PressureModule pressureModule() {
@@ -66,16 +89,24 @@ public class PressureBlock extends Block {
 			if (pressureModule().pressure < minPressure && pressureModule().pressure > maxPressure) kill();
 		}
 
-		// @Override
-		// public void write(Writes write){
-		// 	super.write(write);
-		// 	write.f(pressureModule().pressure);	
-		// }
+		@Override
+		public void drawPresusre(Color color) {
+			Draw.alpha((0.25f + Mathf.absin(1f, 0.5f)) * getPercentage());
+			Draw.color(color);
+			Draw.rect(presusreRegion, x, y, build.rotate);
+			Draw.reset();
+		}
 
-		// @Override
-		// public void read(Reads read, byte revision){
-		// 	super.read(read, revision);
-		// 	setPressure(read.f(), this);
-		// }
+		@Override
+		public void write(Writes write){
+			super.write(write);
+			write.f(pressureModule().pressure);	
+		}
+
+		@Override
+		public void read(Reads read, byte revision){
+			super.read(read, revision);
+			setPressure(read.f(), this);
+		}
 	}
 }

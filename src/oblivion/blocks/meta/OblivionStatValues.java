@@ -42,11 +42,11 @@ public class OblivionStatValues {
 		return table -> {
 			table.table(Tex.underline, b -> {
 				b.table(Tex.underline, c -> {
-					c.add(new Image(Core.atlas.find("router"))).size(30).row();
+					c.add(new Image(Core.atlas.find("oblivion-pressure-icon"))).size(30).row();
 					c.add(Core.bundle.get("stat.pressure"));
 				}).center().row();
-				b.add(Core.bundle.get("stat.minpressure" + ":" + min)).row();
-				b.add(Core.bundle.get("stat.maxpressure" + ":" + max));
+				b.add(Core.bundle.get("stat.minpressure" + ": " + min)).row();
+				b.add(Core.bundle.get("stat.maxpressure" + ": " + max));
 			});
 		};
 	}

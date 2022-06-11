@@ -953,15 +953,15 @@ public class OblivionBlocks {
 		}};
 
 		niobiumConduit = new Conduit("niobium-conduit") {{
-			requirements(Category.distribution, with(OblivionResources.niobium, 2));
+			requirements(Category.liquid, with(OblivionResources.niobium, 2));
 			health = 100;
 		}};
 		niobiumConduitRouter = new LiquidRouter("niobium-conduit-router") {{
-			requirements(Category.distribution, with(OblivionResources.niobium, 4));
+			requirements(Category.liquid, with(OblivionResources.niobium, 4));
 			health = 120;
 		}};
 		niobiumConduitBridge = new LiquidBridge("niobium-conduit-bridge") {{
-			requirements(Category.distribution, with(OblivionResources.niobium, 8));
+			requirements(Category.liquid, with(OblivionResources.niobium, 8));
 			health = 140;
 			range = 6;
 		}};
@@ -975,6 +975,16 @@ public class OblivionBlocks {
 			size = 1;
 			health = 1000000000;
 			buildVisibility = BuildVisibility.sandboxOnly;
+		}};
+		pressureTank = new PressureTank("pressure-tank") {{
+			requirements(Category.liquid, with(
+				OblivionResources.hafnium, 50,
+				Items.plastanium, 75
+			));
+			size = 3;
+			health = 500;
+			maxPressure = 3500f;
+			minPressure = -100f;
 		}};
 
 		imperialDrill = new Drill("imperial-drill") {{
