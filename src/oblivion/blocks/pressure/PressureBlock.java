@@ -66,16 +66,16 @@ public class PressureBlock extends Block {
 			if (pressureModule().pressure < minPressure && pressureModule().pressure > maxPressure) kill();
 		}
 
-		@Override
-		public void write(Writes write){
-			super.write(write);
-			write.f(pressureModule().pressure);	
-		}
+		// @Override
+		// public void write(Writes write){
+		// 	super.write(write);
+		// 	write.f(pressureModule().pressure);	
+		// }
 
-		@Override
-		public void read(Reads read, byte revision){
-			super.read(read, revision);
-			setPressure(read.f(), this);
-		}
+		// @Override
+		// public void read(Reads read, byte revision){
+		// 	super.read(read, revision);
+		// 	setPressure(read.f(), this);
+		// }
 	}
 }
