@@ -48,6 +48,6 @@ public class OblivionStatValues {
 				b.add(Core.bundle.get("stat.minpressure" + ":" + min)).row();
 				b.add(Core.bundle.get("stat.maxpressure" + ":" + max));
 			});
-		}
+		};
 	}
 }

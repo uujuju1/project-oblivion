@@ -51,7 +51,7 @@ public class PressureBlock extends Block {
 
 		@Override
 		public void overPressure() {
-			if (pressureModule().pressure < minPressure, pressureModule().pressure > maxPressure) kill();
+			if (pressureModule().pressure < minPressure && pressureModule().pressure > maxPressure) kill();
 		}
 
 		@Override

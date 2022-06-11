@@ -975,7 +975,7 @@ public class OblivionBlocks {
 			size = 1;
 			health = 1000000000;
 			buildVisibility = BuildVisibility.sandboxOnly;
-		}}
+		}};
 
 		imperialDrill = new Drill("imperial-drill") {{
 			requirements(Category.production, with(

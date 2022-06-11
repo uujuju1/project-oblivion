@@ -7,7 +7,7 @@ import mindustry.gen.Building;
 public interface PressureBuilding {
 	default float pressureEfficiency() {return 1f;}
 
-	default PressureModule pressureModule() {return null}
+	default PressureModule pressureModule() {return null;}
 
 	default void addPressure(float pressure, @Nullable Building src) {}
 	default void subPressure(float pressure, @Nullable Building src) {}
