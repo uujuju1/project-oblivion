@@ -16,6 +16,7 @@ public class PressureBlock extends Block {
 
 	public PressureBlock(String name) {
 		super(name);
+		solid = destructible = sync = update = true;
 	}
 
 	@Override
