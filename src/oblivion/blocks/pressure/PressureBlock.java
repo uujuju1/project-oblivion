@@ -1,9 +1,12 @@
 package oblivion.blocks.pressure;
 
+import arc.*;
+import arc.util.*;
 import arc.util.io.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
 import mindustry.world.*;
+import mindustry.content.*;
 import mindustry.world.meta.*;
 import oblivion.blocks.meta.*;
 
@@ -18,7 +21,7 @@ public class PressureBlock extends Block {
 	@Override
 	public void setBars() {
 		super.setBars();
-		addBar("pressure", entity -> new Bar(Core.bundle.get("bar.pressure"), Pal.accent, PressureBuild::pressureModule.pressure));
+		addBar("pressure", entity -> new Bar(Core.bundle.get("bar.pressure"), Pal.accent, () -> ((PressureBuild) entity).pressureModule().pressure));
 	}
 
 	@Override
@@ -27,7 +30,7 @@ public class PressureBlock extends Block {
 	}
 
 	public class PressureBuild extends Building implements PressureBuilding {
-		public PressureModule pressure;
+		public PressureModule pressureMod;
 
 		// making my life easier
 		public float getMin() {
@@ -42,20 +45,20 @@ public class PressureBlock extends Block {
 
 		@Override
 		public PressureModule pressureModule() {
-			return pressure;
+			return pressureMod;
 		}
 
 		@Override
-		public void addPressure(float presure, @Nullable Building src) {pressure.pressure += pressure;}
+		public void addPressure(float pressure, @Nullable Building src) {pressureMod.pressure += pressure;}
 		@Override
-		public void subPressure(float presure, @Nullable Building src) {pressure.pressure -= pressure;}
+		public void subPressure(float pressure, @Nullable Building src) {pressureMod.pressure -= pressure;}
 		@Override
-		public void setPressure(float presure, @Nullable Building src) {pressure.pressure = pressure;}
+		public void setPressure(float pressure, @Nullable Building src) {pressureMod.pressure = pressure;}
 
 		@Override
-		public void acceptsPressure(float presure, Building src) {return acceptsPressure;}
+		public boolean acceptsPressure(float pressure, Building src) {return acceptsPressure;}
 		@Override
-		public void outputsPressure(float presure, Building src) {return outputsPressure;}
+		public boolean outputsPressure(float pressure, Building src) {return outputsPressure;}
 
 		@Override
 		public void overPressure() {
@@ -71,7 +74,7 @@ public class PressureBlock extends Block {
 		@Override
 		public void read(Reads read, byte revision){
 			super.read(read, revision);
-			setPressure(read.f);
+			setPressure(read.f());
 		}
 	}
 }

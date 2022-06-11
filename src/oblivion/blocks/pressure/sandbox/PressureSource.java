@@ -3,14 +3,14 @@ package oblivion.blocks.pressure.sandbox;
 import mindustry.gen.*;
 import oblivion.blocks.pressure.*;
 
-public class PressureSource extends PresusreBlock {
+public class PressureSource extends PressureBlock {
 
 	public PressureSource(String name) {
 		super(name);
 		outputsPressure = true;
 	}
 
-	public class PressureSourceBuild extends PresusreBuild {
+	public class PressureSourceBuild extends PressureBuild {
 		@Override
 		public void updateTile() {
 			setPressure(getMax(), this);

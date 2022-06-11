@@ -38,7 +38,7 @@ public class OblivionStatValues {
 		};
 	}
 
-	public static StatValue PressurizedUnit(float min, float max) {
+	public static StatValue pressurizedUnit(float min, float max) {
 		return table -> {
 			table.table(Tex.underline, b -> {
 				b.table(Tex.underline, c -> {
