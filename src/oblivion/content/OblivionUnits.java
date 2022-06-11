@@ -1135,7 +1135,7 @@ public class OblivionUnits{
 					shootSound = Sounds.lasershoot;
 					bullet = new BasicBulletType(2f, 15) {{
 						lifetime = 80f;
-						shootEffect = LamoniFx.coptetShoot;
+						shootEffect = LamoniFx.copterShoot;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
 						weaveScale = 2f;
@@ -1175,7 +1175,7 @@ public class OblivionUnits{
 					shootSound = Sounds.missile;
 					bullet = new MissileBulletType(2.5f, 30) {{
 						lifetime = 80f;
-						shootEffect = LamoniFx.coptetShoot;
+						shootEffect = LamoniFx.copterShoot;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
 						weaveScale = 2f;
@@ -1253,7 +1253,7 @@ public class OblivionUnits{
 					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(50) {{
 						width = 12f;
-						shootEffect = LamoniFx.copterLaserShoot;
+						shootEffect = LamoniFx.copterSparkShoot;
 						length = 28f * 8f;
 						colors = new Color[]{Color.valueOf("BAF2B7"), Color.valueOf("87B085"), Color.white};
 					}};
@@ -1319,7 +1319,7 @@ public class OblivionUnits{
 					shootSound = Sounds.spark;
 					bullet = new LightningBulletType(){{
 						damage = 70;
-						shootEffect = LamoniFx.copterLaserShoot;
+						shootEffect = LamoniFx.copterSparkShoot;
 						lightningColor = Color.valueOf("BAF2B7");
 						lightningLength = 3;
 						lightningLengthRand = 6;
@@ -1342,7 +1342,7 @@ public class OblivionUnits{
 					shootSound = Sounds.spark;
 					bullet = new LightningBulletType(){{
 						damage = 70;
-						shootEffect = LamoniFx.copterLaserShoot;
+						shootEffect = LamoniFx.copterSparkShoot;
 						lightningColor = Color.valueOf("BAF2B7");
 						lightningLength = 3;
 						lightningLengthRand = 6;
