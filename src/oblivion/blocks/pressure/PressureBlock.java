@@ -74,7 +74,7 @@ public class PressureBlock extends Block {
 		@Override
 		public void read(Reads read, byte revision){
 			super.read(read, revision);
-			setPressure(read.f());
+			setPressure(read.f(), this);
 		}
 	}
 }
