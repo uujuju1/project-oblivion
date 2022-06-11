@@ -31,7 +31,7 @@ public class PressureBlock extends Block {
 	}
 
 	public class PressureBuild extends Building implements PressureBuilding {
-		public PressureModule pressureMod;
+		public PressureModule pressureMod = new PressureModule();
 
 		// making my life easier
 		public float getMin() {
