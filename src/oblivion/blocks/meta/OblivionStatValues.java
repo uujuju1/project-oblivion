@@ -37,4 +37,17 @@ public class OblivionStatValues {
 			});
 		};
 	}
+
+	public static StatValue PressurizedUnit(float min, float max) {
+		return table -> {
+			table.table(Tex.underline, b -> {
+				b.table(Tex.underline, c -> {
+					c.add(new Image(Core.atlas.find("router"))).size(30).row();
+					c.add(Core.bundle.get("stat.pressure"));
+				}).center().row();
+				b.add(Core.bundle.get("stat.minpressure" + ":" + min)).row();
+				b.add(Core.bundle.get("stat.maxpressure" + ":" + max));
+			});
+		}
+	}
 }

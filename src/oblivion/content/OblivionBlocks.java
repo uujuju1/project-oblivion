@@ -29,6 +29,7 @@ import mindustry.world.blocks.defense.turrets.*;
 import oblivion.graphics.*;
 import oblivion.blocks.defense.*;
 import oblivion.blocks.production.*;
+import oblivion.blocks.pressure.sandbox.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -63,6 +64,8 @@ public class OblivionBlocks {
 
 		niobiumConduit, niobiumConduitRouter, niobiumConduitBridge,
 
+		pressureSource, pressureVoid,
+
 		mantlePulverizer, hafniumSmelter, demineralizer,
 		xenoicMixer, plastaniumDensifier, poloniumCollider,
 		surgeCharger,
@@ -72,11 +75,9 @@ public class OblivionBlocks {
 		spread, reaction, evaporate,
 
 		sodaicFactory,
-
 		elevativeReconstructor, scalativeReconstructor, ascenditeReconstructor, skinialReconstructor,
 
 		niobiumCombustor,
-
 		lineNode,
 
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
@@ -964,6 +965,17 @@ public class OblivionBlocks {
 			health = 140;
 			range = 6;
 		}};
+
+		pressureSource = new PressureSource("pressure-source") {{
+			size = 1;
+			health = 1000000000;
+			buildVisibility = BuildVisibility.sandboxOnly;
+		}};
+		pressureVoid = new PressureVoid("pressure-void") {{
+			size = 1;
+			health = 1000000000;
+			buildVisibility = BuildVisibility.sandboxOnly;
+		}}
 
 		imperialDrill = new Drill("imperial-drill") {{
 			requirements(Category.production, with(
