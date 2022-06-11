@@ -13,11 +13,11 @@ public class PressureSource extends PresusreBlock {
 	public class PressureSourceBuild extends PresusreBuild {
 		@Override
 		public void updateTile() {
-			setPressure(maxPressure, this);
+			setPressure(getMax(), this);
 			for (int i = 0; i < this.proximity.size; i++) {
 				Building next = this.proximity.get(i);
 				if (next instanceof PresusreBuild) {
-					if (next.acceptsPressure) ((PresusreBuild) next).setPressure(((PresusreBuild next)).block.maxPressure, null);
+					if (next.acceptsPressure) ((PresusreBuild) next).setPressure(next.getMax(), this);
 				}
 			}
 		}

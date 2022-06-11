@@ -29,6 +29,14 @@ public class PressureBlock extends Block {
 	public class PressureBuild extends Building implements PressureBuilding {
 		public PressureModule pressure;
 
+		// making my life easier
+		public float getMin() {
+			return ((PressureBlock) block).minPressure;
+		}
+		public float getMax() {
+			return ((PressureBlock) block).maxPressure;
+		}
+
 		@Override
 		public void updateTile() {overPressure();}
 
