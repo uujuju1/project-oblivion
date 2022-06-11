@@ -2,6 +2,7 @@ package oblivion.blocks.pressure.storage;
 
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import mindustry.gen.*;
 import oblivion.blocks.pressure.*;
 // on of pressure switch
 public class PressureValve extends PressureBlock {

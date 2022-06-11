@@ -1,8 +1,11 @@
 package oblivion.blocks.pressure;
 
 import arc.*;
+import arc.math.*;
 import arc.util.*;
 import arc.util.io.*;
+import arc.graphics.*;
+import arc.graphics.g2d.*;
 import mindustry.ui.*;
 import mindustry.gen.*;
 import mindustry.world.*;
@@ -59,12 +62,12 @@ public class PressureBlock extends Block {
 				for (int i = 0; i < this.proximity.size; i++) {
 					Building next = this.proximity.size;
 					if (((PressureBuild) next).acceptsPressure()) {
-						((PressureBuild) next).addPressure(pressureModule().pressure * pressureFlowPercent);
-						((PressureBuild) next).subPressure(pressureModule().pressure * pressureFlowPercent);
+						((PressureBuild) next).addPressure(pressureModule().pressure * pressureFlowPercent, this);
+						((PressureBuild) next).subPressure(pressureModule().pressure * pressureFlowPercent, this);
 					}
 				}
 			}
-			subPressure(pressureModule().pressure * pressureLeakPercent);
+			subPressure(pressureModule().pressure * pressureLeakPercent, this);
 		}
 
 		@Override
@@ -90,10 +93,10 @@ public class PressureBlock extends Block {
 		}
 
 		@Override
-		public void drawPresusre(Color color) {
+		public void drawPressure(Color color) {
 			Draw.alpha((0.25f + Mathf.absin(1f, 0.5f)) * getPercentage());
 			Draw.color(color);
-			Draw.rect(presusreRegion, x, y, build.rotate);
+			Draw.rect(presusreRegion, x, y, rotate ? rotdeg(), 0f);
 			Draw.reset();
 		}
 
