@@ -56,7 +56,7 @@ public class PressureBlock extends Block {
 		}
 		// transfers heat onto a specified PressureBuild
 		public void transferHeat(PressureBuild next) {
-			if (PressureBuild next.acceptsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
+			if (next.acceptsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
 				next.addPressure(pressureModule().pressure * pressureFlowPercent, this);
 				next.subPressure(pressureModule().pressure * pressureFlowPercent, this);
 			}
