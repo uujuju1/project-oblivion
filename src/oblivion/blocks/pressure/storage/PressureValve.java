@@ -25,7 +25,7 @@ public class PressureValve extends PressureBlock {
 		public boolean open = false;
 		@Override
 		public void buildConfiguration(Table table) {
-			table.button(Icon.settings, b -> {
+			table.button(Icon.settings, () -> {
 				open = !open;
 			});
 		}
