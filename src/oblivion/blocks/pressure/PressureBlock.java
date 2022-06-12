@@ -58,10 +58,10 @@ public class PressureBlock extends Block {
 		@Override
 		public void updateTile() {
 			overPressure();
-			if (outputsPressure()) {
+			if (outputsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
 				for (int i = 0; i < this.proximity.size; i++) {
 					Building next = this.proximity.size;
-					if (((PressureBuild) next).acceptsPressure()) {
+					if (((PressureBuild) next).acceptsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
 						((PressureBuild) next).addPressure(pressureModule().pressure * pressureFlowPercent, this);
 						((PressureBuild) next).subPressure(pressureModule().pressure * pressureFlowPercent, this);
 					}
