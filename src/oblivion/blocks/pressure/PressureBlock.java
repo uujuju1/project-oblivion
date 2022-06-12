@@ -54,16 +54,21 @@ public class PressureBlock extends Block {
 		public float getPercentage() {
 			return pressureModule().pressure/maxPressure;
 		}
+		// transfers heat onto a specified PressureBuild
+		public void transferHeat(PressureBuild next) {
+			if (PressureBuild next.acceptsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
+				next.addPressure(pressureModule().pressure * pressureFlowPercent, this);
+				next.subPressure(pressureModule().pressure * pressureFlowPercent, this);
+			}
+		}
 
 		@Override
 		public void updateTile() {
 			overPressure();
 			if (outputsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
 				for (int i = 0; i < this.proximity.size; i++) {
-					Building next = this.proximity.get(i);
-					if (((PressureBuild) next).acceptsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
-						((PressureBuild) next).addPressure(pressureModule().pressure * pressureFlowPercent, this);
-						((PressureBuild) next).subPressure(pressureModule().pressure * pressureFlowPercent, this);
+					if (this.proximity.get(i) instanceof PressureBuild) {
+						transferHeat((PressureBuild) this.proximity.get(i));
 					}
 				}
 			}

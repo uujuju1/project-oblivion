@@ -13,6 +13,7 @@ public class PressureValve extends PressureBlock {
 	public PressureValve(String name) {
 		super(name);
 		acceptsPressure = true; 
+		configurable = true;
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class PressureValve extends PressureBlock {
 		@Override
 		public void draw() {
 			Draw.rect(bottomRegion, x, y, 0f);
-			drawPressure(Color.valueOf("CAACFF"));
+			drawPressure(OblivionPal.pressure);
 			Draw.rect(region, x, y, 0f);
 		}
 	}
