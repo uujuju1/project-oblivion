@@ -60,7 +60,7 @@ public class PressureBlock extends Block {
 			overPressure();
 			if (outputsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
 				for (int i = 0; i < this.proximity.size; i++) {
-					Building next = this.proximity.size;
+					Building next = this.proximity.get(i);
 					if (((PressureBuild) next).acceptsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
 						((PressureBuild) next).addPressure(pressureModule().pressure * pressureFlowPercent, this);
 						((PressureBuild) next).subPressure(pressureModule().pressure * pressureFlowPercent, this);
@@ -96,7 +96,7 @@ public class PressureBlock extends Block {
 		public void drawPressure(Color color) {
 			Draw.alpha((0.25f + Mathf.absin(1f, 0.5f)) * getPercentage());
 			Draw.color(color);
-			Draw.rect(presusreRegion, x, y, rotate ? rotdeg() : 0f);
+			Draw.rect(pressureRegion, x, y, rotate ? rotdeg() : 0f);
 			Draw.reset();
 		}
 
