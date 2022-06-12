@@ -65,7 +65,7 @@ public class OblivionBlocks {
 
 		niobiumConduit, niobiumConduitRouter, niobiumConduitBridge,
 
-		pressureSource, pressureVoid,
+		pressureSource, pressureVoid, pressureTank,
 
 		mantlePulverizer, hafniumSmelter, demineralizer,
 		xenoicMixer, plastaniumDensifier, poloniumCollider,
@@ -977,7 +977,7 @@ public class OblivionBlocks {
 			health = 1000000000;
 			buildVisibility = BuildVisibility.sandboxOnly;
 		}};
-		pressureTank = new PressureTank("pressure-tank") {{
+		pressureTank = new PressureValve("pressure-tank") {{
 			requirements(Category.liquid, with(
 				OblivionResources.hafnium, 50,
 				Items.plastanium, 75

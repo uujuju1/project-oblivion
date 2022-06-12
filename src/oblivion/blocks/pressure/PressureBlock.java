@@ -52,7 +52,7 @@ public class PressureBlock extends Block {
 			return ((PressureBlock) block).maxPressure;
 		}
 		public float getPercentage() {
-			return pressureMod().pressure/maxPressure;
+			return pressureModule().pressure/maxPressure;
 		}
 
 		@Override
