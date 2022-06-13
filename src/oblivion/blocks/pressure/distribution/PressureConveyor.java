@@ -5,10 +5,10 @@ import oblivion.blocks.pressure.*;
 public class PressureConveyor extends PressureBlock {
 	// public TextureRegion bottomRegion, capRegion, arrowRegion;
 
-	public PressureConveyor(Sting name) {
+	public PressureConveyor(String name) {
 		super(name);
 		rotate = true;
-		acceptsHeat = outputsHeat = true;
+		acceptsPressure = outputsPressure = true;
 	}
 
 	// @Override
