@@ -65,7 +65,7 @@ public class OblivionBlocks {
 
 		niobiumConduit, niobiumConduitRouter, niobiumConduitBridge,
 
-		pressureSource, pressureVoid, pressureTank, pressureConveyor,
+		pressureSource, pressureVoid, pressureTank, /* pressureConveyor, */
 
 		mantlePulverizer, hafniumSmelter, demineralizer,
 		xenoicMixer, plastaniumDensifier, poloniumCollider,
