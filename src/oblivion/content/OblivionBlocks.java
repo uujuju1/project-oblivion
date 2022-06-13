@@ -971,11 +971,13 @@ public class OblivionBlocks {
 			size = 1;
 			health = 1000000000;
 			buildVisibility = BuildVisibility.sandboxOnly;
+			category = Category.liquid;
 		}};
 		pressureVoid = new PressureVoid("pressure-void") {{
 			size = 1;
 			health = 1000000000;
 			buildVisibility = BuildVisibility.sandboxOnly;
+			category = Category.liquid;
 		}};
 		pressureTank = new PressureValve("pressure-tank") {{
 			requirements(Category.liquid, with(

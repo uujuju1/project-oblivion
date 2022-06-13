@@ -1,6 +1,6 @@
 package oblivion.blocks.pressure.distribution;
 
-import oblivon.blocks.pressure.*;
+import oblivion.blocks.pressure.*;
 
 public class PressureConveyor extends PressureBlock {
 	// public TextureRegion bottomRegion, capRegion, arrowRegion;
