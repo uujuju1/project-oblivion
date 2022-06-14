@@ -31,6 +31,7 @@ import oblivion.blocks.defense.*;
 import oblivion.blocks.production.*;
 import oblivion.blocks.pressure.sandbox.*;
 import oblivion.blocks.pressure.storage.*;
+import oblivion.blocks.pressure.distribution.*;
 
 import static mindustry.type.ItemStack.*;
 
