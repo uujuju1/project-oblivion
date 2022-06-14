@@ -4,7 +4,7 @@ import arc.graphics.g2d.*;
 import oblivion.blocks.pressure.*;
 
 public class PressureConveyor extends PressureBlock {
-	// public TextureRegion bottomRegion, capRegion, arrowRegion;
+	public TextureRegion bottomRegion, capRegion, arrowRegion;
 
 	public PressureConveyor(String name) {
 		super(name);
