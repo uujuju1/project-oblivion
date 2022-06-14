@@ -1,5 +1,6 @@
 package oblivion.content;
 
+import arc.graphics.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.world.meta.*;
