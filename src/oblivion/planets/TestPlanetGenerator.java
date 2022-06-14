@@ -54,10 +54,10 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float temp = getTemperature(pos) * 3f;
 		float height = rawHeight(pos) * 5f;
 		for (int i = 0; i < 3; i++) {
-			if (temp > i ** temp < i + 1) {
+			if (temp > i * temp < i + 1) {
 				for (int j = 0; j < 5; j++) {
 					if (height > j && height < j + 1) {
-						return arr[(int) Mathf.clamp(i + offset, 0, 3)]
+						return arr[(int) Mathf.clamp(i + offset, 0, 3)];
 					}
 				}
 			}
@@ -90,7 +90,9 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		pass((x, y) -> {
 			float noise = noise(x, y, 7, 0.8f, 280f, 1f);
-			floor = getBlock(sector.tile.v, (int) noise);
+			if (noise > 0.5f) {
+				floor = getBlock(sector.tile.v, (int) noise);
+			}
 		});
 
 		Schematics.placeLaunchLoadout(50, 50);
