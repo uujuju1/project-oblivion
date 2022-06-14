@@ -57,14 +57,14 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
 
-	Block getBlock(Vec3 pos, int offset1, int offset2) {
+	Block getBlock(Vec3 pos) {
 		float temp = getTemperature(pos) * 3f;
 		float height = rawHeight(pos) * 5f;
 		for (int i = 0; i < 3; i++) {
 			if (temp > i && temp < i + 1) {
 				for (int j = 0; j < 5; j++) {
 					if (height > j && height < j + 1) {
-						return arr[(int) Mathf.clamp(i + offset1, 0, 2)][(int) Mathf.clamp(j + offset2, 0, 4)];
+						return arr[(int) Mathf.clamp(i, 0, 2)][(int) Mathf.clamp(j, 0, 4)];
 					}
 				}
 			}
@@ -91,16 +91,16 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float temp = getTemperature(sector.tile.v);
 		float height = rawHeight(sector.tile.v);
 
-		pass((x, y) -> {
-			floor = getBlock(sector.tile.v, 0, 0);
-		});
-
-		pass((x, y) -> {
-			float noise = noise(x, y, 7, 0.8f, 280f, 1f);
-			if (noise > 0.5f) {
-				floor = getBlock(sector.tile.v, 0, 1);
-			}
-		});
+		if (temp > 0.33f) {
+			pass((x, y) -> {
+				int noise = (int) noise(x + 700, y, 8, 0.3f, 280f, 2f);
+				floor = arr[2][3 + i];
+			});
+		} else {
+			pass((x, y) -> {
+				floor = Blocks.stone;
+			});
+		}
 
 		Schematics.placeLaunchLoadout(50, 50);
 	}
