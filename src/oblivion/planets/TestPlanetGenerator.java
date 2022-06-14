@@ -90,7 +90,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		pass((x, y) -> {
 			float noise = noise(x, y, 7, 0.8f, 280f, 1f);
-			floor = getBlock(sector.tile.v, 1);
+			floor = getBlock(sector.tile.v, (int) noise);
 		});
 
 		Schematics.placeLaunchLoadout(50, 50);
