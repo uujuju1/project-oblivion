@@ -11,5 +11,5 @@ public class OblivionPal {
 	copreMedium = Color.valueOf("74C272"),
 	copreDark = Color.valueOf("4F824B"),
 
-	pressure = Color.valueOf("CAACFF");
+	pressure = Color.valueOf("E0CFFF");
 }

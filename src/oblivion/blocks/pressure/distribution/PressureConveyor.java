@@ -42,11 +42,15 @@ public class PressureConveyor extends PressureBlock {
 		Draw.rect(region, x, y, 0f);
 		for (int i = 0; i < 4; i++) {
 			Building next = nearby(i);
-			if (next instanceof PressureBuild && next != front()) {
-				if (!(((PressureBuild) next).outputsPressure(pressureModule().pressure * pressureFlowPercent, this))) {
-					Draw.rect(capRegion, x, y, i * 90 + (rotate ? rotdeg() : 0f));
-				}
-			}				
+			if (next instanceof PressureBuild) {
+				if (next != front()) {
+					if (!(((PressureBuild) next).outputsPressure(pressureModule().pressure * pressureFlowPercent, this))) {
+						Draw.rect(capRegion, x, y, i * 90 + (rotate ? rotdeg() : 0f));
+					}
+				}	
+			}	else {
+				Draw.rect(capRegion, x, y, i * 90 + (rotate ? rotdeg() : 0f));
+			}			
 		}
 		if (front() instanceof PressureBuild) {
 			if (!(((PressureBuild) front()).acceptsPressure(pressureModule().pressure * pressureFlowPercent, this))) {

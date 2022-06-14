@@ -58,7 +58,7 @@ public class PressureBlock extends Block {
 		public void transferHeat(PressureBuild next) {
 			if (next.acceptsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
 				next.addPressure(pressureModule().pressure * pressureFlowPercent, this);
-				next.subPressure(pressureModule().pressure * pressureFlowPercent, this);
+				subPressure(pressureModule().pressure * pressureFlowPercent, this);
 			}
 		}
 
@@ -99,8 +99,8 @@ public class PressureBlock extends Block {
 
 		@Override
 		public void drawPressure(Color color) {
-			Draw.alpha(getPercentage());
 			Draw.color(color);
+			Draw.alpha(getPercentage());
 			Draw.rect(pressureRegion, x, y, rotate ? rotdeg() : 0f);
 			Draw.reset();
 		}
