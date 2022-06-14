@@ -99,7 +99,7 @@ public class PressureBlock extends Block {
 
 		@Override
 		public void drawPressure(Color color) {
-			Draw.alpha(0.5f * getPercentage());
+			Draw.alpha(getPercentage());
 			Draw.color(color);
 			Draw.rect(pressureRegion, x, y, rotate ? rotdeg() : 0f);
 			Draw.reset();
