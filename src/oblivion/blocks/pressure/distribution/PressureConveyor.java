@@ -1,6 +1,9 @@
 package oblivion.blocks.pressure.distribution;
 
+import arc.*;
 import arc.graphics.g2d.*;
+import mindustry.gen.*;
+import oblivion.graphics.*;
 import oblivion.blocks.pressure.*;
 
 public class PressureConveyor extends PressureBlock {
@@ -38,7 +41,7 @@ public class PressureConveyor extends PressureBlock {
 		Draw.rect(region, x, y, 0f);
 		for (int i = 0; i < 4; i++) {
 			Building next = nearby(i);
-			if (next instanceof PressureBuild && nearby != front()) {
+			if (next instanceof PressureBuild && next != front()) {
 				if (!(((PressureBuild) next).outputsPressure(pressureModule().pressure * pressureFlowPercent, this))) {
 					Draw.rect(capRegion, x, y, i * 90 + (rotate ? rotdeg() : 0f));
 				}
