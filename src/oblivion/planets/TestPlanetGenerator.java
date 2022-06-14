@@ -57,7 +57,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			if (temp > i * temp < i + 1) {
 				for (int j = 0; j < 5; j++) {
 					if (height > j && height < j + 1) {
-						return arr[(int) Mathf.clamp(i + offset1, 0, 3)][(int) Mahtf.clamp(j + offset2. 0, 5)];
+						return arr[(int) Mathf.clamp(i + offset1, 0, 3)][(int) Mahtf.clamp(j + offset2, 0, 5)];
 					}
 				}
 			}
