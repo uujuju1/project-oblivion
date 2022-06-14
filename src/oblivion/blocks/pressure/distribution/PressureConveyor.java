@@ -17,6 +17,7 @@ public class PressureConveyor extends PressureBlock {
 
 	@Override
 	public void load() {
+		super.load();
 		bottomRegion = Core.atlas.find(name + "-bottom");
 		capRegion = Core.atlas.find(name + "-cap");
 		arrowRegion = Core.atlas.find(name + "-arrow");
