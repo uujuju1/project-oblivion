@@ -83,7 +83,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	public Color getColor(Vec3 pos) {
-		return getBlock(pos, 0, 0).mapColor;
+		return getBlock(pos).mapColor;
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		if (temp > 0.33f) {
 			pass((x, y) -> {
 				int noise = (int) noise(x + 700, y, 8, 0.3f, 280f, 2f);
-				floor = arr[2][3 + i];
+				floor = arr[2][3 + noise];
 			});
 		} else {
 			pass((x, y) -> {
