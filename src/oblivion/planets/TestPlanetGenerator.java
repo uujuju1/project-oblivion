@@ -39,6 +39,13 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			OblivionEnvironment.boronite, 
 			OblivionEnvironment.tarrobonite, 
 			OblivionEnvironment.carmebonite,
+		},
+		{
+			OblivionEnvironment.argeletine,
+			OblivionEnvironment.mudone, 
+			OblivionEnvironment.boronite, 
+			OblivionEnvironment.tarrobonite, 
+			OblivionEnvironment.carmebonite,
 		}
 	};
 
