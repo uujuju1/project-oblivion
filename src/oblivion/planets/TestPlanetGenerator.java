@@ -54,10 +54,10 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float temp = getTemperature(pos) * 3f;
 		float height = rawHeight(pos) * 5f;
 		for (int i = 0; i < 3; i++) {
-			if (temp > i * temp < i + 1) {
+			if (temp > i && temp < i + 1) {
 				for (int j = 0; j < 5; j++) {
 					if (height > j && height < j + 1) {
-						return arr[(int) Mathf.clamp(i + offset1, 0, 3)][(int) Mahtf.clamp(j + offset2, 0, 5)];
+						return arr[(int) Mathf.clamp(i + offset1, 0, 3)][(int) Mathf.clamp(j + offset2, 0, 5)];
 					}
 				}
 			}
@@ -76,7 +76,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	public Color getColor(Vec3 pos) {
-		return getBlock(pos).mapColor;
+		return getBlock(pos, 0, 0).mapColor;
 	}
 
 	@Override
