@@ -23,28 +23,25 @@ import static mindustry.Vars.*;
 public class TestPlanetGenerator extends PlanetGenerator {
 	public float heightScl = 1f, minHeight = 0.1f, octaves = 12, persistence = 0.5f;
 	public float tempScl = 1f, tempOctaves = 3, tempPersistence = 0.5f;
-	public float dustScl = 1f, dustOctaves = 6, dustPersistence = 0.5f;
 	public static int seed = 69, tempSeed = 420, dustSeed = 96; 
 
-	public Block[] heightMap = 
+	public Block[][] arr = {
 		{
-		OblivionEnvironment.paletolime,
-		OblivionEnvironment.malenatite,
-		OblivionEnvironment.goletenira, 
-		OblivionEnvironment.argeletine,
-		OblivionEnvironment.mudone,
-		OblivionEnvironment.tarrobonite,
-		OblivionEnvironment.tarrobonite,
-		OblivionEnvironment.boronite,
-		OblivionEnvironment.boronite,
-		OblivionEnvironment.carmebonite
-		};
+			OblivionEnvironment.paletolime, 
+			OblivionEnvironment.malenatite,
+			OblivionEnvironment.goletenira,
+			OblivionEnvironment.argeletine,
+			OblivionEnvironment.mudone
+		},
+		{
+			OblivionEnvironment.argeletine,
+			OblivionEnvironment.mudone, 
+			OblivionEnvironment.boronite, 
+			OblivionEnvironment.tarrobonite, 
+			OblivionEnvironment.carmebonite,
+		}
+	};
 
-	// bigger value, more powder'ish the ground is
-	float getDustyness(Vec3 pos) {
-		return Simplex.noise3d(dustSeed, dustOctaves, dustPersistence, dustScl, pos.x, pos.y, pos.z);
-	}
-	// bigger value, colder it is
 	float getTemperature(Vec3 pos) {
 		return Simplex.noise3d(tempSeed, tempOctaves, tempPersistence, tempScl, pos.x, pos.y, pos.z);
 	}
@@ -53,14 +50,20 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
 
-	Block getBlock(Vec3 pos) {
-		float height = rawHeight(pos) * heightMap.length;
-		for (int i = 0; i < heightMap.length; i++) {
-			if (height > i && height < i + 1) {
-				return heightMap[(int) Mathf.clamp(i - getDustyness(pos) + getTemperature(pos), 0, heightMap.length)];
+	Block getBlock(Vec3 pos, int offset) {
+		float temp = getTemperature(pos) * 3f;
+		float height = rawHeight(pos) * 5f;
+		for (int i = 0; i < 3; i++) {
+			if (temp > i ** temp < i + 1) {
+				for (int j = 0; j < 5; j++) {
+					if (height > j && height < j + 1) {
+						return arr[(int) Mathf.clamp(i + offset, 0, 3)]
+					}
+				}
 			}
 		}
-		return heightMap[heightMap.length];
+
+		return Blocks.stone;
 	}
 
 	@Override
@@ -79,7 +82,6 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	@Override
 	protected void generate() {
 		float temp = getTemperature(sector.tile.v);
-		float dust = getDustyness(sector.tile.v);
 		float height = rawHeight(sector.tile.v);
 
 		pass((x, y) -> {
@@ -88,10 +90,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		pass((x, y) -> {
 			float noise = noise(x, y, 7, 0.8f, 280f, 1f);
-
-			if (temp < 0.7f && dust > 0.7f && height > 0.3f && noise > 0.5f ) {
-				floor = OblivionEnvironment.boronite;
-			}
+			floor = getBlock(sector.tile.v, 1);
 		});
 
 		Schematics.placeLaunchLoadout(50, 50);
