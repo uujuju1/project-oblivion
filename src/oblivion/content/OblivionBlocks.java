@@ -66,8 +66,6 @@ public class OblivionBlocks {
 
 		niobiumConduit, niobiumConduitRouter, niobiumConduitBridge,
 
-		pressureSource, pressureVoid, pressureTank, pressureConveyor,
-
 		mantlePulverizer, hafniumSmelter, demineralizer,
 		xenoicMixer, plastaniumDensifier, poloniumCollider,
 		surgeCharger,
@@ -75,7 +73,7 @@ public class OblivionBlocks {
 		vaccumPump, presaltPump,
 
 		spread, reaction, evaporate,
-		genesis, redemption
+		genesis, redemption,
 
 		sodaicFactory,
 		elevativeReconstructor, scalativeReconstructor, ascenditeReconstructor, skinialReconstructor,
@@ -967,38 +965,6 @@ public class OblivionBlocks {
 			range = 6;
 		}};
 
-		pressureSource = new PressureSource("pressure-source") {{
-			size = 1;
-			health = 1000000000;
-			buildVisibility = BuildVisibility.sandboxOnly;
-			category = Category.liquid;
-		}};
-		pressureVoid = new PressureVoid("pressure-void") {{
-			size = 1;
-			health = 1000000000;
-			buildVisibility = BuildVisibility.sandboxOnly;
-			category = Category.liquid;
-		}};
-		pressureConveyor = new PressureConveyor("pressure-conveyor") {{
-			requirements(Category.liquid, with(
-				OblivionResources.hafnium, 1,
-				Items.plastanium, 1
-			));
-			size = 1;
-			maxPressure = 150f;
-			minPressure = -75f;
-		}};
-		pressureTank = new PressureValve("pressure-tank") {{
-			requirements(Category.liquid, with(
-				OblivionResources.hafnium, 50,
-				Items.plastanium, 75
-			));
-			size = 3;
-			health = 500;
-			maxPressure = 3500f;
-			minPressure = -2500f;
-		}};
-
 		imperialDrill = new Drill("imperial-drill") {{
 			requirements(Category.production, with(
 				OblivionResources.niobium, 120
@@ -1133,7 +1099,7 @@ public class OblivionBlocks {
 		}};
 		redemption = new ItemTurret("redemption") {{
 			requirements(Category.turret, with(
-				OblivionResources.sodium, 55
+				OblivionResources.sodium, 55,
 				OblivionResources.hafnium, 35,
 				Items.plastanium, 45
 			));
