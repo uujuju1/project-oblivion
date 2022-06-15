@@ -3,6 +3,8 @@ package oblivion.audio;
 import arc.*;
 import arc.audio.*;
 import arc.assets.*;
+import arc.assets.loaders.*;
+import mindustry.*;
 
 public class OblivionSounds {
 	protected static Sound getSound(String soundName) {
