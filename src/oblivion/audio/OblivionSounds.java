@@ -3,7 +3,7 @@ package oblivion.audio;
 import arc.*;
 import arc.audio.*;
 import arc.assets.*;
-import arc.assets.loaders.*;
+import arc.assets.loaders.SoundLoader.*;
 import mindustry.*;
 
 public class OblivionSounds {
