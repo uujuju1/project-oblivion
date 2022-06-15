@@ -26,12 +26,10 @@ import mindustry.world.blocks.production.*;
 import mindustry.world.blocks.environment.*;
 import mindustry.world.blocks.distribution.*;
 import mindustry.world.blocks.defense.turrets.*;
+import oblivion.audio.*;
 import oblivion.graphics.*;
 import oblivion.blocks.defense.*;
 import oblivion.blocks.production.*;
-import oblivion.blocks.pressure.sandbox.*;
-import oblivion.blocks.pressure.storage.*;
-import oblivion.blocks.pressure.distribution.*;
 
 import static mindustry.type.ItemStack.*;
 
@@ -1114,6 +1112,7 @@ public class OblivionBlocks {
 					lifetime = 80f;
 					trailWidth = 1.8f;
 					trailLength = 8;
+					shootSound = OblivionSounds.chargedShot;
 				}}
 			);
 		}};

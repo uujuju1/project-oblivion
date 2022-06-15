@@ -1,10 +1,11 @@
 package oblivion.audio;
 
+import arc.*;
 import arc.audio.*;
 import arc.assets.*;
 
 public class OblivionSounds {
-	protected static Sound getSound(String name) {
+	protected static Sound getSound(String soundName) {
     String name = "sounds/" + soundName;
     String path = Vars.tree.get(name + ".ogg").exists() ? name + ".ogg" : name + ".mp3";
 
@@ -15,5 +16,5 @@ public class OblivionSounds {
 
     return sound;
 }
-	public static Sound chargedShot = loadSound("chargedShot");
+	public static Sound chargedShot = getSound("chargedShot");
 }
