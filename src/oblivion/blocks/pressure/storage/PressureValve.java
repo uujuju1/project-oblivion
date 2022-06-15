@@ -33,7 +33,7 @@ public class PressureValve extends PressureBlock {
 		}
 
 		@Override
-		public boolean outputsPressure(float pressure, Building src) {return open;}
+		public boolean outputsPressure(float pressure, Building src) {return open}
 
 		@Override
 		public void draw() {

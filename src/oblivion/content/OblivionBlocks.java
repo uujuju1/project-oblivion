@@ -75,6 +75,7 @@ public class OblivionBlocks {
 		vaccumPump, presaltPump,
 
 		spread, reaction, evaporate,
+		genesis, redemption
 
 		sodaicFactory,
 		elevativeReconstructor, scalativeReconstructor, ascenditeReconstructor, skinialReconstructor,
@@ -357,9 +358,7 @@ public class OblivionBlocks {
 			range = 184f;
 			rotateSpeed = 7.5f;
 			recoil = 0.7f;
-			shoot = new ShootAlternate() {{
-				spread = 7f;
-			}};
+			shoot = new ShootAlternate(7f);
 			drawer = new DrawTurret() {{
 				parts.addAll(
 					new RegionPart("-cannon") {{
@@ -1112,6 +1111,43 @@ public class OblivionBlocks {
 					length = 26f * 8f;
 					colors = new Color[]{watercol.cpy().mul(1.5f), watercol.cpy().mul(1.6f), watercol.cpy().mul(1.7f), watercol.cpy().mul(1.8f), Color.white};
 					hitColor = lightColor = flareColor = colors[2];
+				}}
+			);
+		}};
+		genesis = new ItemTurret("genesis") {{
+			requirements(Category.turret, with(
+				OblivionResources.sodium, 35
+			));
+			size = 1;
+			reload = 60f;
+			range = 20f * 8f;
+			drawer = new DrawTurret("reinforced-");
+			ammo(
+				OblivionResources.sodium, new ArtilleryBulletType(12, 2f) {{
+					width = height = 12f;
+					lifetime = 10f * 8f;
+					trailWidth = 1.8f;
+					trailLength = 8;
+				}}
+			);
+		}};
+		redemption = new ItemTurret("redemption") {{
+			requirements(Category.turret, with(
+				OblivionResources.sodium, 55
+				OblivionResources.hafnium, 35,
+				Items.plastanium, 45
+			));
+			size = 1;
+			reload = 90f;
+			range = 30f * 8f;
+			drawer = new DrawTurret("reinforced-");
+			shoot = new ShootAlternate(2.75f);
+			ammo(
+				OblivionResources.sodium, new ArtilleryBulletType(30, 3f) {{
+					width = height = 12f;
+					lifetime = 80f;
+					trailWidth = 1.8f;
+					trailLength = 8;
 				}}
 			);
 		}};

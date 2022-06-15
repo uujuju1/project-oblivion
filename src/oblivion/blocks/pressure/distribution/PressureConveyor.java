@@ -27,7 +27,7 @@ public class PressureConveyor extends PressureBlock {
 		@Override
 		public void updateTile() {
 			overPressure();
-			if (outputsPressure(pressureModule().pressure * pressureFlowPercent, this)) {
+			if (outputsPressure(pressureModule().pressure * pressureFlowPercent, front())) {
 				if (front() instanceof PressureBuild) {
 					transferHeat((PressureBuild) front());
 				}
@@ -44,12 +44,12 @@ public class PressureConveyor extends PressureBlock {
 			Building next = nearby(i);
 			if (next instanceof PressureBuild) {
 				if (next != front()) {
-					if (!(((PressureBuild) next).outputsPressure(pressureModule().pressure * pressureFlowPercent, this))) {
-						Draw.rect(capRegion, x, y, i * 90 + (rotate ? rotdeg() : 0f));
+					if (!(((PressureBuild) next).outputsPressure(pressureModule().pressure * pressureFlowPercent, next))) {
+						Draw.rect(capRegion, x, y, i * 90);
 					}
 				}	
 			}	else {
-				Draw.rect(capRegion, x, y, i * 90 + (rotate ? rotdeg() : 0f));
+				Draw.rect(capRegion, x, y, i * 90);
 			}			
 		}
 		if (front() instanceof PressureBuild) {

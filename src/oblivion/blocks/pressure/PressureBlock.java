@@ -17,7 +17,7 @@ public class PressureBlock extends Block {
 	public TextureRegion pressureRegion;
 	public boolean acceptsPressure = false, outputsPressure = false;
 	public float minPressure = -35f, maxPressure = 35f;
-	public float pressureLeakPercent = 0.01f, pressureFlowPercent = 0.01f;
+	public float pressureLeakPercent = 0.01f, pressureFlowPercent = 0.05f;
 
 	public PressureBlock(String name) {
 		super(name);
@@ -94,7 +94,7 @@ public class PressureBlock extends Block {
 
 		@Override
 		public void overPressure() {
-			if (pressureModule().pressure < minPressure && pressureModule().pressure > maxPressure) kill();
+			if (pressureModule().pressure < minPressure || pressureModule().pressure > maxPressure) kill();
 		}
 
 		@Override
