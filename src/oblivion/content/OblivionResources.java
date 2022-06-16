@@ -30,8 +30,5 @@ public class OblivionResources {
 		polonium = new Item("polonium", Color.valueOf("766D86")) {{cost = 2f; explosiveness = 1f;}};
 
 		xenonium = new Liquid("xenonium", Color.valueOf("C09CFF")) {{gas = true;}};
-
-		lamoniItems.addAll(niobium, hafnium, sodium, polonium);
-		lamoniLiquids.addAll(xenonium);
 	}
 }

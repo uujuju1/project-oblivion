@@ -95,9 +95,29 @@ public class LamoniTechTree {
 				node(OblivionBlocks.largeNiobiumWall, () -> {
 					node(OblivionBlocks.hugeNiobiumWall, () -> {});
 				});
-				node(Blocks.plastaniumWall, Seq.with(new Produce(Items.plastanium)), () -> {
-					node(Blocks.plastaniumWallLarge, () -> {});
+				node(OblivionBlocks.hafniumWall, Seq.with(new Produce(OblivionResources.hafnium)), () -> {
+					node(OblivionBlocks.largeHafniumWall, () -> {
+						node(OblivionBlocks.hugeHafniumWall, () -> {});
+					});
+					node(OblivionBlocks.sodiumWall, Seq.with(new Produce(OblivionResources.sodium)), () -> {
+						node(OblivionBlocks.largeSodiumWall, () -> {
+							node(OblivionBlocks.hugeSodiumWall, () -> {});
+						});
 
+						node(OblivionBlocks.poloniumWall, Seq.with(new Produce(OblivionResources.polonium)), () -> {
+							node(OblivionBlocks.largePoloniumWall, () -> {
+								node(OblivionBlocks.hugePoloniumWall, () -> {});
+							});
+						});
+
+						node(Blocks.plastaniumWall, Seq.with(new Produce(Items.plastanium)), () -> {
+							node(Blocks.largePlastaniumWall, () -> {});
+
+							node(Blocks.surgeWall, Seq.with(new Produce(Items.surgeAlloy)), () -> {
+								node(Blocks.largeSurgeWall, () -> {});
+							});
+						});
+					});
 				});
 			});
 		});

@@ -80,6 +80,8 @@ public class OblivionBlocks {
 		lineNode,
 
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
+		sodiumWall, largeSodiumWall, hugeSodiumWall,
+		hafniumWall, largeHafniumWall, hugeHafniumWall,
 
 		imperialDrill;
 
@@ -1078,6 +1080,7 @@ public class OblivionBlocks {
 				}}
 			);
 		}};
+
 		genesis = new ItemTurret("genesis") {{
 			requirements(Category.turret, with(
 				OblivionResources.sodium, 35
@@ -1085,11 +1088,10 @@ public class OblivionBlocks {
 			size = 1;
 			reload = 60f;
 			range = 20f * 8f;
-			drawer = new DrawTurret("reinforced-");
 			ammo(
-				OblivionResources.sodium, new ArtilleryBulletType(12, 2f) {{
+				OblivionResources.sodium, new ArtilleryBulletType(2f, 12) {{
 					width = height = 12f;
-					lifetime = 10f * 8f;
+					lifetime = 80f;
 					trailWidth = 1.8f;
 					trailLength = 8;
 				}}
@@ -1101,13 +1103,12 @@ public class OblivionBlocks {
 				OblivionResources.hafnium, 35,
 				Items.plastanium, 45
 			));
-			size = 1;
+			size = 2;
 			reload = 90f;
 			range = 30f * 8f;
-			drawer = new DrawTurret("reinforced-");
 			shoot = new ShootAlternate(2.75f);
 			ammo(
-				OblivionResources.sodium, new ArtilleryBulletType(30, 3f) {{
+				OblivionResources.sodium, new ArtilleryBulletType(3f, 30) {{
 					width = height = 12f;
 					lifetime = 80f;
 					trailWidth = 1.8f;
@@ -1115,6 +1116,27 @@ public class OblivionBlocks {
 					shootSound = OblivionSounds.chargedShot;
 				}}
 			);
+		}};
+		apocalypse = new ItemTurret("apocalypse") {{
+			requirements(Category.turret, with(
+				OblivionResources.sodium, 150,
+				OblivionResources.hafnium, 200,
+				OblivionResources.niobium, 250,
+				OblivionResources.polonium, 120,
+				Items.plastanium, 175,
+			));
+			size = 3;
+			reload = 120f;
+			range = 35f * 8f;
+			drawer = new DrawTurret() {{
+				parts.addAll(
+					new RegionPart("-heat") {{
+						drawRegion = false;
+						heatProgress = PartProgress.reload.curve(Interp.pow2In);
+						heatColor = Pal.heal;
+					}}
+				);
+			}};
 		}};
 
 		sodaicFactory = new UnitFactory("sodaic-factory") {{
@@ -1224,6 +1246,48 @@ public class OblivionBlocks {
 				OblivionResources.niobium, 54
 			));
 			health = 1800;
+			size = 3;
+		}};
+		sodiumWall = new Wall("sodium-wall") {{
+			requirements(Category.defense, with(
+				OblivionResources.sodium, 6
+			));
+			health = 400;
+			size = 1;
+		}};
+		largeSodiumWall = new Wall("sodium-wall-large") {{
+			requirements(Category.defense, with(
+				OblivionResources.sodium, 24
+			));
+			health = 1600;
+			size = 2;
+		}};
+		hugeSodiumWall = new Wall("sodium-wall-huge") {{
+			requirements(Category.defense, with(
+				OblivionResources.sodium, 54
+			));
+			health = 3600;
+			size = 3;
+		}};
+		hafniumWall = new Wall("hafnium-wall") {{
+			requirements(Category.defense, with(
+				OblivionResources.hafnium, 6
+			));
+			health = 300;
+			size = 1;
+		}};
+		largeHafniumWall = new Wall("hafnium-wall-large") {{
+			requirements(Category.defense, with(
+				OblivionResources.hafnium, 24
+			));
+			health = 1200;
+			size = 2;
+		}};
+		hugeHafniumWall = new Wall("hafnium-wall-huge") {{
+			requirements(Category.defense, with(
+				OblivionResources.hafnium, 54
+			));
+			health = 2700;
 			size = 3;
 		}};
 
