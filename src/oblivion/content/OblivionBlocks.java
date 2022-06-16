@@ -1257,7 +1257,7 @@ public class OblivionBlocks {
 			size = 1;
 			damage = 120f;
 			range = 40f;
-			flammability = 0.6f;
+			flames = 6;
 			destroyEffect = LamoniFx.sodiumExplosion;
 		}};
 		largeSodiumWall = new ExplosiveWall("sodium-wall-large") {{
@@ -1268,7 +1268,7 @@ public class OblivionBlocks {
 			size = 2;
 			damage = 175f;
 			range = 80f;
-			flammability = 1.2f;
+			flames = 12;
 			destroyEffect = LamoniFx.sodiumExplosion;
 		}};
 		hugeSodiumWall = new ExplosiveWall("sodium-wall-huge") {{
@@ -1279,7 +1279,7 @@ public class OblivionBlocks {
 			size = 3;
 			damage = 250f;
 			range = 120f;
-			flammability = 1.8f;
+			flames = 18;
 			destroyEffect = LamoniFx.sodiumExplosion;
 		}};
 		hafniumWall = new Wall("hafnium-wall") {{
