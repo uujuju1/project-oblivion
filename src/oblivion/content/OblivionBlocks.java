@@ -1123,7 +1123,7 @@ public class OblivionBlocks {
 				OblivionResources.hafnium, 200,
 				OblivionResources.niobium, 250,
 				OblivionResources.polonium, 120,
-				Items.plastanium, 175,
+				Items.plastanium, 175
 			));
 			size = 3;
 			reload = 120f;
