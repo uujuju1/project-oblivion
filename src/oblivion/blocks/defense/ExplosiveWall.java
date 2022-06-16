@@ -15,7 +15,7 @@ public class ExplosiveWall extends Wall {
 	public class ExplosiveWallBuild extends WallBuild {
 		@Override
 		public void onDestroyed() {
-			Damage.dynamicExplosion(x, y, exlosiveness, flammability, damage, range, damages, combusts, team, destroyEffect);
+			Damage.dynamicExplosion(x, y, explosiveness, flammability, damage, range, damages, combusts, team, destroyEffect);
 		}
 	}
 }
