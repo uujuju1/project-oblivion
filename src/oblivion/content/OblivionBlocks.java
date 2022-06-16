@@ -1249,26 +1249,38 @@ public class OblivionBlocks {
 			health = 1800;
 			size = 3;
 		}};
-		sodiumWall = new Wall("sodium-wall") {{
+		sodiumWall = new ExplosiveWall("sodium-wall") {{
 			requirements(Category.defense, with(
 				OblivionResources.sodium, 6
 			));
 			health = 400;
 			size = 1;
+			damage = 120f;
+			range = 40f;
+			damages = combusts = true;
+			flammability = 0.6f;
 		}};
-		largeSodiumWall = new Wall("sodium-wall-large") {{
+		largeSodiumWall = new ExplosiveWall("sodium-wall-large") {{
 			requirements(Category.defense, with(
 				OblivionResources.sodium, 24
 			));
 			health = 1600;
 			size = 2;
+			damage = 175f;
+			range = 80f;
+			damages = combusts = true;
+			flammability = 1.2f;
 		}};
-		hugeSodiumWall = new Wall("sodium-wall-huge") {{
+		hugeSodiumWall = new ExplosiveWall("sodium-wall-huge") {{
 			requirements(Category.defense, with(
 				OblivionResources.sodium, 54
 			));
 			health = 3600;
 			size = 3;
+			damage = 250f;
+			range = 120f;
+			damages = combusts = true;
+			flammability = 1.8f;
 		}};
 		hafniumWall = new Wall("hafnium-wall") {{
 			requirements(Category.defense, with(
@@ -1291,26 +1303,38 @@ public class OblivionBlocks {
 			health = 2700;
 			size = 3;
 		}};
-		poloniumWall = new Wall("polonium-wall") {{
+		poloniumWall = new ExplosiveWall("polonium-wall") {{
 			requirements(Category.defense, with(
 				OblivionResources.hafnium, 6
 			));
 			health = 300;
 			size = 1;
+			damage = 200f;
+			range = 80f;
+			explosiveness = 0.6f;
+			damages = true;
 		}};
-		largePoloniumWall = new Wall("polonium-wall-large") {{
+		largePoloniumWall = new ExplosiveWall("polonium-wall-large") {{
 			requirements(Category.defense, with(
 				OblivionResources.hafnium, 24
 			));
 			health = 1200;
 			size = 2;
+			damage = 245f;
+			range = 120f;
+			explosiveness = 1.2f;
+			damages = true;
 		}};
-		hugePoloniumWall = new Wall("polonium-wall-huge") {{
+		hugePoloniumWall = new ExplosiveWall("polonium-wall-huge") {{
 			requirements(Category.defense, with(
 				OblivionResources.hafnium, 54
 			));
 			health = 2700;
 			size = 3;
+			damage = 285f;
+			range = 180f;
+			explosiveness = 1.8f;
+			damages = true;
 		}};
 
 		mantlePulverizer = new GenericCrafter("mantle-pulverizer") {{
