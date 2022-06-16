@@ -90,7 +90,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	protected void generate() {
 		float temp = getTemperature(sector.tile.v);
 		float height = rawHeight(sector.tile.v);
-		float hnoise = noise(x + 782, y, 7, 0.8f, 280f, 1f)
+		float hnoise = noise(x + 782, y, 7, 0.8f, 280f, 1f);
 
 		// base
 		pass((x, y) -> {
