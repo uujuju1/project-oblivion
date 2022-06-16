@@ -111,10 +111,10 @@ public class LamoniTechTree {
 						});
 
 						node(Blocks.plastaniumWall, Seq.with(new Produce(Items.plastanium)), () -> {
-							node(Blocks.largePlastaniumWall, () -> {});
+							node(Blocks.plastaniumWallLarge, () -> {});
 
 							node(Blocks.surgeWall, Seq.with(new Produce(Items.surgeAlloy)), () -> {
-								node(Blocks.largeSurgeWall, () -> {});
+								node(Blocks.surgeWallLarge, () -> {});
 							});
 						});
 					});

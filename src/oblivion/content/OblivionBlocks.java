@@ -71,7 +71,7 @@ public class OblivionBlocks {
 		vaccumPump, presaltPump,
 
 		spread, reaction, evaporate,
-		genesis, redemption,
+		genesis, redemption, apocalypse,
 
 		sodaicFactory,
 		elevativeReconstructor, scalativeReconstructor, ascenditeReconstructor, skinialReconstructor,
@@ -82,6 +82,7 @@ public class OblivionBlocks {
 		niobiumWall, largeNiobiumWall, hugeNiobiumWall,
 		sodiumWall, largeSodiumWall, hugeSodiumWall,
 		hafniumWall, largeHafniumWall, hugeHafniumWall,
+		poloniumWall, largePoloniumWall, hugePoloniumWall,
 
 		imperialDrill;
 
@@ -1284,6 +1285,27 @@ public class OblivionBlocks {
 			size = 2;
 		}};
 		hugeHafniumWall = new Wall("hafnium-wall-huge") {{
+			requirements(Category.defense, with(
+				OblivionResources.hafnium, 54
+			));
+			health = 2700;
+			size = 3;
+		}};
+		poloniumWall = new Wall("polonium-wall") {{
+			requirements(Category.defense, with(
+				OblivionResources.hafnium, 6
+			));
+			health = 300;
+			size = 1;
+		}};
+		largePoloniumWall = new Wall("polonium-wall-large") {{
+			requirements(Category.defense, with(
+				OblivionResources.hafnium, 24
+			));
+			health = 1200;
+			size = 2;
+		}};
+		hugePoloniumWall = new Wall("polonium-wall-huge") {{
 			requirements(Category.defense, with(
 				OblivionResources.hafnium, 54
 			));
