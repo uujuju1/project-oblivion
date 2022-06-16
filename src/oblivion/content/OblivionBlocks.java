@@ -1257,8 +1257,8 @@ public class OblivionBlocks {
 			size = 1;
 			damage = 120f;
 			range = 40f;
-			damages = combusts = true;
 			flammability = 0.6f;
+			destroyEffect = LamoniFx.sodiumExplosion;
 		}};
 		largeSodiumWall = new ExplosiveWall("sodium-wall-large") {{
 			requirements(Category.defense, with(
@@ -1268,8 +1268,8 @@ public class OblivionBlocks {
 			size = 2;
 			damage = 175f;
 			range = 80f;
-			damages = combusts = true;
 			flammability = 1.2f;
+			destroyEffect = LamoniFx.sodiumExplosion;
 		}};
 		hugeSodiumWall = new ExplosiveWall("sodium-wall-huge") {{
 			requirements(Category.defense, with(
@@ -1279,8 +1279,8 @@ public class OblivionBlocks {
 			size = 3;
 			damage = 250f;
 			range = 120f;
-			damages = combusts = true;
 			flammability = 1.8f;
+			destroyEffect = LamoniFx.sodiumExplosion;
 		}};
 		hafniumWall = new Wall("hafnium-wall") {{
 			requirements(Category.defense, with(
@@ -1311,8 +1311,7 @@ public class OblivionBlocks {
 			size = 1;
 			damage = 200f;
 			range = 80f;
-			explosiveness = 0.6f;
-			damages = true;
+			destroyEffect = LamoniFx.poloniumExplosion;
 		}};
 		largePoloniumWall = new ExplosiveWall("polonium-wall-large") {{
 			requirements(Category.defense, with(
@@ -1322,8 +1321,7 @@ public class OblivionBlocks {
 			size = 2;
 			damage = 245f;
 			range = 120f;
-			explosiveness = 1.2f;
-			damages = true;
+			destroyEffect = LamoniFx.poloniumExplosion;
 		}};
 		hugePoloniumWall = new ExplosiveWall("polonium-wall-huge") {{
 			requirements(Category.defense, with(
@@ -1333,8 +1331,7 @@ public class OblivionBlocks {
 			size = 3;
 			damage = 285f;
 			range = 180f;
-			explosiveness = 1.8f;
-			damages = true;
+			destroyEffect = LamoniFx.poloniumExplosion;
 		}};
 
 		mantlePulverizer = new GenericCrafter("mantle-pulverizer") {{

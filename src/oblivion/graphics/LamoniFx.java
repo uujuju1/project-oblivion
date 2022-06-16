@@ -96,5 +96,44 @@ public class LamoniFx {
 	copterTrail = new Effect(30f, e -> {
 		Draw.color(Color.valueOf("BAF2B7"));
 		Fill.circle(e.x, e.y, 3f * e.foutpow());
+	}),
+
+	poloniumExplosion = new Effect(30f, e -> {
+		float intensity = e.rotation;
+		Draw.color(Color.valueOf("948E9F"));
+		e.scaled(25f, b -> {
+		  Draw.alpha(b.foutpow());
+		  Fill.circle(e.x, e.y, 40f * intensity);
+		});
+		Draw.alpha(1f);
+		Lines.stroke(3f * e.fout() * intensity);
+		Lines.circle(e.x, e.y, 40f * intensity);
+		for (var i = 0; i < 6; i++) {
+		  float x = e.x + Angles.trnsx(360f/6f * i, 40f * intensity, 0f);
+		  float y = e.y + Angles.trnsy(360f/6f * i, 40f * intensity, 0f);
+		  Drawf.tri(x, y, 10f * e.fout() * intensity, 80f * intensity * e.fin(Interp.fastSlow), 360f/6f * i);
+		}
+		Angles.randLenVectors(e.id, 20, e.fin(Interp.fastSlow) * 80f * intensity, (x, y) -> {
+		  Fill.circle(e.x + x, e.y + y, 10f * e.fout() * intensity);
+		});
+	}),
+	sodiumExplosion = new Effect(30f, e -> {
+		float intensity = e.rotation;
+		Draw.color(Pal.heal);
+		e.scaled(25f, b -> {
+		  Draw.alpha(b.foutpow());
+		  Fill.circle(e.x, e.y, 80f * intensity);
+		});
+		Draw.alpha(1f);
+		Lines.stroke(3f * e.fout() * intensity);
+		Lines.circle(e.x, e.y, 80f * intensity);
+		for (var i = 0; i < 6; i++) {
+		  float x = e.x + Angles.trnsx(360f/6f * i, 80f * intensity, 0f);
+		  float y = e.y + Angles.trnsy(360f/6f * i, 80f * intensity, 0f);
+		  Drawf.tri(x, y, 10f * e.fout() * intensity, 80f * e.fin(Interp.fastSlow) * intensity, 360f/6f * i + 180f);
+		}
+		Angles.randLenVectors(e.id, 20, e.fin(Interp.fastSlow) * 80f * intensity, (x, y) -> {
+		  Fill.circle(e.x + x, e.y + y, 10f * e.fout() * intensity);
+		});
 	});
 }
