@@ -90,18 +90,43 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	protected void generate() {
 		float temp = getTemperature(sector.tile.v);
 		float height = rawHeight(sector.tile.v);
+		float hnoise = noise(x + 782, y, 7, 0.8f, 280f, 1f)
 
-		if (temp > 0.33f) {
-			pass((x, y) -> {
-				int noise = (int) noise(x + 700, y, 8, 0.3f, 280f, 2f);
-				floor = arr[2][3 + noise];
-			});
-		} else {
-			pass((x, y) -> {
-				floor = Blocks.stone;
-			});
-		}
+		// base
+		pass((x, y) -> {
+			floor = Blocks.stone;
+			for (int i = 0; i < 3; i++) {
+				if (temp > i && temp < i + 1) {
+					for (int j = 0; j < 5; j++) {
+						if (height > j && height < j + 1) {
+							if (hnoise > 0.66f) {
+								floor = arr[(int) Mathf.clamp(i, 0, 2)][(int) Mathf.clamp(j + 1, 0, 4)];
+							} else {
+								floor = arr[(int) Mathf.clamp(i, 0, 2)][(int) Mathf.clamp(j, 0, 4)];
+							}
+						}
+					}
+				}
+			}
+		});
 
-		Schematics.placeLaunchLoadout(50, 50);
+		cells(5);
+		float length = width/2.6f;
+    Vec2 trns = Tmp.v1.trns(rand.random(320f), length);
+    int
+    spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
+    endX = (int)(-trns.x + width/2f), endY = (int)(-trns.y + height/2f);
+    float maxd = Mathf.dst(width/2f, height/2f);
+
+    erase(spawnX, spawnY, 15);
+    brush(pathfind(spawnX, spawnY, endX, endY, tile -> (tile.solid() ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+    erase(endX, endY, 15);
+
+    inverseFloodFill(tiles.getn(spawnX, spawnY));
+    erase(endX, endY, 6);
+    tiles.getn(endX, endY).setOverlay(Blocks.spawn);
+    blend(OblivionEnvironment.carmebonite, OblivionEnvironment.boronite, 4);
+
+		Schematics.placeLaunchLoadout(spawnX, spawnY);
 	}
 }

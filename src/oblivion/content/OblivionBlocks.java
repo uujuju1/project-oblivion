@@ -1095,6 +1095,7 @@ public class OblivionBlocks {
 					lifetime = 80f;
 					trailWidth = 1.8f;
 					trailLength = 8;
+					shootSound = OblivionSounds.chargedShot;
 				}}
 			);
 		}};
@@ -1138,6 +1139,15 @@ public class OblivionBlocks {
 					}}
 				);
 			}};
+			ammo(
+				OblivionResources.sodium, new ArtilleryBulletType(4f, 80) {{
+					width = height = 16f;
+					lifetime = 70f;
+					trailWidth = 3f;
+					trailLength = 12;
+					shootSound = OblivionSounds.chargedShot;
+				}}
+			);
 		}};
 
 		sodaicFactory = new UnitFactory("sodaic-factory") {{
