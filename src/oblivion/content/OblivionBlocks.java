@@ -73,6 +73,8 @@ public class OblivionBlocks {
 		spread, reaction, evaporate,
 		genesis, redemption, apocalypse,
 
+		mortar,
+
 		sodaicFactory,
 		elevativeReconstructor, scalativeReconstructor, ascenditeReconstructor, skinialReconstructor,
 
@@ -1148,6 +1150,15 @@ public class OblivionBlocks {
 					shootSound = OblivionSounds.chargedShot;
 				}}
 			);
+		}};
+
+		mortar = new Mortar("mortar") {{
+			requirements(Category.turret, with(
+				OblivionResources.hafnium, 50
+			));
+			size = 2;
+			health = 180f;
+			consumeItems(with(OblivionResources.niobium, 1));
 		}};
 
 		sodaicFactory = new UnitFactory("sodaic-factory") {{
