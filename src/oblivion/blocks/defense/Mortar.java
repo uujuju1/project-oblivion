@@ -2,10 +2,12 @@ package oblivion.blocks.defense;
 
 import arc.util.*;
 import arc.func.*;
+import arc.math.geom.*;
 import mindustry.gen.*;
 import mindustry.logic.*;
 import mindustry.content.*;
 import mindustry.entities.*;
+import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 
 public class Mortar extends Block {
@@ -13,7 +15,7 @@ public class Mortar extends Block {
 	public boolean targetsAir = true, targetsGround = true;
 	public Boolf<Unit> unitFilter = u -> true;
 	public Boolf<Building> buildingFilter = b -> !b.block.underBullets;
-	public BulletType bullet = Bullets.standardCopper;
+	public BulletType bullet = Bullets.placeholder;
 	public ShootPattern shoot = new ShootPattern();
 
 	public Mortar(String name) {
