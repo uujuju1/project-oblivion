@@ -31,7 +31,7 @@ public class Mortar extends Block {
 		float time = 0f, angle = 0f;
 		@Nullable Posc target;
 		public int totalShots;
-		public Vec2 shootPos;
+		public Vec2 shootPos = Tmp.v1.setZero();
 
 		@Override
 		public float range() {return range;}
