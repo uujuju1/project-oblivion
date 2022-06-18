@@ -1157,7 +1157,7 @@ public class OblivionBlocks {
 				OblivionResources.hafnium, 50
 			));
 			size = 2;
-			health = 180f;
+			health = 180;
 			consumeItems(with(OblivionResources.niobium, 1));
 		}};
 
