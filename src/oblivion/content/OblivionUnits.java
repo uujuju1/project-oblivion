@@ -11,6 +11,7 @@ import mindustry.content.*;
 import mindustry.graphics.*;
 import mindustry.ai.types.*;
 import mindustry.type.weapons.*;
+import mindustry.world.meta.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.entities.abilities.*;
@@ -1113,6 +1114,7 @@ public class OblivionUnits{
 			fallSpeed = 0.01f;
 			constructor = CopterComp::new;
 			engineSize = 0f;
+			envDisabled = Env.space;
 			outlineColor = Color.valueOf("3F424D");
 			range = 20 * 8f;
 			maxRange = range;
@@ -1154,6 +1156,7 @@ public class OblivionUnits{
 			flying = true;
 			fallSpeed = 0.009f;
 			engineSize = 0f;
+			envDisabled = Env.space;
 			range = 25f * 8f;
 			hitSize = 9f;
 			maxRange = range;
@@ -1210,6 +1213,7 @@ public class OblivionUnits{
 			flying = true;
 			fallSpeed = 0.008f;
 			engineSize = 0f;
+			envDisabled = Env.space;
 			range = 28f * 8f;
 			hitSize = 14f;
 			maxRange = range;
@@ -1266,6 +1270,7 @@ public class OblivionUnits{
 			flying = true;
 			fallSpeed = 0.007f;
 			engineSize = 0f;
+			envDisabled = Env.space;
 			range = 32f * 8f;
 			hitSize = 20f;
 			maxRange = range;
@@ -1365,6 +1370,7 @@ public class OblivionUnits{
 			flying = true;
 			fallSpeed = 0.006f;
 			engineSize = 0f;
+			envDisabled = Env.space;
 			range = 38f * 8f;
 			hitSize = 32f;
 			maxRange = range;

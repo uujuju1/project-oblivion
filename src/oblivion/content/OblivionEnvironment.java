@@ -11,11 +11,13 @@ public class OblivionEnvironment {
 		baletise, powderite, tobolite, driedpowder,
 		baletiseWall, powderiteWall, toboliteWall, driedpowderWall,
 
+		oreNiobium,
 		argeletine, goletenira, malenatite, paletolime, mudone,
 		argeletineWall, goleteniraWall, malenatiteWall, paletolimeWall, mudoneWall,
-		oreNiobium,
 		boronite, tarrobonite, carmebonite,
-		boroniteWall, tarroboniteWall, carmeboniteWall;
+		boroniteWall, tarroboniteWall, carmeboniteWall,
+		methystane, lathanite, amonetha, porotrate,
+		methystaneWall, lathaniteWall, amonethaWall, porotrateWall;
 
 	public void load() {
 
@@ -50,23 +52,24 @@ public class OblivionEnvironment {
 			mapColor = Color.valueOf("7D7D7D");
 		}};
 
+		oreNiobium = new OreBlock(OblivionResources.niobium);
 		// lamoni 1
 		mudone = new Floor("mudone") {{
-			attributes.set(Attribute.water, 0.5f);
+			attributes.set(Attribute.water, -0.2f);
+			attributes.set(Attribute.oil, 0.75f);
 		}};
 		argeletine = new Floor("argeletine") {{
-			attributes.set(Attribute.water, 0.15f);
+			attributes.set(Attribute.water, -0.4f);
 		}};
 		goletenira = new Floor("goletenira") {{
-			attributes.set(Attribute.water, -0.1f);
+			attributes.set(Attribute.water, -0.6f);
 		}};
 		malenatite = new Floor("malenatite") {{
-			attributes.set(Attribute.water, -0.15f);
+			attributes.set(Attribute.water, -0.8f);
 		}};
 		paletolime = new Floor("paletolime") {{
 			itemDrop = Items.sand;
-			attributes.set(Attribute.water, -0.25f);
-			attributes.set(Attribute.oil, 0.75f);
+			attributes.set(Attribute.water, -1f);
 		}};
 
 		mudoneWall = new StaticWall("mudone-wall") {{
@@ -84,18 +87,16 @@ public class OblivionEnvironment {
 		paletolimeWall = new StaticWall("paletolime-wall") {{
 			mapColor = Color.valueOf("D9C4B8");
 		}};
-
-		oreNiobium = new OreBlock(OblivionResources.niobium);
 		// lamoni 2
 
 		boronite = new Floor("boronite") {{
-			attributes.set(Attribute.oil, 1.25f);
+			attributes.set(Attribute.oil, 1.5f);
 		}};
 		tarrobonite = new Floor("tarrobonite") {{
 			attributes.set(Attribute.oil, 2f);
 		}};
 		carmebonite = new Floor("carmebonite") {{
-			attributes.set(Attribute.oil, 1.75f);
+			attributes.set(Attribute.oil, 1f);
 		}};
 
 		boroniteWall = new StaticWall("boronite-wall") {{
@@ -106,6 +107,33 @@ public class OblivionEnvironment {
 		}};
 		carmeboniteWall = new StaticWall("carmebonite-wall") {{
 			mapColor = Color.valueOf("7F8F77");
+		}};
+		// lamoni3
+
+		methystane = new Floor("methystane") {{
+			attributes.set(Attribute.water, 0.25f);
+		}};
+		lathanite = new Floor("lathanite") {{
+			attributes.set(Attribute.water, 0.5f);
+		}};
+		amonetha = new Floor("amonetha") {{
+			attributes.set(Attribute.water, 0.75f);
+		}};
+		porotrate = new Floor("porotrate") {{
+			attributes.set(Attribute.water, 1f);
+		}};
+
+		methystaneWall = new StaticWall("methystane-wall") {{
+			mapColor = Color.valueOf("26202E");
+		}};
+		lathaniteWall = new StaticWall("lathanite-wall") {{
+			mapColor = Color.valueOf("3D3647");
+		}};
+		amonethaWall = new StaticWall("amonetha-wall") {{
+			mapColor = Color.valueOf("4E4559");
+		}};
+		porotrateWall = new StaticWall("porotrate-wall") {{
+			mapColor = Color.valueOf("6E5E80");
 		}};
 	}
 }
