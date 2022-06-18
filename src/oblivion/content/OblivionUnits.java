@@ -1173,9 +1173,11 @@ public class OblivionUnits{
 				new Weapon("oblivion-aphrodite-missile") {{
 					x = 5f;
 					y = 6f;
-					reload = 60f;
+					reload = 45f;
 					top = false;
 					shootSound = Sounds.missile;
+					inaccuracy = 4f;
+					shoot.shots = 2;
 					bullet = new MissileBulletType(2.5f, 30) {{
 						lifetime = 80f;
 						shootEffect = LamoniFx.copterShoot;
@@ -1192,14 +1194,16 @@ public class OblivionUnits{
 				new Weapon("oblivion-aphrodite-mount") {{
 					x = 3.75f;
 					y = -4f;
-					reload = 10f;
+					reload = 75f;
 					top = false;
 					shootSound = Sounds.artillery;
 					maxRange = 12.5f * 8f;
-					bullet = new ArtilleryBulletType(1f, 13) {{
+					bullet = new ArtilleryBulletType(1f, 50) {{
 						lifetime = 100f;
 						shootEffect = LamoniFx.copterShootBig;
 						width = height = 10f;
+						trailWidth = 2f;
+                                                trailLength = 5;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
 						collidesAir = collidesGround = collidesTiles = collides;
