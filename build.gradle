@@ -29,7 +29,7 @@ allprojects{
 
 dependencies{
     compileOnly "com.github.Anuken.Arc:arc-core:dfcb21ce56"
-    compileOnly "com.github.Anuken.MindustryJitpack:core:master-SNAPSHOT"
+    compileOnly "com.github.Anuken.Mindustry:core:master-SNAPSHOT"
     annotationProcessor "com.github.Anuken:jabel:$jabelVersion"
 }
 
