@@ -38,8 +38,9 @@ public class Mortar extends Block {
 
 		@Override
 		public void updateTile() {
-			if (efficiency > 0f) {
-				angle = angleTo(shootPos);
+			angle = angleTo(shootPos);
+			findTarget();
+			if (efficiency > 0f && target != null) {	
 				time += Time.delta * efficiency;
 				if (time > reload) {
 					time = 0f;
@@ -52,7 +53,6 @@ public class Mortar extends Block {
 		}
 
 		public void shoot(BulletType bullet, float angleOffset, Mover mover) {
-			findTarget();
 			if (target != null) {
 				bullet.create(this, team, x, y, angle + angleOffset, -1f, 1f, 1f, null, mover, shootPos.x, shootPos.y);
 			}
