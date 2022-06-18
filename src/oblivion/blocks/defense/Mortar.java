@@ -5,6 +5,7 @@ import arc.func.*;
 import arc.math.geom.*;
 import mindustry.gen.*;
 import mindustry.logic.*;
+import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.entities.*;
 import mindustry.entities.bullet.*;
@@ -15,6 +16,7 @@ public class Mortar extends Block {
 	public boolean targetsAir = true, targetsGround = true;
 	public Boolf<Unit> unitFilter = u -> true;
 	public Boolf<Building> buildingFilter = b -> !b.block.underBullets;
+	public Sortf unitSort = UnitSorts.closest;
 	public BulletType bullet = Bullets.placeholder;
 	public ShootPattern shoot = new ShootPattern();
 
@@ -58,7 +60,7 @@ public class Mortar extends Block {
 			if(targetsAir && !targetsGround){
 				target = Units.bestEnemy(team, x, y, range, e -> !e.dead() && !e.isGrounded() && unitFilter.get(e), unitSort);
 			}else{
-				target = Units.bestTarget(team, x, y, range, e -> !e.dead() && unitFilter.get(e) && (e.isGrounded() || targetsAir) && (!e.isGrounded() || targetsGround), b -> targetGround && buildingFilter.get(b), unitSort);
+				target = Units.bestTarget(team, x, y, range, e -> !e.dead() && unitFilter.get(e) && (e.isGrounded() || targetsAir) && (!e.isGrounded() || targetsGround), b -> targetsGround && buildingFilter.get(b), unitSort);
       }
 
       if (target != null) {
