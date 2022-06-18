@@ -39,7 +39,7 @@ public class Mortar extends Block {
 		@Override
 		public void updateTile() {
 			if (efficiency > 0f) {
-				rotation = angleTo(shootPos);
+				angle = angleTo(shootPos);
 				time += Time.delta * efficiency;
 				if (time > reload) {
 					time = 0f;
