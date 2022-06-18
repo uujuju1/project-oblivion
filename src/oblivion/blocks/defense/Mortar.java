@@ -8,6 +8,7 @@ import mindustry.logic.*;
 import mindustry.world.*;
 import mindustry.content.*;
 import mindustry.entities.*;
+import mindustry.entities.Units.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 
