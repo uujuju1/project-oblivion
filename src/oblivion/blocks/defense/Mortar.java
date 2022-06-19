@@ -28,18 +28,18 @@ public class Mortar extends Block {
 	}
 
 	public class MortarBuild extends Building implements Ranged {
-		float time = 0f, angle = 0f;
+		float time = 0f, angle = 0f, shootAngle = 0f;
 		@Nullable Posc target;
 		public int totalShots;
-		public Vec2 shootPos = Tmp.v1.setZero();
+		public Vec2 shootPos;
 
 		@Override
 		public float range() {return range;}
 
 		@Override
 		public void updateTile() {
-			angle = angleTo(shootPos);
 			findTarget();
+			angle = angleTo(shootPos);
 			if (efficiency > 0f && target != null) {	
 				time += Time.delta * efficiency;
 				if (time > reload) {
@@ -54,7 +54,7 @@ public class Mortar extends Block {
 
 		public void shoot(BulletType bullet, float angleOffset, Mover mover) {
 			if (target != null) {
-				bullet.create(this, team, x, y, angle + angleOffset, -1f, 1f, 1f, null, mover, shootPos.x, shootPos.y);
+				bullet.create(this, team, x, y, shootAngle + angleOffset, -1f, 1f, 1f, null, mover, shootPos.x, shootPos.y);
 			}
 		}
 
