@@ -31,7 +31,7 @@ public class Mortar extends Block {
 		float time = 0f, angle = 0f, shootAngle = 0f;
 		@Nullable Posc target;
 		public int totalShots;
-		public Vec2 shootPos;
+		public Vec2 shootPos = Tmp.v1.setZero();
 
 		@Override
 		public float range() {return range;}
@@ -39,7 +39,7 @@ public class Mortar extends Block {
 		@Override
 		public void updateTile() {
 			findTarget();
-			angle = angleTo(shootPos);
+			angle = Tmp.v1.set(x, y).angleTo(shootPos);
 			if (efficiency > 0f && target != null) {	
 				time += Time.delta * efficiency;
 				if (time > reload) {

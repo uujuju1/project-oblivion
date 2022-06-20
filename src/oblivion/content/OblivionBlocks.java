@@ -1084,6 +1084,13 @@ public class OblivionBlocks {
 			);
 		}};
 
+		mortar = new Mortar("mortar") {{
+			category = Category.turret;
+			buildVisibility = BuildVisibility.shown;
+			size = 2;
+			health = 160;
+		}};
+
 		genesis = new ItemTurret("genesis") {{
 			requirements(Category.turret, with(
 				OblivionResources.sodium, 35
@@ -1150,15 +1157,6 @@ public class OblivionBlocks {
 					shootSound = OblivionSounds.chargedShot;
 				}}
 			);
-		}};
-
-		mortar = new Mortar("mortar") {{
-			requirements(Category.turret, with(
-				OblivionResources.hafnium, 50
-			));
-			size = 2;
-			health = 180;
-			consumeItems(with(OblivionResources.niobium, 1));
 		}};
 
 		sodaicFactory = new UnitFactory("sodaic-factory") {{
