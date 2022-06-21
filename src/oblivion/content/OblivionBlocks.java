@@ -1089,6 +1089,7 @@ public class OblivionBlocks {
 			buildVisibility = BuildVisibility.shown;
 			size = 2;
 			health = 160;
+                        consumeItems(with(OblivionResources.niobium, 1));
 		}};
 
 		genesis = new ItemTurret("genesis") {{
