@@ -1482,7 +1482,7 @@ public class OblivionUnits{
 							Draw.color(Pal.lancerLaser);
 							Fill.circle(b.x, b.y, 3f + sin);
 							Draw.color();
-							Fill.circle(b.x b.y, (3f + sin)/2f);
+							Fill.circle(b.x, b.y, (3f + sin)/2f);
 						};
 						delayTime = 40f;
 						damageRadius = 20f;
