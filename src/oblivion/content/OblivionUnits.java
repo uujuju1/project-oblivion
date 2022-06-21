@@ -29,10 +29,10 @@ public class OblivionUnits{
 	phi, root, multi, pow, expo,
 
 	republic, giga, archaranid, bloodmoon, yetinus,
-
 	
 	citizen,
 	mercurie, aphrodite, apollo, zeus, chronos;
+	latrodectus, /*phoneutria, lycosidae, sparassidae, trichonephila*/
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1422,6 +1422,70 @@ public class OblivionUnits{
 						lifetime = 76f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
+					}};
+				}}
+			);
+		}};
+ 
+		latrodectus = new UnitType("latrodectus") {{
+			health = 320;
+			speed = 1f;
+			range = 20f * 8f;
+			maxRange = range;
+			constructor = LegsUnit::create;
+
+			legStraightness = 0.3f;
+			stepShake = 0f;
+			legCount = 6;
+			legLength = 8f;
+			lockLegBase = true;
+			legContinuousMove = true;
+			legExtension = -2f;
+			legBaseOffset = 3f;
+			legMaxLength = 1.1f;
+			legMinLength = 0.2f;
+			legLengthScl = 0.96f;
+			legForwardScl = 1.1f;
+			legGroupSize = 3;
+			rippleScale = 0.2f;
+			legMoveSpace = 1f;
+			allowLegStep = true;
+			hovering = true;
+			legPhysicsLayer = false;
+
+			weapons.add(
+				new Weapon("oblivion-latrodectus-mount") {{
+					x = y = 0f;
+					reload = 120f;
+					shootY = 6f;
+					bullet = new DelayDamageBulletType(2f, 12) {{
+						draw = b -> {
+							float p = b.lifetime/b.type.lifetime;
+							float sin = Mathf.absin(5f, 1f);
+							Draw.color(Pal.lancerLaser);
+							Lines.stroke((1f + sin));
+							Lines.circle(b.x, b.y, (40f + sin));
+							for (int i = 0; i < 4; i++) {
+								float lx = b.x + Angles.trnsx(Time.time + (i * 90f), (40f + sin) * p, 0f);
+								float ly = b.y + Angles.trnsy(Time.time + (i * 90f), (40f + sin) * p, 0f);
+								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly), 10f);
+							}
+							for (int i = 0; i < 4; i++) {
+								float lx = b.x + Angles.trnsx(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
+								float ly = b.y + Angles.trnsy(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
+								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
+							}
+							Draw.color()
+							Lines.stroke(((1f + sin)/2f) * p)
+							Lines.circle(b.x, b.y, (40f + sin) * p);
+
+							Draw.color(Pal.lancerLaser);
+							Fill.circle(b.x, b.y, 3f + sin);
+							Draw.color(b.x b.y, (3f + sin)/2f);
+						};
+						delayTime = 40f;
+						damageRadius = 20f;
+						extraDamage = 0.6f;
 					}};
 				}}
 			);
