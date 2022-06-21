@@ -73,8 +73,6 @@ public class OblivionBlocks {
 		spread, reaction, evaporate,
 		genesis, redemption, apocalypse,
 
-		mortar,
-
 		sodaicFactory,
 		elevativeReconstructor, scalativeReconstructor, ascenditeReconstructor, skinialReconstructor,
 
@@ -1082,14 +1080,6 @@ public class OblivionBlocks {
 					hitColor = lightColor = flareColor = colors[2];
 				}}
 			);
-		}};
-
-		mortar = new Mortar("mortar") {{
-			category = Category.turret;
-			buildVisibility = BuildVisibility.shown;
-			size = 2;
-			health = 160;
-                        consumeItems(with(OblivionResources.niobium, 1));
 		}};
 
 		genesis = new ItemTurret("genesis") {{

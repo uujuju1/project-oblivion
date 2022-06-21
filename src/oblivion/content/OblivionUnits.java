@@ -19,6 +19,7 @@ import oblivion.type.*;
 import oblivion.graphics.*;
 import oblivion.entities.draw.*;
 import oblivion.entities.comp.*;
+import oblivion.entities.bullet.*;
 
 import static mindustry.Vars.*;
 
