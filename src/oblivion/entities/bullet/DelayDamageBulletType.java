@@ -23,7 +23,7 @@ public class DelayDamageBulletType extends BulletType {
 	public Cons<Bullet> draw = b -> {};
 	public float delayTime = 60f, damageRadius = 80f, extraDamage = 1f;
 
-	public DelayBulletType(float speed, float dmg) {
+	public DelayDamageBulletType(float speed, float dmg) {
 		super(speed, dmg);
 		collides = collidesAir = collidesGround = false;
 		drag = 0.1f;

@@ -31,8 +31,8 @@ public class OblivionUnits{
 	republic, giga, archaranid, bloodmoon, yetinus,
 	
 	citizen,
-	mercurie, aphrodite, apollo, zeus, chronos;
-	latrodectus, /*phoneutria, lycosidae, sparassidae, trichonephila*/
+	mercurie, aphrodite, apollo, zeus, chronos,
+	latrodectus/*, phoneutria, lycosidae, sparassidae, trichonephila*/;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1475,13 +1475,14 @@ public class OblivionUnits{
 								float ly = b.y + Angles.trnsy(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
 							}
-							Draw.color()
-							Lines.stroke(((1f + sin)/2f) * p)
+							Draw.color();
+							Lines.stroke(((1f + sin)/2f) * p);
 							Lines.circle(b.x, b.y, (40f + sin) * p);
 
 							Draw.color(Pal.lancerLaser);
 							Fill.circle(b.x, b.y, 3f + sin);
-							Draw.color(b.x b.y, (3f + sin)/2f);
+							Draw.color();
+							Fill.circle(b.x b.y, (3f + sin)/2f);
 						};
 						delayTime = 40f;
 						damageRadius = 20f;
