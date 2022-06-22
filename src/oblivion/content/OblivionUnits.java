@@ -1462,7 +1462,8 @@ public class OblivionUnits{
 					mirror = false;
 					bullet = new DelayDamageBulletType(2f, 12) {{
 						draw = b -> {
-							float p = b.time/b.lifetime;
+							float p = b.time/b.type.lifetime;
+							p = b.time/b.type.lifetime;
 							float sin = Mathf.absin(5f, 1f);
 							
 							Draw.color(Pal.lancerLaser);
@@ -1521,9 +1522,9 @@ public class OblivionUnits{
 					mirror = false;
 					bullet = new DelayDamageBulletType(2f, 35) {{
 						draw = b -> {
-							float p = b.time/b.lifetime;
+							float p = b.time/b.type.lifetime;
 							float sin = Mathf.absin(5f, 1f);
-							
+							p = b.time/b.type.lifetime;
 							Draw.color(Pal.lancerLaser);
 							Lines.stroke((1f + sin) * Interp.sine.apply(p * 2f));
 							
