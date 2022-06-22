@@ -33,7 +33,7 @@ public class OblivionUnits{
 	
 	citizen,
 	mercurie, aphrodite, apollo, zeus, chronos,
-	latrodectus/*, phoneutria, lycosidae, sparassidae, trichonephila*/;
+	latrodectus, phoneutria,/* lycosidae, sparassidae, trichonephila*/;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1454,40 +1454,124 @@ public class OblivionUnits{
 			hovering = true;
 			legPhysicsLayer = false;
 
-			weapons.add(
+			weapons.addAll(
 				new Weapon("oblivion-latrodectus-mount") {{
 					x = y = 0f;
 					reload = 120f;
-					shootY = 6f;
+					shootY = 75f;
 					bullet = new DelayDamageBulletType(2f, 12) {{
 						draw = b -> {
-							float p = b.lifetime/b.type.lifetime;
+							float p = b.time/b.lifetime;
 							float sin = Mathf.absin(5f, 1f);
+							
 							Draw.color(Pal.lancerLaser);
-							Lines.stroke((1f + sin));
-							Lines.circle(b.x, b.y, (40f + sin));
+							Lines.stroke((1f + sin) * Interp.sine.apply(p * 2f));
+							
+							Lines.circle(x, y, (40f + sin) * p);
 							for (int i = 0; i < 4; i++) {
-								float lx = b.x + Angles.trnsx(Time.time + (i * 90f), (40f + sin) * p, 0f);
-								float ly = b.y + Angles.trnsy(Time.time + (i * 90f), (40f + sin) * p, 0f);
+								float lx = x + Angles.trnsx(Time.time + (i * 90f), (40f + sin) * p, 0f);
+								float ly = y + Angles.trnsy(Time.time + (i * 90f), (40f + sin) * p, 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly), 10f);
 							}
 							for (int i = 0; i < 4; i++) {
-								float lx = b.x + Angles.trnsx(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
-								float ly = b.y + Angles.trnsy(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
+								float lx = x + Angles.trnsx(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
+								float ly = y + Angles.trnsy(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
 							}
 							Draw.color();
-							Lines.stroke(((1f + sin)/2f) * p);
-							Lines.circle(b.x, b.y, (40f + sin) * p);
-
-							Draw.color(Pal.lancerLaser);
-							Fill.circle(b.x, b.y, 3f + sin);
-							Draw.color();
-							Fill.circle(b.x, b.y, (3f + sin)/2f);
+							Lines.stroke(((1f + sin)/2f) * Interp.sine.apply(p * 2f));
+							Lines.circle(x, y, (40f + sin) * p);
+							if (p > 0.5f) {
+								Draw.color(Pal.lancerLaser);
+								Lines.circle(x, y, (p - 0.5f) * 2f * 40f);
+							}
 						};
 						delayTime = 40f;
-						damageRadius = 20f;
+						damageRadius = 80f;
 						extraDamage = 0.6f;
+					}};
+				}}
+			);
+		}};
+		phoneutria = new UnitType("phoneutria") {{
+			health = 650;
+			speed = 0.6f;
+			range = 26 * 8f;
+			maxRange = range;
+			constructor = LegsUnit::create;
+
+			legCount = 4;
+			legLength = 14f;
+			lockLegBase = true;
+			legContinuousMove = true;
+			legExtension = -3f;
+			legBaseOffset = 5f;
+			legMaxLength = 1.1f;
+			legMinLength = 0.2f;
+			legLengthScl = 0.95f;
+			legForwardScl = 0.7f;
+
+			weapons.addAll(
+				new Weapon("oblivion-phoneutria-cannon") {{
+					x = y = 0f;
+					reload = 120f;
+					shootSound = Sounds.laser;
+					bullet = new DelayDamageBulletType(2f, 35) {{
+						draw = b -> {
+							float p = b.time/b.lifetime;
+							float sin = Mathf.absin(5f, 1f);
+							
+							Draw.color(Pal.lancerLaser);
+							Lines.stroke((1f + sin) * Interp.sine.apply(p * 2f));
+							
+							Lines.circle(x, y, (40f + sin) * p);
+							for (int i = 0; i < 4; i++) {
+								float lx = x + Angles.trnsx(Time.time + (i * 90f), (50f + sin) * p, 0f);
+								float ly = y + Angles.trnsy(Time.time + (i * 90f), (50f + sin) * p, 0f);
+								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly), 10f);
+							}
+							for (int i = 0; i < 4; i++) {
+								float lx = x + Angles.trnsx(-(Time.time + (i * 90f)), (50f + sin) * p, 0f);
+								float ly = y + Angles.trnsy(-(Time.time + (i * 90f)), (50f + sin) * p, 0f);
+								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
+							}
+							Draw.color();
+							Lines.stroke(((1f + sin)/2f) * Interp.sine.apply(p * 2f));
+							Lines.circle(x, y, (50f + sin) * p);
+							if (p > 0.5f) {
+								Draw.color(Pal.lancerLaser);
+								Lines.circle(x, y, (p - 0.5f) * 2f * 50f);
+							}
+						};
+						delayTime = 52f;
+						damageRadius = 100f;
+						extraDamage = 0.6f;
+					}};
+				}},
+				new Weapon("oblivion-phoneutria-mount") {{
+					x = 4.75f;
+					y = 3.75f;
+					reload = 30f;
+					shootSound = Sounds.sap;
+					bullet = new SapBulletType() {{
+						damage = 5;
+						length = 80f;
+						maxRange = length;
+						sapStrength = 0f;
+						color = Pal.lancerLaser;
+					}};
+				}},
+				new Weapon("oblivion-phoneutria-mount") {{
+					x = 5.25f;
+					y = -3.75f;
+					reload = 30f;
+					shootSound = Sounds.sap;
+					bullet = new SapBulletType() {{
+						damage = 5;
+						length = 80f;
+						maxRange = length;
+						sapStrength = 0f;
+						color = Pal.lancerLaser;
 					}};
 				}}
 			);

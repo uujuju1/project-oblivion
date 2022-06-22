@@ -11,8 +11,6 @@ public class DelayDamageBulletType extends BulletType {
 
 	public DelayDamageBulletType(float speed, float dmg) {
 		super(speed, dmg);
-		collides = collidesAir = collidesGround = false;
-		drag = 0.1f;
 		lifetime = delayTime * 2f;
 	}
 
