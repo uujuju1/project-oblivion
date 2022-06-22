@@ -1404,7 +1404,7 @@ public class OblivionUnits{
 					shootSound = Sounds.plasmadrop;
 					bullet = new BasicBulletType(1f, 200, "large-orb") {{
 						width = height = 30f;
-						lifetime = 10f;
+						lifetime = 30f * 8f;
 						frontColor = trailColor = Color.valueOf("BAF2B7");
 						backColor = Color.valueOf("87B085");
 						trailChance = 5f;
@@ -1458,7 +1458,8 @@ public class OblivionUnits{
 				new Weapon("oblivion-latrodectus-mount") {{
 					x = y = 0f;
 					reload = 120f;
-					shootY = 75f;
+					shootY = 6f;
+					mirror = false;
 					bullet = new DelayDamageBulletType(2f, 12) {{
 						draw = b -> {
 							float p = b.time/b.lifetime;
@@ -1487,6 +1488,7 @@ public class OblivionUnits{
 							}
 						};
 						delayTime = 40f;
+						lifetime = 80f;
 						damageRadius = 80f;
 						extraDamage = 0.6f;
 					}};
@@ -1516,6 +1518,7 @@ public class OblivionUnits{
 					x = y = 0f;
 					reload = 120f;
 					shootSound = Sounds.laser;
+					mirror = false;
 					bullet = new DelayDamageBulletType(2f, 35) {{
 						draw = b -> {
 							float p = b.time/b.lifetime;
@@ -1544,6 +1547,7 @@ public class OblivionUnits{
 							}
 						};
 						delayTime = 52f;
+						lifetime = 104f;
 						damageRadius = 100f;
 						extraDamage = 0.6f;
 					}};
