@@ -1469,20 +1469,20 @@ public class OblivionUnits{
 							Draw.color(Pal.lancerLaser);
 							Lines.stroke((1f + sin) * Interp.sine.apply(p * 2f));
 							
-							Lines.circle(x, y, (40f + sin) * p);
+							Lines.circle(b.x, b.y, (40f + sin) * p);
 							for (int i = 0; i < 4; i++) {
-								float lx = x + Angles.trnsx(Time.time + (i * 90f), (40f + sin) * p, 0f);
-								float ly = y + Angles.trnsy(Time.time + (i * 90f), (40f + sin) * p, 0f);
+								float lx = b.x + Angles.trnsx(Time.time + (i * 90f), (40f + sin) * p, 0f);
+								float ly = b.y + Angles.trnsy(Time.time + (i * 90f), (40f + sin) * p, 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly), 10f);
 							}
 							for (int i = 0; i < 4; i++) {
-								float lx = x + Angles.trnsx(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
-								float ly = y + Angles.trnsy(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
+								float lx = b.x + Angles.trnsx(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
+								float ly = b.y + Angles.trnsy(-(Time.time + (i * 90f)), (40f + sin) * p, 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
 							}
 							Draw.color();
 							Lines.stroke(((1f + sin)/2f) * Interp.sine.apply(p * 2f));
-							Lines.circle(x, y, (40f + sin) * p);
+							Lines.circle(b.b., by, (40f + sin) * p);
 						};
 						delayTime = 40f;
 						lifetime = 80f;
@@ -1523,20 +1523,20 @@ public class OblivionUnits{
 							Draw.color(Pal.lancerLaser);
 							Lines.stroke((1f + sin));
 							
-							Lines.circle(x, y, (50f + sin));
+							Lines.circle(b.x, b.y, (50f + sin));
 							for (int i = 0; i < 4; i++) {
-								float lx = x + Angles.trnsx(Time.time + (i * 90f), (50f + sin), 0f);
-								float ly = y + Angles.trnsy(Time.time + (i * 90f), (50f + sin), 0f);
+								float lx = b.x + Angles.trnsx(Time.time + (i * 90f), (50f + sin), 0f);
+								float ly = b.y + Angles.trnsy(Time.time + (i * 90f), (50f + sin), 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly), 10f);
 							}
 							for (int i = 0; i < 4; i++) {
-								float lx = x + Angles.trnsx(-(Time.time + (i * 90f)), (50f + sin), 0f);
-								float ly = y + Angles.trnsy(-(Time.time + (i * 90f)), (50f + sin), 0f);
+								float lx = b.x + Angles.trnsx(-(Time.time + (i * 90f)), (50f + sin), 0f);
+								float ly = b.y + Angles.trnsy(-(Time.time + (i * 90f)), (50f + sin), 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
 							}
 							Draw.color();
 							Lines.stroke(((1f + sin)/2f));
-							Lines.circle(x, y, (50f + sin));
+							Lines.circle(b.x, b.y, (50f + sin));
 						};
 						delayTime = 52f;
 						lifetime = 104f;
@@ -1614,20 +1614,20 @@ public class OblivionUnits{
 							Draw.color(Pal.lancerLaser);
 							Lines.stroke((1.5f + sin));
 							
-							Lines.circle(x, y, (60f + sin));
+							Lines.circle(b.x, b.y, (60f + sin));
 							for (int i = 0; i < 4; i++) {
-								float lx = x + Angles.trnsx(Time.time + (i * 90f), (60f + sin), 0f);
-								float ly = y + Angles.trnsy(Time.time + (i * 90f), (60f + sin), 0f);
+								float lx = b.x + Angles.trnsx(Time.time + (i * 90f), (60f + sin), 0f);
+								float ly = b.y + Angles.trnsy(Time.time + (i * 90f), (60f + sin), 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly), 10f);
 							}
 							for (int i = 0; i < 4; i++) {
-								float lx = x + Angles.trnsx(-(Time.time + (i * 90f)), (60f + sin), 0f);
-								float ly = y + Angles.trnsy(-(Time.time + (i * 90f)), (60f + sin), 0f);
+								float lx = b.x + Angles.trnsx(-(Time.time + (i * 90f)), (60f + sin), 0f);
+								float ly = b.y + Angles.trnsy(-(Time.time + (i * 90f)), (60f + sin), 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
 							}
 							Draw.color();
 							Lines.stroke(((2f + sin)/2f));
-							Lines.circle(x, y, (60f + sin));
+							Lines.circle(b.x, b.y, (60f + sin));
 						};
 						delayTime = 52f;
 						lifetime = 104f;
