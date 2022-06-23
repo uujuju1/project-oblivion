@@ -1574,7 +1574,7 @@ public class OblivionUnits{
 		}};
 		lycosidae = new UnitType("lycosidae") {{
 			health = 1200;
-			size = 0.55f;
+			speed = 0.55f;
 			range = 32f * 8f;
 			maxRange = range;
 			outlineColor = Color.valueOf("3F424D");

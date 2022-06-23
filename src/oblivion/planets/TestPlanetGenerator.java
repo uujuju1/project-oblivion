@@ -43,7 +43,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		{
 			OblivionEnvironment.carmebonite,
 			OblivionEnvironment.porotrate, 
-			OblivionEnvironment.amonehta, 
+			OblivionEnvironment.amonetha, 
 			OblivionEnvironment.lathanite, 
 			OblivionEnvironment.methystane,
 		}
@@ -58,8 +58,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	}
 
 	Block getBlock(Vec3 pos) {
-		float temp = getTemperature(pos) * 3f;
-		float height = rawHeight(pos) * 5f;
+		float temp = getTemperature(sector.tile.v) * 3f;
+		float height = rawHeight(sector.tile.v) * 5f;
 		for (int i = 0; i < 3; i++) {
 			if (temp > i && temp < i + 1) {
 				for (int j = 0; j < 5; j++) {
