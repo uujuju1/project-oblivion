@@ -29,7 +29,7 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 	float scl = 5f;
 	float waterOffset = 0.07f;
 
-	Block pa = OblivionEnvironment.paletolime,
+	Block pale = OblivionEnvironment.paletolime,
 		gole = OblivionEnvironment.goletenira,
 		arge = OblivionEnvironment.argeletine,
 		male = OblivionEnvironment.malenatite,
