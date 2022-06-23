@@ -58,8 +58,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	}
 
 	Block getBlock(Vec3 pos) {
-		float temp = getTemperature(sector.tile.v) * 3f;
-		float height = rawHeight(sector.tile.v) * 5f;
+		float temp = getTemperature(pos) * 3f;
+		float height = rawHeight(pos) * 5f;
 		for (int i = 0; i < 3; i++) {
 			if (temp > i && temp < i + 1) {
 				for (int j = 0; j < 5; j++) {
@@ -91,8 +91,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// base
 		pass((x, y) -> {
 			float tempNoise = noise(x + 782, y, 7, 0.8f, 280f, 1f);
-			float temp = getTemperature(pos) * 3f;
-			float height = rawHeight(pos) * 5f;
+			float temp = getTemperature(sector.tile.v) * 3f;
+			float height = rawHeight(sector.tile.v) * 5f;
 			for (int i = 0; i < 3; i++) {
 				if (temp > i && temp < i + 1) {
 					for (int j = 0; j < 5; j++) {
