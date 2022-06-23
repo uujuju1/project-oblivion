@@ -1482,7 +1482,7 @@ public class OblivionUnits{
 							}
 							Draw.color();
 							Lines.stroke(((1f + sin)/2f) * Interp.sine.apply(p * 2f));
-							Lines.circle(b.b., by, (40f + sin) * p);
+							Lines.circle(b.x, b.y, (40f + sin) * p);
 						};
 						delayTime = 40f;
 						lifetime = 80f;
