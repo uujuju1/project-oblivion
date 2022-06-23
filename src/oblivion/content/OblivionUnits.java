@@ -33,7 +33,7 @@ public class OblivionUnits{
 	
 	citizen,
 	mercurie, aphrodite, apollo, zeus, chronos,
-	latrodectus, phoneutria/*, lycosidae, sparassidae, trichonephila*/;
+	latrodectus, phoneutria, lycosidae/*, sparassidae, trichonephila*/;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1433,6 +1433,7 @@ public class OblivionUnits{
 			speed = 1f;
 			range = 20f * 8f;
 			maxRange = range;
+			outlineColor = Color.valueOf("3F424D");
 			constructor = LegsUnit::create;
 
 			legStraightness = 0.3f;
@@ -1462,8 +1463,7 @@ public class OblivionUnits{
 					mirror = false;
 					bullet = new DelayDamageBulletType(2f, 12) {{
 						draw = b -> {
-							float p = b.time/b.type.lifetime;
-							p = b.time/b.type.lifetime;
+							float p = 1f;
 							float sin = Mathf.absin(5f, 1f);
 							
 							Draw.color(Pal.lancerLaser);
@@ -1483,10 +1483,6 @@ public class OblivionUnits{
 							Draw.color();
 							Lines.stroke(((1f + sin)/2f) * Interp.sine.apply(p * 2f));
 							Lines.circle(x, y, (40f + sin) * p);
-							if (p > 0.5f) {
-								Draw.color(Pal.lancerLaser);
-								Lines.circle(x, y, (p - 0.5f) * 2f * 40f);
-							}
 						};
 						delayTime = 40f;
 						lifetime = 80f;
@@ -1501,6 +1497,7 @@ public class OblivionUnits{
 			speed = 0.6f;
 			range = 26 * 8f;
 			maxRange = range;
+			outlineColor = Color.valueOf("3F424D");
 			constructor = LegsUnit::create;
 
 			legCount = 4;
@@ -1522,30 +1519,24 @@ public class OblivionUnits{
 					mirror = false;
 					bullet = new DelayDamageBulletType(2f, 35) {{
 						draw = b -> {
-							float p = b.time/b.type.lifetime;
 							float sin = Mathf.absin(5f, 1f);
-							p = b.time/b.type.lifetime;
 							Draw.color(Pal.lancerLaser);
-							Lines.stroke((1f + sin) * Interp.sine.apply(p * 2f));
+							Lines.stroke((1f + sin));
 							
-							Lines.circle(x, y, (40f + sin) * p);
+							Lines.circle(x, y, (50f + sin));
 							for (int i = 0; i < 4; i++) {
-								float lx = x + Angles.trnsx(Time.time + (i * 90f), (50f + sin) * p, 0f);
-								float ly = y + Angles.trnsy(Time.time + (i * 90f), (50f + sin) * p, 0f);
+								float lx = x + Angles.trnsx(Time.time + (i * 90f), (50f + sin), 0f);
+								float ly = y + Angles.trnsy(Time.time + (i * 90f), (50f + sin), 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly), 10f);
 							}
 							for (int i = 0; i < 4; i++) {
-								float lx = x + Angles.trnsx(-(Time.time + (i * 90f)), (50f + sin) * p, 0f);
-								float ly = y + Angles.trnsy(-(Time.time + (i * 90f)), (50f + sin) * p, 0f);
+								float lx = x + Angles.trnsx(-(Time.time + (i * 90f)), (50f + sin), 0f);
+								float ly = y + Angles.trnsy(-(Time.time + (i * 90f)), (50f + sin), 0f);
 								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
 							}
 							Draw.color();
-							Lines.stroke(((1f + sin)/2f) * Interp.sine.apply(p * 2f));
-							Lines.circle(x, y, (50f + sin) * p);
-							if (p > 0.5f) {
-								Draw.color(Pal.lancerLaser);
-								Lines.circle(x, y, (p - 0.5f) * 2f * 50f);
-							}
+							Lines.stroke(((1f + sin)/2f));
+							Lines.circle(x, y, (50f + sin));
 						};
 						delayTime = 52f;
 						lifetime = 104f;
@@ -1577,6 +1568,71 @@ public class OblivionUnits{
 						maxRange = length;
 						sapStrength = 0f;
 						color = Pal.lancerLaser;
+					}};
+				}}
+			);
+		}};
+		lycosidae = new UnitType("lycosidae") {{
+			health = 1200;
+			size = 0.55f;
+			range = 32f * 8f;
+			maxRange = range;
+			outlineColor = Color.valueOf("3F424D");
+			constructor = LegsUnit::create;
+
+			legCount = 6;
+			legLength = 18f;
+			legGroupSize = 3;
+			lockLegBase = true;
+			legContinuousMove = true;
+			legExtension = -3f;
+			legBaseOffset = 7f;
+			legMaxLength = 1.1f;
+			legMinLength = 0.2f;
+			legLengthScl = 0.95f;
+			legForwardScl = 0.9f;
+
+			abilities.addAll(
+				new SuppressionFieldAbility(){{
+					orbRadius = 6f;
+					particleSize = 3f;
+					x = 0f;
+					y = -4f;
+					active = false;
+				}}
+			);
+			weapons.addAll(
+				new Weapon() {{
+					x = 0f;
+					y = -4f;
+					reload = 180f;
+					recoil = 0f;
+					shootSound = Sounds.laser;
+					bullet = new DelayDamageBulletType(2f, 120) {{
+						draw = b -> {
+							float sin = Mathf.absin(5f, 1f);
+							Draw.color(Pal.lancerLaser);
+							Lines.stroke((1.5f + sin));
+							
+							Lines.circle(x, y, (60f + sin));
+							for (int i = 0; i < 4; i++) {
+								float lx = x + Angles.trnsx(Time.time + (i * 90f), (60f + sin), 0f);
+								float ly = y + Angles.trnsy(Time.time + (i * 90f), (60f + sin), 0f);
+								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly), 10f);
+							}
+							for (int i = 0; i < 4; i++) {
+								float lx = x + Angles.trnsx(-(Time.time + (i * 90f)), (60f + sin), 0f);
+								float ly = y + Angles.trnsy(-(Time.time + (i * 90f)), (60f + sin), 0f);
+								Lines.lineAngle(lx, ly, Angles.angle(x, y, lx, ly) + 180f, 10f);
+							}
+							Draw.color();
+							Lines.stroke(((2f + sin)/2f));
+							Lines.circle(x, y, (60f + sin));
+						};
+						delayTime = 52f;
+						lifetime = 104f;
+						damageRadius = 100f;
+						extraDamage = 0.6f;
 					}};
 				}}
 			);

@@ -30,31 +30,35 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 	float waterOffset = 0.07f;
 
 	Block pa = OblivionEnvironment.paletolime,
-		go = OblivionEnvironment.goletenira,
-		ar = OblivionEnvironment.argeletine,
-		ma = OblivionEnvironment.malenatite,
-		mu = OblivionEnvironment.mudone,
-		bo = OblivionEnvironment.boronite,
-		ta = OblivionEnvironment.tarrobonite,
-		ca = OblivionEnvironment.carmebonite,
-		gr = Blocks.grass,
-		st = Blocks.stone;
+		gole = OblivionEnvironment.goletenira,
+		arge = OblivionEnvironment.argeletine,
+		male = OblivionEnvironment.malenatite,
+		mudo = OblivionEnvironment.mudone,
+		boro = OblivionEnvironment.boronite,
+		tarr = OblivionEnvironment.tarrobonite,
+		carm = OblivionEnvironment.carmebonite,
+		poro = OblivionEnvironment.porotrate,
+		amon = OblivionEnvironment.amonetha,
+		lath = OblivionEnvironment.lathanite,
+		tane = OblivionEnvironment.methystane,
+		gras = Blocks.grass,
+		ston = Blocks.stone;
 
 	public Block[][] arr =
 	{
-		{pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa},
-		{pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa, pa},
-		{pa, pa, pa, pa, ma, pa, ma, pa, pa, go, pa, ma, pa},
-		{ma, go, go, ma, go, go, ma, ma, go, ma, ma, go, st},
-		{go, ar, go, ma, go, ma, ar, go, go, ma, go, ar, go},
-		{mu, ar, go, ar, mu, ar, ar, ar, ar, ar, ar, ar, ar},
-		{mu, ar, mu, mu, mu, ar, mu, mu, mu, mu, mu, mu, ar},
-		{bo, ta, mu, mu, mu, bo, mu, ta, st, mu, mu, mu, mu},
-		{ca, st, bo, ta, bo, ca, ta, ca, mu, ta, bo, ta, mu},
-		{st, ca, ca, ca, ca, st, ca, st, ta, ca, ca, ca, ta},
-		{st, st, st, st, st, st, st, st, ca, st, st, st, ca},
-		{gr, st, gr, st, gr, st, gr, st, gr, st, gr, st, gr},
-		{gr, gr, gr, gr, gr, gr, gr, gr, gr, gr, gr, gr, gr}
+		{pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale},
+		{pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale},
+		{pale, pale, pale, pale, male, pale, male, pale, pale, gole, pale, male, pale},
+		{male, gole, gole, male, gole, gole, male, male, gole, male, male, gole, poro},
+		{gole, arge, gole, male, gole, male, arge, gole, gole, male, gole, arge, gole},
+		{mudo, arge, gole, arge, mudo, arge, arge, arge, arge, arge, arge, arge, arge},
+		{mudo, arge, mudo, mudo, mudo, arge, mudo, mudo, mudo, mudo, mudo, mudo, arge},
+		{boro, tarr, mudo, mudo, mudo, boro, mudo, tarr, poro, mudo, mudo, mudo, mudo},
+		{carm, poro, boro, tarr, boro, carm, tarr, carm, mudo, tarr, boro, tarr, mudo},
+		{poro, carm, carm, carm, carm, poro, carm, poro, tarr, carm, carm, carm, tarr},
+		{amon, lath, poro, poro, tane, amon, amon, tane, carm, lath, poro, amon, carm},
+		{lath, tane, amon, tane, lath, tane, tane, lath, amon, tane, tane, lath, tane},
+		{tane, tane, tane, tane, tane, tane, tane, tane, tane, tane, tane, tane, tane}
 	};
 
 	float water = 0;

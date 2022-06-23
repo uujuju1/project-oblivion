@@ -41,11 +41,11 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			OblivionEnvironment.carmebonite,
 		},
 		{
-			OblivionEnvironment.argeletine,
-			OblivionEnvironment.mudone, 
-			OblivionEnvironment.boronite, 
-			OblivionEnvironment.tarrobonite, 
 			OblivionEnvironment.carmebonite,
+			OblivionEnvironment.porotrate, 
+			OblivionEnvironment.amonehta, 
+			OblivionEnvironment.lathanite, 
+			OblivionEnvironment.methystane,
 		}
 	};
 
@@ -88,22 +88,16 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected void generate() {
-		float temp = getTemperature(sector.tile.v);
-		float height = rawHeight(sector.tile.v);
-
 		// base
 		pass((x, y) -> {
-			float hnoise = noise(x + 782, y, 7, 0.8f, 280f, 1f);
-			floor = Blocks.stone;
+			float tempNoise = noise(x + 782, y, 7, 0.8f, 280f, 1f);
+			float temp = getTemperature(pos) * 3f;
+			float height = rawHeight(pos) * 5f;
 			for (int i = 0; i < 3; i++) {
 				if (temp > i && temp < i + 1) {
 					for (int j = 0; j < 5; j++) {
 						if (height > j && height < j + 1) {
-							if (hnoise > 0.66f) {
-								floor = arr[(int) Mathf.clamp(i, 0, 2)][(int) Mathf.clamp(j + 1, 0, 4)];
-							} else {
-								floor = arr[(int) Mathf.clamp(i, 0, 2)][(int) Mathf.clamp(j, 0, 4)];
-							}
+							floor =  arr[(int) Mathf.clamp(i, 0, 2)][(int) Mathf.clamp(j, 0, 4)];
 						}
 					}
 				}
@@ -112,20 +106,19 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		cells(5);
 		float length = width/2.6f;
-    Vec2 trns = Tmp.v1.trns(rand.random(360f), length);
-    int
-    spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
-    endX = (int)(-trns.x + width/2f), endY = (int)(-trns.y + height/2f);
-    float maxd = Mathf.dst(width/2f, height/2f);
+		Vec2 trns = Tmp.v1.trns(rand.random(360f), length);
+		int
+		spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
+		endX = (int)(-trns.x + width/2f), endY = (int)(-trns.y + height/2f);
+		float maxd = Mathf.dst(width/2f, height/2f);
 
-    erase(spawnX, spawnY, 15);
-    brush(pathfind(spawnX, spawnY, endX, endY, tile -> (tile.solid() ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
-    erase(endX, endY, 15);
+		erase(spawnX, spawnY, 15);
+		brush(pathfind(spawnX, spawnY, endX, endY, tile -> (tile.solid() ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+		erase(endX, endY, 15);
 
-    inverseFloodFill(tiles.getn(spawnX, spawnY));
-    erase(endX, endY, 6);
-    tiles.getn(endX, endY).setOverlay(Blocks.spawn);
-    blend(OblivionEnvironment.carmebonite, OblivionEnvironment.boronite, 4);
+		inverseFloodFill(tiles.getn(spawnX, spawnY));
+		erase(endX, endY, 6);
+		tiles.getn(endX, endY).setOverlay(Blocks.spawn);
 
 		Schematics.placeLaunchLoadout(spawnX, spawnY);
 	}
