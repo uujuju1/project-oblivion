@@ -29,7 +29,7 @@ public class DrawEx {
 		for (int i = 0; i < spikes; i++) {
 			float dx = x + Angles.trnsx(Time.time + ((360/spikes) * i), (radius + sin) * scl, 0);
 			float dy = y + Angles.trnsy(Time.time + ((360/spikes) * i), (radius + sin) * scl, 0);
-			Lines.lineAngle(dx, ly, Angles.angle(x, y, dx, dy), (10f + sin) * scl);
+			Lines.lineAngle(dx, dy, Angles.angle(x, y, dx, dy), (10f + sin) * scl);
 		}
 
 		Draw.color();
@@ -38,7 +38,7 @@ public class DrawEx {
 		for (int i = 0; i < spikes; i++) {
 			float dx = x + Angles.trnsx(Time.time + ((360/spikes) * i), (radius + sin) * scl, 0);
 			float dy = y + Angles.trnsy(Time.time + ((360/spikes) * i), (radius + sin) * scl, 0);
-			Lines.lineAngle(dx, ly, Angles.angle(x, y, dx, dy), ((10f + sin) * scl) / 2f);
+			Lines.lineAngle(dx, dy, Angles.angle(x, y, dx, dy), ((10f + sin) * scl) / 2f);
 		}
 		Draw.reset();
 	}
