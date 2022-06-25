@@ -1435,6 +1435,7 @@ public class OblivionUnits{
 			range = 20f * 8f;
 			maxRange = range;
 			hitSize = 6f;
+			flying = true;
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
@@ -1480,6 +1481,7 @@ public class OblivionUnits{
 			range = 26 * 8f;
 			maxRange = range;
 			hitSize = 10f;
+			flying = true;
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
@@ -1548,6 +1550,7 @@ public class OblivionUnits{
 			range = 32f * 8f;
 			maxRange = range;
 			hitSize = 14f;
+			flying = true;
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
@@ -1638,6 +1641,7 @@ public class OblivionUnits{
 			range = 40 * 8f;
 			maxRange = range;
 			hitSize = 24f;
+			flying = true;
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
@@ -1704,6 +1708,7 @@ public class OblivionUnits{
 			range = 52f * 8f;
 			maxRange = range;
 			hitSize = 36f;
+			flying = true;
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
@@ -1716,10 +1721,10 @@ public class OblivionUnits{
 			parts.addAll(
 				new RegionPart("-blade") {{
 					x = y = rotation = 0f;
-					moveRot = 15f;
+					moveRot = -15f;
 					mirror = true;
 					progress = PartProgress.warmup;
-					moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), 0f, -2f, 15f));
+					moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), 0f, -2f, -15f));
 				}}
 			);
 
@@ -1770,6 +1775,7 @@ public class OblivionUnits{
 					reload = 30f;
 					recoil = 3f;
 					shootSound = Sounds.bigshot;
+					mirror = false;
 					bullet = new BasicBulletType(6f, 120, "large-orb") {{
 						lifetime = 60f;
 						width = height = 12f;
