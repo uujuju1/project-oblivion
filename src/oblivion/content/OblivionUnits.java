@@ -33,7 +33,7 @@ public class OblivionUnits{
 	
 	citizen,
 	mercurie, aphrodite, apollo, zeus, chronos,
-	latrodectus, phoneutria, lycosidae/*, sparassidae, trichonephila*/;
+	latrodectus, phoneutria, lycosidae, sparassidae,/* trichonephila*/;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1464,14 +1464,19 @@ public class OblivionUnits{
 					bullet = new DelayDamageBulletType(2f, 12) {{
 						draw = b -> {
 							float p = b.time/b.type.lifetime;
-							DrawEx.spikedCircle(b.x, b.y, 40f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							DrawEx.spikedCircle(b.x, b.y, 40f, 1f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
 								Draw.alpha((p - 0.5f) * 2f);
 								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
 								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
 							}
+
+							Fill.circle(b.x, b.y, 1.5f);
+							Draw.color();
+							Fill.circle(b.x, b.y, 0.75f);
 						};
+						hitSize = 3f;
 						delayTime = 40f;
 						lifetime = 80f;
 						damageRadius = 40f;
@@ -1508,14 +1513,19 @@ public class OblivionUnits{
 					bullet = new DelayDamageBulletType(2f, 35) {{
 						draw = b -> {
 							float p = b.time/b.type.lifetime;
-							DrawEx.spikedCircle(b.x, b.y, 50f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							DrawEx.spikedCircle(b.x, b.y, 50f, 2f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
 								Draw.alpha((p - 0.5f) * 2f);
 								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
 								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
 							}
+
+							Fill.circle(b.x, b.y, 2f);
+							Draw.color();
+							Fill.circle(b.x, b.y, 1f);
 						};
+						hitSize = 4f;
 						delayTime = 52f;
 						lifetime = 104f;
 						damageRadius = 50f;
@@ -1586,18 +1596,24 @@ public class OblivionUnits{
 					y = -4f;
 					reload = 180f;
 					recoil = 0f;
+					mirror = false;
 					shootSound = Sounds.laser;
 					bullet = new DelayDamageBulletType(2f, 120) {{
 						draw = b -> {
 							float p = b.time/b.type.lifetime;
-							DrawEx.spikedCircle(b.x, b.y, 60f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							DrawEx.spikedCircle(b.x, b.y, 60f, 3f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
 								Draw.alpha((p - 0.5f) * 2f);
 								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
 								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
 							}
+
+							Fill.circle(b.x, b.y, 3f);
+							Draw.color();
+							Fill.circle(b.x, b.y, 1.5f);
 						};
+						hitSize = 6f;
 						delayTime = 64f;
 						lifetime = 128f;
 						damageRadius = 60f;
@@ -1618,6 +1634,7 @@ public class OblivionUnits{
 						trailChance = 5f;
 						trailWidth = 4f;
 						trailLength = 12;
+						bulletInterval = 10f;
 						intervalBullet = new LightningBulletType(){{
 							damage = 25;
 							lightningColor = Pal.lancerLaser;
@@ -1633,6 +1650,76 @@ public class OblivionUnits{
 								lightColor = Pal.lancerLaser;
 							}};
 						}};
+					}};
+				}}
+			);
+		}};
+		sparassidae = new UnitType("sparassidae") {{
+			health = 8300;
+			speed = 0.5f;
+			range = 40 * 8f;
+			maxRange = range;
+			outlineColor = Color.valueOf("3F424D");
+			constructor = LegsUnit::create;
+
+			lockLegBase = true;
+			legContinuousMove = true;
+			legGroupSize = 3;
+			legStraightness = 0.4f;
+			baseLegStraightness = 0.5f;
+			legMaxLength = 1.3f;
+			researchCostMultiplier = 0f;
+
+			abilities.addAll(
+				new SuppressionFieldAbility() {{
+					orbRadius = 6f;
+					particleSize = 3f;
+					color = Pal.lancerLaser;
+					particleColor = color.cpy();
+					x = 0f;
+					y = 2f;
+					active = false;
+				}}
+			);
+
+			weapons.addAll(
+				new Weapon() {{
+					x = 0f;
+					y = 2f;
+					reload = 180f;
+					recoil = 0f;
+					shootSound = Sounds.laserblast;
+					bullet = new DelayDamageBulletType(3f, 200) {{
+						draw = b -> {
+							float p = b.time/b.type.lifetime;
+							DrawEx.spikedCircle(b.x, b.y, 70f, 5f, 8, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							Draw.color(Pal.lancerLaser);
+							if (p > 0.5f) {
+								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
+								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
+							}
+
+							Fill.circle(b.x, b.y, 4f);
+							Draw.color();
+							Fill.circle(b.x, b.y, 2f);
+						};
+						hitSize = 8f;
+						delayTime = 53f;
+						lifetime = 106f;
+						damageRadius = 70f;
+						extraDamage = 2f;
+					}};
+				}},
+				new Weapon("oblivion-sparassidae-laser") {{
+					x = 12.75f;
+					y = -11.5f;
+					reload = 60f;
+					recoil = 2f;
+					shootSound = Sounds.lancerLaser;
+					bullet = new LaserBulletType(40) {{
+						width = 20f;
+						length = 180f;
+						colors = new Color[]{Pal.lancerLaser, Color.cyan, Color.white};
 					}};
 				}}
 			);

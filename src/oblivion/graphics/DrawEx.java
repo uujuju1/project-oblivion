@@ -21,11 +21,11 @@ public class DrawEx {
 		Fill.circle(dx, dy, ((size + Mathf.absin(Time.time, 2, size / 4)) * unit.elevation) / 2);
 		Draw.reset();
 	}
-	public static void spikedCircle(float x, float y, float radius, int spikes, float scl, Color color) {
+	public static void spikedCircle(float x, float y, float radius, float stroke, int spikes, float scl, Color color) {
 		float sin = Mathf.absin(5f, 1f);
 		Draw.color(color);
-		Lines.stroke((1.5f + sin) * scl);
-		Lines.circle(x, y, radius);
+		Lines.stroke((stroke + sin) * scl);
+		Lines.circle(x, y, (radius + sin) * scl);
 		for (int i = 0; i < spikes; i++) {
 			float dx = x + Angles.trnsx(Time.time + ((360/spikes) * i), (radius + sin) * scl, 0);
 			float dy = y + Angles.trnsy(Time.time + ((360/spikes) * i), (radius + sin) * scl, 0);
@@ -33,8 +33,8 @@ public class DrawEx {
 		}
 
 		Draw.color();
-		Lines.stroke(((1.5f + sin) * scl) / 2f);
-		Lines.circle(x, y, radius);
+		Lines.stroke(((stroke + sin) * scl) / 2f);
+		Lines.circle(x, y, (radius + sin) * scl);
 		for (int i = 0; i < spikes; i++) {
 			float dx = x + Angles.trnsx(Time.time + ((360/spikes) * i), (radius + sin) * scl, 0);
 			float dy = y + Angles.trnsy(Time.time + ((360/spikes) * i), (radius + sin) * scl, 0);
