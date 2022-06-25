@@ -10,8 +10,9 @@ import mindustry.type.*;
 import mindustry.content.*;
 import mindustry.graphics.*;
 import mindustry.ai.types.*;
-import mindustry.type.weapons.*;
 import mindustry.world.meta.*;
+import mindustry.type.weapons.*;
+import mindustry.entities.part.*;
 import mindustry.entities.bullet.*;
 import mindustry.entities.pattern.*;
 import mindustry.entities.abilities.*;
@@ -33,7 +34,7 @@ public class OblivionUnits{
 	
 	citizen,
 	mercurie, aphrodite, apollo, zeus, chronos,
-	latrodectus, phoneutria, lycosidae, sparassidae/*, trichonephila*/;
+	latrodectus, phoneutria, lycosidae, sparassidae, trichonephila;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1430,30 +1431,12 @@ public class OblivionUnits{
  
 		latrodectus = new UnitType("latrodectus") {{
 			health = 320;
-			speed = 1f;
+			speed = 1.6f;
 			range = 20f * 8f;
 			maxRange = range;
+			hitSize = 6f;
 			outlineColor = Color.valueOf("3F424D");
-			constructor = LegsUnit::create;
-
-			legStraightness = 0.3f;
-			stepShake = 0f;
-			legCount = 6;
-			legLength = 8f;
-			lockLegBase = true;
-			legContinuousMove = true;
-			legExtension = -2f;
-			legBaseOffset = 3f;
-			legMaxLength = 1.1f;
-			legMinLength = 0.2f;
-			legLengthScl = 0.96f;
-			legForwardScl = 1.1f;
-			legGroupSize = 3;
-			rippleScale = 0.2f;
-			legMoveSpace = 1f;
-			allowLegStep = true;
-			hovering = true;
-			legPhysicsLayer = false;
+			constructor = UnitEntity::create;
 
 			weapons.addAll(
 				new Weapon("oblivion-latrodectus-mount") {{
@@ -1487,22 +1470,12 @@ public class OblivionUnits{
 		}};
 		phoneutria = new UnitType("phoneutria") {{
 			health = 650;
-			speed = 0.6f;
+			speed = 1.3f;
 			range = 26 * 8f;
 			maxRange = range;
+			hitSize = 10f;
 			outlineColor = Color.valueOf("3F424D");
-			constructor = LegsUnit::create;
-
-			legCount = 4;
-			legLength = 14f;
-			lockLegBase = true;
-			legContinuousMove = true;
-			legExtension = -3f;
-			legBaseOffset = 5f;
-			legMaxLength = 1.1f;
-			legMinLength = 0.2f;
-			legLengthScl = 0.95f;
-			legForwardScl = 0.7f;
+			constructor = UnitEntity::create;
 
 			weapons.addAll(
 				new Weapon("oblivion-phoneutria-cannon") {{
@@ -1562,23 +1535,12 @@ public class OblivionUnits{
 		}};
 		lycosidae = new UnitType("lycosidae") {{
 			health = 1200;
-			speed = 0.55f;
+			speed = 1f;
 			range = 32f * 8f;
 			maxRange = range;
+			hitSize = 14f;
 			outlineColor = Color.valueOf("3F424D");
-			constructor = LegsUnit::create;
-
-			legCount = 6;
-			legLength = 18f;
-			legGroupSize = 3;
-			lockLegBase = true;
-			legContinuousMove = true;
-			legExtension = -3f;
-			legBaseOffset = 7f;
-			legMaxLength = 1.1f;
-			legMinLength = 0.2f;
-			legLengthScl = 0.95f;
-			legForwardScl = 0.9f;
+			constructor = UnitEntity::create;
 
 			abilities.addAll(
 				new SuppressionFieldAbility(){{
@@ -1600,8 +1562,8 @@ public class OblivionUnits{
 					shootSound = Sounds.laser;
 					bullet = new DelayDamageBulletType(2f, 120) {{
 						draw = b -> {
-							float p = b.time/b.type.lifetime;
-							DrawEx.spikedCircle(b.x, b.y, 60f, 3f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							float p = 1 - (b.time/b.type.lifetime);
+							DrawEx.spikedCircle(b.x, b.y, 60f, 3f, 5, p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
 								Draw.alpha((p - 0.5f) * 2f);
@@ -1635,6 +1597,7 @@ public class OblivionUnits{
 						trailWidth = 4f;
 						trailLength = 12;
 						bulletInterval = 10f;
+						collides = collidesTiles = collidesGround = collidesAir;
 						intervalBullet = new LightningBulletType(){{
 							damage = 25;
 							lightningColor = Pal.lancerLaser;
@@ -1656,19 +1619,12 @@ public class OblivionUnits{
 		}};
 		sparassidae = new UnitType("sparassidae") {{
 			health = 8300;
-			speed = 0.5f;
+			speed = 0.8f;
 			range = 40 * 8f;
 			maxRange = range;
+			hitSize = 24f;
 			outlineColor = Color.valueOf("3F424D");
-			constructor = LegsUnit::create;
-
-			lockLegBase = true;
-			legContinuousMove = true;
-			legGroupSize = 3;
-			legStraightness = 0.4f;
-			baseLegStraightness = 0.5f;
-			legMaxLength = 1.3f;
-			researchCostMultiplier = 0f;
+			constructor = UnitEntity::create;
 
 			abilities.addAll(
 				new SuppressionFieldAbility() {{
@@ -1694,7 +1650,7 @@ public class OblivionUnits{
 							float p = b.time/b.type.lifetime;
 							DrawEx.spikedCircle(b.x, b.y, 70f, 5f, 8, Interp.sine.apply(p * 2f), Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
-							if (p > 0.5f) {
+							if (b.time > delayTime) {
 								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
 								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
 							}
@@ -1720,6 +1676,55 @@ public class OblivionUnits{
 						width = 20f;
 						length = 180f;
 						colors = new Color[]{Pal.lancerLaser, Color.cyan, Color.white};
+					}};
+				}}
+			);
+		}};
+		trichonephila = new UnitType("trichonephila") {{
+			health = 22500;
+			speed = 0.5f;
+			range = 52f * 8f;
+			maxRange = range;
+			hitSize = 36f;
+			outlineColor = Color.valueOf("3F424D");
+			constructor = UnitEntity::create;
+
+			parts.addAll(
+				new RegionPart("-blade") {{
+					x = y = rotation = 0f;
+					moveRot = 15f;
+					progress = PartProgress.reload.inv();
+					moves.addAll(new PartMove(PartProgress.heat, 0f, -2f, 15f));
+				}}
+			);
+
+			weapons.addAll(
+				new Weapon() {{
+					x = 0f;
+					y = 12f;
+					reload = 240f;
+					recoil = 0f;
+					shootSound = Sounds.laser;
+					mirror = false;
+					bullet = new DelayDamageBulletType(4f, 300) {{
+						draw = b -> {
+							float p = b.time/b.type.lifetime;
+							DrawEx.spikedCircle(b.x, b.y, 80f, 5f, 8, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							Draw.color(Pal.lancerLaser);
+							if (b.time > delayTime) {
+								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
+								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
+							}
+
+							Fill.circle(b.x, b.y, 5f);
+							Draw.color();
+							Fill.circle(b.x, b.y, 2.5f);
+						};
+						hitSize = 8f;
+						delayTime = 52f;
+						lifetime = 104f;
+						damageRadius = 80f;
+						extraDamage = 3f;
 					}};
 				}}
 			);

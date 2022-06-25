@@ -16,7 +16,7 @@ public class DelayDamageBulletType extends BulletType {
 
 	@Override
 	public void update(Bullet b) {
-		if (b.time >= delayTime) {
+		if (b.time <= delayTime) {
 			Damage.damage(b.team, b.x, b.y, damageRadius, extraDamage);
 		}
 	}
