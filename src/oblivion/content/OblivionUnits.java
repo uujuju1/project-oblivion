@@ -1438,6 +1438,12 @@ public class OblivionUnits{
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
+			engineOffset = 5f;
+			engineSize = 1f;
+			setEnginesMirror(
+				new UnitEngine(4f, 0f, 1f, -45f)
+			);
+
 			weapons.addAll(
 				new Weapon("oblivion-latrodectus-mount") {{
 					x = y = 0f;
@@ -1476,6 +1482,9 @@ public class OblivionUnits{
 			hitSize = 10f;
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
+
+			engineOffset = 2f;
+			engineSize = 3f;
 
 			weapons.addAll(
 				new Weapon("oblivion-phoneutria-cannon") {{
@@ -1541,6 +1550,12 @@ public class OblivionUnits{
 			hitSize = 14f;
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
+
+			engineOffset = 10f;
+			engineSize = 4f;
+			setEnginesMirror(
+				new UnitEngine(10f, 0.5f, 2f, -45f)
+			);
 
 			abilities.addAll(
 				new SuppressionFieldAbility(){{
@@ -1626,6 +1641,9 @@ public class OblivionUnits{
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
+			engineOffset = 13f;
+			engineSize = 4f;
+
 			abilities.addAll(
 				new SuppressionFieldAbility() {{
 					orbRadius = 6f;
@@ -1689,12 +1707,31 @@ public class OblivionUnits{
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
+			engineOffset = 24f;
+			engineSize = 6f;
+			setEnginesMirror(
+				new UnitEngine(18f, -14f, 4f, -45f)
+			);
+
 			parts.addAll(
 				new RegionPart("-blade") {{
 					x = y = rotation = 0f;
 					moveRot = 15f;
-					progress = PartProgress.reload.inv();
-					moves.addAll(new PartMove(PartProgress.heat, 0f, -2f, 15f));
+					mirror = true;
+					progress = PartProgress.warmup;
+					moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), 0f, -2f, 15f));
+				}}
+			);
+
+			abilities.addAll(
+				new SuppressionFieldAbility() {{
+					orbRadius = 8f;
+					particleSize = 4f;
+					color = Pal.lancerLaser;
+					particleColor = color.cpy();
+					x = 0f;
+					y = 12f;
+					active = false;
 				}}
 			);
 
@@ -1726,6 +1763,19 @@ public class OblivionUnits{
 						damageRadius = 80f;
 						extraDamage = 3f;
 					}};
+				}},
+				new Weapon("oblivion-trichonephila-cannon") {{
+					x = 0f;
+					y = -12.5f;
+					reload = 30f;
+					recoil = 3f;
+					shootSound = Sounds.bigshot;
+					bullet = new BasicBulletType(6f, 120, "large-orb") {{
+						lifetime = 60f;
+						width = height = 12f;
+						frontColor = Pal.lancerLaser;
+						backColor = Color.valueOf("8CA9E8");
+					}}; 
 				}}
 			);
 		}};
