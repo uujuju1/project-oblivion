@@ -1715,7 +1715,7 @@ public class OblivionUnits{
 					y = -11.5f;
 					reload = 60f;
 					recoil = 2f;
-					shootSound = Sounds.lancerLaser;
+					shootSound = Sounds.laser;
 					bullet = new LaserBulletType(40) {{
 						width = 20f;
 						length = 180f;
