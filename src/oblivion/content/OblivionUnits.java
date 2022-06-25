@@ -33,7 +33,7 @@ public class OblivionUnits{
 	
 	citizen,
 	mercurie, aphrodite, apollo, zeus, chronos,
-	latrodectus, phoneutria, lycosidae, sparassidae,/* trichonephila*/;
+	latrodectus, phoneutria, lycosidae, sparassidae/*, trichonephila*/;
 
 	public void load() {
 		slop = new UnitType("slop") {{
