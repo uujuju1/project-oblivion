@@ -1454,7 +1454,7 @@ public class OblivionUnits{
 					bullet = new DelayDamageBulletType(2f, 12) {{
 						draw = b -> {
 							float p = b.time/b.type.lifetime;
-							DrawEx.spikedCircle(b.x, b.y, 40f, 1f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							DrawEx.spikedCircle(b.x, b.y, 40f, 1f, 5, 1f - p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
 								Draw.alpha((p - 0.5f) * 2f);
@@ -1485,7 +1485,7 @@ public class OblivionUnits{
 			outlineColor = Color.valueOf("3F424D");
 			constructor = UnitEntity::create;
 
-			engineOffset = 2f;
+			engineOffset = 2.5f;
 			engineSize = 3f;
 
 			weapons.addAll(
@@ -1497,7 +1497,7 @@ public class OblivionUnits{
 					bullet = new DelayDamageBulletType(2f, 35) {{
 						draw = b -> {
 							float p = b.time/b.type.lifetime;
-							DrawEx.spikedCircle(b.x, b.y, 50f, 2f, 5, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							DrawEx.spikedCircle(b.x, b.y, 50f, 2f, 5, 1f - p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
 								Draw.alpha((p - 0.5f) * 2f);
@@ -1670,7 +1670,7 @@ public class OblivionUnits{
 					bullet = new DelayDamageBulletType(3f, 200) {{
 						draw = b -> {
 							float p = b.time/b.type.lifetime;
-							DrawEx.spikedCircle(b.x, b.y, 70f, 5f, 8, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							DrawEx.spikedCircle(b.x, b.y, 70f, 5f, 8, 1f - p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (b.time > delayTime) {
 								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
@@ -1751,7 +1751,7 @@ public class OblivionUnits{
 					bullet = new DelayDamageBulletType(4f, 300) {{
 						draw = b -> {
 							float p = b.time/b.type.lifetime;
-							DrawEx.spikedCircle(b.x, b.y, 80f, 5f, 8, Interp.sine.apply(p * 2f), Pal.lancerLaser);
+							DrawEx.spikedCircle(b.x, b.y, 80f, 5f, 8, 1f - p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (b.time > delayTime) {
 								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
