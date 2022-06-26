@@ -1442,7 +1442,7 @@ public class OblivionUnits{
 			engineOffset = 5f;
 			engineSize = 1f;
 			setEnginesMirror(
-				new UnitEngine(4f, 0f, 1f, -45f)
+				new UnitEngine(4.25f, 0f, 1f, -45f)
 			);
 
 			weapons.addAll(
@@ -1451,7 +1451,7 @@ public class OblivionUnits{
 					reload = 120f;
 					shootY = 6f;
 					mirror = false;
-					bullet = new DelayDamageBulletType(2f, 12) {{
+					bullet = new DelayDamageBulletType(2f, 30) {{
 						draw = b -> {
 							float p = b.time/b.type.lifetime;
 							DrawEx.spikedCircle(b.x, b.y, 40f, 1f, 5, 1f - p, Pal.lancerLaser);
@@ -1578,7 +1578,7 @@ public class OblivionUnits{
 					recoil = 0f;
 					mirror = false;
 					shootSound = Sounds.laser;
-					bullet = new DelayDamageBulletType(2f, 120) {{
+					bullet = new DelayDamageBulletType(2f, 150) {{
 						draw = b -> {
 							float p = 1 - (b.time/b.type.lifetime);
 							DrawEx.spikedCircle(b.x, b.y, 60f, 3f, 5, p, Pal.lancerLaser);
@@ -1597,7 +1597,7 @@ public class OblivionUnits{
 						delayTime = 64f;
 						lifetime = 128f;
 						damageRadius = 60f;
-						extraDamage = 1.8f;
+						extraDamage = 2f;
 					}};
 				}},
 				new Weapon("oblivion-lycosidae-artillery") {{
@@ -1606,7 +1606,7 @@ public class OblivionUnits{
 					reload = 30f;
 					shootSound = Sounds.artillery;
 					maxRange = 114f;
-					bullet = new ArtilleryBulletType(3f, 50) {{
+					bullet = new ArtilleryBulletType(3f, 60) {{
 						width = height = 10f;
 						frontColor = trailColor = Pal.lancerLaser;
 						backColor = Color.valueOf("8CA9E8");
@@ -1615,7 +1615,7 @@ public class OblivionUnits{
 						trailWidth = 4f;
 						trailLength = 12;
 						bulletInterval = 10f;
-						collides = collidesTiles = collidesGround = collidesAir;
+						collides = collidesTiles = collidesGround = collidesAir = true;
 						intervalBullet = new LightningBulletType(){{
 							damage = 25;
 							lightningColor = Pal.lancerLaser;
@@ -1691,10 +1691,10 @@ public class OblivionUnits{
 				new Weapon("oblivion-sparassidae-laser") {{
 					x = 12.75f;
 					y = -11.5f;
-					reload = 60f;
+					reload = 30f;
 					recoil = 2f;
 					shootSound = Sounds.laser;
-					bullet = new LaserBulletType(40) {{
+					bullet = new LaserBulletType(70) {{
 						width = 20f;
 						length = 180f;
 						colors = new Color[]{Pal.lancerLaser, Color.cyan, Color.white};

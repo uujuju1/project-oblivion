@@ -64,21 +64,34 @@ public class LamoniTechTree {
 				node(OblivionBlocks.evaporate, Seq.with(new Produce(OblivionResources.hafnium)), () -> {});
 			});
 
-			node(OblivionBlocks.sodaicFactory, Seq.with(new Produce(OblivionResources.sodium)), () -> {
-				node(OblivionUnits.mercurie);
+			node(OblivionBlocks.hafoniFactory, Seq.with(new Produce(OblivionResources.hafnium)), () -> {
+				node(OblivionUnits.latrodectus);
+				node(OblivionBlocks.sodaicFactory, Seq.with(new Produce(OblivionResources.sodium)), () -> {
+					node(OblivionUnits.mercurie);	
+				});
+
 				node(OblivionBlocks.elevativeReconstructor, Seq.with(new Produce(OblivionResources.xenonium)), () -> {
 					node(OblivionUnits.aphrodite);
+					node(OblivionUnits.phoneutria);
+
 					node(OblivionBlocks.scalativeReconstructor, Seq.with(new Produce(Items.plastanium)), () -> {
 						node(OblivionUnits.apollo);
+						node(OblivionUnits.lycosidae);
+
 						node(OblivionBlocks.ascenditeReconstructor, Seq.with(new Produce(OblivionResources.polonium)), () -> {
 							node(OblivionUnits.zeus);
+							node(OblivionUnits.sparassidae);
+
 							node(OblivionBlocks.skinialReconstructor, Seq.with(new Produce(Items.surgeAlloy)), () -> {
 								node(OblivionUnits.chronos);
+								node(OblivionUnits.trichonephila);
+								
 							});
 						});
 					});
 				});
 			});
+			
 
 			node(OblivionBlocks.niobiumDuct, () -> {
 				node(OblivionBlocks.niobiumRouter, () -> {

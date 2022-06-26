@@ -73,7 +73,7 @@ public class OblivionBlocks {
 		spread, reaction, evaporate,
 		genesis, redemption, apocalypse,
 
-		sodaicFactory,
+		sodaicFactory, hafoniFactory,
 		elevativeReconstructor, scalativeReconstructor, ascenditeReconstructor, skinialReconstructor,
 
 		niobiumCombustor,
@@ -1163,6 +1163,21 @@ public class OblivionBlocks {
 				new UnitPlan(OblivionUnits.mercurie, 60f * 60f, with(
 					OblivionResources.hafnium, 5,
 					OblivionResources.sodium, 7
+				))
+			);
+		}};
+		hafoniFactory = new UnitFactory("hafoni-factory") {{
+			requirements(Category.units, with(
+				OblivionResources.niobium, 30,
+				OblivionResources.hafnium, 30,
+			));
+			size = 3;
+			health = 200;
+			consumePower(2f);
+			plans.addAll(
+				new UnitPlan(OblivionUnits.mercurie, 60f * 60f, with(
+					OblivionResources.hafnium, 3,
+					OblivionResources.niobium, 7
 				))
 			);
 		}};
