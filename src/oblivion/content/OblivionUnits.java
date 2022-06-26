@@ -1457,9 +1457,8 @@ public class OblivionUnits{
 							DrawEx.spikedCircle(b.x, b.y, 40f, 1f, 5, 1f - p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
-								Draw.alpha((p - 0.5f) * 2f);
-								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
-								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
+								Lines.stroke(1f - p);
+								Lines.circle(b.x, b.y, ((p - 0.5f) * 2f) * 40f);
 							}
 
 							Fill.circle(b.x, b.y, 1.5f);
@@ -1500,9 +1499,8 @@ public class OblivionUnits{
 							DrawEx.spikedCircle(b.x, b.y, 50f, 2f, 5, 1f - p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
-								Draw.alpha((p - 0.5f) * 2f);
-								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
-								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
+								Lines.stroke(1f - p);
+								Lines.circle(b.x, b.y, ((p - 0.5f) * 2f) * 50f);
 							}
 
 							Fill.circle(b.x, b.y, 2f);
@@ -1584,9 +1582,8 @@ public class OblivionUnits{
 							DrawEx.spikedCircle(b.x, b.y, 60f, 3f, 5, p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
 							if (p > 0.5f) {
-								Draw.alpha((p - 0.5f) * 2f);
-								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
-								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
+								Lines.stroke(1f - p);
+								Lines.circle(b.x, b.y, ((p - 0.5f) * 2f) * 60f);
 							}
 
 							Fill.circle(b.x, b.y, 3f);
@@ -1672,9 +1669,9 @@ public class OblivionUnits{
 							float p = b.time/b.type.lifetime;
 							DrawEx.spikedCircle(b.x, b.y, 70f, 5f, 8, 1f - p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
-							if (b.time > delayTime) {
-								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
-								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
+							if (p > 0.5f) {
+								Lines.stroke(1f - p);
+								Lines.circle(b.x, b.y, ((p - 0.5f) * 2f) * 70f);
 							}
 
 							Fill.circle(b.x, b.y, 4f);
@@ -1753,9 +1750,9 @@ public class OblivionUnits{
 							float p = b.time/b.type.lifetime;
 							DrawEx.spikedCircle(b.x, b.y, 80f, 5f, 8, 1f - p, Pal.lancerLaser);
 							Draw.color(Pal.lancerLaser);
-							if (b.time > delayTime) {
-								Lines.stroke(Interp.sine.apply((p - 0.5f) * 2f));
-								Lines.circle(b.x, b.y, (p - 0.5f) * 2f);
+							if (p > 0.5f) {
+								Lines.stroke(1f - p);
+								Lines.circle(b.x, b.y, ((p - 0.5f) * 2f) * 80f);
 							}
 
 							Fill.circle(b.x, b.y, 5f);

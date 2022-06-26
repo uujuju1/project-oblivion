@@ -1175,7 +1175,7 @@ public class OblivionBlocks {
 			health = 200;
 			consumePower(2f);
 			plans.addAll(
-				new UnitPlan(OblivionUnits.mercurie, 60f * 60f, with(
+				new UnitPlan(OblivionUnits.latrodectus, 60f * 60f, with(
 					OblivionResources.hafnium, 3,
 					OblivionResources.niobium, 7
 				))
@@ -1195,7 +1195,8 @@ public class OblivionBlocks {
 			consumeLiquid(OblivionResources.xenonium, 2f);
 			consumePower(5f);
 			upgrades.addAll(
-				new UnitType[]{OblivionUnits.mercurie, OblivionUnits.aphrodite}
+				new UnitType[]{OblivionUnits.mercurie, OblivionUnits.aphrodite},
+				new UnitType[]{OblivionUnits.latrodectus, OblivionUnits.phoneutria}
 			);
 		}};
 		scalativeReconstructor = new Reconstructor("scalative-reconstructor") {{
@@ -1212,7 +1213,8 @@ public class OblivionBlocks {
 			consumeLiquid(OblivionResources.xenonium, 2.5f);
 			consumePower(9f);
 			upgrades.addAll(
-				new UnitType[]{OblivionUnits.aphrodite, OblivionUnits.apollo}
+				new UnitType[]{OblivionUnits.aphrodite, OblivionUnits.apollo},
+				new UnitType[]{OblivionUnits.phoneutria, OblivionUnits.lycosidae}
 			);
 		}};
 		ascenditeReconstructor = new Reconstructor("ascendite-reconstructor") {{
@@ -1230,7 +1232,8 @@ public class OblivionBlocks {
 			consumeLiquid(OblivionResources.xenonium, 4f);
 			consumePower(15f);
 			upgrades.addAll(
-				new UnitType[]{OblivionUnits.apollo, OblivionUnits.zeus}
+				new UnitType[]{OblivionUnits.apollo, OblivionUnits.zeus},
+				new UnitType[]{OblivionUnits.lycosidae, OblivionUnits.sparassidae}
 			);
 		}};
 		skinialReconstructor = new Reconstructor("skinial-reconstructor") {{
@@ -1248,7 +1251,8 @@ public class OblivionBlocks {
 			consumeLiquid(OblivionResources.xenonium, 8f);
 			consumePower(20f);
 			upgrades.addAll(
-				new UnitType[]{OblivionUnits.zeus, OblivionUnits.chronos}
+				new UnitType[]{OblivionUnits.zeus, OblivionUnits.chronos},
+				new UnitType[]{OblivionUnits.sparassidae, OblivionUnits.trichonephila}
 			);
 		}};
 
