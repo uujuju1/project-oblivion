@@ -1169,7 +1169,7 @@ public class OblivionBlocks {
 		hafoniFactory = new UnitFactory("hafoni-factory") {{
 			requirements(Category.units, with(
 				OblivionResources.niobium, 30,
-				OblivionResources.hafnium, 30,
+				OblivionResources.hafnium, 30
 			));
 			size = 3;
 			health = 200;
