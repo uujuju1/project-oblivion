@@ -22,7 +22,7 @@ import static mindustry.Vars.*;
 
 public class TestPlanetGenerator extends PlanetGenerator {
 	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 12, persistence = 0.6f;
-	public float humidScl = 1f, humidOctaves = 7, humidPersistence = 0.5f;
+	public float humidScl = 0.5f, humidOctaves = 7, humidPersistence = 0.5f;
 	public static int seed = 69, humidSeed = 420;
 
 	public Block[] arr = {
@@ -37,12 +37,13 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
 	float humidity(Vec3 pos) {
-		return Simplex.noise3d(humidSeed, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z) - (rawHeight(pos) * 0.7f);
+		return Simplex.noise3d(humidSeed, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z);
 	}
 
 	Block getBlock(Vec3 pos) {
+		float height = 1 - rawHeight(pos);
 		float humidity = humidity(pos);
-		return arr[Mathf.clamp((int) (humidity * arr.length), 0, arr.length -1)];
+		return arr[Mathf.clamp((int) (height + humidity * arr.length), 0, arr.length -1)];
 	}
 
 	@Override
