@@ -288,6 +288,14 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		float scl = 1f;
 		float addscl = 1.3f;
 
+		pass((x, y) -> {
+			if (nearAir(x, y)) {
+				if (Simplex.noise3d(seed, 2, 0.5f, scl, sectorsector.tile.v.x, sector.tile.v.y, sector.tile.v.z) * nmag + poles > 0.85f && block != Blocks.air) {
+					ore = OblivionEnvironment.wallOreHafnium;
+				}
+			}
+		});
+
 		FloatSeq frequencies = new FloatSeq();
 		for(int i = 0; i < ores.size; i++){
 			frequencies.add(rand.random(-0.1f, 0.01f) - i * 0.01f + poles * 0.04f);

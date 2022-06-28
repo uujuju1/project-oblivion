@@ -48,29 +48,20 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			OblivionEnvironment.methystane,
 		}
 	};
-
-	float getTemperature(Vec3 pos) {
-		return Simplex.noise3d(tempSeed, tempOctaves, tempPersistence, tempScl, pos.x, pos.y, pos.z);
-	}
  
 	float rawHeight(Vec3 pos) {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
 
-	Block getBlock(Vec3 pos) {
-		float temp = getTemperature(pos) * 3f;
-		float height = rawHeight(pos) * 5f;
-		for (int i = 0; i < 3; i++) {
-			if (temp > i && temp < i + 1) {
-				for (int j = 0; j < 5; j++) {
-					if (height > j && height < j + 1) {
-						return arr[(int) Mathf.clamp(i, 0, 2)][(int) Mathf.clamp(j, 0, 4)];
-					}
-				}
-			}
-		}
+	int getBiome(Vec3 pos) {
+		return Mathf.round(Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z) * 2);
+	}
 
-		return Blocks.stone;
+	Block getBlock(Vec3 pos) {
+		float poles = Math.abs(sector.tile.v.y);
+		for (int i = 0; i < 3; i++) {
+			return arr[Mathf.clamp(getBiome(pos), 0, 2)][2];
+		}
 	}
 
 	@Override
@@ -88,38 +79,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected void generate() {
-		// base
 		pass((x, y) -> {
-			float tempNoise = noise(x + 782, y, 7, 0.8f, 280f, 1f);
-			float temp = getTemperature(sector.tile.v) * 3f;
-			float height = rawHeight(sector.tile.v) * 5f;
-			for (int i = 0; i < 3; i++) {
-				if (temp > i && temp < i + 1) {
-					for (int j = 0; j < 5; j++) {
-						if (height > j && height < j + 1) {
-							floor =  arr[(int) Mathf.clamp(i, 0, 2)][(int) Mathf.clamp(j, 0, 4)];
-						}
-					}
-				}
-			}
+			floor = getBlock(sector.tile.v);
 		});
-
-		cells(5);
-		float length = width/2.6f;
-		Vec2 trns = Tmp.v1.trns(rand.random(360f), length);
-		int
-		spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
-		endX = (int)(-trns.x + width/2f), endY = (int)(-trns.y + height/2f);
-		float maxd = Mathf.dst(width/2f, height/2f);
-
-		erase(spawnX, spawnY, 15);
-		brush(pathfind(spawnX, spawnY, endX, endY, tile -> (tile.solid() ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
-		erase(endX, endY, 15);
-
-		inverseFloodFill(tiles.getn(spawnX, spawnY));
-		erase(endX, endY, 6);
-		tiles.getn(endX, endY).setOverlay(Blocks.spawn);
-
-		Schematics.placeLaunchLoadout(spawnX, spawnY);
 	}
 }
