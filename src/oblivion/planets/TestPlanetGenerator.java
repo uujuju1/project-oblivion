@@ -21,48 +21,27 @@ import oblivion.content.*;
 import static mindustry.Vars.*;
 
 public class TestPlanetGenerator extends PlanetGenerator {
-	public float heightScl = 1f, minHeight = 0.1f, octaves = 12, persistence = 0.5f;
-	public float tempScl = 1f, tempOctaves = 3, tempPersistence = 0.5f;
-	public static int seed = 69, tempSeed = 420, dustSeed = 96; 
+	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 12, persistence = 0.33f;
+	public float humidScl = 2f, humidOctaves = 7, humidPersistence = 0.5f;
+	public static int seed = 69, humidSeed = 420;
 
-	public Block[][] arr = {
-		{
-			OblivionEnvironment.paletolime, 
-			OblivionEnvironment.malenatite,
-			OblivionEnvironment.goletenira,
-			OblivionEnvironment.argeletine,
-			OblivionEnvironment.mudone
-		},
-		{
-			OblivionEnvironment.argeletine,
-			OblivionEnvironment.mudone, 
-			OblivionEnvironment.boronite, 
-			OblivionEnvironment.tarrobonite, 
-			OblivionEnvironment.carmebonite,
-		},
-		{
-			OblivionEnvironment.carmebonite,
-			OblivionEnvironment.porotrate, 
-			OblivionEnvironment.amonetha, 
-			OblivionEnvironment.lathanite, 
-			OblivionEnvironment.methystane,
-		}
+	public Block[] arr = {
+		OblivionEnvironment.paletolime, 
+		OblivionEnvironment.malenatite,
+		OblivionEnvironment.goletenira,
+		OblivionEnvironment.argeletine,
+		OblivionEnvironment.mudone
 	};
  
 	float rawHeight(Vec3 pos) {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
-
-	int getBiome(Vec3 pos) {
-		return Mathf.round(Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z) * 2);
+	float humidity(Vec3 pos) {
+		return Simplex.noise3d(humidSeed, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z) - (rawHeight(pos) * 0.5f);
 	}
 
 	Block getBlock(Vec3 pos) {
-		float poles = Math.abs(sector.tile.v.y);
-		for (int i = 0; i < 3; i++) {
-			return arr[Mathf.clamp(getBiome(pos), 0, 2)][2];
-		}
-		return Blocks.stone;
+		return arr[Mathf.clamp((int) humidity(pos), 0, 2)];
 	}
 
 	@Override
