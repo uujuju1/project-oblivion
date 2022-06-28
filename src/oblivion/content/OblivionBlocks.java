@@ -1334,7 +1334,7 @@ public class OblivionBlocks {
 		}};
 		poloniumWall = new ExplosiveWall("polonium-wall") {{
 			requirements(Category.defense, with(
-				OblivionResources.hafnium, 6
+				OblivionResources.polonium, 6
 			));
 			health = 300;
 			size = 1;
@@ -1344,7 +1344,7 @@ public class OblivionBlocks {
 		}};
 		largePoloniumWall = new ExplosiveWall("polonium-wall-large") {{
 			requirements(Category.defense, with(
-				OblivionResources.hafnium, 24
+				OblivionResources.polonium, 24
 			));
 			health = 1200;
 			size = 2;
@@ -1354,7 +1354,7 @@ public class OblivionBlocks {
 		}};
 		hugePoloniumWall = new ExplosiveWall("polonium-wall-huge") {{
 			requirements(Category.defense, with(
-				OblivionResources.hafnium, 54
+				OblivionResources.polonium, 54
 			));
 			health = 2700;
 			size = 3;
