@@ -62,6 +62,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		for (int i = 0; i < 3; i++) {
 			return arr[Mathf.clamp(getBiome(pos), 0, 2)][2];
 		}
+		return Blocks.stone;
 	}
 
 	@Override

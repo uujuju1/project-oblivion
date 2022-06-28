@@ -290,7 +290,7 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 
 		pass((x, y) -> {
 			if (nearAir(x, y)) {
-				if (Simplex.noise3d(seed, 2, 0.5f, scl, sectorsector.tile.v.x, sector.tile.v.y, sector.tile.v.z) * nmag + poles > 0.85f && block != Blocks.air) {
+				if (Simplex.noise3d(seed, 2, 0.5f, scl, sector.tile.v.x, sector.tile.v.y, sector.tile.v.z) * nmag + poles > 0.85f && block != Blocks.air) {
 					ore = OblivionEnvironment.wallOreHafnium;
 				}
 			}
