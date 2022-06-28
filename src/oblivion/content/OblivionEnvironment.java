@@ -58,7 +58,7 @@ public class OblivionEnvironment {
 
 		// lamoni 1
 		oreNiobium = new OreBlock(OblivionResources.niobium);
-		wallOreHafnium = new OreBlock(OblivionResources.hafnium) {{wallOre = true;}};
+		wallOreHafnium = new OreBlock("wall-hafnium", OblivionResources.hafnium) {{wallOre = true;}};
 		mudone = new Floor("mudone") {{
 			attributes.set(Attribute.oil, 0.025f);
 			mapColor = Color.valueOf("7A6357");
