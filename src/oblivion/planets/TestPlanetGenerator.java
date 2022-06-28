@@ -21,7 +21,7 @@ import oblivion.content.*;
 import static mindustry.Vars.*;
 
 public class TestPlanetGenerator extends PlanetGenerator {
-	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 12, persistence = 0.85f;
+	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 12, persistence = 0.6f;
 	public float humidScl = 1f, humidOctaves = 7, humidPersistence = 0.5f;
 	public static int seed = 69, humidSeed = 420;
 
@@ -37,11 +37,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
 	float humidity(Vec3 pos) {
-		return Simplex.noise3d(humidSeed, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z) - (rawHeight(pos) * 0.3f);
+		return Simplex.noise3d(humidSeed, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z) - (rawHeight(pos) * 0.7f);
 	}
 
 	Block getBlock(Vec3 pos) {
-		return arr[Mathf.clamp((int) humidity(pos) * 5, 0, 2)];
+		float humidity = humidity(pos);
+		return arr[Mathf.clamp((int) (humidity * arr.length), 0, arr.length -1)];
 	}
 
 	@Override
