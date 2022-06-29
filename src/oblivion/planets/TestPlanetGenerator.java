@@ -66,7 +66,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	@Override
 	protected void generate() {
 		float sHeight = 1 - rawHeight(sector.tile.v);
-		float sHumididty = humidity(sector.tile.v);
+		float sHumidity = humidity(sector.tile.v);
 		pass((x, y) -> {
 			float height = noise(x + 150, y, 3, 0.5f, 1, 1);
 			float humidity = noise(x, y + 150, 6, 0.4f, 1, 1);
