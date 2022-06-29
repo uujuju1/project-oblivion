@@ -74,7 +74,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 			int offset = 0;
 			if (humidity > 0.5f) {
-				offset++
+				offset++;
 			} else offset--;
 			if (height > 0.5f) {
 				offset--;
