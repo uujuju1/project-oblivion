@@ -64,6 +64,11 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	}
 
 	@Override
+	protected float noise(float x, float y, float octaves, float falloff, float scale, float magnitude) {
+		return Simplex.noise2d(seed, octaves, falloff, 1f / scale, x, y) * (float)magnitude;
+	}
+
+	@Override
 	protected void generate() {
 		float sHeight = rawHeight(sector.tile.v);
 		float sHumidity = humidity(sector.tile.v);
