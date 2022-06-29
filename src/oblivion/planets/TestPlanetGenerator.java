@@ -65,7 +65,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected float noise(float x, float y, double octaves, double falloff, double scl, double mag) {
-		return Simplex.noise2d(seed, octaves, falloff, 1f / scl, x, y) * (float)mag
+		return Simplex.noise2d(seed, octaves, falloff, 1f / scl, x, y) * (float)mag;
 	}
 
 	@Override
