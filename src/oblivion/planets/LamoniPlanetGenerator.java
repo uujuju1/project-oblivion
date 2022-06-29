@@ -47,8 +47,8 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		{pale, gole, mudo, mudo, mudo, pale, mudo, gole, male, arge, mudo, mudo, mudo},
 		{mudo, male, pale, gole, arge, mudo, gole, mudo, mudo, pale, male, gole, arge},
 		{male, arge, mudo, male, pale, male, mudo, male, gole, mudo, mudo, mudo, pale},
-		{male, pale, male, male, arge, amon, amon, arge, male, mudo, male, amon, mudo},
-		{arge, arge, arge, arge, mudo, arge, arge, mudo, amon, arge, arge, arge, arge},
+		{male, pale, male, male, arge, pale, pale, arge, male, mudo, male, pale, mudo},
+		{arge, arge, arge, arge, mudo, arge, arge, mudo, pale, arge, arge, arge, arge},
 		{pale, arge, pale, arge, male, arge, pale, arge, arge, arge, arge, pale, male}
 	};
 

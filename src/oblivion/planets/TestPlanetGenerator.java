@@ -92,7 +92,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				if (noise > 0.56f) {
 					floor = OblivionEnvironment.mudone;
 				} else {
-					floor = argeletine;
+					floor = OblivionEnvironment.argeletine;
 				}
 			}
 		});
