@@ -68,20 +68,19 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float sHeight = 1 - rawHeight(sector.tile.v);
 		float sHumididty = humidity(sector.tile.v);
 		pass((x, y) -> {
-			float height = noise(x + 150, y, 3, 0.5f, 2, 1);
-			float humidity = noise(x, y + 150, 6, 0.4f, 1, 2);
+			float height = noise(x + 150, y, 3, 0.5f, 1, 1);
+			float humidity = noise(x, y + 150, 6, 0.4f, 1, 1);
 			floor = getBlock(sector.tile.v);
 
-			if (humidity + sHumididty > 1.2f) {
-				if (height + sHeight < 0.4f) {
-					floor = OblivionEnvironment.mudone;
-				}
-				floor = OblivionEnvironment.argeletine;
-			} else if (humidity + sHumididty < 0.5f && height + sHeight > 0.7f) {
-				floor = OblivionEnvironment.paletolime;
-			} else {
-				floor = OblivionEnvironment.malenatite;
-			}
+			int offset = 0;
+			if (humidity > 0.5f) {
+				offset++
+			} else offset--;
+			if (height > 0.5f) {
+				offset--;
+			} else offset++;
+
+			floor = arr[Mathf.clamp(((int) (sHeight + sHumidity * arr.length)) + offset, 0, arr.length -1)];
 		});
 		Schematics.placeLaunchLoadout(100, 100);
 	}
