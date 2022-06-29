@@ -72,7 +72,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			float humidity = 1 - noise(x, y + 150, 6, 0.4f, 160, 1);
 			floor = getBlock(sector.tile.v);
 			if (noise(x + 200, y + 170, 12, 0.7f, 160, 1) > 0.7f) {
-				floor = arr[Mathf.clamp(((int) (sHeight + sHumidity * arr.length)) + height + humidity, 0, arr.length -1)];
+				floor = arr[Mathf.clamp(((int) (sHeight + sHumidity * arr.length) + height + humidity), 0, arr.length -1)];
 			}
 		});
 		Schematics.placeLaunchLoadout(100, 100);
