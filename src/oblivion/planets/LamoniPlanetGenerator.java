@@ -33,32 +33,23 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		gole = OblivionEnvironment.goletenira,
 		arge = OblivionEnvironment.argeletine,
 		male = OblivionEnvironment.malenatite,
-		mudo = OblivionEnvironment.mudone,
-		boro = OblivionEnvironment.boronite,
-		tarr = OblivionEnvironment.tarrobonite,
-		carm = OblivionEnvironment.carmebonite,
-		poro = OblivionEnvironment.porotrate,
-		amon = OblivionEnvironment.amonetha,
-		lath = OblivionEnvironment.lathanite,
-		tane = OblivionEnvironment.methystane,
-		gras = Blocks.grass,
-		ston = Blocks.stone;
+		mudo = OblivionEnvironment.mudone;
 
 	public Block[][] arr =
 	{
-		{pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale},
-		{pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale, pale},
-		{pale, pale, pale, pale, male, pale, male, pale, pale, gole, pale, male, pale},
-		{male, gole, gole, male, gole, gole, male, male, gole, male, male, gole, poro},
-		{gole, arge, gole, male, gole, male, arge, gole, gole, male, gole, arge, gole},
+		{gole, male, pale, pale, pale, gole, gole, pale, pale, pale, pale, pale, gole},
+		{pale, gole, pale, gole, pale, pale, male, pale, pale, male, pale, pale, pale},
+		{pale, pale, pale, pale, male, pale, male, gole, pale, gole, pale, male, pale},
+		{male, gole, gole, male, gole, gole, male, male, gole, male, male, gole, male},
+		{gole, arge, gole, gole, gole, male, arge, gole, gole, male, gole, arge, gole},
 		{mudo, arge, gole, arge, mudo, arge, arge, arge, arge, arge, arge, arge, arge},
 		{mudo, arge, mudo, mudo, mudo, arge, mudo, mudo, mudo, mudo, mudo, mudo, arge},
-		{boro, tarr, mudo, mudo, mudo, boro, mudo, tarr, poro, mudo, mudo, mudo, mudo},
-		{carm, poro, boro, tarr, boro, carm, tarr, carm, mudo, tarr, boro, tarr, mudo},
-		{poro, carm, carm, carm, carm, poro, carm, poro, tarr, carm, carm, carm, tarr},
-		{amon, lath, poro, poro, tane, amon, amon, tane, carm, lath, poro, amon, carm},
-		{lath, tane, amon, tane, lath, tane, tane, lath, amon, tane, tane, lath, tane},
-		{tane, tane, tane, tane, tane, tane, tane, tane, tane, tane, tane, tane, tane}
+		{pale, gole, mudo, mudo, mudo, pale, mudo, gole, male, arge, mudo, mudo, mudo},
+		{mudo, male, pale, gole, arge, mudo, gole, mudo, mudo, pale, male, gole, arge},
+		{male, arge, mudo, male, pale, male, mudo, male, gole, mudo, mudo, mudo, pale},
+		{male, pale, male, male, arge, amon, amon, arge, male, mudo, male, amon, mudo},
+		{arge, arge, arge, arge, mudo, arge, arge, mudo, amon, arge, arge, arge, arge},
+		{pale, arge, pale, arge, male, arge, pale, arge, arge, arge, arge, pale, male}
 	};
 
 	float water = 0;

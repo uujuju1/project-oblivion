@@ -65,14 +65,35 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected void generate() {
-		float sHeight = 1 - rawHeight(sector.tile.v);
+		float sHeight = rawHeight(sector.tile.v);
 		float sHumidity = humidity(sector.tile.v);
+
 		pass((x, y) -> {
-			float height = noise(x + 150, y, 3, 0.5f, 140, 1);
-			float humidity = 1 - noise(x, y + 150, 6, 0.4f, 160, 1);
-			floor = getBlock(sector.tile.v);
-			if (noise(x + 200, y + 170, 12, 0.7f, 160, 1) > 0.7f) {
-				floor = arr[Mathf.clamp(((int) (sHeight + sHumidity * arr.length + height + humidity)), 0, arr.length -1)];
+			// sand plains as base
+			floor = OblivionEnvironment.goletenira;
+			if (sHeight < 0.35f) {
+				float noise noise(x, y, 12, 0.7f, 40f, 1f);
+				if (noise > 0.6) {
+					floor = OblivionEnvironment.paletolime;			
+				}
+			}
+			// mounainous dry regions;
+			if (sHumidity < 0.4f && sHeight > 0.60f) {
+				float noise noise(x, y, 12, 0.7f, 60f, 1f);
+				if (noise > 0.75f) {
+					floor = OblivionEnvironment.goletenira;
+				} else {
+					floor = OblivionEnvironment.malenatite;
+				}
+			}
+			// mountain base wetter regions
+			if (sHumidity > 0.6f && sHeight < 0.5f) {
+				float noise noise(x, y, 12, 0.7f, 60f, 1f);
+				if (noise > 0.56f) {
+					floor = OblivionEnvironment.mudone;
+				} else {
+					floor = argeletine;
+				}
 			}
 		});
 		Schematics.placeLaunchLoadout(100, 100);
