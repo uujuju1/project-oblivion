@@ -68,8 +68,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float sHeight = 1 - rawHeight(sector.tile.v);
 		float sHumidity = humidity(sector.tile.v);
 		pass((x, y) -> {
-			float height = noise(x + 150, y, 3, 0.5f, 280, 1);
-			float humidity = noise(x, y + 150, 6, 0.4f, 320, 1);
+			float height = noise(x + 150, y, 3, 0.5f, 140, 1);
+			float humidity = noise(x, y + 150, 6, 0.4f, 160, 1);
 			floor = getBlock(sector.tile.v);
 
 			int offset = 0;
