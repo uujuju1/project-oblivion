@@ -93,7 +93,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 					floor = OblivionEnvironment.goletenira;
 				}
 				if (noise < 0.25f) {
-					OblivionEnvironment.paletolime;
+					floor = OblivionEnvironment.paletolime;
 				}
 			}
 			// mountain base wetter regions
