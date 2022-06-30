@@ -74,20 +74,27 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float sHumidity = humidity(sector.tile.v);
 
 		pass((x, y) -> {
-			// plains
+			// base generation
 			floor = OblivionEnvironment.goletenira;
+			float bnoise = noise(x, y, 4, 0.7f, 60f, 1f);
+			if (bnoise > 0.5f) {
+				OblivionEnvironment.paletolime;
+			}
+			// plains
 			if (sHeight < 0.35f) {
 				float noise  = noise(x, y, 9, 0.7f, 40f, 1f);
+				floor = OblivionEnvironment.goletenira;
 				if (noise > 0.6f) {
 					floor = OblivionEnvironment.paletolime;			
 				}
 				if (noise < 0.3f) {
 					floor = OblivionEnvironment.malenatite;	
 				}
+				return;
 			}
 			// mounainous dry regions;
 			if (sHumidity < 0.4f && sHeight > 0.60f) {
-				float noise  = noise(x, y, 7, 0.7f, 60f, 1f);
+				float noise = noise(x, y, 7, 0.7f, 60f, 1f);
 				floor = OblivionEnvironment.malenatite;
 				if (noise > 0.75f) {
 					floor = OblivionEnvironment.goletenira;
@@ -95,17 +102,19 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				if (noise < 0.25f) {
 					floor = OblivionEnvironment.paletolime;
 				}
+				return;
 			}
 			// mountain base wetter regions
 			if (sHumidity > 0.6f && sHeight < 0.5f) {
-				float noise  = noise(x, y, 4, 0.7f, 60f, 1f);
+				float noise = noise(x, y, 4, 0.7f, 60f, 1f);
 				floor = OblivionEnvironment.argeletine;
 				if (noise > 0.56f) {
 					floor = OblivionEnvironment.mudone;
 				}
-				if (noise > 0.34f) {
+				if (noise < 0.34f) {
 					floor = OblivionEnvironment.goletenira;
 				}
+				return;
 			}
 		});
 		Schematics.placeLaunchLoadout(100, 100);

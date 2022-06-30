@@ -282,7 +282,9 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		pass((x, y) -> {
 			if (nearAir(x, y)) {
 				if (Simplex.noise3d(seed, 2, 0.5f, scl, sector.tile.v.x, sector.tile.v.y, sector.tile.v.z) * nmag + poles > 0.85f && block != Blocks.air) {
-					ore = OblivionEnvironment.wallOreHafnium;
+					if (noise(x, y, 2, 0.7f, 80)) {
+						ore = OblivionEnvironment.wallOreHafnium;				
+					}
 				}
 			}
 		});
@@ -398,6 +400,14 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 				tile.setOverlay(Blocks.air);
 			}
 		}
+		pass((x, y) -> {
+			if (ore = OblivionEnvironment.wallOreHafnium && !nearAir(x, y)) {
+				ore = Blocks.air;
+			}
+			if (ore = OblivionEnvironment.wallOreHafnium && block == Blocks.air) {
+				ore = Blocks.air;
+			}
+		});
 
 		Schematics.placeLaunchLoadout(spawn.x, spawn.y);
 
