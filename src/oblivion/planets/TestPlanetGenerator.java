@@ -80,7 +80,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		float sHumidity = humidity(sector.tile.v);
 
 		pass((x, y) -> {
-			floor = getBlock(x, y, sector.tile.v.z);
+			floor = getBlock(x / (width * 0.5f), y / (height * 0.5f), sector.tile.v.z);
 		});
 		Schematics.placeLaunchLoadout(100, 100);
 	}
