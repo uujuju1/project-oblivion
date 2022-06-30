@@ -78,7 +78,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			floor = OblivionEnvironment.goletenira;
 			float bnoise = noise(x, y, 4, 0.7f, 60f, 1f);
 			if (bnoise > 0.5f) {
-				OblivionEnvironment.paletolime;
+				floor = OblivionEnvironment.paletolime;
 			}
 			// plains
 			if (sHeight < 0.35f) {
