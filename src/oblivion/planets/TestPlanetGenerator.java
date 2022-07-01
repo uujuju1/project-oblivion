@@ -113,12 +113,10 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
 			);
 		}
-		int id = 0;
 		rooms.each(r -> {
-			rRand.setSeed(id);
+			rRand.setSeed(rRand.seed0 + 1);
 			erase((int) r.x, (int) r.y, rRand.random((int) 12));
 			brush(pathfind((int) r.x, (int) r.y, (int) rooms.get(rRand.random((int) rooms.size - 1)).x, (int) rooms.get(rRand.random((int) rooms.size - 1)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
-			id++;
 		});
 
 		// make connections look more natural
