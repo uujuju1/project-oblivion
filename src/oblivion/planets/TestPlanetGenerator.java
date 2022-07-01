@@ -38,10 +38,10 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	};
  
 	float rawHeight(Vec3 pos) {
-		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
+		return Simplex.noise3d(69, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
 	float humidity(Vec3 pos) {
-		return Simplex.noise3d(humidSeed, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z);
+		return Simplex.noise3d(420, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z);
 	}
 
 	Block getBlock(Vec3 pos) {
@@ -58,7 +58,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	public float getHeight(Vec3 pos) {
-		return Math.max(minHeight, rawHeight(pos));
+		return Math.max(0.1f, rawHeight(pos));
 	}
 
 	@Override
@@ -107,8 +107,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 
 		// create rooms
-		for (int i = 0; i < 10; i++) {
-			Vec2 rotate = Tmp.v1.trns(noise3d(i, sector.tile.v, 3, 0.5f, 200f, 360f), width/(2.5f + noise3d(i + 11, sector.tile.v, 3, 0.5f, 200f, 1f)));
+		for (int i = 0; i < 20; i++) {
+			Vec2 rotate = Tmp.v1.trns(noise3d(i, sector.tile.v, 3, 0.5f, 200f, 360f), width/(2.5f + noise3d(i + 21, sector.tile.v, 3, 0.5f, 200f, 2f)));
 			int roomX = (int)(trns.x + width/2f), roomY = (int)(trns.y + height/2f);
 			rooms.add(
 				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
@@ -116,21 +116,23 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 
 		// connect rooms
-		
 		rooms.each(r -> {
 			int roomId = 0;
 			// get room to connect
-			Vec2 to = rooms.get((int) noise3d(roomId + 22, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
+			Vec2 to = rooms.get((int) noise3d(roomId + 42, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
 
 			// if it tries to connect to itself, it'll connect to spawn instead
 			to = to == r ? to : rooms.get(0);
 
 			// actually connect the rooms
-			erase((int) r.x, (int) r.y, (int) noise3d(roomId + 33, sector.tile.v, 3, 0.5f, 200f, 12f));
-			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> (tile.block() == OblivionEnvironment.goleteniraWall ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+			erase((int) r.x, (int) r.y, (int) noise3d(roomId + 63, sector.tile.v, 3, 0.5f, 200f, 12f));
+			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> (tile.solid() ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 			roomId++;
 		});
 
+		// mostly guaranteed path to the units
+		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.solid() ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+	
 		// make connections look more natural
 		distort(136f, 31f);
 		distort(10f, 12f);
@@ -141,9 +143,6 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
 
-		// guaranteed path to the units
-		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.block() == OblivionEnvironment.goleteniraWall ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
-		
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
 		pass((x, y) -> {
@@ -158,7 +157,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			if (ore == OblivionEnvironment.oreNiobium && block != Blocks.air) ore = Blocks.air;
 		});
 
-		// core and spawn
+		// put core and enemy spawn in the map
 		tiles.getn(launchX, launchY).setOverlay(Blocks.spawn);
 		Schematics.placeLaunchLoadout(spawnX, spawnY);
 	}
