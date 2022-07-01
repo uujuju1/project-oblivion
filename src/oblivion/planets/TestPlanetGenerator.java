@@ -122,7 +122,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			Vec2 to = rooms.get((int) noise3d(id + 11f, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
 
 			// if it tries to connect to itself, it'll connect to spawn instead
-			to = to == r ? to, rooms.get(0);
+			to = to == r ? to : rooms.get(0);
 
 			// actually connect the rooms
 			erase((int) r.x, (int) r.y, (int) noise3d(id + 22f, sector.tile.v, 3, 0.5f, 200f, 12f));
