@@ -116,8 +116,9 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 
 		// connect rooms
-		int roomId = 0;
+		
 		rooms.each(r -> {
+			int roomId;
 			// get room to connect
 			Vec2 to = rooms.get((int) noise3d(roomId + 22, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
 
