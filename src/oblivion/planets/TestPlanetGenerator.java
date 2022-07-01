@@ -116,16 +116,16 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 
 		// connect rooms
-		int id = 0;
+		int roomId = 0;
 		rooms.each(r -> {
 			// get room to connect
-			Vec2 to = rooms.get((int) noise3d(id + 22, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
+			Vec2 to = rooms.get((int) noise3d(roomId + 22, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
 
 			// if it tries to connect to itself, it'll connect to spawn instead
 			to = to == r ? to : rooms.get(0);
 
 			// actually connect the rooms
-			erase((int) r.x, (int) r.y, (int) noise3d(id + 33, sector.tile.v, 3, 0.5f, 200f, 12f));
+			erase((int) r.x, (int) r.y, (int) noise3d(roomId + 33, sector.tile.v, 3, 0.5f, 200f, 12f));
 			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> (tile.block() == OblivionEnvironment.goleteniraWall ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 			id++;
 		});
