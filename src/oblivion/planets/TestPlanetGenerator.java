@@ -127,7 +127,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			// actually connect the rooms
 			erase((int) r.x, (int) r.y, (int) noise3d(roomId + 33, sector.tile.v, 3, 0.5f, 200f, 12f));
 			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> (tile.block() == OblivionEnvironment.goleteniraWall ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
-			id++;
+			roomId++;
 		});
 
 		// make connections look more natural
