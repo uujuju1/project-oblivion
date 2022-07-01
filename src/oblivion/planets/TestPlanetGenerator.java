@@ -105,7 +105,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// create rooms
 		for (int i = 0; i < 10; i++) {
-			Vec2 rotate = Tmp.v1.trns(rand.random(360f), width/rand.random(1f));
+			Vec2 rotate = Tmp.v1.trns(rand.random(360f), width/(2.5f + rand.random(1f)));
 			int roomX = (int)(trns.x + width/2f), roomY = (int)(trns.y + height/2f);
 			rooms.add(
 				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
