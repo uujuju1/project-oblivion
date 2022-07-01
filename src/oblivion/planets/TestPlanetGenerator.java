@@ -73,10 +73,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	protected float noise(float x, float y, double octaves, double falloff, double scl, double mag) {
 		return Simplex.noise2d(seed, octaves, falloff, 1f / scl, x, y) * (float)mag;
 	}
+	protected float noise3d(float seed, Vec3 p, double octaves, double falloff, double scl, double mag) {
+		return Simplex.noise3d(seed, octaves, falloff, 1f / scl, p.x, p.y, p.z) * (float)mag;
+	}
 
 	@Override
 	protected void generate() {
-		Rand rRand = new Rand(rand.seed0, rand.seed1);
 
 		Seq<Vec2> rooms = new Seq<>();
 		float maxd = Mathf.dst(width/2f, height/2f);
@@ -97,7 +99,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		});
 		distort(125f, 72f);
 		
-		// walls
+		// inverseFloodFill() wasn't working soo
 		for(Tile tile : tiles){
 			if(tile.block() == Blocks.air){
 				tile.setBlock(tile.floor().wall);
@@ -106,17 +108,26 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// create rooms
 		for (int i = 0; i < 10; i++) {
-			rRand.setSeed(rooms.size);
-			Vec2 rotate = Tmp.v1.trns(rRand.random(360f), width/(2.5f + rRand.random(1f)));
+			Vec2 rotate = Tmp.v1.trns(noise3d(i, sector.tile.v, 3, 0.5f, 200f, 360f), width/(2.5f + noise3d(sector.tile.v, 3, 0.5f, 200f, 1f)));
 			int roomX = (int)(trns.x + width/2f), roomY = (int)(trns.y + height/2f);
 			rooms.add(
 				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
 			);
 		}
+
+		// connect rooms
+		int id = 0;
 		rooms.each(r -> {
-			rRand.setSeed(rRand.seed0 + 1);
-			erase((int) r.x, (int) r.y, rRand.random((int) 12));
-			brush(pathfind((int) r.x, (int) r.y, (int) rooms.get(rRand.random((int) rooms.size - 1)).x, (int) rooms.get(rRand.random((int) rooms.size - 1)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+			// get room to connect
+			Vec2 to = rooms.get((int) noise3d(id + 11f, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
+
+			// if it tries to connect to itself, it'll connect to spawn instead
+			to = to == r ? to, rooms.get(0);
+
+			// actually connect the rooms
+			erase((int) r.x, (int) r.y, (int) noise3d(id + 22f, sector.tile.v, 3, 0.5f, 200f, 12f));
+			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> (tile.block() == OblivionEnvironment.goleteniraWall ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+			id++;
 		});
 
 		// make connections look more natural
@@ -129,8 +140,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
 
-		// path to the units
-		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+		// guaranteed path to the units
+		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.block() == OblivionEnvironment.goleteniraWall ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 		
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
