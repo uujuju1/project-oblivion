@@ -113,13 +113,13 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 		rooms.each(r -> {
 			erase((int) r.x, (int) r.y, rand.random((int) 12));
-			brush(pathfind((int) r.x, (int) r.y, (int) rooms.get(rand.random((int) rooms.size)).x, (int) rooms.get(rand.random((int) rooms.size)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+			brush(pathfind((int) r.x, (int) r.y, (int) rooms.get(rand.random((int) rooms.size - 1)).x, (int) rooms.get(rand.random((int) rooms.size - 1)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 		});
 
+		median(4f);
+		distort(136f, 31f);
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
-		distort(10f, 12f);
-		distort(5f, 7f);
 		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 		tiles.getn(launchX, launchY).setOverlay(Blocks.spawn);
 		Schematics.placeLaunchLoadout(spawnX, spawnY);
