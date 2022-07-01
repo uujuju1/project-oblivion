@@ -76,6 +76,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected void generate() {
+		Rand rRand = new Rand();
+		rRand.setSeed(rand.seed0, rand.seed1);
 
 		Seq<Vec2> rooms = new Seq<>();
 		float maxd = Mathf.dst(width/2f, height/2f);
@@ -105,25 +107,33 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// create rooms
 		for (int i = 0; i < 10; i++) {
-			Vec2 rotate = Tmp.v1.trns(rand.random(360f), width/(2.5f + rand.random(1f)));
+			rRand.setSeed(rooms.size);
+			Vec2 rotate = Tmp.v1.trns(rRand.random(360f), width/(2.5f + rRand.random(1f)));
 			int roomX = (int)(trns.x + width/2f), roomY = (int)(trns.y + height/2f);
 			rooms.add(
 				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
 			);
 		}
+		int id = 0;
 		rooms.each(r -> {
-			erase((int) r.x, (int) r.y, rand.random((int) 12));
-			brush(pathfind((int) r.x, (int) r.y, (int) rooms.get(rand.random((int) rooms.size - 1)).x, (int) rooms.get(rand.random((int) rooms.size - 1)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+			rRand.setSeed(id);
+			erase((int) r.x, (int) r.y, rRand.random((int) 12));
+			brush(pathfind((int) r.x, (int) r.y, (int) rooms.get(rRand.random((int) rooms.size - 1)).x, (int) rooms.get(rRand.random((int) rooms.size - 1)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+			id++;
 		});
 
-		// natural rooms
+		// make connections look more natural
 		distort(136f, 31f);
 		distort(10f, 12f);
 		distort(5f, 7f);
 		median(4);
+
+		// make core and enemy area
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
-		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+		
+		// path to the units
+		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 		
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
