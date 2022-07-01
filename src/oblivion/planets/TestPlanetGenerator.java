@@ -83,8 +83,13 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		launchX = (int)(-trns.y + width/2f), launchY = (int)(-trns.y + height/2f);
 		pass((x, y) -> {
 			floor = getBlock(x / (width * 0.5f), y / (height * 0.5f), sector.tile.v.z);
-			block = floor != Blocks.air ? Blocks.air : floor.wall;
 		});
+
+		for(Tile tile : tiles){
+			if(tile.block() == Blocks.air){
+				tile.setBlock(tile.floor().wall);
+			}
+		}
 
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
