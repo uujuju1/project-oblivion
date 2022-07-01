@@ -77,24 +77,50 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	@Override
 	protected void generate() {
 
+		Seq<Vec2> rooms = new Seq<>();
+
+		// enemy and player rooms
 		Vec2 trns = Tmp.v1.trns(rand.random(360f), width/2.6f);
 		int
 		spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
 		launchX = (int)(-trns.y + width/2f), launchY = (int)(-trns.y + height/2f);
+		rooms.add(
+			new Vec2(spawnX, spawnY),
+			new Vec2(launchX, launchY)
+		);
+
+		// floor
 		pass((x, y) -> {
 			floor = getBlock(x / (width * 0.5f), y / (height * 0.5f), sector.tile.v.z);
 		});
-
+		distort(125f, 72f);
+		
+		// walls
 		for(Tile tile : tiles){
 			if(tile.block() == Blocks.air){
 				tile.setBlock(tile.floor().wall);
 			}
 		}
 
+		// create rooms
+		for (int i = 0; i < 10; i++) {
+			Vec2 rotate = Tmp.v1.trns(rand.random(360f), width/rand.random(1f));
+			int roomX = (int)(trns.x + width/2f), roomY = (int)(trns.y + height/2f);
+			rooms.add(
+				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
+			);
+		}
+		rooms.each(r -> {
+			erase(r.x, r.y, rand.random((int) 12))
+			brush(pathfind(r.x, r.y, rooms.get(rand.random((int) rand.length)).x, rooms.get(rand.random((int) rand.length)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+		});
+
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
-		cells(5);
-		distort(125f, 72f);
+		distort(10f, 12f);
+		distort(5f, 7f);
+		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+		tiles.getn(launchX, launchY).setOverlay(Blocks.spawn);
 		Schematics.placeLaunchLoadout(spawnX, spawnY);
 	}
 }
