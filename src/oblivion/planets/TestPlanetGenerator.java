@@ -83,12 +83,13 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		launchX = (int)(-trns.y + width/2f), launchY = (int)(-trns.y + height/2f);
 		pass((x, y) -> {
 			floor = getBlock(x / (width * 0.5f), y / (height * 0.5f), sector.tile.v.z);
+			block = floor != Blocks.air ? Blocks.air : floor.wall;
 		});
-		distort(125f, 72f);
-		inverseFloodFill(tiles.getn(spawnX, spawnY));
+
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
 		cells(5);
+		distort(125f, 72f);
 		Schematics.placeLaunchLoadout(spawnX, spawnY);
 	}
 }
