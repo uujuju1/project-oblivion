@@ -117,8 +117,10 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		});
 
 		// natural rooms
-		median(4);
 		distort(136f, 31f);
+		distort(10f, 12f);
+		distort(5f, 7f);
+		median(4);
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
 		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
@@ -126,12 +128,13 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
 		pass((x, y) -> {
-			if (noise(x, y, 10, 0.3f, 30f, 1f) > 0.7f && block == Blocks.air) ore = OblivionEnvironment.oreNiobium;
+			if (noise(x, y, 10, 0.3f, 30f, 1f) > 0.75f && block == Blocks.air) ore = OblivionEnvironment.oreNiobium;
 
 			if (noise(x, y, 1, 0.2f, 40f, 1f) > 1f * poles && block != Blocks.air) ore = OblivionEnvironment.wallOreHafnium;
 
 			// remove invalid ores
 			if (ore == OblivionEnvironment.wallOreHafnium && !nearAir(x, y)) ore = Blocks.air;
+			if (ore == OblivionEnvironment.wallOreHafnium && noise(x, y, 4, 0.5f, 167f) > 0.4f) ore = Blocks.air;
 
 			if (ore == OblivionEnvironment.oreNiobium && block != Blocks.air) ore = Blocks.air;
 		});
