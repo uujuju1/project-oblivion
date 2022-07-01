@@ -78,6 +78,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	protected void generate() {
 
 		Seq<Vec2> rooms = new Seq<>();
+		float maxd = Mathf.dst(width/2f, height/2f);
 
 		// enemy and player rooms
 		Vec2 trns = Tmp.v1.trns(rand.random(360f), width/2.6f);
