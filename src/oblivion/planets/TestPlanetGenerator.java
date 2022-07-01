@@ -80,7 +80,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		Vec2 trns = Tmp.v1.trns(rand.random(360f), width/2.6f);
 		int
 		spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
-		launchY = (int)(-trns.y + width/2f), launchY = (int)(-trns.y + height/2f);
+		launchX = (int)(-trns.y + width/2f), launchY = (int)(-trns.y + height/2f);
 		pass((x, y) -> {
 			floor = getBlock(x / (width * 0.5f), y / (height * 0.5f), sector.tile.v.z);
 		});
