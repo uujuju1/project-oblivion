@@ -76,8 +76,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected void generate() {
-		Rand rRand = new Rand();
-		rRand.setSeed(rand.seed0, rand.seed1);
+		Rand rRand = new Rand(rand.seed0, rand.seed1);
 
 		Seq<Vec2> rooms = new Seq<>();
 		float maxd = Mathf.dst(width/2f, height/2f);
@@ -131,7 +130,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// make core and enemy area
 		erase(spawnX, spawnY, 8);
 		erase(launchX, launchY, 8);
-		
+
 		// path to the units
 		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 		

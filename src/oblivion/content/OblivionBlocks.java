@@ -60,7 +60,7 @@ public class OblivionBlocks {
 		// lamoni
 		coreVillage,
 
-		niobiumDuct, niobiumRouter, niobiumBridge,
+		niobiumDuct, niobiumRouter, niobiumBridge, niobiumUnloader,
 
 		niobiumConduit, niobiumConduitRouter, niobiumConduitBridge,
 
@@ -950,6 +950,12 @@ public class OblivionBlocks {
 			requirements(Category.distribution, with(OblivionResources.niobium, 8));
 			health = 140;
 			speed = 3.5f;
+		}};
+		niobiumUnloader = new DirectionalUnloader("niobium-unloader") {{
+			requirements(Category.distribution, with(OblivionResources.niobium, 12));
+			health = 150;
+			speed = 3.5f;
+			allowCoreUnload = true;
 		}};
 
 		niobiumConduit = new Conduit("niobium-conduit") {{
