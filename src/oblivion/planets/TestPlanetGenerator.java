@@ -73,7 +73,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	protected float noise(float x, float y, double octaves, double falloff, double scl, double mag) {
 		return Simplex.noise2d(seed, octaves, falloff, 1f / scl, x, y) * (float)mag;
 	}
-	protected float noise3d(float seed, Vec3 p, double octaves, double falloff, double scl, double mag) {
+	protected float noise3d(int seed, Vec3 p, double octaves, double falloff, double scl, double mag) {
 		return Simplex.noise3d(seed, octaves, falloff, 1f / scl, p.x, p.y, p.z) * (float)mag;
 	}
 
@@ -108,7 +108,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// create rooms
 		for (int i = 0; i < 10; i++) {
-			Vec2 rotate = Tmp.v1.trns(noise3d(i, sector.tile.v, 3, 0.5f, 200f, 360f), width/(2.5f + noise3d(sector.tile.v, 3, 0.5f, 200f, 1f)));
+			Vec2 rotate = Tmp.v1.trns(noise3d(i, sector.tile.v, 3, 0.5f, 200f, 360f), width/(2.5f + noise3d(i + 11, sector.tile.v, 3, 0.5f, 200f, 1f)));
 			int roomX = (int)(trns.x + width/2f), roomY = (int)(trns.y + height/2f);
 			rooms.add(
 				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
@@ -119,13 +119,13 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		int id = 0;
 		rooms.each(r -> {
 			// get room to connect
-			Vec2 to = rooms.get((int) noise3d(id + 11f, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
+			Vec2 to = rooms.get((int) noise3d(id + 22, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
 
 			// if it tries to connect to itself, it'll connect to spawn instead
 			to = to == r ? to : rooms.get(0);
 
 			// actually connect the rooms
-			erase((int) r.x, (int) r.y, (int) noise3d(id + 22f, sector.tile.v, 3, 0.5f, 200f, 12f));
+			erase((int) r.x, (int) r.y, (int) noise3d(id + 33, sector.tile.v, 3, 0.5f, 200f, 12f));
 			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> (tile.block() == OblivionEnvironment.goleteniraWall ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 			id++;
 		});
