@@ -113,7 +113,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 		rooms.each(r -> {
 			erase(r.x, r.y, rand.random((int) 12));
-			brush(pathfind(r.x, r.y, rooms.get(rand.random((int) rand.length)).x, rooms.get(rand.random((int) rand.length)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+			brush(pathfind((int) r.x, (int) r.y, rooms.get(rand.random((int) rand.length)).x, rooms.get(rand.random((int) rooms.length)).y, tile -> (tile.solid() && tile.block() == OblivionEnvironment.goletenira ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
 		});
 
 		erase(spawnX, spawnY, 8);
