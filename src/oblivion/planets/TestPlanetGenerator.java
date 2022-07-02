@@ -100,12 +100,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			new Room(
 				spawnX,
 				spawnY,
-				(int) 15 + noise3d(strokeSeed * 90, sector.tile.v, 1, 1, 1f, 5)
+				(int) (15f + noise3d(strokeSeed * 90, sector.tile.v, 1, 1, 1f, 5))
 			),
 			new Room(
 				launchX,
 				launchY,
-				(int) 15 + noise3d(strokeSeed * 96, sector.tile.v, 1, 1, 1f, 5)
+				(int)( 15f + noise3d(strokeSeed * 96, sector.tile.v, 1, 1, 1f, 5))
 			)
 		);
 
@@ -132,7 +132,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				new Room(
 					(int) pos.x,
 					(int) pos.y,
-					(int) 15 + noise3d(strokeSeed * i, sector.tile.v, 1, 1, 1f, 5)
+					(int) (15f + noise3d(strokeSeed * i, sector.tile.v, 1, 1, 1f, 5))
 				)
 			);
 		}
