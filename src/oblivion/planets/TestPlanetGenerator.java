@@ -124,8 +124,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// connect rooms
 		r.each(room -> {
-			/*
 			int roomId = 0;
+			/*
 			// get room to connect
 			room.connect(r.get((int) noise3d((int) (sector.tile.v.z/sector.tile.v.y * 10f), sector.tile.v, 3, 0.5f, 200f, r.size - 1)));
 
@@ -133,12 +133,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			if (room.connected == null) room.connect(r.get(0));
 			*/
 			// actually connect the rooms
-			erase((int) room.x, (int) room.y, (int) noise3d(strokeSeed * i, sector.tile.v, 3, 0.5f, 200f, 20f));
-			Schematics.placeLaunchLoadout(room.x, room.y);
+			erase((int) room.x, (int) room.y, (int) noise3d(strokeSeed * roomId, sector.tile.v, 3, 0.5f, 200f, 20f));
+			Schematics.placeLaunchLoadout((int) room.x, (int) room.y);
 			/*
 			brush(pathfind((int) room.x, (int) room.y, (int) room.connected.x, (int) room.connected.y, tile -> 0f, Astar.manhattan), 9);
-			roomId++;
 			*/
+			roomId++;
 		});
 
 		// mostly guaranteed path to the units
