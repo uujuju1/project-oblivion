@@ -11,6 +11,7 @@ import mindustry.game.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.content.*;
+import mindustry.ai.Astar.*;
 import mindustry.maps.planet.*;
 import mindustry.ai.BaseRegistry.*;
 import mindustry.maps.generators.*;
@@ -93,7 +94,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		int
 		spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
 		launchX = (int)(-trns.y + width/2f), launchY = (int)(-trns.y + height/2f);
-		rooms.add(
+		r.add(
 			new Room(spawnX, spawnY),
 			new Room(launchX, launchY)
 		);
@@ -116,7 +117,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			Vec2 rotate = Tmp.v1.trns(noise3d(i, sector.tile.v, 3, 0.5f, 200f, 720f), width/(2.5f + noise3d(i + 21, sector.tile.v, 3, 0.5f, 200f, 2f)));
 			int roomX = (int)(rotate.x + width/2f), roomY = (int)(rotate.y + height/2f);
 			r.add(
-				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
+				new Room(rotate.x + width/2f, rotate.y + height/2f)
 			);
 		}
 
