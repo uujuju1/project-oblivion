@@ -126,12 +126,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 			// actually connect the rooms
 			erase((int) r.x, (int) r.y, (int) noise3d(roomId + 63, sector.tile.v, 3, 0.5f, 200f, 12f));
-			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> (tile.solid() ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> 300f, Astar.manhattan), 9);
 			roomId++;
 		});
 
 		// mostly guaranteed path to the units
-		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> (tile.solid() ? 300f : 0f) + maxd - tile.dst(width/2f, height/2f)/10f, Astar.manhattan), 9);
+		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> 300f, Astar.manhattan), 9);
 	
 		// make connections look more natural
 		distort(136f, 31f);
