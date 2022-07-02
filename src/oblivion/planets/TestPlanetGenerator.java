@@ -40,7 +40,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	};
  
 	float rawHeight(Vec3 pos) {
-		return Simplex.noise3d(69, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
+		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
 	float humidity(Vec3 pos) {
 		return Simplex.noise3d(420, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z);
@@ -100,12 +100,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			new Room(
 				spawnX,
 				spawnY,
-				(int) (15f + noise3d(strokeSeed * 90, sector.tile.v, 1, 1, 1f, 5))
+				(int) (10f + noise3d(strokeSeed * 90, sector.tile.v, 1, 1, 1f, 5))
 			),
 			new Room(
 				launchX,
 				launchY,
-				(int)( 15f + noise3d(strokeSeed * 96, sector.tile.v, 1, 1, 1f, 5))
+				(int)( 10f + noise3d(strokeSeed * 96, sector.tile.v, 1, 1, 1f, 5))
 			)
 		);
 
@@ -113,7 +113,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		pass((x, y) -> {
 			floor = getBlock(x / (width * 0.5f), y / (height * 0.5f), sector.tile.v.z);
 		});
-		distort(125f, 72f);
+		
 		
 		// inverseFloodFill() wasn't working soo
 		for(Tile tile : tiles){
@@ -123,7 +123,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 
 		// create rooms
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 7; i++) {
 			pos.set(
 				Mathf.clamp((int) noise3d(widthSeed * i, sector.tile.v, 1, 1, 1f, width), 20, width - 20),
 				Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 1f, height), 20, height - 20)
@@ -132,7 +132,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				new Room(
 					(int) pos.x,
 					(int) pos.y,
-					(int) (15f + noise3d(strokeSeed * i, sector.tile.v, 1, 1, 1f, 5))
+					(int) (10f + noise3d(strokeSeed * i, sector.tile.v, 1, 1, 1f, 5))
 				)
 			);
 		}
@@ -158,11 +158,9 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			}
 			roomId++;
 		});
-
-		// mostly guaranteed path to the units
-		// brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> 0f, Astar.manhattan), 20);
 	
 		// make connections look more natural
+		distort(125f, 72f);
 		distort(136f, 31f);
 		distort(10f, 12f);
 		distort(5f, 7f);
@@ -175,7 +173,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
 		pass((x, y) -> {
-			if (noise(x, y, 10, 0.3f, 30f, 1f) > 0.75f && block == Blocks.air) ore = OblivionEnvironment.oreNiobium;
+			if (noise(x, y, 10, 0.3f, 30f, 1f) > 0.8f && block == Blocks.air) ore = OblivionEnvironment.oreNiobium;
 
 			if (noise(x, y, 1, 0.2f, 40f, 1f) > 1f * poles && block != Blocks.air) ore = OblivionEnvironment.wallOreHafnium;
 
@@ -187,9 +185,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		});
 
 		// put core and enemy spawn in the map
-		r.each(room -> {
-			tiles.getn(room.x, room.y).setOverlay(Blocks.spawn);
-		});
+		Schematics.placeLaunchLoadout(r.get(0).x, r.get(0).y)
+		tiles.getn(r.get(1).x, r.get(1).y).setOverlay(Blocks.spawn);
 	}
 
 	public class Room {
