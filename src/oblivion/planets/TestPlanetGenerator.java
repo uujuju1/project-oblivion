@@ -173,7 +173,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
 		pass((x, y) -> {
-			if (noise(x, y, 10, 0.3f, 30f, 1f) > 0.8f && block == Blocks.air) ore = OblivionEnvironment.oreNiobium;
+			if (noise(x, y, 10, 0.3f, 30f, 1f) > 0.75f && block == Blocks.air) ore = OblivionEnvironment.oreNiobium;
 
 			if (noise(x, y, 1, 0.2f, 40f, 1f) > 1f * poles && block != Blocks.air) ore = OblivionEnvironment.wallOreHafnium;
 
