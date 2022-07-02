@@ -154,7 +154,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			// actually connect the rooms
 			room.open();
 			if (room.isConnected()) {
-				brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> 0f, Astar.manhattan), 20);
+				brush(pathfind(room.x, room.y, room.connected.x, room.connected.y, tile -> 5000f, Astar.manhattan), 20);
 			}
 			roomId++;
 		});
