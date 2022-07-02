@@ -97,8 +97,16 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
 		launchX = (int)(-trns.y + width/2f), launchY = (int)(-trns.y + height/2f);
 		r.add(
-			new Room(spawnX, spawnY),
-			new Room(launchX, launchY)
+			new Room(
+				spawnX,
+				spawnY,
+				(int) 15 + noise3d(strokeSeed * 90, sector.tile.v, 1, 1, 1f, 5)
+			),
+			new Room(
+				launchX,
+				launchY,
+				(int) 15 + noise3d(strokeSeed * 96, sector.tile.v, 1, 1, 1f, 5)
+			)
 		);
 
 		// floor
@@ -136,7 +144,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			// get room to connect
 			room.connect(
 				r.get(
-					(int) noise2d((int) roomSeed * roomId, r.x, r.y, 1, 1, 1f, r.size - 1)
+					(int) noise2d((int) roomSeed * roomId, room.x, room.y, 1, 1, 1f, r.size - 1)
 				)
 			);
 
@@ -144,7 +152,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			if (room.connected == null) room.connect(r.get(0));
 
 			// actually connect the rooms
-			r.open();
+			room.open();
 			brush(pathfind(room.x, room.y, room.connected.x, room.connected.y, tile -> 0f, Astar.manhattan), 9);
 			roomId++;
 		});
@@ -189,9 +197,10 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		int x, y, size;
 		@Nullable Room connected = null;
 
-		public Room(int x, int y) {
+		public Room(int x, int y, int size) {
 			this.x = x;
 			this.y = y;
+			this.size = size;
 		}
 
 		public float getDistance(Room to) {
