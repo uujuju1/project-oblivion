@@ -185,7 +185,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		});
 
 		// put core and enemy spawn in the map
-		Schematics.placeLaunchLoadout(r.get(0).x, r.get(0).y)
+		Schematics.placeLaunchLoadout(r.get(0).x, r.get(0).y);
 		tiles.getn(r.get(1).x, r.get(1).y).setOverlay(Blocks.spawn);
 	}
 
