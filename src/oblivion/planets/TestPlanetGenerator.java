@@ -121,25 +121,31 @@ public class TestPlanetGenerator extends PlanetGenerator {
 				Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 1f, height), 20, height - 20)
 			);
 			r.add(
-				new Room((int) pos.x, (int) pos.y)
+				new Room(
+					(int) pos.x,
+					(int) pos.y,
+					(int) 15 + noise3d(strokeSeed * i, sector.tile.v, 1, 1, 1f, 5)
+				)
 			);
 		}
 
 		// connect rooms
 		r.each(room -> {
 			int roomId = 0;
-			/*
+
 			// get room to connect
-			room.connect(r.get((int) noise3d((int) (sector.tile.v.z/sector.tile.v.y * 10f), sector.tile.v, 3, 0.5f, 200f, r.size - 1)));
+			room.connect(
+				r.get(
+					(int) noise2d((int) roomSeed * roomId, r.x, r.y, 1, 1, 1f, r.size - 1)
+				)
+			);
 
 			// if it tries to connect to itself, it'll connect to spawn instead
 			if (room.connected == null) room.connect(r.get(0));
-			*/
+
 			// actually connect the rooms
-			erase((int) room.x, (int) room.y, 20);
-			/*
-			brush(pathfind((int) room.x, (int) room.y, (int) room.connected.x, (int) room.connected.y, tile -> 0f, Astar.manhattan), 9);
-			*/
+			r.open();
+			brush(pathfind(room.x, room.y, room.connected.x, room.connected.y, tile -> 0f, Astar.manhattan), 9);
 			roomId++;
 		});
 
@@ -180,7 +186,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	}
 
 	public class Room {
-		int x, y;
+		int x, y, size;
 		@Nullable Room connected = null;
 
 		public Room(int x, int y) {
@@ -188,8 +194,22 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			this.y = y;
 		}
 
+		public float getDistance(Room to) {
+			float 
+			distX = Math.abs(x - to.x),
+			distY = Math.abs(y - to.y);
+			return distX+distY/2f;
+		}
+
+		public void open() {erase(x, y, size);}
+
 		public void connect(Room to) {
-			if (to.connected == this || connected != null) return;
+			if (
+				to.connected == this ||
+				connected != null ||
+				getDistance(to) < size
+			) return;
+
 			connected = to;
 		}
 	}
