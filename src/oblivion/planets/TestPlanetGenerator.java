@@ -144,7 +144,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			// get room to connect
 			room.connect(
 				r.get(
-					(int) noise2d((int) roomSeed * roomId, room.x, room.y, 1, 1, 1f, r.size - 1)
+					(int) noise3d((int) roomSeed * roomId, sector.tile.v, 1, 1, 1f, r.size - 1)
 				)
 			);
 
