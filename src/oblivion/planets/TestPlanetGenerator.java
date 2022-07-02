@@ -219,7 +219,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		public void connect(Room to) {
 			if (
 				to.connected == this ||
-				connected == this ||
+				connected != this ||
 				getDistance(to) < size
 			) return;
 
