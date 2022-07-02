@@ -114,7 +114,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// create rooms
 		for (int i = 0; i < 15; i++) {
-			Vec2 rotate = Tmp.v1.trns(noise3d((int) (sector.tile.v.y/sector.tile.v.x * 10f), sector.tile.v, 3, 0.5f, 200f, 720f), width/(2.5f + noise3d((int) (sector.tile.v.y/sector.tile.v.z * 10f), sector.tile.v, 3, 0.5f, 200f, 2f)));
+			Vec2 rotate = Tmp.v1.trns(noise3d((int) (sector.tile.v.y/sector.tile.v.x * 10f), sector.tile.v, 3, 0.5f, 200f, 720f), width/(2.5f + noise3d((int) (sector.tile.v.y/sector.tile.v.z * 10f), sector.tile.v, 3, 0.5f, 200f, 4f)));
 			int roomX = (int)(rotate.x + width/2f), roomY = (int)(rotate.y + height/2f);
 			r.add(
 				new Room(rotate.x + width/2f, rotate.y + height/2f)
@@ -123,17 +123,20 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// connect rooms
 		r.each(room -> {
+			/*
 			int roomId = 0;
 			// get room to connect
 			room.connect(r.get((int) noise3d((int) (sector.tile.v.z/sector.tile.v.y * 10f), sector.tile.v, 3, 0.5f, 200f, r.size - 1)));
 
 			// if it tries to connect to itself, it'll connect to spawn instead
 			if (room.connected == null) room.connect(r.get(0));
-
+			*/
 			// actually connect the rooms
-			erase((int) room.x, (int) room.y, (int) noise3d((int) (sector.tile.v.x/sector.tile.v.z * 10f), sector.tile.v, 3, 0.5f, 200f, 12f));
+			erase((int) room.x, (int) room.y, (int) noise3d((int) (sector.tile.v.x/sector.tile.v.z * 10f), sector.tile.v, 3, 0.5f, 200f, 20f));
+			/*
 			brush(pathfind((int) room.x, (int) room.y, (int) room.connected.x, (int) room.connected.y, tile -> 0f, Astar.manhattan), 9);
 			roomId++;
+			*/
 		});
 
 		// mostly guaranteed path to the units
@@ -146,8 +149,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		median(4);
 
 		// make core and enemy area
-		erase(spawnX, spawnY, 8);
-		erase(launchX, launchY, 8);
+		erase(spawnX, spawnY, 20);
+		erase(launchX, launchY, 20);
 
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
