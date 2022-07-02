@@ -117,8 +117,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// create rooms
 		for (int i = 0; i < 15; i++) {
 			pos.set(
-				Mathf.clamp((int) noise3d(widthSeed * i, sector.tile.v, 1, 1, 100f, width), 20, width - 20),
-				Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 100f, height), 20, height - 20)
+				Mathf.clamp((int) noise3d(widthSeed * i, sector.tile.v, 1, 1, 1f, width), 20, width - 20),
+				Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 1f, height), 20, height - 20)
 			);
 			r.add(
 				new Room(pos.x, pos.y)
@@ -172,18 +172,18 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// put core and enemy spawn in the map
 		r.each(room -> {
-			erase((int) room.x, (int) room.y, 15);
-			tiles.getn((int) room.x, (int) room.y).setOverlay(Blocks.spawn);
+			erase(room.x, room.y, 15);
+			tiles.getn(room.x, room.y).setOverlay(Blocks.spawn);
 		});
 		tiles.getn(launchX, launchY).setOverlay(Blocks.spawn);
 		
 	}
 
 	public class Room {
-		float x, y;
+		int x, y;
 		@Nullable Room connected = null;
 
-		public Room(float x, float y) {
+		public Room(int x, int y) {
 			this.x = x;
 			this.y = y;
 		}
