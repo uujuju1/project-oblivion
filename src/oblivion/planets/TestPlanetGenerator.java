@@ -149,11 +149,11 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			);
 
 			// if it tries to connect to itself, it'll connect to spawn instead
-			if (room.connected == null) room.connect(r.get(0));
+			if (room.connected == room) room.connect(r.get(0));
 
 			// actually connect the rooms
 			room.open();
-			brush(pathfind(room.x, room.y, room.connected.x, room.connected.y, tile -> 0f, Astar.manhattan), 9);
+			room.line((int) (15f + noise3d(strokeSeed * roomId, sector.tile.v, 1, 1, 1f, 5)));
 			roomId++;
 		});
 
@@ -186,21 +186,19 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// put core and enemy spawn in the map
 		r.each(room -> {
-			erase(room.x, room.y, 15);
 			tiles.getn(room.x, room.y).setOverlay(Blocks.spawn);
 		});
-		tiles.getn(launchX, launchY).setOverlay(Blocks.spawn);
-		
 	}
 
 	public class Room {
 		int x, y, size;
-		@Nullable Room connected = null;
+		Room connected;
 
 		public Room(int x, int y, int size) {
 			this.x = x;
 			this.y = y;
 			this.size = size;
+			this.connected = this;
 		}
 
 		public float getDistance(Room to) {
@@ -211,6 +209,11 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 
 		public void open() {erase(x, y, size);}
+
+		public void line(int size) {
+			if (connected == null) return;
+			brush(pathfind(x, y, connected.x, connected.y, tile -> 0f, Astar.manhattan), size);
+		}
 
 		public void connect(Room to) {
 			if (
