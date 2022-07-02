@@ -80,7 +80,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	public Seq<Tile> pathfind(int startX, int startY, int endX, int endY, TileHueristic th, DistanceHeuristic dh){
-		return Astar.pathfind(startX, startY, endX, endY, th, dh, true);
+		return Astar.pathfind(startX, startY, endX, endY, th, dh, tile -> true);
 	}
 
 	@Override
