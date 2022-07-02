@@ -201,18 +201,18 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			this.connected = this;
 		}
 
-		public float getDistance(Room to) {
-			float 
+		public int getDistance(Room to) {
+			int
 			distX = Math.abs(x - to.x),
 			distY = Math.abs(y - to.y);
-			return distX+distY/2f;
+			return (int) (distX+distY/2f);
 		}
 
 		public void open() {erase(x, y, size);}
 
 		public void line(int size) {
 			if (connected == null) return;
-			brush(pathfind(x, y, connected.x, connected.y, tile -> 0f, Astar.manhattan), size);
+			brush(pathfind(x, y, connected.x, connected.y, tile -> 5000f, getDistance(connected)), size);
 		}
 
 		public void connect(Room to) {
