@@ -25,7 +25,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 12, persistence = 0.6f;
 	public float humidScl = 0.5f, humidOctaves = 7, humidPersistence = 0.5f;
 	public static final int seed = 69, humidSeed = 420;
-	public static int angleSeed = 1, rangeSeed = 2, roomSeed = 3, strokeSeed = 4;
+	public static int widthSeed = 1, heightSeed = 2, roomSeed = 3, strokeSeed = 4;
 
 	public Block[] arr = {
 		OblivionEnvironment.paletolime, 
@@ -87,6 +87,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	@Override
 	protected void generate() {
 
+		Vec2 pos = new Vec2();
 		Seq<Room> r = new Seq<>();
 		float maxd = Mathf.dst(width/2f, height/2f);
 
@@ -115,10 +116,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// create rooms
 		for (int i = 0; i < 15; i++) {
-			Vec2 rotate = Tmp.v1.trns(noise3d(angleSeed * i, sector.tile.v, 3, 0.5f, 200f, 720f), width/(2.5f + noise3d(rangeSeed * i, sector.tile.v, 3, 0.5f, 200f, 4f)));
-			int roomX = (int)(rotate.x + width/2f), roomY = (int)(rotate.y + height/2f);
+			pos.set(
+				Mathf.clamp((int) noise3d(widthSeed * i, sector.tile.v, 1, 1, 100f, width), 20, width - 20),
+				Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 100f, height), 20, height - 20)
+			);
 			r.add(
-				new Room(rotate.x + width/2f, rotate.y + height/2f)
+				new Room(pos.x, pos.y)
 			);
 		}
 
@@ -133,8 +136,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			if (room.connected == null) room.connect(r.get(0));
 			*/
 			// actually connect the rooms
-			erase((int) room.x, (int) room.y, (int) noise3d(strokeSeed * roomId, sector.tile.v, 3, 0.5f, 200f, 20f));
-			Schematics.placeLaunchLoadout((int) room.x, (int) room.y);
+			erase((int) room.x, (int) room.y, 20);
 			/*
 			brush(pathfind((int) room.x, (int) room.y, (int) room.connected.x, (int) room.connected.y, tile -> 0f, Astar.manhattan), 9);
 			*/
@@ -169,8 +171,12 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		});
 
 		// put core and enemy spawn in the map
+		r.each(room -> {
+			erase(room.x, room.y, 15);
+			tiles.getn(room.x, room.y).setOverlay(Blocks.spawn);
+		});
 		tiles.getn(launchX, launchY).setOverlay(Blocks.spawn);
-		Schematics.placeLaunchLoadout(spawnX, spawnY);
+		
 	}
 
 	public class Room {
