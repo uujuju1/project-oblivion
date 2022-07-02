@@ -212,7 +212,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		public void line(int size) {
 			if (connected == null) return;
-			brush(pathfind(x, y, connected.x, connected.y, tile -> 5000f, getDistance(connected)), size);
+			brush(pathfind(x, y, connected.x, connected.y, tile -> 5000f, (x, y, x2, y2) -> getDistance(connected)), size);
 		}
 
 		public void connect(Room to) {
