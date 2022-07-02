@@ -153,7 +153,9 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 			// actually connect the rooms
 			room.open();
-			room.line((int) (15f + noise3d(strokeSeed * roomId, sector.tile.v, 1, 1, 1f, 5)));
+			if (room.isConnected()) {
+				brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> 0f, Astar.manhattan), 20);
+			}
 			roomId++;
 		});
 
@@ -208,17 +210,16 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			return (int) (distX+distY/2f);
 		}
 
-		public void open() {erase(x, y, size);}
-
-		public void line(int size) {
-			if (connected == null) return;
-			brush(pathfind(x, y, connected.x, connected.y, tile -> 5000f, (x, y, x2, y2) -> getDistance(connected)), size);
+		public boolean isConnected() {
+			return connected != this;
 		}
+
+		public void open() {erase(x, y, size);}
 
 		public void connect(Room to) {
 			if (
 				to.connected == this ||
-				connected != null ||
+				connected == this ||
 				getDistance(to) < size
 			) return;
 
