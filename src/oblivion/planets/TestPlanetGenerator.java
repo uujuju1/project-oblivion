@@ -78,9 +78,14 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	}
 
 	@Override
+	public Seq<Tile> pathfind(int startX, int startY, int endX, int endY, TileHueristic th, DistanceHeuristic dh){
+		return Astar.pathfind(startX, startY, endX, endY, th, dh, true);
+	}
+
+	@Override
 	protected void generate() {
 
-		Seq<Vec2> rooms = new Seq<>();
+		Seq<Room> r = new Seq<>();
 		float maxd = Mathf.dst(width/2f, height/2f);
 
 		// enemy and player rooms
@@ -89,8 +94,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		spawnX = (int)(trns.x + width/2f), spawnY = (int)(trns.y + height/2f),
 		launchX = (int)(-trns.y + width/2f), launchY = (int)(-trns.y + height/2f);
 		rooms.add(
-			new Vec2(spawnX, spawnY),
-			new Vec2(launchX, launchY)
+			new Room(spawnX, spawnY),
+			new Room(launchX, launchY)
 		);
 
 		// floor
@@ -107,31 +112,31 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		}
 
 		// create rooms
-		for (int i = 0; i < 20; i++) {
-			Vec2 rotate = Tmp.v1.trns(noise3d(i, sector.tile.v, 3, 0.5f, 200f, 360f), width/(2.5f + noise3d(i + 21, sector.tile.v, 3, 0.5f, 200f, 2f)));
-			int roomX = (int)(trns.x + width/2f), roomY = (int)(trns.y + height/2f);
-			rooms.add(
+		for (int i = 0; i < 15; i++) {
+			Vec2 rotate = Tmp.v1.trns(noise3d(i, sector.tile.v, 3, 0.5f, 200f, 720f), width/(2.5f + noise3d(i + 21, sector.tile.v, 3, 0.5f, 200f, 2f)));
+			int roomX = (int)(rotate.x + width/2f), roomY = (int)(rotate.y + height/2f);
+			r.add(
 				new Vec2(rotate.x + width/2f, rotate.y + height/2f)
 			);
 		}
 
 		// connect rooms
-		rooms.each(r -> {
+		r.each(room -> {
 			int roomId = 0;
 			// get room to connect
-			Vec2 to = rooms.get((int) noise3d(roomId + 42, sector.tile.v, 3, 0.5f, 200f, rooms.size - 1));
+			room.connect(r.get((int) noise3d(roomId + 42, sector.tile.v, 3, 0.5f, 200f, r.size - 1)));
 
 			// if it tries to connect to itself, it'll connect to spawn instead
-			to = to == r ? to : rooms.get(0);
+			if (room.connected == null) room.connect(r.get(0));
 
 			// actually connect the rooms
-			erase((int) r.x, (int) r.y, (int) noise3d(roomId + 63, sector.tile.v, 3, 0.5f, 200f, 12f));
-			brush(pathfind((int) r.x, (int) r.y, (int) to.x, (int) to.y, tile -> 300f, Astar.manhattan), 9);
+			erase((int) room.x, (int) room.y, (int) noise3d(roomId + 63, sector.tile.v, 3, 0.5f, 200f, 12f));
+			brush(pathfind((int) room.x, (int) room.y, (int) room.connected.x, (int) room.connected.y, tile -> 0f, Astar.manhattan), 9);
 			roomId++;
 		});
 
 		// mostly guaranteed path to the units
-		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> 300f, Astar.manhattan), 9);
+		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> 0f, Astar.manhattan), 20);
 	
 		// make connections look more natural
 		distort(136f, 31f);
@@ -160,5 +165,20 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// put core and enemy spawn in the map
 		tiles.getn(launchX, launchY).setOverlay(Blocks.spawn);
 		Schematics.placeLaunchLoadout(spawnX, spawnY);
+	}
+
+	public class Room {
+		float x, y;
+		@Nullable Room connected = null;
+
+		public Room(float x, float y) {
+			this.x = x;
+			this.y = y;
+		}
+
+		public void connect(Room to) {
+			if (to.connected == this || connected != null) return;
+			connected = to;
+		}
 	}
 }
