@@ -172,8 +172,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// put core and enemy spawn in the map
 		r.each(room -> {
-			erase(room.x, room.y, 15);
-			tiles.getn(room.x, room.y).setOverlay(Blocks.spawn);
+			erase((int) room.x, (int) room.y, 15);
+			tiles.getn((int) room.x, (int) room.y).setOverlay(Blocks.spawn);
 		});
 		tiles.getn(launchX, launchY).setOverlay(Blocks.spawn);
 		
