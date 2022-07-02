@@ -24,7 +24,8 @@ import static mindustry.Vars.*;
 public class TestPlanetGenerator extends PlanetGenerator {
 	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 12, persistence = 0.6f;
 	public float humidScl = 0.5f, humidOctaves = 7, humidPersistence = 0.5f;
-	public static int seed = 69, humidSeed = 420;
+	public static final int seed = 69, humidSeed = 420;
+	public static int angleSeed = 1, rangeSeed = 2, roomSeed = 3, strokeSeed = 4;
 
 	public Block[] arr = {
 		OblivionEnvironment.paletolime, 
@@ -114,7 +115,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 		// create rooms
 		for (int i = 0; i < 15; i++) {
-			Vec2 rotate = Tmp.v1.trns(noise3d((int) (sector.tile.v.y/sector.tile.v.x * 10f), sector.tile.v, 3, 0.5f, 200f, 720f), width/(2.5f + noise3d((int) (sector.tile.v.y/sector.tile.v.z * 10f), sector.tile.v, 3, 0.5f, 200f, 4f)));
+			Vec2 rotate = Tmp.v1.trns(noise3d(angleSeed * i, sector.tile.v, 3, 0.5f, 200f, 720f), width/(2.5f + noise3d(rangeSeed * i, sector.tile.v, 3, 0.5f, 200f, 4f)));
 			int roomX = (int)(rotate.x + width/2f), roomY = (int)(rotate.y + height/2f);
 			r.add(
 				new Room(rotate.x + width/2f, rotate.y + height/2f)
@@ -132,7 +133,8 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			if (room.connected == null) room.connect(r.get(0));
 			*/
 			// actually connect the rooms
-			erase((int) room.x, (int) room.y, (int) noise3d((int) (sector.tile.v.x/sector.tile.v.z * 10f), sector.tile.v, 3, 0.5f, 200f, 20f));
+			erase((int) room.x, (int) room.y, (int) noise3d(strokeSeed * i, sector.tile.v, 3, 0.5f, 200f, 20f));
+			Schematics.placeLaunchLoadout(room.x, room.y);
 			/*
 			brush(pathfind((int) room.x, (int) room.y, (int) room.connected.x, (int) room.connected.y, tile -> 0f, Astar.manhattan), 9);
 			roomId++;
@@ -140,7 +142,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		});
 
 		// mostly guaranteed path to the units
-		brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> 0f, Astar.manhattan), 20);
+		// brush(pathfind(spawnX, spawnY, launchX, launchY, tile -> 0f, Astar.manhattan), 20);
 	
 		// make connections look more natural
 		distort(136f, 31f);
