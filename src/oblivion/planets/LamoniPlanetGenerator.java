@@ -163,7 +163,7 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		// make core and enemy area
 		erase(spawnX, spawnY, 20);
 		erase(launchX, launchY, 20);
-		brush(pathfind(room.get(0).x, room.get(0).y, room.get(1).x, room.get(1).y, tile -> 5000f, Astar.manhattan), 20);
+		brush(pathfind(r.get(0).x, r.get(0).y, r.get(1).x, r.get(1).y, tile -> 5000f, Astar.manhattan), 20);
 
 		// more roughness
 		distort(136f, 31f);
