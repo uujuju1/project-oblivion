@@ -25,7 +25,7 @@ public class OblivionResources {
 
 		// lamoni
 		niobium = new Item("niobium", Color.valueOf("5D687F")) {{cost = 0.5f; hardness = 0;}};
-		hafnium = new Item("hafnium", Color.valueOf("404040")) {{cost = 0.3f;}};
+		hafnium = new Item("hafnium", Color.valueOf("404040")) {{cost = 0.3f; hardness = 1;}};
 		sodium = new Item("sodium", Color.valueOf("9FCF9C")) {{cost = 1f;}};
 		polonium = new Item("polonium", Color.valueOf("766D86")) {{cost = 2f; explosiveness = 1f;}};
 

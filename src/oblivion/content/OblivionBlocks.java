@@ -84,7 +84,7 @@ public class OblivionBlocks {
 		hafniumWall, largeHafniumWall, hugeHafniumWall,
 		poloniumWall, largePoloniumWall, hugePoloniumWall,
 
-		imperialDrill;
+		imperialDrill, mineralBoiler;
 
 	public void load() {
 		start = new Block("start"){{
@@ -982,6 +982,17 @@ public class OblivionBlocks {
 			tier = 1;
 			updateEffect = LamoniFx.imperialSmelt;
 		}};
+		mineralBoiler = new BeamDrill("mineral-boiler") {{
+			requirements(Category.production, with(
+				OblivionResources.hafnium, 50,
+				OblivionResources.niobium, 60
+			));
+			size = 2;
+			tier = 2;
+			drillTime = 160f;
+			range = 7;
+			consumePower(0.3f);
+		}};
 
 		spread = new ItemTurret("spread") {{
 			requirements(Category.turret, with(
@@ -1101,7 +1112,10 @@ public class OblivionBlocks {
 					lifetime = 80f;
 					trailWidth = 1.8f;
 					trailLength = 8;
+					collides = collidesAir = collidesGround = collidesTiles = true;
 					shootSound = OblivionSounds.chargedShot;
+					frontColor = trailColor = Color.valueOf("BAF2B7");
+					backColor = Color.valueOf("87B085");
 				}}
 			);
 		}};
@@ -1121,7 +1135,10 @@ public class OblivionBlocks {
 					lifetime = 80f;
 					trailWidth = 1.8f;
 					trailLength = 8;
+					collides = collidesAir = collidesGround = collidesTiles = true;
 					shootSound = OblivionSounds.chargedShot;
+					frontColor = trailColor = Color.valueOf("BAF2B7");
+					backColor = Color.valueOf("87B085");
 				}}
 			);
 		}};
@@ -1151,7 +1168,10 @@ public class OblivionBlocks {
 					lifetime = 70f;
 					trailWidth = 3f;
 					trailLength = 12;
+					collides = collidesAir = collidesGround = collidesTiles = true;
 					shootSound = OblivionSounds.chargedShot;
+					frontColor = trailColor = Color.valueOf("BAF2B7");
+					backColor = Color.valueOf("87B085");
 				}}
 			);
 		}};

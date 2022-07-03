@@ -159,21 +159,24 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 	
 		// make connections look more natural
 		distort(125f, 72f);
-		distort(136f, 31f);
-		distort(10f, 12f);
-		distort(5f, 7f);
-		median(4);
 
 		// make core and enemy area
 		erase(spawnX, spawnY, 20);
 		erase(launchX, launchY, 20);
+		brush(pathfind(room.get(0).x, room.get(0).y, room.get(1).x, room.get(1).y, tile -> 5000f, Astar.manhattan), 20);
 
+		// more roughness
+		distort(136f, 31f);
+		distort(10f, 12f);
+		distort(5f, 7f);
+		median(4);
+		
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
 		pass((x, y) -> {
 			if (noise(x, y, 10, 0.3f, 30f, 1f) > 0.75f && block == Blocks.air) ore = OblivionEnvironment.oreNiobium;
 
-			if (noise(x, y, 1, 0.2f, 40f, 1f) > 1f * poles && block != Blocks.air) ore = OblivionEnvironment.wallOreHafnium;
+			if (noise(x, y, 1, 0.2f, 40f, 1f) > 1.3f * poles && block != Blocks.air) ore = OblivionEnvironment.wallOreHafnium;
 
 			// remove invalid ores
 			if (ore == OblivionEnvironment.wallOreHafnium && !nearAir(x, y)) ore = Blocks.air;

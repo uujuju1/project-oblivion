@@ -55,13 +55,21 @@ public class LamoniTechTree {
 
 			node(OblivionBlocks.niobiumCombustor); 
 
-			node(OblivionBlocks.imperialDrill);
+			node(OblivionBlocks.imperialDrill, () -> {
+				node(OblivionBlocks.mineralBoiler, Seq.with(new Produce(OblivionResources.hafnium)), () -> {});
+			});
 
 			node(OblivionBlocks.lineNode);
 
 			node(OblivionBlocks.spread, () -> {
 				node(OblivionBlocks.reaction, () -> {});
-				node(OblivionBlocks.evaporate, Seq.with(new Produce(OblivionResources.hafnium)), () -> {});
+				node(OblivionBlocks.evaporate, Seq.with(new Produce(OblivionResources.hafnium)), () -> {
+					node(OblivionBlocks.genesis, Seq.with(new Produce(OblivionResources.sodium)), () -> {
+						node(OblivionBlocks.redemption, () -> {
+							node(OblivionBlocks.apocalypse, () -> {});
+						});
+					});
+				});
 			});
 
 			node(OblivionBlocks.hafoniFactory, Seq.with(new Produce(OblivionResources.hafnium)), () -> {
