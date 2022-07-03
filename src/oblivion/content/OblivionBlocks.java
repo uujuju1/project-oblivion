@@ -940,36 +940,43 @@ public class OblivionBlocks {
 			requirements(Category.distribution, with(OblivionResources.niobium, 1));
 			health = 120;
 			speed = 3.5f;
+			researchCost = with(OblivionResources.niobium, 30);
 		}};
 		niobiumRouter = new DuctRouter("niobium-router") {{
 			requirements(Category.distribution, with(OblivionResources.niobium, 3));
 			health = 140;
 			speed = 3.5f;
+			researchCost = with(OblivionResources.niobium, 40);
 		}};
 		niobiumBridge = new DuctBridge("niobium-bridge") {{
 			requirements(Category.distribution, with(OblivionResources.niobium, 8));
 			health = 140;
 			speed = 3.5f;
+			researchCost = with(OblivionResources.niobium, 50);
 		}};
 		niobiumUnloader = new DirectionalUnloader("niobium-unloader") {{
 			requirements(Category.distribution, with(OblivionResources.niobium, 12));
 			health = 150;
 			speed = 3.5f;
 			allowCoreUnload = true;
+			researchCost = with(OblivionResources.niobium, 60);
 		}};
 
 		niobiumConduit = new Conduit("niobium-conduit") {{
 			requirements(Category.liquid, with(OblivionResources.niobium, 2));
 			health = 100;
+			researchCost = with(OblivionResources.niobium, 50);
 		}};
 		niobiumConduitRouter = new LiquidRouter("niobium-conduit-router") {{
 			requirements(Category.liquid, with(OblivionResources.niobium, 4));
 			health = 120;
+			researchCost = with(OblivionResources.niobium, 55);
 		}};
 		niobiumConduitBridge = new LiquidBridge("niobium-conduit-bridge") {{
 			requirements(Category.liquid, with(OblivionResources.niobium, 8));
 			health = 140;
 			range = 6;
+			researchCost = with(OblivionResources.niobium, 60);
 		}};
 
 		imperialDrill = new Drill("imperial-drill") {{
@@ -981,6 +988,7 @@ public class OblivionBlocks {
 			drillTime = 1200f;
 			tier = 1;
 			updateEffect = LamoniFx.imperialSmelt;
+			researchCost = with(OblivionResources.niobium, 200);
 		}};
 		mineralBoiler = new BeamDrill("mineral-boiler") {{
 			requirements(Category.production, with(
@@ -1026,6 +1034,7 @@ public class OblivionBlocks {
 					width = height = 10f;
 				}}
 			);
+			researchCost = with(OblivionResources.niobium, 300);
 		}};
 		reaction = new ItemTurret("reaction") {{
 			requirements(Category.turret, with(
@@ -1408,6 +1417,7 @@ public class OblivionBlocks {
 			);
 			consumePower(0.5f);
 			outputItem = new ItemStack(Items.sand, 1);
+			researchCost = with(OblivionResources.niobium, 250);
 		}};
 		hafniumSmelter = new GenericCrafter("hafnium-smelter") {{
 			requirements(Category.crafting, with(
@@ -1431,6 +1441,7 @@ public class OblivionBlocks {
 			));
 			consumePower(2f);
 			outputItem = new ItemStack(OblivionResources.hafnium, 5);
+			researchCost = with(OblivionResources.niobium, 350);
 		}};
 		demineralizer = new GenericCrafter("demineralizer") {{
 			requirements(Category.crafting, with(
@@ -1583,6 +1594,7 @@ public class OblivionBlocks {
 			itemDuration = 180f;
 			drawer = new DrawMulti(new DrawDefault(), new DrawWarmupRegion());
 			consumeItems(with(OblivionResources.niobium, 1));
+			researchCost = with(OblivionResources.niobium, 100);
 		}};
 
 		lineNode = new BeamNode("line-node") {{
@@ -1593,6 +1605,7 @@ public class OblivionBlocks {
 			health = 100;
 			consumePowerBuffered(1500f);
 			range = 12;
+			researchCost = with(OblivionResources.niobium, 50);
 		}};
 
 		vaccumPump = new AttributeCrafter("vaccum-pump") {{

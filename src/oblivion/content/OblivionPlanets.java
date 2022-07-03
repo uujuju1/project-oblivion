@@ -34,7 +34,7 @@ public class OblivionPlanets {
 			generator = new LamoniPlanetGenerator();
 			meshLoader = () -> new HexMesh(this, 6);
 			cloudMeshLoader = () -> new MultiMesh(
-				new HexSkyMesh(this, 6, 0.1f, 0.16f, 5, Color.valueOf("F7E8C1").a(0.75f), 2, 0.45f, 1.13f, 0.45f),
+				new HexSkyMesh(this, 6, 0.1f, 0.28f, 5, Color.valueOf("F7E8C1").a(0.75f), 2, 0.45f, 1.13f, 0.45f),
 				new HexSkyMesh(this, 3, 0.2f, 0.23f, 5, Color.valueOf("E3DAC3").a(0.65f), 3, 0.25f, 1.22f, 0.45f),
 				new HexSkyMesh(this, 2, 0.3f, 0.32f, 5, Color.valueOf("F0CE86").a(0.55f), 4, 0.35f, 1.35f, 0.45f)
 			);

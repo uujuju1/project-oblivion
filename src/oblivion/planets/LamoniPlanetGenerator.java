@@ -188,6 +188,10 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		// put core and enemy spawn in the map
 		Schematics.placeLaunchLoadout(r.get(0).x, r.get(0).y);
 		tiles.getn(r.get(1).x, r.get(1).y).setOverlay(Blocks.spawn);
+
+		state.rules.waveSpacing = Mathf.lerp(60 * 65 * 2, 60f * 60f * 1f, Math.max(sector.threat - 0.4f, 0f));
+		state.rules.waves = sector.info.waves = true;
+		state.rules.env = sector.planet.defaultEnv;
 	}
 
 	public class Room {
