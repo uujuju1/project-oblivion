@@ -40,6 +40,6 @@ public class OblivionUnitType extends UnitType {
 
 	@Override
 	public void update(Unit unit) {
-		unit.health -= decays ? unit.maxHealth * decayPercent : 0f;
+		unit.health -= decays ? unit.maxHealth * decayScale : 0f;
 	}
 }
