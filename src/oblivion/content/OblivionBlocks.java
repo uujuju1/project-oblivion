@@ -1099,7 +1099,7 @@ public class OblivionBlocks {
 				);
 			}};
 			ammo(
-				Liquids.water, new ContinuousFlameBulletType(30) {{
+				Liquids.water, new ContinuousFlameBulletType(5) {{
 					Color watercol = Liquids.water.color;
 					length = 26f * 8f;
 					colors = new Color[]{watercol.cpy().mul(1.5f), watercol.cpy().mul(1.6f), watercol.cpy().mul(1.7f), watercol.cpy().mul(1.8f), Color.white};

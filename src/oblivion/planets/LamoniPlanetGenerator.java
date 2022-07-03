@@ -190,6 +190,7 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		tiles.getn(r.get(1).x, r.get(1).y).setOverlay(Blocks.spawn);
 
 		state.rules.waveSpacing = Mathf.lerp(60 * 65 * 2, 60f * 60f * 1f, Math.max(sector.threat - 0.4f, 0f));
+		state.rules.winWave = sector.info.winWave = 10 + 5 * (int)Math.max(sector.threat * 10, 1);
 		state.rules.waves = sector.info.waves = true;
 		state.rules.env = sector.planet.defaultEnv;
 	}

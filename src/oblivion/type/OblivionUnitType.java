@@ -19,6 +19,8 @@ import mindustry.Vars;
 public class OblivionUnitType extends UnitType {
 	public Cons<Unit> engineDrawer = unit -> {};
 	public Seq<RotorDrawer> topDrawers = new Seq<>();
+	public boolean decays = false;
+	public float decayScale = 0.001f;
 	public float rotorDeathSlowness = 0.008f;
 
 	public OblivionUnitType(String name) {
@@ -34,5 +36,10 @@ public class OblivionUnitType extends UnitType {
 	@Override
 	public void drawEngines(Unit unit) {
 		engineDrawer.get(unit);
+	}
+
+	@Override
+	public void update(Unit unit) {
+		unit.health -= decays ? unit.maxHealth * decayPercent : 0f;
 	}
 }

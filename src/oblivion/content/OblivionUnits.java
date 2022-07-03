@@ -31,10 +31,11 @@ public class OblivionUnits{
 	phi, root, multi, pow, expo,
 
 	republic, giga, archaranid, bloodmoon, yetinus,
-	
+
 	citizen,
 	mercurie, aphrodite, apollo, zeus, chronos,
-	latrodectus, phoneutria, lycosidae, sparassidae, trichonephila;
+	latrodectus, phoneutria, lycosidae, sparassidae, trichonephila,
+	armillaria/*, flammulina, gloeoporus, bjerkandera, daedaleopsis*/;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1781,6 +1782,26 @@ public class OblivionUnits{
 					}}; 
 				}}
 			);
+		}};
+		armillaria = new UnitType("armillaria") {{
+			health = 650;
+			speed = 1.5f;
+			range = 160f;
+			maxRange = range;
+			constructor = CrawlUnit::create;
+
+			omniMovement = false;
+			rotateSpeed = 2.5f;
+			drownTimeMultiplier = 2f;
+			segments = 3;
+			drawBody = false;
+			crushDamage = 0.5f;
+			aiController = HugAI::new;
+			targetAir = false;
+
+			segmentScl = 3f;
+			segmentPhase = 5f;
+			segmentMag = 0.5f;
 		}};
 	}
 }
