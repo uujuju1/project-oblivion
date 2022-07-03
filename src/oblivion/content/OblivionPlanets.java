@@ -33,8 +33,16 @@ public class OblivionPlanets {
 		lamoni = new Planet("lamoni", berenit, 1f, 3) {{
 			generator = new LamoniPlanetGenerator();
 			meshLoader = () -> new HexMesh(this, 6);
+			cloudMeshLoader = () -> new MultiMesh(
+				new HexSkyMesh(this, 6, 0.1f, 0.16f, 5, Color.valueOf("F7E8C1").a(0.75f), 2, 0.45f, 1.13f, 0.45f),
+				new HexSkyMesh(this, 3, 0.2f, 0.23f, 5, Color.valueOf("E3DAC3").a(0.65f), 3, 0.25f, 1.22f, 0.45f),
+				new HexSkyMesh(this, 2, 0.3f, 0.32f, 5, Color.valueOf("F0CE86").a(0.55f), 4, 0.35f, 1.35f, 0.45f)
+			);
+			atmosphereColor = Color.valueOf("F0B73C");
+			atmosphereRadIn = 0.02f;
+			atmosphereRadOut = 0.3f;
 			solarSystem = berenit;
-			startSector = 15;
+			startSector = 0;
 			accessible = true;
 			alwaysUnlocked = true;
 		}};
@@ -45,7 +53,7 @@ public class OblivionPlanets {
 				new HexSkyMesh(this, 69, 0.1f, 0.16f, 5, Color.white.cpy().a(0.75f), 2, 0.45f, 1.1f, 0.45f),
 				new HexSkyMesh(this, 420, 0.1f, 0.13f, 5, Color.gray.cpy().a(0.75f), 2, 0.45f, 1.1f, 0.45f)
 			);
-			atmosphereColor = Color.valueOf("ffffff");
+			atmosphereColor = Color.valueOf("FFFFFF");
 			atmosphereRadIn = 0.02f;
 			atmosphereRadOut = 0.3f;
 			startSector = 15;
