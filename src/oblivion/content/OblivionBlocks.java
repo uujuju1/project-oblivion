@@ -1151,7 +1151,7 @@ public class OblivionBlocks {
 					}};
 				}},
 				OblivionResources.hafnium, new ArtilleryBulletType(2f, 30) {{
-					with = height = 12f;
+					width = height = 12f;
 					lifetime = 80f;
 					trailWidth = 1.8f;
 					trailLength = 8;
