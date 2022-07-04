@@ -1117,7 +1117,7 @@ public class OblivionBlocks {
 			range = 20f * 8f;
 			ammo(
 				OblivionResources.niobium, new ArtilleryBulletType(2f, 15) {{
-					with = height = 12f;
+					width = height = 12f;
 					lifetime = 80f;
 					trailWidth = 1.8f;
 					trailLength = 8;
