@@ -1116,12 +1116,58 @@ public class OblivionBlocks {
 			reload = 60f;
 			range = 20f * 8f;
 			ammo(
-				OblivionResources.sodium, new ArtilleryBulletType(2f, 12) {{
+				OblivionResources.niobium, new ArtilleryBulletType(2f, 15) {{
+					with = height = 12f;
+					lifetime = 80f;
+					trailWidth = 1.8f;
+					trailLength = 8;
+					collides = collidesAir = collidesGround = collidesTiles = true;
+					shootSound = OblivionSounds.chargedShot;
+					frontColor = trailColor = Color.valueOf("D1EFFF");
+					backColor = Color.valueOf("608FCC");
+
+					fragBullets = 6;
+					fragRandomSpread = 7.5f;
+					fragBullet = new BasicBulletType(2f, 3) {{
+						width = height = 8f;
+						lifetime = 30f;
+						trailWidth = 0.3f;
+						trailLength = 3;
+						frontColor = trailColor = Color.valueOf("D1EFFF");
+						backColor = Color.valueOf("608FCC");
+					}};
+
+					bulletInterval = 10f;
+					intervalBullets = 2;
+					intervalSpread = 45f;
+					intervalRandomSpread = 0f;
+					intervalBullet = new BasicBulletType(1f, 3) {{
+						width = height = 8f;
+						lifetime = 30f;
+						trailWidth = 0.3f;
+						trailLength = 3;
+						frontColor = trailColor = Color.valueOf("D1EFFF");
+						backColor = Color.valueOf("608FCC");
+					}};
+				}},
+				OblivionResources.hafnium, new ArtilleryBulletType(2f, 30) {{
+					with = height = 12f;
+					lifetime = 80f;
+					trailWidth = 1.8f;
+					trailLength = 8;
+					collides = collidesAir = collidesGround = collidesTiles = true;
+					shootSound = OblivionSounds.chargedShot;
+					frontColor = trailColor = Color.valueOf("EDF9FF");
+					backColor = Color.valueOf("BEC4CC");
+				}},
+				OblivionResources.sodium, new ArtilleryBulletType(2f, 25) {{
 					width = height = 12f;
 					lifetime = 80f;
 					trailWidth = 1.8f;
 					trailLength = 8;
 					collides = collidesAir = collidesGround = collidesTiles = true;
+					status = StatusEffects.burning;
+					statusDuration = 300f;
 					shootSound = OblivionSounds.chargedShot;
 					frontColor = trailColor = Color.valueOf("BAF2B7");
 					backColor = Color.valueOf("87B085");
