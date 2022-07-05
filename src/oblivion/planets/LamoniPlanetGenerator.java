@@ -22,7 +22,7 @@ import oblivion.content.*;
 import static mindustry.Vars.*;
 
 public class LamoniPlanetGenerator extends PlanetGenerator {
-	public static final int seed = 69;
+	public static final int seed = 35;
 	public static int widthSeed = 1, heightSeed = 2, roomSeed = 3, strokeSeed = 4;
 
 	public Block[] arr = {
@@ -41,7 +41,7 @@ public class LamoniPlanetGenerator extends PlanetGenerator {
 		return Simplex.noise3d(seed, 12, 0.6f, 0.9f, pos.x, pos.y, pos.z);
 	}
 	float humidity(Vec3 pos) {
-		return Simplex.noise3d(420, 7, 0.5f, 0.5f, pos.x, pos.y, pos.z);
+		return Simplex.noise3d(12, 7, 0.5f, 0.5f, pos.x, pos.y, pos.z);
 	}
 
 	Block getBlock(Vec3 pos) {

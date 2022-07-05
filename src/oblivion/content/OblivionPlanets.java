@@ -39,7 +39,7 @@ public class OblivionPlanets {
 				new HexSkyMesh(this, 3, 0.2f, 0.23f, 5, Color.valueOf("E3DAC3").a(0.65f), 3, 0.25f, 1.22f, 0.45f),
 				new HexSkyMesh(this, 2, 0.3f, 0.32f, 5, Color.valueOf("F0CE86").a(0.55f), 4, 0.35f, 1.35f, 0.45f)
 			);
-			hiddenItems.addAll(Items.serpuloItems).removeAll(OblivionResources.lamoniItems);
+			hiddenItems.addAll(Items.serpuloItems, Items.erekirItems).removeAll(OblivionResources.lamoniItems);
 			atmosphereColor = Color.valueOf("F0B73C");
 			atmosphereRadIn = 0.02f;
 			atmosphereRadOut = 0.3f;
@@ -47,11 +47,14 @@ public class OblivionPlanets {
 			startSector = 0;
 			accessible = true;
 			alwaysUnlocked = true;
+			ruleSetter = r -> {
+				r.fog = true;
+			}
 		}};
 		vita = new Planet("vita", berenit, 1f, 2) {{
 			generator = new TestPlanetGenerator();
 			meshLoader = () -> new HexMesh(this, 5);
-			hiddenItems.addAll(Items.serpuloItems).removeAll(OblivionResources.lamoniItems);
+			hiddenItems.addAll(Items.serpuloItems, Items.erekirItems).removeAll(OblivionResources.lamoniItems);
 			atmosphereColor = Color.valueOf("8FD595");
 			atmosphereRadIn = 0.02f;
 			atmosphereRadOut = 0.3f;
@@ -59,6 +62,11 @@ public class OblivionPlanets {
 			startSector = 0;
 			accessible = true;
 			alwaysUnlocked = true;
+			ruleSetter = r -> {
+				r.fog = true;
+				r.lighting = true;
+				r.ambientColor = new Color(0.1f, 0.4f, 0.1f, 0.5f);	
+			}
 		}};
 
 		lonela = new Planet("lonela", Planets.sun, 1f, 3) {{

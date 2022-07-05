@@ -22,10 +22,10 @@ import oblivion.content.*;
 import static mindustry.Vars.*;
 
 public class TestPlanetGenerator extends PlanetGenerator {
-	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 12, persistence = 0.6f;
-	public float humidScl = 0.5f, humidOctaves = 7, humidPersistence = 0.5f;
-	public static final int seed = 69, humidSeed = 420;
-	public static int widthSeed = 1, heightSeed = 2, roomSeed = 3, strokeSeed = 4;
+	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 15, persistence = 0.6f;
+	public float humidScl = 0.5f, humidOctaves = 4, humidPersistence = 0.5f;
+	public static final int seed = 65, humidSeed = 44;
+	public static int widthSeed = 3, heightSeed = 2, roomSeed = 5, strokeSeed = 7;
 
 	public Block[] arr = { 
 		OblivionEnvironment.boronite,
@@ -86,8 +86,6 @@ public class TestPlanetGenerator extends PlanetGenerator {
 
 	@Override
 	protected void generate() {
-
-		Vec2 pos = new Vec2();
 		Seq<Room> r = new Seq<>();
 		float maxd = Mathf.dst(width/2f, height/2f);
 
@@ -112,26 +110,15 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// floor
 		pass((x, y) -> {
 			floor = getBlock(x / (width * 0.5f), y / (height * 0.5f), sector.tile.v.z);
+			block = floor.wall;
 		});
-		
-		
-		// inverseFloodFill() wasn't working soo
-		for(Tile tile : tiles){
-			if(tile.block() == Blocks.air){
-				tile.setBlock(tile.floor().wall);
-			}
-		}
 
 		// create rooms
 		for (int i = 0; i < 7; i++) {
-			pos.set(
-				Mathf.clamp((int) noise3d(widthSeed * i, sector.tile.v, 1, 1, 1f, width), 20, width - 20),
-				Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 1f, height), 20, height - 20)
-			);
 			r.add(
 				new Room(
-					(int) pos.x,
-					(int) pos.y,
+					(int) Mathf.clamp((int) noise3d(widthSeed * i, sector.tile.v, 1, 1, 1f, width), 20, width - 20),
+					(int) Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 1f, height), 20, height - 20)
 					(int) (10f + noise3d(strokeSeed * i, sector.tile.v, 1, 1, 1f, 5))
 				)
 			);
@@ -163,24 +150,20 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		distort(125f, 72f);
 		distort(136f, 31f);
 		distort(10f, 12f);
-		distort(5f, 7f);
-		median(4);
 
 		// make core and enemy area
-		erase(spawnX, spawnY, 20);
-		erase(launchX, launchY, 20);
+		r.get(0).open();
+		r.get(1).open();
+
+		distort(5f, 7f);
+		median(4);
 
 		// ores
 		float poles = 1f - Math.abs(sector.tile.v.y);
 		pass((x, y) -> {
 			if (noise(x, y, 10, 0.3f, 30f, 1f) > 0.75f && block == Blocks.air) ore = OblivionEnvironment.oreNiobium;
 
-			if (noise(x, y, 1, 0.2f, 40f, 1f) > 1f * poles && block != Blocks.air) ore = OblivionEnvironment.wallOreHafnium;
-
 			// remove invalid ores
-			if (ore == OblivionEnvironment.wallOreHafnium && !nearAir(x, y)) ore = Blocks.air;
-			if (ore == OblivionEnvironment.wallOreHafnium && noise(x, y, 4, 0.5f, 167f) > 0.4f) ore = Blocks.air;
-
 			if (ore == OblivionEnvironment.oreNiobium && block != Blocks.air) ore = Blocks.air;
 		});
 
