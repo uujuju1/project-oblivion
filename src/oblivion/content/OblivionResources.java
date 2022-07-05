@@ -14,8 +14,8 @@ public class OblivionResources {
 
 	public static Liquid xenonium;
 
-	public Seq<Item> lamoniItems = new Seq<>();
-	public Seq<Liquid> lamoniLiquids = new Seq<>();
+	public static Seq<Item> lamoniItems = new Seq<>();
+	public static Seq<Liquid> lamoniLiquids = new Seq<>();
 
 	public void load() {
 		// lonela
@@ -33,6 +33,6 @@ public class OblivionResources {
 
 		xenonium = new Liquid("xenonium", Color.valueOf("C09CFF")) {{gas = true;}};
 
-		Seq<Item> lamoniItems = Seq.with(niobium, sand, hafnium, sodium, plastanium, polonium, surgeAlloy);
+		lamoniItems.addAll(niobium, sand, hafnium, sodium, plastanium, polonium, surgeAlloy);
 	}
 }
