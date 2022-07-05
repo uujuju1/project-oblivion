@@ -118,7 +118,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 			r.add(
 				new Room(
 					(int) Mathf.clamp((int) noise3d(widthSeed * i, sector.tile.v, 1, 1, 1f, width), 20, width - 20),
-					(int) Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 1f, height), 20, height - 20)
+					(int) Mathf.clamp((int) noise3d(heightSeed * i, sector.tile.v, 1, 1, 1f, height), 20, height - 20),
 					(int) (10f + noise3d(strokeSeed * i, sector.tile.v, 1, 1, 1f, 5))
 				)
 			);

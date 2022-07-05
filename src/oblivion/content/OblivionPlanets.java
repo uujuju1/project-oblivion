@@ -49,7 +49,7 @@ public class OblivionPlanets {
 			alwaysUnlocked = true;
 			ruleSetter = r -> {
 				r.fog = true;
-			}
+			};
 		}};
 		vita = new Planet("vita", berenit, 1f, 2) {{
 			generator = new TestPlanetGenerator();
@@ -66,7 +66,7 @@ public class OblivionPlanets {
 				r.fog = true;
 				r.lighting = true;
 				r.ambientColor = new Color(0.1f, 0.4f, 0.1f, 0.5f);	
-			}
+			};
 		}};
 
 		lonela = new Planet("lonela", Planets.sun, 1f, 3) {{
