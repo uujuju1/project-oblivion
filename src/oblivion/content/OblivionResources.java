@@ -4,6 +4,8 @@ import arc.struct.*;
 import arc.graphics.*;
 import mindustry.type.*;
 
+import static mindustry.content.Items.*;
+
 public class OblivionResources {
 	// lonela
 	public static Item mesulfate, calenmite, copremite, mothalate, carmanite,
@@ -30,5 +32,7 @@ public class OblivionResources {
 		polonium = new Item("polonium", Color.valueOf("766D86")) {{cost = 2f; explosiveness = 1f;}};
 
 		xenonium = new Liquid("xenonium", Color.valueOf("C09CFF")) {{gas = true;}};
+
+		Seq<Item> lamoniItems = Seq.with(niobium, sand, hafnium, sodium, plastanium, polonium, surgeAlloy);
 	}
 }

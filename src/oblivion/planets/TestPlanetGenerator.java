@@ -27,23 +27,23 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	public static final int seed = 69, humidSeed = 420;
 	public static int widthSeed = 1, heightSeed = 2, roomSeed = 3, strokeSeed = 4;
 
-	public Block[] arr = {
-		OblivionEnvironment.paletolime, 
-		OblivionEnvironment.paletolime,
-		OblivionEnvironment.paletolime, 
-		OblivionEnvironment.paletolime,
-		OblivionEnvironment.malenatite,
-		OblivionEnvironment.goletenira,
-		OblivionEnvironment.argeletine,
-		OblivionEnvironment.mudone,
-		OblivionEnvironment.mudone
+	public Block[] arr = { 
+		OblivionEnvironment.boronite,
+		OblivionEnvironment.boronite, 
+		OblivionEnvironment.boronite,
+		OblivionEnvironment.tarrobonite,
+		OblivionEnvironment.tarrobonite,
+		OblivionEnvironment.tarrobonite,
+		OblivionEnvironment.carmebonite,
+		OblivionEnvironment.carmebonite,
+		OblivionEnvironment.carmebonite
 	};
  
 	float rawHeight(Vec3 pos) {
 		return Simplex.noise3d(seed, octaves, persistence, heightScl, pos.x, pos.y, pos.z);
 	}
 	float humidity(Vec3 pos) {
-		return Simplex.noise3d(420, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z);
+		return Simplex.noise3d(humidSeed, humidOctaves, humidPersistence, humidScl, pos.x, pos.y, pos.z);
 	}
 
 	Block getBlock(Vec3 pos) {
