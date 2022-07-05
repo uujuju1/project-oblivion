@@ -110,8 +110,13 @@ public class TestPlanetGenerator extends PlanetGenerator {
 		// floor
 		pass((x, y) -> {
 			floor = getBlock(x / (width * 0.5f), y / (height * 0.5f), sector.tile.v.z);
-			block = floor.wall;
 		});
+
+		for(Tile tile : tiles){
+			if(tile.block() == Blocks.air){
+				tile.setBlock(tile.floor().wall);
+			}
+		}
 
 		// create rooms
 		for (int i = 0; i < 7; i++) {
