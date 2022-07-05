@@ -1813,7 +1813,7 @@ public class OblivionUnits{
 			omniMovement = false;
 			rotateSpeed = 2.3f;
 			drownTimeMultiplier = 2.5f;
-			segments = 4f;
+			segments = 4;
 			drawBody = false;
 			crushDamage = 0.8f;
 			aiController = HugAI::new;
