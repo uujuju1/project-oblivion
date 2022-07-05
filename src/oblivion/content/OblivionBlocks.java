@@ -1113,6 +1113,7 @@ public class OblivionBlocks {
 				OblivionResources.sodium, 35
 			));
 			size = 1;
+			health = 350;
 			reload = 60f;
 			range = 20f * 8f;
 			ammo(

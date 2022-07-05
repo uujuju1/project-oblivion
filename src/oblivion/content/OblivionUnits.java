@@ -35,7 +35,7 @@ public class OblivionUnits{
 	citizen,
 	mercurie, aphrodite, apollo, zeus, chronos,
 	latrodectus, phoneutria, lycosidae, sparassidae, trichonephila,
-	armillaria/*, flammulina, gloeoporus, bjerkandera, daedaleopsis*/;
+	armillaria, flammulina/*, gloeoporus, bjerkandera, daedaleopsis*/;
 
 	public void load() {
 		slop = new UnitType("slop") {{
@@ -1802,6 +1802,26 @@ public class OblivionUnits{
 			segmentScl = 3f;
 			segmentPhase = 5f;
 			segmentMag = 0.5f;
+		}};
+		flammulina = new UnitType("flammulina") {{
+			health = 1250;
+			speed = 1.3f;
+			range = 200f;
+			maxRange = range;
+			constructor = CrawlUnit::create;
+
+			omniMovement = false;
+			rotateSpeed = 2.3f;
+			drownTimeMultiplier = 2.5f;
+			segments = 4f;
+			drawBody = false;
+			crushDamage = 0.8f;
+			aiController = HugAI::new;
+			targetAir = false;
+
+			segmentScl = 4f;
+			segmentPhase = 6f;
+			segmentMag = 0.8f;
 		}};
 	}
 }
