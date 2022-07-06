@@ -25,7 +25,7 @@ public class TestPlanetGenerator extends PlanetGenerator {
 	public float heightScl = 0.9f, minHeight = 0.1f, octaves = 15, persistence = 0.6f;
 	public float humidScl = 0.5f, humidOctaves = 4, humidPersistence = 0.5f;
 	public static final int seed = 65, humidSeed = 44;
-	public static int widthSeed = 3, heightSeed = 2, roomSeed = 5, strokeSeed = 7;
+	public static int widthSeed = 41, heightSeed = 23, roomSeed = 5, strokeSeed = 7;
 
 	public Block[] arr = { 
 		OblivionEnvironment.boronite,

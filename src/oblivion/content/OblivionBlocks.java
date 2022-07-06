@@ -84,7 +84,7 @@ public class OblivionBlocks {
 		hafniumWall, largeHafniumWall, hugeHafniumWall,
 		poloniumWall, largePoloniumWall, hugePoloniumWall,
 
-		imperialDrill, mineralBoiler;
+		imperialDrill, mineralBoiler, hydraulicDrill;
 
 	public void load() {
 		start = new Block("start"){{
@@ -996,10 +996,22 @@ public class OblivionBlocks {
 				OblivionResources.niobium, 60
 			));
 			size = 2;
+			health = 160;
 			tier = 2;
 			drillTime = 160f;
 			range = 7;
 			consumePower(0.3f);
+		}};
+		hydraulicDrill = new BurstDrill("hydraulic-drill") {{
+			requirements(Category.production, with(
+				OblivionResources.niobium, 150
+			));
+			size = 4;
+			health = 240;
+			tier = 3;
+			drillTime = 600f;
+			hasPower = true;
+			consumeLiquid(OblivionResources.xenonium, 0.2f).boost();
 		}};
 
 		spread = new ItemTurret("spread") {{
@@ -1047,35 +1059,20 @@ public class OblivionBlocks {
 			range = 25 * 8f;
 			drawer = new DrawTurret("reinforced-") {{
 				parts.addAll(
-					new RegionPart("-cannon") {{
-						x = 1.5f;
-						y = 3.75f;
-						moveX = moveY = 1.25f;
-						progress = PartProgress.warmup;
-						heatProgress = PartProgress.reload.curve(Interp.pow2In);
-						under = mirror = true;
-					}}
-				);
-				parts.addAll(
 					new RegionPart("-blade") {{
-						x = 5.25f;
-						y = 2f;
-						moveX = -1.25f;
-						moveY = -3.25f;
+						x = y = 0f;
+						moveX = 4f;
+						moveY = 1f;
+						moveRot = 15f;
+						moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), -4f, -1f, -15f))
 						progress = PartProgress.warmup;
 						heatProgress = PartProgress.reload.curve(Interp.pow2In);
-						under = mirror = true;
-					}}
-				);
-				parts.addAll(
-					new RegionPart("-heat") {{
-						drawRegion = false;
-						progress = PartProgress.warmup;
+						mirror = true;
 					}}
 				);
 			}};
 			ammo(
-				OblivionResources.niobium, new ContinuousLaserBulletType(12) {{
+				OblivionResources.niobium, new ContinuousLaserBulletType(3) {{
 					lifetime = 60f;
 					colors = new Color[]{Color.valueOf("58BBEC"), Color.valueOf("8FDAFF"), Color.white};
 				}}
