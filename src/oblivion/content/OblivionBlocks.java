@@ -1064,7 +1064,7 @@ public class OblivionBlocks {
 						moveX = 4f;
 						moveY = 1f;
 						moveRot = 15f;
-						moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), -4f, -1f, -15f))
+						moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), -4f, -1f, -15f));
 						progress = PartProgress.warmup;
 						heatProgress = PartProgress.reload.curve(Interp.pow2In);
 						mirror = true;
