@@ -1026,16 +1026,13 @@ public class OblivionBlocks {
 			inaccuracy = 3f;
 			drawer = new DrawTurret("reinforced-") {{
 				parts.addAll(
-					new RegionPart("-cannon") {{
-						moveY = -1f;
-						progress = PartProgress.reload.curve(Interp.pow2In);
+					new RegionPart("-blade") {{
+						x = y = 0f;
+						moveRot = 1f;
+						moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), 0, 0, -1f));
+						progress = PartProgress.warmup;
 						heatProgress = PartProgress.reload.curve(Interp.pow2In);
-					}}
-				);
-				parts.addAll(
-					new RegionPart("-heat") {{
-						drawRegion = false;
-						heatProgress = PartProgress.warmup;
+						mirror = true;
 					}}
 				);
 			}};
@@ -1061,10 +1058,10 @@ public class OblivionBlocks {
 				parts.addAll(
 					new RegionPart("-blade") {{
 						x = y = 0f;
-						moveX = 4f;
-						moveY = 1f;
-						moveRot = 15f;
-						moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), -4f, -1f, -15f));
+						moveX = -1f;
+						moveY = 0.25f;
+						moveRot = 1f;
+						moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), 1f, -0.25f, -1f));
 						progress = PartProgress.warmup;
 						heatProgress = PartProgress.reload.curve(Interp.pow2In);
 						mirror = true;
