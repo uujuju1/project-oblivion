@@ -7,6 +7,6 @@ public class OblivionSchematics {
 	public static Schematic villageLaunch;
 
 	public void load() {
-		villageLaunch = Schematics.read(Vars.tree.get("schematics/villageLaunch"));
+		villageLaunch = Schematics.readBase64("bXNjaAF4nGNgZmBmZmDJS8xNZeAty8zJSUxP9UkszUvOYOBOSS1OLsosKMnMz2NgYGDLSUxKzSlmYIqOZWQQzU/KySwDSugm5xel6kI1AlUxghCQAAAzvhc/");
 	}
 }
