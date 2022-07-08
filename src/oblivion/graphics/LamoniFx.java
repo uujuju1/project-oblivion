@@ -146,7 +146,7 @@ public class LamoniFx {
 		Draw.color(Color.white, type.frontColor, e.finpow());
 		for (var i = 0; i < 4; i++) {
 			e.scaled(20f + (i * 10f), b -> {
-				Angles.randLenVectors(b.id + i, 10, 20f * e.finpow(), (x, y) -> {
+				Angles.randLenVectors(b.id + (i * 10f), 10, 20f * e.finpow(), (x, y) -> {
 					Fill.circle(e.x + x, e.y + y, 2f * b.fin());
 				});
 			});
