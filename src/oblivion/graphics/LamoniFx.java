@@ -8,6 +8,7 @@ import mindustry.gen.*;
 import mindustry.content.*;
 import mindustry.graphics.*;
 import mindustry.entities.*;
+import mindustry.entities.bullet.*;
 
 public class LamoniFx {
 	public static final Effect 
