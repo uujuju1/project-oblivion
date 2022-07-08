@@ -6,7 +6,12 @@ import oblivion.content.*;
 
 public class OblivionSectors {
 	public static SectorPreset
-		newWorld, brokenOutpost;
+		newWorld, brokenOutpost,
+
+		// lamoni
+		freshBeggining, reactiveMonolith/*,
+		sodaicOutpost, rangedDefender, newCraters,
+		erasedPath, forgottenHighway*/;
 
 	public void load(){
 		newWorld = new SectorPreset("newWorld", OblivionPlanets.lonela, 15) {{
@@ -19,6 +24,19 @@ public class OblivionSectors {
 		brokenOutpost = new SectorPreset("brokenOutpost", OblivionPlanets.lonela, 35) {{
 			captureWave = 15;
 			difficulty = 2;
+			startWaveTimeMultiplier = 2f;
+		}};
+
+		// lamoni
+		freshBeggining = new SectorPreset("freshBeggining", OblivionPlanets.lamoni, 0) {{
+			alwaysUnlocked = true;
+			captureWave = 10;
+			difficulty = 1;
+			startWaveTimeMultiplier = 2f;
+		}};
+		reactiveMonolith = new SectorPreset("reactiveMonolith", OblivionPlanets.lamoni, 54) {{
+			captureWave = 20;
+			difficulty = 1;
 			startWaveTimeMultiplier = 2f;
 		}};
 	}

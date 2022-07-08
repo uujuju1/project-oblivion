@@ -135,5 +135,18 @@ public class LamoniFx {
 		Angles.randLenVectors(e.id, 20, e.fin(Interp.fastSlow) * 80f * intensity, (x, y) -> {
 		  Fill.circle(e.x + x, e.y + y, 10f * e.fout() * intensity);
 		});
+	}),
+
+	blankHit = new Effect(60f, e -> {
+		if (!(e.data instanceof Bullet bullet)) return;
+
+		Draw.color(Color.white, bullet.frontColor, e.finpow());
+		for (var i = 0; i < 4; i++) {
+			e.scaled(20f + (i * 10f), b -> {
+				Angles.randLenVectors(b.id + i, 10, 20f * e.finpow(), (x, y) -> {
+					Fill.circle(e.x + x, e.y + y, 2f * b.fin());
+				});
+			});
+		}
 	});
 }

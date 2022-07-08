@@ -104,6 +104,7 @@ public class LamoniTechTree {
 			node(OblivionBlocks.niobiumDuct, () -> {
 				node(OblivionBlocks.niobiumRouter, () -> {
 					node(OblivionBlocks.niobiumBridge, () -> {});
+					node(OblivionBlocks.niobiumUnloader, () -> {});
 				});
 				node(OblivionBlocks.niobiumConduit, Seq.with(new Produce(Liquids.water)), () -> {
 					node(OblivionBlocks.niobiumConduitRouter, () -> {
@@ -139,6 +140,12 @@ public class LamoniTechTree {
 							});
 						});
 					});
+				});
+			});
+
+			node(OblivionSectors.freshBeggining, () -> {
+				node(OblivionSectors.reactiveMonolith, Seq.with(new Research(OblivionBlocks.niobiumUnloader)), () -> {
+
 				});
 			});
 		});

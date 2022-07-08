@@ -1051,7 +1051,7 @@ public class OblivionBlocks {
 			));
 			size = 2;
 			health = 600;
-			reload = 240;
+			reload = 120;
 			recoil = 1.5f;
 			range = 25 * 8f;
 			drawer = new DrawTurret("reinforced-") {{
@@ -1060,8 +1060,8 @@ public class OblivionBlocks {
 						x = y = 0f;
 						moveX = -1f;
 						moveY = 0.25f;
-						moveRot = 1f;
-						moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), 1f, -0.25f, -1f));
+						moveRot = 5f;
+						moves.addAll(new PartMove(PartProgress.reload.curve(Interp.pow2In), 1f, -0.25f, -5f));
 						progress = PartProgress.warmup;
 						heatProgress = PartProgress.reload.curve(Interp.pow2In);
 						mirror = true;
@@ -1070,6 +1070,8 @@ public class OblivionBlocks {
 			}};
 			ammo(
 				OblivionResources.niobium, new ContinuousLaserBulletType(3) {{
+					width = 3;
+					length = 200;
 					lifetime = 60f;
 					colors = new Color[]{Color.valueOf("58BBEC"), Color.valueOf("8FDAFF"), Color.white};
 				}}
@@ -1151,7 +1153,6 @@ public class OblivionBlocks {
 					trailWidth = 1.8f;
 					trailLength = 8;
 					collides = collidesAir = collidesGround = collidesTiles = true;
-					shootSound = OblivionSounds.chargedShot;
 					frontColor = trailColor = Color.valueOf("EDF9FF");
 					backColor = Color.valueOf("BEC4CC");
 				}},
@@ -1163,7 +1164,6 @@ public class OblivionBlocks {
 					collides = collidesAir = collidesGround = collidesTiles = true;
 					status = StatusEffects.burning;
 					statusDuration = 300f;
-					shootSound = OblivionSounds.chargedShot;
 					frontColor = trailColor = Color.valueOf("BAF2B7");
 					backColor = Color.valueOf("87B085");
 				}}
@@ -1178,17 +1178,29 @@ public class OblivionBlocks {
 			size = 2;
 			reload = 90f;
 			range = 30f * 8f;
+			shootY = -1f;
 			shoot = new ShootAlternate(2.75f);
 			ammo(
-				OblivionResources.sodium, new ArtilleryBulletType(3f, 30) {{
-					width = height = 12f;
-					lifetime = 80f;
+				OblivionResources.niobium, new ArtilleryBulletType(2f, 25) {{
+					width = height = 16f;
+					lifetime = 120f;
 					trailWidth = 1.8f;
 					trailLength = 8;
 					collides = collidesAir = collidesGround = collidesTiles = true;
-					shootSound = OblivionSounds.chargedShot;
 					frontColor = trailColor = Color.valueOf("BAF2B7");
 					backColor = Color.valueOf("87B085");
+					hitEffect = LamoniFx.blankHit;
+
+					fragbullets = 4;
+					fragRandomSpread = 7.5f;
+					fragBullet = new BasicBulletType(2f, 5) {{
+						width = height = 8f;
+						lifetime = 20f;
+						trailWidth = 0.3f;
+						trailLength = 3;
+						frontColor = trailColor = Color.valueOf("D1EFFF");
+						backColor = Color.valueOf("608FCC");
+					}};
 				}}
 			);
 		}};
