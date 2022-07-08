@@ -28,13 +28,13 @@ public class OblivionSectors {
 		}};
 
 		// lamoni
-		freshBeggining = new SectorPreset("freshBeggining", OblivionPlanets.lamoni, 0) {{
+		freshBeggining = new SectorPreset("FreshBeggining", OblivionPlanets.lamoni, 0) {{
 			alwaysUnlocked = true;
 			captureWave = 10;
 			difficulty = 1;
 			startWaveTimeMultiplier = 2f;
 		}};
-		reactiveMonolith = new SectorPreset("reactiveMonolith", OblivionPlanets.lamoni, 54) {{
+		reactiveMonolith = new SectorPreset("ReactiveMonolith", OblivionPlanets.lamoni, 54) {{
 			captureWave = 20;
 			difficulty = 1;
 			startWaveTimeMultiplier = 2f;
