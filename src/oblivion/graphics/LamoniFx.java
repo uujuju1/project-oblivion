@@ -144,12 +144,25 @@ public class LamoniFx {
 		if (!(bullet.type instanceof BasicBulletType type)) return;
 
 		Draw.color(Color.white, type.frontColor, e.finpow());
-		for (var i = 0; i < 4; i++) {
-			e.scaled(20f + (i * 10f), b -> {
-				Angles.randLenVectors(b.id + (i * 10f), 10, 20f * e.finpow(), (x, y) -> {
-					Fill.circle(e.x + x, e.y + y, 2f * b.fin());
-				});
+		e.scaled(20f, b -> {
+			Angles.randLenVectors(b.id, 10, 20f * e.finpow(), (x, y) -> {
+				Fill.circle(e.x + x, e.y + y, 2f * b.fin());
 			});
-		}
+		});
+		e.scaled(30f, b -> {
+			Angles.randLenVectors(b.id + 1, 10, 20f * e.finpow(), (x, y) -> {
+				Fill.circle(e.x + x, e.y + y, 2f * b.fin());
+			});
+		});
+		e.scaled(40f, b -> {
+			Angles.randLenVectors(b.id + 2, 10, 20f * e.finpow(), (x, y) -> {
+				Fill.circle(e.x + x, e.y + y, 2f * b.fin());
+			});
+		});
+		e.scaled(50f, b -> {
+			Angles.randLenVectors(b.id + 3, 10, 20f * e.finpow(), (x, y) -> {
+				Fill.circle(e.x + x, e.y + y, 2f * b.fin());
+			});
+		});
 	});
 }
