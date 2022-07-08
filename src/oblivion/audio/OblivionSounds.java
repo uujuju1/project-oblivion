@@ -17,6 +17,6 @@ public class OblivionSounds {
     desc.errored = Throwable::printStackTrace;
 
     return sound;
-}
+	}
 	public static Sound chargedShot = getSound("chargedShot");
 }
