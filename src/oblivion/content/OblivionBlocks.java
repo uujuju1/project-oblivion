@@ -1123,6 +1123,7 @@ public class OblivionBlocks {
 					frontColor = trailColor = Color.valueOf("D1EFFF");
 					backColor = Color.valueOf("608FCC");
 
+					/*
 					fragBullets = 6;
 					fragRandomSpread = 7.5f;
 					fragBullet = new BasicBulletType(2f, 3) {{
@@ -1146,6 +1147,7 @@ public class OblivionBlocks {
 						frontColor = trailColor = Color.valueOf("D1EFFF");
 						backColor = Color.valueOf("608FCC");
 					}};
+					*/ 
 				}},
 				OblivionResources.hafnium, new ArtilleryBulletType(2f, 30) {{
 					width = height = 12f;
@@ -1191,7 +1193,7 @@ public class OblivionBlocks {
 					backColor = Color.valueOf("87B085");
 					hitEffect = LamoniFx.blankHit;
 
-					fragbullets = 4;
+					fragBullets = 4;
 					fragRandomSpread = 7.5f;
 					fragBullet = new BasicBulletType(2f, 5) {{
 						width = height = 8f;

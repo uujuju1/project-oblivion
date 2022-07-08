@@ -141,7 +141,7 @@ public class LamoniFx {
 	blankHit = new Effect(60f, e -> {
 		if (!(e.data instanceof Bullet bullet)) return;
 
-		Draw.color(Color.white, bullet.frontColor, e.finpow());
+		Draw.color(Color.white, bullet.type.frontColor, e.finpow());
 		for (var i = 0; i < 4; i++) {
 			e.scaled(20f + (i * 10f), b -> {
 				Angles.randLenVectors(b.id + i, 10, 20f * e.finpow(), (x, y) -> {
