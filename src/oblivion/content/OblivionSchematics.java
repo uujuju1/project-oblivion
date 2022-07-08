@@ -3,12 +3,10 @@ package oblivion.content;
 import mindustry.*;
 import mindustry.game.*;
 
-public class oblivionSchematics {
-	public Schematic loadSchematic(String schemName) {
-		String name = "Schematics/" + schemName;
-    String path = name + ".msch";
+public class OblivionSchematics {
+	public static Schematic villageLaunch;
 
-    return Schematics.loadFile(Vars.tree.get(path));
+	public void load() {
+		villageLaunch = Schematics.read(Vars.tree.get("schematics/" + name));
 	}
-	public static Schematic villageLaunch = loadSchematic("villageLaunch");
 }

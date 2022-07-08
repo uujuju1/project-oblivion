@@ -4,6 +4,7 @@ import arc.math.*;
 import arc.util.*;
 import arc.graphics.*;
 import arc.graphics.g2d.*;
+import mindustry.gen.*;
 import mindustry.content.*;
 import mindustry.graphics.*;
 import mindustry.entities.*;
