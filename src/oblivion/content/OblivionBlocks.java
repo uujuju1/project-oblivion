@@ -972,7 +972,7 @@ public class OblivionBlocks {
 			health = 120;
 			researchCost = with(OblivionResources.niobium, 55);
 		}};
-		niobiumConduitBridge = new DirectionalLiquidBridge("niobium-conduit-bridge") {{
+		niobiumConduitBridge = new DirectionLiquidBridge("niobium-conduit-bridge") {{
 			requirements(Category.liquid, with(OblivionResources.niobium, 8));
 			health = 140;
 			range = 6;

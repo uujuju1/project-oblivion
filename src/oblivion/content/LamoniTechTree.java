@@ -40,7 +40,7 @@ public class LamoniTechTree {
 			});
 
 			node(OblivionBlocks.mantlePulverizer, () -> {
-				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium), new Research(OblivionBlocks.expansion), new OnSector(OblivionSectors.sodaicFactory)), () -> {
+				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium), new Research(OblivionBlocks.expansion), new OnSector(OblivionSectors.sodaicOutpost)), () -> {
 					node(OblivionBlocks.poloniumCollider, Seq.with(new Research(OblivionBlocks.plastaniumDensifier)), () -> {});
 					node(OblivionBlocks.surgeCharger, Seq.with(new Research(OblivionBlocks.poloniumCollider)), () -> {});
 				});
