@@ -40,7 +40,7 @@ public class LamoniTechTree {
 			});
 
 			node(OblivionBlocks.mantlePulverizer, () -> {
-				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium), new Research(OblivionBlocks.expansion)), () -> {
+				node(OblivionBlocks.demineralizer, Seq.with(new Produce(OblivionResources.hafnium), new Research(OblivionBlocks.expansion), new OnSector(OblivionSectors.sodaicFactory)), () -> {
 					node(OblivionBlocks.poloniumCollider, Seq.with(new Research(OblivionBlocks.plastaniumDensifier)), () -> {});
 					node(OblivionBlocks.surgeCharger, Seq.with(new Research(OblivionBlocks.poloniumCollider)), () -> {});
 				});
@@ -48,7 +48,7 @@ public class LamoniTechTree {
 					node(OblivionBlocks.xenoicMixer, Seq.with(new Produce(OblivionResources.sodium), new Research(OblivionBlocks.evolution)), () -> {});
 					node(OblivionBlocks.presaltPump, Seq.with(new Produce(OblivionResources.xenonium)), () -> {});
 				});
-				node(OblivionBlocks.hafniumSmelter, () -> {
+				node(OblivionBlocks.hafniumSmelter, Seq.with(new OnSector(OblivionSectors.reactiveMonolith)), () -> {
 					node(OblivionBlocks.plastaniumDensifier, Seq.with(new Produce(Liquids.oil), new Research(OblivionBlocks.finalization)), () -> {});
 				});
 			});
@@ -57,6 +57,7 @@ public class LamoniTechTree {
 
 			node(OblivionBlocks.imperialDrill, () -> {
 				node(OblivionBlocks.mineralBoiler, Seq.with(new Produce(OblivionResources.hafnium)), () -> {});
+				node(OblivionBlocks.hydraulicDrill, Seq.with(new OnPlanet(OblivionPlanets.vita)), () -> {});
 			});
 
 			node(OblivionBlocks.lineNode);
@@ -145,7 +146,9 @@ public class LamoniTechTree {
 
 			node(OblivionSectors.freshBeggining, () -> {
 				node(OblivionSectors.reactiveMonolith, Seq.with(new Research(OblivionBlocks.niobiumUnloader)), () -> {
+					node(OblivionSectors.sodaicOutpost, Seq.with(new Produce(OblivionResources.hafnium)), () -> {
 
+					});
 				});
 			});
 		});
