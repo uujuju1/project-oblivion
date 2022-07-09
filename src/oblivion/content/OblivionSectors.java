@@ -9,9 +9,9 @@ public class OblivionSectors {
 		newWorld, brokenOutpost,
 
 		// lamoni
-		freshBeggining, reactiveMonolith/*,
-		sodaicOutpost, rangedDefender, newCraters,
-		erasedPath, forgottenHighway*/;
+		freshBeggining, reactiveMonolith,
+		sodaicOutpost/*, rangedDefender, newCraters,
+		erasedPath, forgottenHighway, disjointedRoadtrip*/;
 
 	public void load(){
 		newWorld = new SectorPreset("newWorld", OblivionPlanets.lonela, 15) {{
@@ -38,6 +38,9 @@ public class OblivionSectors {
 			captureWave = 20;
 			difficulty = 1;
 			startWaveTimeMultiplier = 2f;
+		}};
+		sodaicOutpost = new SectorPreset("SodaicOutpost", OblivionPlanets.lamoni, 34) {{
+			difficulty = 3;
 		}};
 	}
 }
