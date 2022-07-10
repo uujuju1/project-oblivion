@@ -19,7 +19,7 @@ public class PayloadCrafter extends PayloadBlock {
 		config(Block.class, (PayloadCrafterBuild tile, Block i) -> {
 			if(!configurable) return;
 
-			int next = plans.indexOf(p -> p.unit == val);
+			int next = plans.indexOf(p -> p.output == val);
 			if(tile.currentPlan == next) return;
 			tile.currentPlan = next;
 			tile.progress = 0;
@@ -57,10 +57,10 @@ public class PayloadCrafter extends PayloadBlock {
 
 		@Override
 		public void buildConfiguration(Table table) {
-			t.setBackground(Tex.whiteui);
-			t.setColor(Pal.darkestGray);
+			table.setBackground(Tex.whiteui);
+			table.setColor(Pal.darkestGray);
 			plans.each(p -> {
-				t.table(
+				table.table(
 					p.table()
 				);
 			});
