@@ -36,7 +36,7 @@ public class PayloadCrafter extends PayloadBlock {
 			return in.build.block == input;
 		}
 
-		public Cons<Table> table = table -> {table.image(output.region).size(60);}
+		public Cons<Table> table = table -> table.image(output.region).size(60);
 	}
 
 	public class PayloadCrafterBuild extends PayloadBlockBuild<Payload> {
