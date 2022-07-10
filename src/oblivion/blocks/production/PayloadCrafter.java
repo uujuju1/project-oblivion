@@ -17,10 +17,12 @@ public class PayloadCrafter extends PayloadBlock {
 		configurable = true;
 		solid = destructible = true;
 
-		config(Block.class, (PayloadCrafterBuild tile, Block i) -> {
+		config(Block.class, (PayloadCrafterBuild tile, Block block) -> {
 			if(!configurable) return;
-			if(tile.currentPlan == i) return;
-			tile.currentPlan = i < 0 || i >= plans.size ? -1 : i;
+
+			int next = plans.indexOf(b -> b.output == block);
+			if(tile.currentPlan == next) return;
+			tile.currentPlan = next;
 			tile.progress = 0;
 		});
 	}
