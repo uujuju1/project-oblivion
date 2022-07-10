@@ -1710,7 +1710,8 @@ public class OblivionBlocks {
 			buildVisibility = BuildVisibility.shown;
 			size = 5;
 			plans.add(
-				new PayloadRecipe(hafniumWall, niobiumWall, 30)
+				new PayloadRecipe(hafniumWall, niobiumWall, 30),
+				new PayloadRecipe(largeHafniumWall, largeNiobiumWall, 30)
 			);
 		}};
 	}

@@ -16,6 +16,13 @@ public class PayloadCrafter extends PayloadBlock {
 		super(name);
 		configurable = true;
 		solid = destructible = true;
+
+		config(Block.class, (PayloadCrafterBuild tile, Block i) -> {
+			if(!configurable) return;
+			if(tile.currentPlan == i) return;
+			tile.currentPlan = i < 0 || i >= plans.size ? -1 : i;
+			tile.progress = 0;
+		});
 	}
 
 	public class PayloadRecipe {
@@ -45,9 +52,10 @@ public class PayloadCrafter extends PayloadBlock {
 
 		@Override
 		public void buildConfiguration(Table table) {
+			Seq<PayloadRecipe> blocks = Seq.with(plans).map(b -> b.output).filter(b -> b.unlockedNow() && !b.isBanned());
 			table.setBackground(Tex.whiteui);
 			table.setColor(Pal.darkestGray);
-			plans.each(p -> table.table(p.table));
+			ItemSelection.buildTable(this, table, blocks, () -> currentPlan == -1 ? null : plans.get(currentPlan).output, block -> configure(plans.indexOf(b -> b.output == block)));
 		}
 
 		@Override
