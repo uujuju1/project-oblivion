@@ -15,15 +15,6 @@ public class PayloadCrafter extends PayloadBlock {
 		super(name);
 		configurable = true;
 		solid = destructible = true;
-
-		config(Block.class, (PayloadCrafterBuild tile, Block i) -> {
-			if(!configurable) return;
-
-			int next = plans.indexOf(p -> p.output == val);
-			if(tile.currentPlan == next) return;
-			tile.currentPlan = next;
-			tile.progress = 0;
-		});
 	}
 
 	public class PayloadRecipe {
@@ -41,17 +32,17 @@ public class PayloadCrafter extends PayloadBlock {
 			BuildPayload in;
 			if(!(payload instanceof BuildPayload)) return false;
 			in = (BuildPayload) payload;
-			return in.build.block;
+			return in.build.block = input;
 		}
 
 		public Table table() {
-			return table -> {
-				table.image(output.uiicon).size(60);
-			};
+			return new Table(table -> {
+				table.image(output.region).size(60);
+			});
 		}
 	}
 
-	public class PayloadCrafterBuild extends PayloadBuild<Payload> {
+	public class PayloadCrafterBuild extends PayloadBlockBuild<Payload> {
 		public int currentPlan = -1;
 		public float progress = 0;
 
@@ -67,7 +58,8 @@ public class PayloadCrafter extends PayloadBlock {
 		}
 		@Override
 		public boolean acceptPayload(Building source, Payload payload) {
-			plans.get(currentPlan == -1).comparePayload(payload);
+			if (currentPlan == -1) return false;
+			return plans.get(currentPlan).comparePayload(payload);
 		}
 		@Override
 		public boolean acceptUnitPayload(Unit unit) {return false;}
