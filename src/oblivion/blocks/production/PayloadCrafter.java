@@ -1,5 +1,6 @@
 package oblivion.blocks.production;
 
+import arc.func.*;
 import arc.struct.*;
 import arc.scene.ui.layout.*;
 import mindustry.gen.*;
@@ -32,14 +33,10 @@ public class PayloadCrafter extends PayloadBlock {
 			BuildPayload in;
 			if(!(payload instanceof BuildPayload)) return false;
 			in = (BuildPayload) payload;
-			return in.build.block = input;
+			return in.build.block == input;
 		}
 
-		public Table table() {
-			return new Table(table -> {
-				table.image(output.region).size(60);
-			});
-		}
+		public Cons<Table> table = table -> {table.image(output.region).size(60);}
 	}
 
 	public class PayloadCrafterBuild extends PayloadBlockBuild<Payload> {
@@ -50,12 +47,9 @@ public class PayloadCrafter extends PayloadBlock {
 		public void buildConfiguration(Table table) {
 			table.setBackground(Tex.whiteui);
 			table.setColor(Pal.darkestGray);
-			plans.each(p -> {
-				table.table(
-					p.table()
-				);
-			});
+			plans.each(p -> table.table(p.table));
 		}
+
 		@Override
 		public boolean acceptPayload(Building source, Payload payload) {
 			if (currentPlan == -1) return false;
