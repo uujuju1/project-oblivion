@@ -62,7 +62,7 @@ public class PayloadCrafter extends PayloadBlock {
 		public void updateTile() {
 			if (currentPlan == -1) return;
 			if (acceptPayload(this, payload)) {
-				payload = plans.get(currentPlan).output;
+				payload = new BuildPayload(plans.get(currentPlan).output, team);
 				moveOutPayload();
 			}
 		}
