@@ -17,6 +17,7 @@ public class PayloadCrafter extends PayloadBlock {
 		super(name);
 		configurable = true;
 		solid = destructible = true;
+		acceptsPayload = outputsPayload = true;
 
 		config(Block.class, (PayloadCrafterBuild tile, Block block) -> {
 			if(!configurable) return;
@@ -38,13 +39,6 @@ public class PayloadCrafter extends PayloadBlock {
 			this.input = input;
 			this.time = time;
 		}
-
-		public boolean comparePayload(Payload payload) {
-			BuildPayload in;
-			if(!(payload instanceof BuildPayload)) return false;
-			in = (BuildPayload) payload;
-			return in.build.block == input;
-		}
 	}
 
 	public class PayloadCrafterBuild extends PayloadBlockBuild<Payload> {
@@ -61,8 +55,9 @@ public class PayloadCrafter extends PayloadBlock {
 
 		@Override
 		public boolean acceptPayload(Building source, Payload payload) {
-			if (currentPlan == -1) return false;
-			return plans.get(currentPlan).comparePayload(payload);
+			if (currentPlan == -1 || !(payload instanceof BuildPayload) || payload != null) return false;
+			BuildPayload in = (BuildPayload) payload;
+			return plans.get(currentPlan).input == in.build.block;
 		}
 		@Override
 		public boolean acceptUnitPayload(Unit unit) {return false;}
@@ -72,8 +67,8 @@ public class PayloadCrafter extends PayloadBlock {
 			if (currentPlan == -1) return;
 			if (acceptPayload(this, payload)) {
 				payload = new BuildPayload(plans.get(currentPlan).output, team);
-				moveOutPayload();
 			}
+			moveOutPayload();
 		}
 	}
 }
