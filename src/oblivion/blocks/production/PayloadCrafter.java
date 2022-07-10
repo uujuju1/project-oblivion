@@ -39,14 +39,15 @@ public class PayloadCrafter extends PayloadBlock {
 
 		public boolean comparePayload(Payload payload) {
 			BuildPayload in;
-			payload instanceof BuildPayload ? in = (BuildPayload) payload : return false;
+			if(!(payload instanceof BuildPayload)) return false;
+			in = (BuildPayload) payload;
 			return in.build.block;
 		}
 
 		public Table table() {
 			return table -> {
 				table.image(output.uiicon).size(60);
-			}
+			};
 		}
 	}
 
@@ -62,7 +63,7 @@ public class PayloadCrafter extends PayloadBlock {
 				t.table(
 					p.table()
 				);
-			})
+			});
 		}
 		@Override
 		public boolean acceptPayload(Building source, Payload payload) {
