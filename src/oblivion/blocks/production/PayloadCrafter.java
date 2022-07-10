@@ -7,6 +7,7 @@ import mindustry.gen.*;
 import mindustry.type.*;
 import mindustry.world.*;
 import mindustry.graphics.*;
+import mindustry.world.blocks.*;
 import mindustry.world.blocks.payloads.*;
 
 public class PayloadCrafter extends PayloadBlock {
@@ -44,8 +45,6 @@ public class PayloadCrafter extends PayloadBlock {
 			in = (BuildPayload) payload;
 			return in.build.block == input;
 		}
-
-		public Cons<Table> table = table -> table.image(output.region).size(60);
 	}
 
 	public class PayloadCrafterBuild extends PayloadBlockBuild<Payload> {
@@ -54,7 +53,7 @@ public class PayloadCrafter extends PayloadBlock {
 
 		@Override
 		public void buildConfiguration(Table table) {
-			Seq<PayloadRecipe> blocks = Seq.with(plans).map(b -> b.output).filter(b -> b.unlockedNow() && !b.isBanned());
+			Seq<Block> blocks = Seq.with(plans).map(b -> b.output).filter(b -> b.unlockedNow() && !b.isBanned());
 			table.setBackground(Tex.whiteui);
 			table.setColor(Pal.darkestGray);
 			ItemSelection.buildTable(this, table, blocks, () -> currentPlan == -1 ? null : plans.get(currentPlan).output, block -> configure(plans.indexOf(b -> b.output == block)));
