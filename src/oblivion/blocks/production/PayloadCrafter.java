@@ -53,7 +53,7 @@ public class PayloadCrafter extends PayloadBlock {
 
 		@Override
 		public void buildConfiguration(Table table) {
-			Seq<Block> blocks = Seq.with(plans).map(b -> b.output).filter(b -> b.unlockedNow() && !b.isBanned());
+			Seq<Block> blocks = Seq.with(plans).map(b -> b.output).filter(b -> b.unlockedNow());
 			table.setBackground(Tex.whiteui);
 			table.setColor(Pal.darkestGray);
 			ItemSelection.buildTable(PayloadCrafter.this, table, blocks, () -> currentPlan == -1 ? null : plans.get(currentPlan).output, block -> configure(plans.indexOf(b -> b.output == block)));
