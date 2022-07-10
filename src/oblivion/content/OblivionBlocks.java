@@ -84,7 +84,9 @@ public class OblivionBlocks {
 		hafniumWall, largeHafniumWall, hugeHafniumWall,
 		poloniumWall, largePoloniumWall, hugePoloniumWall,
 
-		imperialDrill, mineralBoiler, hydraulicDrill;
+		imperialDrill, mineralBoiler, hydraulicDrill,
+
+		test;
 
 	public void load() {
 		start = new Block("start"){{
@@ -1181,7 +1183,6 @@ public class OblivionBlocks {
 			reload = 90f;
 			range = 30f * 8f;
 			shootY = -1f;
-			shoot = new ShootAlternate(2.75f);
 			ammo(
 				OblivionResources.niobium, new ArtilleryBulletType(2f, 25) {{
 					width = height = 16f;
@@ -1191,7 +1192,7 @@ public class OblivionBlocks {
 					collides = collidesAir = collidesGround = collidesTiles = true;
 					frontColor = trailColor = Color.valueOf("BAF2B7");
 					backColor = Color.valueOf("87B085");
-					hitEffect = LamoniFx.blankHit;
+					hitEffect = despawnEffect = LamoniFx.blankHit;
 
 					fragBullets = 4;
 					fragRandomSpread = 7.5f;
@@ -1703,6 +1704,14 @@ public class OblivionBlocks {
 			);
 			consumePower(3f);
 			outputLiquid = new LiquidStack(Liquids.oil, 0.2f);
+		}};
+
+		test = new PayloadCrafter("test") {{
+			buildVisibility = BuildVisibility.shown;
+			size = 5;
+			plans.add(
+				new PayloadRecipe(hafniumWall, niobiumWall, 30)
+			);
 		}};
 	}
 }
