@@ -3,13 +3,14 @@ package oblivion;
 import arc.*;
 import arc.util.*;
 import mindustry.*;
+import mindustry.core.*;
 import mindustry.content.*;
 import mindustry.ui.fragments.*;
-import mindustry.game.EventType.*;
 import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.type.*;
-import mindustry.ui.dialogs.*;
+import mindustry.ui.dialogs.SettingsMenuDialog.*;
+import mindustry.ui.dialogs.SettingsMenuDialog.SettingsTable.*;
 import oblivion.content.*;
 import oblivion.graphics.*;
 
@@ -17,13 +18,21 @@ public class ProjectOblivion extends Mod{
 
 	public ProjectOblivion(){
 		Log.info("Loaded ProjectOblivion constructor.");
+		loadSettings();
 		Events.on(ClientLoadEvent.class, e -> {
-			try{
-				Reflect.set(MenuFragment.class, Vars.ui.menufrag, "renderer", new OblivionMenuRenderer());
-			}catch(Exception exep){
-				Log.err("Failed to replace renderer", exep);
+			if (settings.getBool("oblivion-override-menu-renderer", true)) {
+				try{
+					Reflect.set(MenuFragment.class, Vars.ui.menufrag, "renderer", new OblivionMenuRenderer());
+				}catch(Exception exep){
+					Log.err("Failed to replace renderer", exep);
+				}
 			}
+			
 		});
+	}
+
+	public void loadSettings() {
+		ui.settings.graphics.checkpref("oblivion-override-menu-renderer", true);
 	}
 
 	@Override
