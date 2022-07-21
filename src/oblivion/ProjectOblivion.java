@@ -33,7 +33,7 @@ public class ProjectOblivion extends Mod{
 	}
 
 	public void loadSettings() {
-		Vars.ui.settings.graphics.checkpref("oblivion-override-menu-renderer", true);
+		Vars.ui.settings.graphics.checkPref("oblivion-override-menu-renderer", true);
 	}
 
 	@Override
