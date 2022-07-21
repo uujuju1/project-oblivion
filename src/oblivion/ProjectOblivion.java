@@ -3,12 +3,13 @@ package oblivion;
 import arc.*;
 import arc.util.*;
 import mindustry.*;
-import mindustry.core.*;
-import mindustry.content.*;
-import mindustry.ui.fragments.*;
 import mindustry.gen.*;
 import mindustry.mod.*;
+import mindustry.core.*;
 import mindustry.type.*;
+import mindustry.content.*;
+import mindustry.ui.fragments.*;
+import mindustry.game.EventType.*;
 import mindustry.ui.dialogs.SettingsMenuDialog.*;
 import mindustry.ui.dialogs.SettingsMenuDialog.SettingsTable.*;
 import oblivion.content.*;
@@ -20,7 +21,7 @@ public class ProjectOblivion extends Mod{
 		Log.info("Loaded ProjectOblivion constructor.");
 		loadSettings();
 		Events.on(ClientLoadEvent.class, e -> {
-			if (settings.getBool("oblivion-override-menu-renderer", true)) {
+			if (Core.settings.getBool("oblivion-override-menu-renderer", true)) {
 				try{
 					Reflect.set(MenuFragment.class, Vars.ui.menufrag, "renderer", new OblivionMenuRenderer());
 				}catch(Exception exep){
@@ -32,7 +33,7 @@ public class ProjectOblivion extends Mod{
 	}
 
 	public void loadSettings() {
-		ui.settings.graphics.checkpref("oblivion-override-menu-renderer", true);
+		Ui.settings.graphics.checkpref("oblivion-override-menu-renderer", true);
 	}
 
 	@Override
